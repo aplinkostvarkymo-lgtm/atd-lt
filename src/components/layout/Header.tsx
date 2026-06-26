@@ -12,7 +12,7 @@ const SERVICE_LINKS = [
   { href: "/paslaugos/veja",         key: "veja" },
   { href: "/paslaugos/laistymas",    key: "laistymas" },
   { href: "/paslaugos/trinkeles",    key: "trinkelės" },
-  { href: "/paslaugos/prekyba-augalais", key: "prekyba" },
+  /* "/paslaugos/prekyba-augalais" puslapio kol kas nėra — nuoroda pašalinta */
 ] as const;
 
 type ServiceKey = typeof SERVICE_LINKS[number]["key"];
@@ -97,9 +97,7 @@ export function Header() {
               </AnimatePresence>
             </div>
 
-            <Link href="/darbai"    className={`font-body text-sm font-medium transition-colors ${link}`}>{t.works}</Link>
-            <Link href="/patarimai" className={`font-body text-sm font-medium transition-colors ${link}`}>{t.tips}</Link>
-            <Link href="/kontaktai" className={`font-body text-sm font-medium transition-colors ${link}`}>{t.contact}</Link>
+            {/* /darbai, /patarimai, /kontaktai puslapių kol kas nėra — nuorodos pašalintos */}
           </nav>
 
           {/* Right: phone + LT/EN + hamburger */}
@@ -169,22 +167,7 @@ export function Header() {
                     </Link>
                   ))}
                 </div>
-                <div className="mt-4 flex flex-col">
-                  {([
-                    { href: "/darbai",    label: t.works   },
-                    { href: "/patarimai", label: t.tips    },
-                    { href: "/kontaktai", label: t.contact },
-                  ] as const).map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="font-body text-[0.9375rem] text-atd-black py-3 border-b border-atd-black/6 hover:text-atd-green transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {label}
-                    </Link>
-                  ))}
-                </div>
+                {/* /darbai, /patarimai, /kontaktai puslapių kol kas nėra — nuorodos pašalintos */}
               </nav>
 
               <div className="px-6 py-5 border-t border-atd-black/8 flex items-center justify-between">

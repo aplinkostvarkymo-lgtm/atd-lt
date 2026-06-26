@@ -3,6 +3,8 @@ import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Header } from "@/components/layout/Header";
+import { SchemaOrg } from "@/components/SchemaOrg";
+import { localBusinessSchema } from "@/lib/schemas";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
@@ -50,6 +52,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${dmSans.variable}`}
     >
       <body>
+        <SchemaOrg schema={localBusinessSchema} />
         <LanguageProvider>
           <Header />
           {children}

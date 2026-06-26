@@ -10,14 +10,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import type { IconName } from "@/components/ui/HotspotMarker";
 
+/* "prekyba" (/paslaugos/prekyba-augalais), "darbai" (/darbai), "patarimai" (/patarimai)
+   ir "kontaktai" (/kontaktai) hotspot'ai pašalinti — šių puslapių kol kas nėra */
 const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeof translations.lt.hotspots }> = [
-  {
-    id: "prekyba",
-    labelKey: "prekyba",
-    href: "/paslaugos/prekyba-augalais",
-    icon: "plant" as IconName,
-    position: { left: "25%", top: "40%" },
-  },
   {
     id: "apzeldinimas",
     labelKey: "apzeldinimas",
@@ -33,13 +28,6 @@ const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeo
     position: { left: "48%", top: "45%" },
   },
   {
-    id: "darbai",
-    labelKey: "darbai",
-    href: "/darbai",
-    icon: "gallery" as IconName,
-    position: { left: "70%", top: "45%" },
-  },
-  {
     id: "veja",
     labelKey: "veja",
     href: "/paslaugos/veja",
@@ -52,21 +40,6 @@ const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeo
     href: "/paslaugos/trinkeles",
     icon: "tile" as IconName,
     position: { left: "65%", top: "60%" },
-  },
-  {
-    id: "patarimai",
-    labelKey: "patarimai",
-    href: "/patarimai",
-    icon: "lightbulb" as IconName,
-    position: { left: "78%", top: "45%" },
-  },
-  {
-    id: "kontaktai",
-    labelKey: "kontaktai",
-    href: "/kontaktai",
-    icon: "chat" as IconName,
-    position: { left: "81%", top: "70%" },
-    variant: "featured",
   },
 ];
 
@@ -176,12 +149,7 @@ export function GardenSceneHero() {
             >
               {t.hero.cta_price}
             </Link>
-            <Link
-              href="/darbai"
-              className="inline-flex items-center px-6 py-3 border border-white/60 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors backdrop-blur-sm"
-            >
-              {t.hero.cta_works}
-            </Link>
+            {/* "Žiūrėti darbus" (/darbai) CTA pašalintas — puslapio kol kas nėra */}
           </div>
           <a
             href="tel:+37065785096"
