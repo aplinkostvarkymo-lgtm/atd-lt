@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+
+# stray nested checkout (leftover duplicate clone, not part of this project)
+/atd-lt/
 /.pnp
 .pnp.*
 .yarn/*
