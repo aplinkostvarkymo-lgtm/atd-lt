@@ -12,34 +12,37 @@ import type { IconName } from "@/components/ui/HotspotMarker";
 
 /* "prekyba" (/paslaugos/prekyba-augalais), "darbai" (/darbai), "patarimai" (/patarimai)
    ir "kontaktai" (/kontaktai) hotspot'ai pašalinti — šių puslapių kol kas nėra */
+/* Pozicijos sąmoningai laikomos virš ~39% top ir/arba toliau nuo kairės teksto bloko
+   (bottom-[8%] left-[6%] max-w-xl Hero tekstas) — žr. GardenSceneHero komentarą žemiau
+   dėl kolizijos su H1 antraste, ištaisytos 2026-06-26 */
 const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeof translations.lt.hotspots }> = [
   {
     id: "apzeldinimas",
     labelKey: "apzeldinimas",
     href: "/paslaugos/apzeldinimas",
     icon: "flower" as IconName,
-    position: { left: "30%", top: "52%" },
+    position: { left: "22%", top: "30%" },
   },
   {
     id: "laistymas",
     labelKey: "laistymas",
     href: "/paslaugos/laistymas",
     icon: "water" as IconName,
-    position: { left: "48%", top: "45%" },
+    position: { left: "44%", top: "38%" },
   },
   {
     id: "veja",
     labelKey: "veja",
     href: "/paslaugos/veja",
     icon: "grass" as IconName,
-    position: { left: "50%", top: "57%" },
+    position: { left: "60%", top: "42%" },
   },
   {
     id: "trinkelės",
     labelKey: "trinkelės",
     href: "/paslaugos/trinkeles",
     icon: "tile" as IconName,
-    position: { left: "65%", top: "60%" },
+    position: { left: "72%", top: "55%" },
   },
 ];
 

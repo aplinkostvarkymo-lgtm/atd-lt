@@ -187,7 +187,8 @@ export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMar
       style={{
         left: data.position.left,
         top: data.position.top,
-        transform: "translate(-50%, -50%)",
+        x: "-50%",
+        y: "-50%",
       }}
       initial={{ opacity: 0, scale: 0.4 }}
       animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
