@@ -241,6 +241,10 @@ Failas `/llms.txt` pagrindiniame kataloge — struktūruotas aprašas svetainės
 [Nuoroda į kalkuliatorių]
 ```
 
+<!-- Šio dokumento kainų pavyzdžiai (čia ir kitur, pvz. "~X–Y €" sekcijoje 3) yra placeholder'iai/planavimo medžiaga.
+     Tikras šaltinis kainoms visada: src/lib/translations.ts -->
+
+
 ### 8.2 Schema.org žymėjimas (JSON-LD)
 Kiekviename puslapyje:
 - `LocalBusiness` su aptarnavimo zona, darbo laiku, kontaktais

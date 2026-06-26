@@ -50,6 +50,7 @@ Vilnius ir Vilniaus rajonas. Didžiuosiuose projektuose — visa Lietuva.
 
 ## Kainų orientaciniai intervalai
 
+<!-- Kainos orientacinės/pasenusios — pavyzdys, ne šaltinis. Tikras šaltinis: src/lib/translations.ts -->
 - Vejos įrengimas: 8–15 €/m²
 - Apželdinimas pagal projektą: pagal individualų skaičiavimą
 - Trinkelių klojimas: 25–45 €/m²
@@ -174,6 +175,9 @@ Sitemap: https://atd.lt/sitemap.xml
   }
 }
 ```
+
+<!-- Kainos šiame faile (8 €/m², 25-45 €/m² ir t.t.) yra pavyzdinės/pasenusios.
+     Tikras šaltinis kainoms visada: src/lib/translations.ts -->
 
 ### FAQPage (DUK sekcija)
 
