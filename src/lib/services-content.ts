@@ -44,7 +44,7 @@ export const SERVICES: ServicePopupData[] = [
     heading: { lt: "Vejos įrengimas Vilniuje", en: "Lawn Installation in Vilnius" },
     tagline: { lt: "Ruloninė nuo 8 €/m² · Sėjama nuo 4 €/m²", en: "Roll-out from 8 €/m² · Seeded from 4 €/m²" },
     ctaLabel: { lt: "Gauti kainą", en: "Get a Quote" },
-    ctaHref: "#kalkuliatorius",
+    ctaHref: "/kontaktai",
     blocks: [
       {
         type: "comparison",

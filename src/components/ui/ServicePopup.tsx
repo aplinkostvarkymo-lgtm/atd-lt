@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 import { getService, type ServiceBlock, type Lang } from "@/lib/services-content";
 
 /* ── Block renderers ──────────────────────────────────────── */
@@ -229,7 +230,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
                 type="button"
                 onClick={onClose}
                 className="shrink-0 w-8 h-8 flex items-center justify-center text-atd-gray-soft hover:text-atd-black transition-colors mt-0.5"
-                aria-label="Uždaryti"
+                aria-label={translations[lang].common.close}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />

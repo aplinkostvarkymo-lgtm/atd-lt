@@ -2,6 +2,9 @@ export type Lang = "lt" | "en";
 
 export const translations = {
   lt: {
+    common: {
+      close: "Uždaryti",
+    },
     hero: {
       heading: "Aplinkos tvarkymas Vilniuje",
       subheading: "Veja, apželdinimas, trinkelės. Dirbame su projektine dokumentacija.",
@@ -267,8 +270,35 @@ export const translations = {
       cta_call: "Skambinti",
       cta_email: "El. paštas",
     },
+    footer: {
+      tagline: "Profesionalus aplinkos tvarkymas Vilniuje ir Vilniaus rajone.",
+      hours: "Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00",
+      area: "Vilnius · Vilniaus rajonas · Trakai",
+      rights: "Visos teisės saugomos.",
+    },
+    kontaktaiPage: {
+      breadcrumb_home: "Pagrindinis",
+      breadcrumb_current: "Kontaktai",
+      hero_heading: "Susisiekite su ATD",
+      hero_tagline: "Nemokama apžiūra ir konsultacija Vilniuje",
+      hours: "Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00",
+      area: "Vilnius · Vilniaus rajonas · Trakai",
+      response: "Atsakome per 2 val. darbo dienomis",
+      form_heading: "Užklausos forma",
+      form_name: "Vardas",
+      form_phone: "Telefonas",
+      form_email: "El. paštas",
+      form_service: "Paslauga",
+      form_service_placeholder: "Pasirinkite paslaugą",
+      form_area: "Plotas (m²)",
+      form_message: "Žinutė",
+      form_submit: "Siųsti užklausą",
+    },
   },
   en: {
+    common: {
+      close: "Close",
+    },
     hero: {
       heading: "Landscaping Services in Vilnius",
       subheading: "Lawn, planting, paving. We work with project documentation.",
@@ -533,6 +563,30 @@ export const translations = {
       cta_sub: "We visit the site. Design and price proposal at no charge.",
       cta_call: "Call us",
       cta_email: "Email",
+    },
+    footer: {
+      tagline: "Professional landscaping services in Vilnius and Vilnius district.",
+      hours: "Mon–Fri 8:00–18:00 · Sat 9:00–14:00",
+      area: "Vilnius · Vilnius district · Trakai",
+      rights: "All rights reserved.",
+    },
+    kontaktaiPage: {
+      breadcrumb_home: "Home",
+      breadcrumb_current: "Contact",
+      hero_heading: "Contact ATD",
+      hero_tagline: "Free site visit and consultation in Vilnius",
+      hours: "Mon–Fri 8:00–18:00 · Sat 9:00–14:00",
+      area: "Vilnius · Vilnius district · Trakai",
+      response: "We respond within 2 hours on working days",
+      form_heading: "Request form",
+      form_name: "Name",
+      form_phone: "Phone",
+      form_email: "Email",
+      form_service: "Service",
+      form_service_placeholder: "Select a service",
+      form_area: "Area (m²)",
+      form_message: "Message",
+      form_submit: "Send request",
     },
   },
 } as const;

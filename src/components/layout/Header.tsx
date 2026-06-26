@@ -7,7 +7,7 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
-const SERVICE_LINKS = [
+export const SERVICE_LINKS = [
   { href: "/paslaugos/apzeldinimas", key: "apzeldinimas" },
   { href: "/paslaugos/veja",         key: "veja" },
   { href: "/paslaugos/laistymas",    key: "laistymas" },

@@ -93,7 +93,7 @@ function Hero({ t }: { t: VejaT }) {
             {t.hero_cta_call}: +370 657 85096
           </a>
           <Link
-            href="#kalkuliatorius"
+            href="/kontaktai"
             className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors"
           >
             {t.hero_cta_quote}
