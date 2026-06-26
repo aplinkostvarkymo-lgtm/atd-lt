@@ -32,6 +32,7 @@ export interface ServicePopupData {
   id: string;
   heading: BiLang;
   tagline: BiLang;
+  image?: { src: string; alt: BiLang };
   blocks: ServiceBlock[];
   ctaLabel: BiLang;
   ctaHref: string;
@@ -43,6 +44,10 @@ export const SERVICES: ServicePopupData[] = [
     id: "veja",
     heading: { lt: "Vejos įrengimas Vilniuje", en: "Lawn Installation in Vilnius" },
     tagline: { lt: "Ruloninė nuo 8 €/m² · Sėjama nuo 4 €/m²", en: "Roll-out from 8 €/m² · Seeded from 4 €/m²" },
+    image: {
+      src: "/images/veja-mowed-stripes-1.jpg",
+      alt: { lt: "Nupjauta dryžuota veja prie administracinio pastato", en: "Mowed striped lawn next to an office building" },
+    },
     ctaLabel: { lt: "Gauti kainą", en: "Get a Quote" },
     ctaHref: "/kontaktai",
     blocks: [
@@ -98,6 +103,10 @@ export const SERVICES: ServicePopupData[] = [
     id: "apzeldinimas",
     heading: { lt: "Teritorijos apželdinimas", en: "Landscape Planting" },
     tagline: { lt: "Kaina pagal projektą — nemokama apžiūra", en: "Priced per project — free site visit" },
+    image: {
+      src: "/images/apzeldinimas-courtyard-wide-1.jpg",
+      alt: { lt: "Daugiabučio kiemo apželdinimas su gėlynu", en: "Apartment courtyard landscaping with flowerbed" },
+    },
     ctaLabel: { lt: "Gauti pasiūlymą", en: "Get a Proposal" },
     ctaHref: "/kontaktai",
     blocks: [
@@ -141,6 +150,10 @@ export const SERVICES: ServicePopupData[] = [
     id: "laistymas",
     heading: { lt: "Automatinės laistymo sistemos", en: "Automatic Irrigation Systems" },
     tagline: { lt: "Hunter · Rain Bird įranga · Įrengimas ir žieminimas", en: "Hunter · Rain Bird · Installation and winterisation" },
+    image: {
+      src: "/images/laistymas-sprinkler-action-1.jpg",
+      alt: { lt: "Veikianti automatinė laistymo sistema", en: "Automatic irrigation system in action" },
+    },
     ctaLabel: { lt: "Gauti pasiūlymą", en: "Get a Proposal" },
     ctaHref: "/kontaktai",
     blocks: [
@@ -216,6 +229,10 @@ export const SERVICES: ServicePopupData[] = [
     id: "trinkelės",
     heading: { lt: "Trinkelių klojimas ir takai", en: "Paving & Paths" },
     tagline: { lt: "40–65 €/m² priklausomai nuo medžiagos", en: "40–65 €/m² depending on material" },
+    image: {
+      src: "/images/trinkeles-plaza-1.jpg",
+      alt: { lt: "Trinkelių aikštė prie pastato", en: "Paved plaza next to a building" },
+    },
     ctaLabel: { lt: "Gauti kainą", en: "Get a Quote" },
     ctaHref: "/kontaktai",
     blocks: [

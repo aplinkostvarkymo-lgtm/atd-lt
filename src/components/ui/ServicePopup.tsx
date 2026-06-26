@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -238,9 +239,24 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
               </button>
             </div>
 
-            {/* Scrollable body */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
-              {service.blocks.map((block, i) => renderBlock(block, lang, i))}
+            {/* Scrollable body — nuotrauka (jei yra) yra šios scroll'inamos srities
+                dalis, ne fiksuota virš jos, kad nekeistų mobile bottom-sheet aukščio
+                skaičiavimo (panelio aukštis fiksuotas per max-md:h-[85vh] aukščiau). */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto">
+              {service.image && (
+                <div className="relative h-[220px] w-full shrink-0">
+                  <Image
+                    src={service.image.src}
+                    alt={service.image.alt[lang]}
+                    fill
+                    className="object-cover rounded-t-2xl"
+                    sizes="(max-width: 768px) 100vw, 900px"
+                  />
+                </div>
+              )}
+              <div className="px-6 py-5 space-y-6">
+                {service.blocks.map((block, i) => renderBlock(block, lang, i))}
+              </div>
             </div>
 
             {/* Footer CTA — fixed */}
