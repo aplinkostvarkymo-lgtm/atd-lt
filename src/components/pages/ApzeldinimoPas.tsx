@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -114,6 +115,9 @@ function Included({ t }: { t: T }) {
               <h3 className="font-display font-bold text-lg text-atd-black">{t.feature_heading}</h3>
             </div>
             <p className="font-body text-sm text-atd-gray-soft leading-relaxed">{t.feature_text}</p>
+            <div className="relative aspect-[16/10] mt-4 overflow-hidden">
+              <Image src="/images/apzeldinimas-nt-projektas-1.jpg" alt={t.feature_img_alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -132,6 +136,14 @@ function Plants({ t }: { t: T }) {
           <h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black">{t.plants_heading}</h2>
           <p className="font-body text-atd-gray-soft mt-2 text-sm">{t.plants_sub}</p>
         </motion.div>
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <motion.div className="relative aspect-square overflow-hidden" {...fadeUp()}>
+            <Image src="/images/apzeldinimas-closeup-flowers-1.jpg" alt={t.plants_img_alt1} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
+          </motion.div>
+          <motion.div className="relative aspect-square overflow-hidden" {...fadeUp(0.08)}>
+            <Image src="/images/apzeldinimas-closeup-flowers-2.jpg" alt={t.plants_img_alt2} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
+          </motion.div>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {plants.map((plant, i) => (
             <motion.div key={i} className="border border-atd-black/8 px-4 py-3 flex items-center gap-2.5" {...fadeUp(i * 0.06)}>
@@ -175,6 +187,44 @@ function Process({ t }: { t: T }) {
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Gallery ──────────────────────────────────────────────── */
+
+function Gallery({ t }: { t: T }) {
+  const photos = [
+    { src: "/images/apzeldinimas-courtyard-wide-1.jpg", alt: t.gallery_alt1 },
+    { src: "/images/apzeldinimas-park-path-statue-1.jpg", alt: t.gallery_alt2 },
+    { src: "/images/apzeldinimas-public-irrigation-1.jpg", alt: t.gallery_alt3 },
+  ];
+
+  return (
+    <section className="bg-white py-16 md:py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        <motion.div className="mb-10" {...fadeUp()}>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black">{t.gallery_heading}</h2>
+          <p className="font-body text-atd-gray-soft mt-2">{t.gallery_sub}</p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-3 gap-4">
+          {photos.map((p, i) => (
+            <motion.div key={i} className="relative aspect-[4/3] overflow-hidden" {...fadeUp(i * 0.1)}>
+              <Image src={p.src} alt={p.alt} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-6">
+          <Link
+            href="/paslaugos/laistymas"
+            className="font-body text-sm text-atd-green font-medium hover:text-atd-green-light transition-colors"
+          >
+            {t.gallery_link_laistymas}
+          </Link>
         </div>
       </div>
     </section>
@@ -265,6 +315,7 @@ export function ApzeldinimoPas() {
       <Included t={t} />
       <Plants t={t} />
       <Process t={t} />
+      <Gallery t={t} />
       <FAQ t={t} />
       <CTA t={t} />
     </main>

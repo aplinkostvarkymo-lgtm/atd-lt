@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -198,10 +199,10 @@ function Types({ t }: { t: VejaT }) {
 /* ── Process ──────────────────────────────────────────────── */
 
 function Process({ t }: { t: VejaT }) {
-  const steps = [
+  const steps: Array<{ n: string; title: string; desc: string; img?: string; imgAlt?: string }> = [
     { n: "1", title: t.step1_title, desc: t.step1_desc },
     { n: "2", title: t.step2_title, desc: t.step2_desc },
-    { n: "3", title: t.step3_title, desc: t.step3_desc },
+    { n: "3", title: t.step3_title, desc: t.step3_desc, img: "/images/veja-process-rulone-1.jpg", imgAlt: t.step3_img_alt },
   ];
 
   return (
@@ -225,8 +226,42 @@ function Process({ t }: { t: VejaT }) {
                 <div className="md:mt-5">
                   <h3 className="font-display font-bold text-lg text-atd-black">{step.title}</h3>
                   <p className="font-body text-sm text-atd-gray-soft mt-2 leading-relaxed">{step.desc}</p>
+                  {step.img && (
+                    <div className="relative aspect-[4/3] mt-4 overflow-hidden">
+                      <Image src={step.img} alt={step.imgAlt ?? ""} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                    </div>
+                  )}
                 </div>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Results gallery ──────────────────────────────────────── */
+
+function Results({ t }: { t: VejaT }) {
+  const photos = [
+    { src: "/images/veja-mowed-stripes-1.jpg", alt: t.results_alt1 },
+    { src: "/images/veja-mowed-stripes-2.jpg", alt: t.results_alt2 },
+    { src: "/images/veja-lakeside-large-1.jpg", alt: t.results_alt3 },
+  ];
+
+  return (
+    <section className="bg-atd-cream py-16 md:py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        <motion.div className="mb-10" {...fadeUp()}>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black">{t.results_heading}</h2>
+          <p className="font-body text-atd-gray-soft mt-2">{t.results_sub}</p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-3 gap-4">
+          {photos.map((p, i) => (
+            <motion.div key={i} className="relative aspect-[4/3] overflow-hidden" {...fadeUp(i * 0.1)}>
+              <Image src={p.src} alt={p.alt} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
             </motion.div>
           ))}
         </div>
@@ -358,6 +393,7 @@ export function VejaPage() {
       <Hero t={t} />
       <Types t={t} />
       <Process t={t} />
+      <Results t={t} />
       <FAQ t={t} />
       <CTA t={t} />
     </main>

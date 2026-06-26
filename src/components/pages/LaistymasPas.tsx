@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -69,6 +70,15 @@ function Hero({ t }: { t: T }) {
               <div className="font-body text-xs text-white/55 mt-0.5 leading-tight">{s.label}</div>
             </div>
           ))}
+        </motion.div>
+
+        <motion.div
+          className="relative aspect-[16/9] mt-10 overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+        >
+          <Image src="/images/laistymas-sprinkler-action-1.jpg" alt={t.hero_img_alt} fill className="object-cover" sizes="100vw" priority />
         </motion.div>
       </div>
     </section>
