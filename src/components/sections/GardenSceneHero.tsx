@@ -12,37 +12,37 @@ import type { IconName } from "@/components/ui/HotspotMarker";
 
 /* "prekyba" (/paslaugos/prekyba-augalais), "darbai" (/darbai), "patarimai" (/patarimai)
    ir "kontaktai" (/kontaktai) hotspot'ai pašalinti — šių puslapių kol kas nėra */
-/* Pozicijos sąmoningai laikomos virš ~39% top ir/arba toliau nuo kairės teksto bloko
-   (bottom-[8%] left-[6%] max-w-xl Hero tekstas) — žr. GardenSceneHero komentarą žemiau
-   dėl kolizijos su H1 antraste, ištaisytos 2026-06-26 */
+/* Originalios koordinatės, atitinkančios nuotraukos turinį (gėlynas/purškikliai/
+   veja/takas). Tekstinio bloko kolizija su "apzeldinimas" sprendžiama paslenkant
+   PATĮ TEKSTĄ žemiau (žr. main text bloko bottom-[8%] md:bottom-[2%]), ne hotspot'us. */
 const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeof translations.lt.hotspots }> = [
   {
     id: "apzeldinimas",
     labelKey: "apzeldinimas",
     href: "/paslaugos/apzeldinimas",
     icon: "flower" as IconName,
-    position: { left: "22%", top: "30%" },
+    position: { left: "30%", top: "52%" },
   },
   {
     id: "laistymas",
     labelKey: "laistymas",
     href: "/paslaugos/laistymas",
     icon: "water" as IconName,
-    position: { left: "44%", top: "38%" },
+    position: { left: "48%", top: "45%" },
   },
   {
     id: "veja",
     labelKey: "veja",
     href: "/paslaugos/veja",
     icon: "grass" as IconName,
-    position: { left: "60%", top: "42%" },
+    position: { left: "50%", top: "57%" },
   },
   {
     id: "trinkelės",
     labelKey: "trinkelės",
     href: "/paslaugos/trinkeles",
     icon: "tile" as IconName,
-    position: { left: "72%", top: "55%" },
+    position: { left: "65%", top: "60%" },
   },
 ];
 
@@ -124,9 +124,11 @@ export function GardenSceneHero() {
           ))}
         </div>
 
-        {/* Main text */}
+        {/* Main text — desktop: nuleista žemiau (md:bottom-[2%]), kad atidengtų
+            "apzeldinimas" hotspot'ą jo originalioje vietoje (left:30% top:52%).
+            Mobile (bottom-[8%]) nekeičiamas — neturi susikirsti su mobile service strip. */}
         <motion.div
-          className="absolute bottom-[8%] left-[6%] z-10 max-w-xl"
+          className="absolute bottom-[8%] md:bottom-[2%] left-[6%] z-10 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showImage ? 1 : 0, y: showImage ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}

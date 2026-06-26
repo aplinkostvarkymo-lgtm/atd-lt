@@ -6,8 +6,8 @@ export const translations = {
       close: "Uždaryti",
     },
     hero: {
-      heading: "Aplinkos tvarkymas Vilniuje",
-      subheading: "Veja, apželdinimas, trinkelės. Dirbame su projektine dokumentacija.",
+      heading: "Aplinkos tvarkymas, apželdinimas.",
+      subheading: "Laistymas, veja, apželdinimas, trinkelės.",
       skip: "Praleisti →",
       imageAlt: "Aplinkos tvarkymas Vilniuje — ATD",
       cta_price: "Gauti preliminarią kainą",
@@ -320,8 +320,8 @@ export const translations = {
       close: "Close",
     },
     hero: {
-      heading: "Landscaping Services in Vilnius",
-      subheading: "Lawn, planting, paving. We work with project documentation.",
+      heading: "Grounds Maintenance & Landscaping.",
+      subheading: "Irrigation, lawn care, landscaping, paving.",
       skip: "Skip →",
       imageAlt: "Landscaping services in Vilnius — ATD",
       cta_price: "Get a Quote",
