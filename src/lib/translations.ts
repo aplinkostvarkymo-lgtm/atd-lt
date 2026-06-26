@@ -273,7 +273,7 @@ export const translations = {
     footer: {
       tagline: "Profesionalus aplinkos tvarkymas Vilniuje ir Vilniaus rajone.",
       hours: "Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00",
-      area: "Vilnius · Vilniaus rajonas · Trakai",
+      area: "Vilnius ir Vilniaus rajonas",
       rights: "Visos teisės saugomos.",
     },
     kontaktaiPage: {
@@ -282,8 +282,8 @@ export const translations = {
       hero_heading: "Susisiekite su ATD",
       hero_tagline: "Nemokama apžiūra ir konsultacija Vilniuje",
       hours: "Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00",
-      area: "Vilnius · Vilniaus rajonas · Trakai",
-      response: "Atsakome per 2 val. darbo dienomis",
+      area: "Vilnius ir Vilniaus rajonas",
+      response: "Kainų pasiūlymas per 24–48 val.",
       form_heading: "Užklausos forma",
       form_name: "Vardas",
       form_phone: "Telefonas",
@@ -570,7 +570,7 @@ export const translations = {
     footer: {
       tagline: "Professional landscaping services in Vilnius and Vilnius district.",
       hours: "Mon–Fri 8:00–18:00 · Sat 9:00–14:00",
-      area: "Vilnius · Vilnius district · Trakai",
+      area: "Vilnius and Vilnius district",
       rights: "All rights reserved.",
     },
     kontaktaiPage: {
@@ -579,8 +579,8 @@ export const translations = {
       hero_heading: "Contact ATD",
       hero_tagline: "Free site visit and consultation in Vilnius",
       hours: "Mon–Fri 8:00–18:00 · Sat 9:00–14:00",
-      area: "Vilnius · Vilnius district · Trakai",
-      response: "We respond within 2 hours on working days",
+      area: "Vilnius and Vilnius district",
+      response: "Price proposal within 24–48 hours.",
       form_heading: "Request form",
       form_name: "Name",
       form_phone: "Phone",

@@ -313,8 +313,8 @@ export const SERVICES: ServicePopupData[] = [
       {
         type: "contact-info",
         hours:    { lt: "Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00", en: "Mon–Fri 8:00–18:00 · Sat 9:00–14:00" },
-        area:     { lt: "Vilnius · Vilniaus rajonas · Trakai", en: "Vilnius · Vilnius district · Trakai" },
-        response: { lt: "Atsakome per 2 val. darbo dienomis", en: "We respond within 2 hours on working days" },
+        area:     { lt: "Vilnius ir Vilniaus rajonas", en: "Vilnius and Vilnius district" },
+        response: { lt: "Kainų pasiūlymas per 24–48 val.", en: "Price proposal within 24–48 hours." },
       },
       {
         type: "note",
