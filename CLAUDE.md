@@ -6,6 +6,12 @@ spec/03-seo-spec.md, spec/04-design-tokens.md, spec/05-garden-hero-component.md
 
 Prieš kuriant bet kokį komponentą — perskaityti atitinkamą spec failą.
 
+**Prieš pradedant DARBĄ šiame projekte — perskaityti [SESSION_LOG.md](SESSION_LOG.md).**
+Tai žurnalas, kuriame aprašyta, kas konkrečiai padaryta praėjusiose sesijose, kodėl, 
+ir kokios pamokos iš to išmoktos (pvz. su kokiomis klaidomis susidurta ir kaip jų išvengti). 
+Taip pat sąrašas "žinomų neuždarytų dalykų", kuriuos kita sesija turėtų žinoti. 
+Po reikšmingo darbo bloko — papildyti SESSION_LOG.md nauja sekcija, ne perrašyti seną.
+
 Stack: Next.js 16 App Router, TypeScript, Tailwind v4 (CSS-first, nėra tailwind.config.ts), Framer Motion v12, shadcn/ui
 CORS taisyklė: Anthropic API tik per /app/api/ routes, niekada iš browser.
 
