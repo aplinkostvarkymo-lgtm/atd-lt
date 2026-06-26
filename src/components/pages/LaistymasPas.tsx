@@ -253,7 +253,7 @@ function CTA({ t }: { t: T }) {
           </a>
           <a href="mailto:Robertas@atd.lt"
             className="inline-flex items-center px-7 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors">
-            {t.cta_email}
+            {t.cta_email}: Robertas@atd.lt
           </a>
         </motion.div>
       </div>

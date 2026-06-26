@@ -110,7 +110,7 @@ export const apzeldinimsFaqSchema = {
   mainEntity: [
     { "@type": "Question", name: "Kiek kainuoja apželdinimas?", acceptedAnswer: { "@type": "Answer", text: "Kaina priklauso nuo teritorijos dydžio, augalų kiekio ir tipo. Pateikiame kainų pasiūlymą po nemokamos apžiūros arba pagal pateiktą architektūrinę dokumentaciją." } },
     { "@type": "Question", name: "Ar dirbate su architektų želdynų projektais?", acceptedAnswer: { "@type": "Answer", text: "Taip. Priimame PDF želdynų planus ir Excel augalų specifikacijas. Pateikiame kainų pasiūlymą pagal dokumentaciją — be papildomų apžiūrų." } },
-    { "@type": "Question", name: "Iš kur perkate augalus?", acceptedAnswer: { "@type": "Answer", text: "Iš patikimų Olandijos daržynų (Udenhout Trees) ir lietuviškų medelynų. Garantuojame augalų kokybę ir sveikatą." } },
+    { "@type": "Question", name: "Iš kur perkate augalus?", acceptedAnswer: { "@type": "Answer", text: "Iš patikimų Olandijos medelynų (Udenhout Trees) ir lietuviškų medelynų. Garantuojame augalų kokybę ir sveikatą." } },
     { "@type": "Question", name: "Ar suteikiama garantija augalams?", acceptedAnswer: { "@type": "Answer", text: "Taip — 1 metų garantija pasodintams augalams. Jei augalas žūva ne dėl netinkamos priežiūros — pakeitimas nemokamas." } },
     { "@type": "Question", name: "Koks geriausias sezonas sodinimui?", acceptedAnswer: { "@type": "Answer", text: "Pavasaris (balandis–gegužė) ir ruduo (rugsėjis–spalis) — optimaliausi. Vasarą taip pat sodiname, tačiau reikia dažnesnio laistymo." } },
   ],
