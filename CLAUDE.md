@@ -9,6 +9,15 @@ Prieš kuriant bet kokį komponentą — perskaityti atitinkamą spec failą.
 Stack: Next.js 16 App Router, TypeScript, Tailwind v4 (CSS-first, nėra tailwind.config.ts), Framer Motion v12, shadcn/ui
 CORS taisyklė: Anthropic API tik per /app/api/ routes, niekada iš browser.
 
+## Git workflow — PRIVALOMA
+
+**Po KIEKVIENO `git commit`, iškart `git push origin main`.** Niekada nepalikti commit'ų tik lokaliai.
+
+- Tai standartinė kiekvieno workflow'o pabaiga, ne atskiras veiksmas, kurio reikia paprašyti.
+- Vercel deploy'ina tik tai, kas yra `origin/main` — lokalūs commit'ai be push'o niekada nepasiekia production'o (atd-lt.vercel.app), net jei `npm run build` lokaliai praėjo.
+- Po push'o patvirtinti rezultatą: `git log origin/main..main --oneline` turi būti tuščia.
+- Šis projektas turėjo bent du atvejus, kai commit'ai pasiliko tik lokaliai ir Vercel niekada jų nepamatė — nepakartoti.
+
 ## Dvikalbystė (LT/EN) — PRIVALOMA
 
 **Kiekvienas komponentas su user-facing tekstu PRIVALO palaikyti abi kalbas.**
