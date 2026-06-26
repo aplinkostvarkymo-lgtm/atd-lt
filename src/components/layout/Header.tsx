@@ -104,7 +104,7 @@ export function Header() {
           <div className="flex items-center gap-4 ml-auto">
             <a
               href="tel:+37065785096"
-              className={`hidden md:inline font-body text-sm font-medium transition-colors ${link}`}
+              className={`hidden md:inline font-body text-base lg:text-lg font-semibold transition-colors ${link}`}
             >
               +370 657 85096
             </a>

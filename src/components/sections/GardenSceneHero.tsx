@@ -124,11 +124,14 @@ export function GardenSceneHero() {
           ))}
         </div>
 
-        {/* Main text — desktop: nuleista žemiau (md:bottom-[2%]), kad atidengtų
-            "apzeldinimas" hotspot'ą jo originalioje vietoje (left:30% top:52%).
-            Mobile (bottom-[8%]) nekeičiamas — neturi susikirsti su mobile service strip. */}
+        {/* Main text — desktop: nuleista žemiau (md:bottom-[2%]) ir paslinkta arčiau
+            centro (md:left-[21%], +15% nuo left-[6%]), kad atidengtų "apzeldinimas"
+            hotspot'ą jo originalioje vietoje (left:30% top:52%) — vertikalus tarpas
+            (žr. bottom-[2%]) išlieka pakankamas net pasislinkus horizontaliai.
+            Mobile (left-[6%] bottom-[8%]) nekeičiamas — neturi susikirsti su mobile
+            service strip ir netampa siauresnis dėl judesio į centrą. */}
         <motion.div
-          className="absolute bottom-[8%] md:bottom-[2%] left-[6%] z-10 max-w-xl"
+          className="absolute bottom-[8%] md:bottom-[2%] left-[6%] md:left-[21%] z-10 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showImage ? 1 : 0, y: showImage ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -156,13 +159,7 @@ export function GardenSceneHero() {
             </Link>
             {/* "Žiūrėti darbus" (/darbai) CTA pašalintas — puslapio kol kas nėra */}
           </div>
-          <a
-            href="tel:+37065785096"
-            className="inline-flex items-center gap-2 mt-4 font-body text-sm text-white/65 hover:text-white transition-colors"
-            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}
-          >
-            {t.hero.phone}
-          </a>
+          {/* Telefono eilutė po CTA pašalinta — telefonas akcentuojamas header'yje */}
         </motion.div>
 
         {/* Mobile service strip */}
