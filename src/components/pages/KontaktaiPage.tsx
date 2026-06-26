@@ -76,11 +76,41 @@ function Hero({ t }: { t: T }) {
 function FormSection({ t }: { t: T }) {
   const { lang } = useLanguage();
   const services_sub = translations[lang].nav.services_sub;
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("loading");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const serviceKey = data.get("service");
+    const paslauga =
+      typeof serviceKey === "string" && serviceKey
+        ? translations.lt.nav.services_sub[serviceKey as keyof typeof translations.lt.nav.services_sub]
+        : undefined;
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          vardas: data.get("name"),
+          telefonas: data.get("phone"),
+          email: data.get("email"),
+          paslauga,
+          plotas: data.get("area"),
+          zinute: data.get("message"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("request failed");
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -90,10 +120,8 @@ function FormSection({ t }: { t: T }) {
         <motion.div {...fadeUp()}>
           <h2 className="font-display font-bold text-2xl text-atd-black mb-6">{t.form_heading}</h2>
 
-          {submitted ? (
-            <p className="font-body text-sm text-atd-green">
-              {lang === "lt" ? "Dėkojame! Susisieksime artimiausiu metu." : "Thank you! We will get back to you shortly."}
-            </p>
+          {status === "success" ? (
+            <p className="font-body text-sm text-atd-green">{t.form_success}</p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -139,11 +167,16 @@ function FormSection({ t }: { t: T }) {
                   className="w-full border border-atd-black/15 px-3.5 py-2.5 font-body text-sm text-atd-black focus:outline-none focus:border-atd-green resize-none" />
               </div>
 
+              {status === "error" && (
+                <p className="font-body text-sm text-red-600">{t.form_error}</p>
+              )}
+
               <button
                 type="submit"
-                className="inline-flex items-center px-6 py-3 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-colors"
+                disabled={status === "loading"}
+                className="inline-flex items-center px-6 py-3 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {t.form_submit}
+                {status === "loading" ? t.form_sending : t.form_submit}
               </button>
             </form>
           )}

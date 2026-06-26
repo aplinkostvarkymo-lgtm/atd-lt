@@ -293,6 +293,9 @@ export const translations = {
       form_area: "Plotas (m²)",
       form_message: "Žinutė",
       form_submit: "Siųsti užklausą",
+      form_sending: "Siunčiama...",
+      form_success: "Dėkojame! Susisieksime artimiausiu metu.",
+      form_error: "Nepavyko išsiųsti užklausos. Patikrinkite duomenis arba paskambinkite tiesiogiai.",
     },
   },
   en: {
@@ -587,6 +590,9 @@ export const translations = {
       form_area: "Area (m²)",
       form_message: "Message",
       form_submit: "Send request",
+      form_sending: "Sending...",
+      form_success: "Thank you! We will get back to you shortly.",
+      form_error: "Failed to send the request. Please check your details or call us directly.",
     },
   },
 } as const;
