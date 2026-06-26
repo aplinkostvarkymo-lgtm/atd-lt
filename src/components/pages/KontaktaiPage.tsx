@@ -101,6 +101,7 @@ function FormSection({ t }: { t: T }) {
           paslauga,
           plotas: data.get("area"),
           zinute: data.get("message"),
+          company: data.get("company"),
         }),
       });
 
@@ -124,6 +125,20 @@ function FormSection({ t }: { t: T }) {
             <p className="font-body text-sm text-atd-green">{t.form_success}</p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot — botams skirtas spąstas, žmonėms nematomas ir nepasiekiamas.
+                  Off-screen (ne display:none, ne type="hidden"), aria-hidden + tabIndex=-1,
+                  kad screen reader'iai ir Tab navigacija jį praleistų. */}
+              <div className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="company">Įmonė</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div>
                 <label htmlFor="name" className="block font-body text-xs text-atd-gray-soft mb-1.5">{t.form_name}</label>
                 <input id="name" name="name" type="text" required
