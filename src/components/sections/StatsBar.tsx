@@ -82,7 +82,7 @@ export function StatsBar() {
       <div className="max-w-5xl mx-auto px-6 py-6 md:py-10 grid grid-cols-3">
 
         <motion.div
-          className="text-center px-3 md:px-10 border-r border-atd-black/10"
+          className="text-center px-2 md:px-10 border-r border-atd-black/10"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
@@ -97,7 +97,7 @@ export function StatsBar() {
         </motion.div>
 
         <motion.div
-          className="text-center px-3 md:px-10 border-r border-atd-black/10"
+          className="text-center px-2 md:px-10 border-r border-atd-black/10"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
@@ -112,13 +112,13 @@ export function StatsBar() {
         </motion.div>
 
         <motion.div
-          className="text-center px-3 md:px-10"
+          className="text-center px-2 md:px-10"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
         >
-          <div className="font-display font-bold text-[2rem] md:text-[2.75rem] text-atd-green leading-none">
+          <div className="font-display font-bold text-base md:text-[2.75rem] text-atd-green leading-none">
             {t.stat3_value}
           </div>
           <div className="font-body text-[11px] md:text-sm text-atd-black/60 mt-2 leading-snug">
