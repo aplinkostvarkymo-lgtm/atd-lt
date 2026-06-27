@@ -108,7 +108,7 @@ export function GardenSceneHero() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
         </div>
 
         {/* Hotspots — desktop only */}
