@@ -2,7 +2,7 @@
 
 Šis failas aprašo, kas konkrečiai padaryta vienos ilgos darbo sesijos metu. Tikslas — kad kita sesija (ar kitas žmogus) per kelias minutes supratų, kas pasikeitė, kodėl, ir ko NEREIKĖTŲ kartoti iš naujo.
 
-Visi commit'ai jau `origin/main` (pushinti). Galutinis šios sesijos commit: `61121570`.
+Visi commit'ai jau `origin/main` (pushinti). Galutinis commit pirmos dalies (žemiau, skyriai 1–11): `61121570`. Po šio žurnalo sukūrimo sesija buvo tęsiama — žr. skyrių 12, galutinis commit: `3959bdc3`.
 
 ---
 
@@ -91,6 +91,33 @@ Pridėta po 1 nuotrauką į 4 paslaugų popup'ų (apzeldinimas/laistymas/veja/tr
 **Du atskiri atvejai šioje sesijoje**, kai commit'ai pasiliko tik lokaliai ir `atd-lt.vercel.app` jų nematė, kol vartotojas paprašė patikrinti `git log origin/main..main`. Dėl to:
 - Į [CLAUDE.md](CLAUDE.md) pridėta PRIVALOMA taisyklė: push iškart po kiekvieno commit'o, be prašymo.
 - Šios sesijos pabaigoje ta taisyklė buvo laikomasi automatiškai po kiekvieno tolesnio commit'o.
+
+## 12. Spam apsauga, Facebook nuoroda, mobile overflow ir hero overlay (`03dabc12`, `8e4dd34e`, `fa022f5e`, `3959bdc3`)
+
+Tęsinys po šio žurnalo pirmo įrašo. Keturi atskiri, vartotojo paeiliui užsakyti pataisymai:
+
+**a) `/api/lead` spam apsauga (`03dabc12`)**
+- Honeypot laukas (`company`) pridėtas į kontaktų formą — `KontaktaiPage.tsx`: off-screen (`absolute -left-[9999px]`, NE `display:none`/`type="hidden"`, nes tikri bot'ai tai atpažįsta), `aria-hidden="true"`, `tabIndex={-1}`, kad screen reader'iai ir Tab navigacija praleistų.
+- `src/app/api/lead/route.ts`: jei `company` užpildytas, tyliai grąžina `{success:true}` BE `saveLead()` kvietimo (botas mano, kad pavyko; Airtable'o neapkrauname šlamštu).
+- Ilgio validacija visiems laukams (`MAX_LENGTHS`: vardas 100, telefonas 30, email 100, žinutė 2000) — viršijus, grąžina generinę 400 klaidą, neatskleidžiant kurio lauko problema.
+
+**b) Tikra Facebook nuoroda + schemos patikra (`8e4dd34e`)**
+- `Footer.tsx`: pridėta tikra Facebook nuoroda (`https://www.facebook.com/RoberasATD.LT`, inline SVG ikona — **`lucide-react` šiame pakete NETURI "Facebook" ikonos**, brand ikonos iš jo pašalintos, naudotas rankinis SVG).
+- Patikrinta `src/lib/schemas.ts` (jokio `sameAs` lauko — nepridėta, nes vartotojo instrukcija buvo "jei yra, pataisyk", ne "pridėk naują") ir `public/llms.txt` (jokio Facebook paminėjimo) — **sąmoningai NEpakeisti**, nes nebuvo ką taisyti.
+
+**c) Mobile horizontalus overflow (`fa022f5e`)**
+- Vartotojas pranešė apie real-device bug'ą (screenshot'ai iš telefono): dešinėje pusėje per visą puslapio aukštį papildoma juosta, puslapis horizontaliai slenkasi.
+- Šaknis: `globals.css` `html`/`body` neturėjo `overflow-x: hidden`. Mobilios naršyklės "layout viewport" plėtimosi algoritmas ignoruoja tarpinį `overflow:hidden` ant pavienių `<div>` (čia — hotspot horizontali scroll juosta) ir vis tiek išplečia VISO puslapio viewport'ą iki descendant turinio pločio, jei tai nesustabdyta `html`/`body` lygmenyje.
+- Fix: `overflow-x: hidden` pridėtas IR ant `html`, IR ant `body` (`globals.css` `@layer base`) — empiriškai patikrinta, kad abu būtini (pašalinus iš vieno, bug'as sugrįžta).
+- **Svarbi pamoka dėl diagnostikos metodo:** vartotojo duotas vienaeilis `scrollWidth > clientWidth` filtras NIEKADA negrąžins tuščio sąrašo, kol egzistuoja teisėtas horizontaliai slenkantis elementas (čia — hotspot juosta), nes `Element.scrollWidth` per W3C specifikaciją atspindi turinio dydį nepriklausomai nuo `overflow` reikšmės tarpiniuose protėviuose. **Autoritetingas patikrinimas:** `document.scrollingElement.scrollWidth === clientWidth` ir `window.innerWidth === document.documentElement.clientWidth` — šis testas REALIAI atspindi, ar naršyklė leidžia puslapiui slinkti horizontaliai. Naudoti šį metodą, ne naivų `querySelectorAll('*')` filtrą, kitiems panašiems bug'ams ateityje.
+- Pakeliui rasta **Turbopack CSS HMR cache staleness** (ne real bug) — po fix'o `getComputedStyle` rodė seną reikšmę per live HMR; išsisprendė `rm -rf .next` + serverio restart.
+
+**d) Hero statinio vaizdo overlay → gradientas (`3959bdc3`)**
+- Vartotojas pastebėjo (2 screenshot'ais iš telefono): po video→statinio vaizdo perjungimo, statinis kadras atrodo tamsesnis nei video paskutinis kadras.
+- Diagnozė PRIEŠ taisymą (atskiras žingsnis, kaip paprašyta): `GardenSceneHero.tsx` turėjo `<div className="absolute inset-0 bg-black/25" />` virš `main_one.png`, bet `<video>` elementas analogiško overlay'aus neturėjo — todėl persijungimas sukurdavo patamsėjimo šuolį.
+- Fix: plokščias `bg-black/25` pakeistas į vertikalų gradientą `bg-gradient-to-t from-black/45 via-black/10 to-transparent` — apačioje (kur H1/H2/CTA) stipresnis kontrastas (45% > buvęs 25%), viršuje (dangus/medžiai, atitinka video kadrą) **visiškai skaidru**, šuolio nebėra.
+- Patikrinta: (1) teksto kontrastas 1920/1440/1024/375px pločiuose — visur skaitomas; (2) hotspot žymės turi savo nepriklausomą tamsų fono apskritimą (`HotspotMarker.tsx`, `rgba(10,10,10,0.50)` + blur), nepriklauso nuo page gradiento, todėl matomos net ant skaidresnės zonos; (3) `getComputedStyle` patvirtino tikslias gradiento reikšmes (`0% black/0.45 → 50% black/0.1 → 100% transparent`).
+- **Pastaba dėl įrankių:** `preview_screenshot` su custom dydžiais (1920×1080, 1440×900) šioje sesijoje grąžino teisingą turinį, bet su klaidingu "letterboxing" (turinys susitraukęs į kampą, likusi dalis tuščia) — preset dydžiai (`mobile`, ir custom 1024×768) renderinosi pilnai teisingai. Jei screenshot atrodo tuščias/susitraukęs prie custom dydžio, tikėtina tai įrankio artefaktas, ne realus puslapio bug'as — patvirtinti per `window.innerWidth`/`getBoundingClientRect()` prieš dėl to nerimaujant.
 
 ---
 
