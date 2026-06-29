@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { FacebookLink } from "@/components/ui/FacebookLink";
 
 type VejaT = { [K in keyof typeof translations.lt.vejaPage]: string };
 
@@ -369,6 +370,7 @@ function CTA({ t }: { t: VejaT }) {
           >
             {t.cta_email}: Robertas@atd.lt
           </a>
+          <FacebookLink className="text-white/70 hover:text-white" />
         </motion.div>
 
         <motion.p

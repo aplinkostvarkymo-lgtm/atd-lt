@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import { getService, type ServiceBlock, type Lang } from "@/lib/services-content";
+import { FacebookLink } from "@/components/ui/FacebookLink";
 
 /* ── Block renderers ──────────────────────────────────────── */
 
@@ -274,6 +275,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
               >
                 +370 657 85096
               </a>
+              <FacebookLink className="text-atd-gray-soft hover:text-atd-black" iconClassName="w-4 h-4" />
             </div>
           </motion.div>
         </>

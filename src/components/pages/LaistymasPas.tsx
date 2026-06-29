@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { FacebookLink } from "@/components/ui/FacebookLink";
 
 type T = { [K in keyof typeof translations.lt.laistymasPas]: string };
 
@@ -265,6 +266,7 @@ function CTA({ t }: { t: T }) {
             className="inline-flex items-center px-7 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors">
             {t.cta_email}: Robertas@atd.lt
           </a>
+          <FacebookLink className="text-white/70 hover:text-white" />
         </motion.div>
       </div>
     </section>
