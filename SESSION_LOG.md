@@ -121,6 +121,16 @@ Tęsinys po šio žurnalo pirmo įrašo. Keturi atskiri, vartotojo paeiliui užs
 
 ---
 
+## 13. GA4 integracija su cookie consent (`cb83c931`)
+
+- Įdiegtas `@next/third-parties`. `src/components/Analytics.tsx` (client) renderina `<GoogleAnalytics gaId={...} />` SĄLYGIŠKAI — tik jei `localStorage["atd-cookie-consent"] === "accepted"`. ID skaitomas iš `NEXT_PUBLIC_GA_MEASUREMENT_ID` (`.env.local`, gitignored).
+- `src/lib/cookieConsent.ts` — bendras helperis (`getStoredConsent`/`setStoredConsent`) + `CustomEvent("atd-cookie-consent-change")`, kad `Analytics.tsx` reaguotų į vartotojo pasirinkimą GYVAI, be page reload.
+- `src/components/CookieConsent.tsx` — fixed bottom banneris, 2 mygtukai (Sutinku/Atmesti), LT/EN per `translations.ts` (`cookieConsent` raktas). Banneris nebesirodo, kai pasirinkimas jau įrašytas `localStorage`.
+- Patikrinta `preview_network` įrankiu: prieš paspaudimą jokio `googletagmanager.com`/`google-analytics.com` request'o NEIŠEINA; po "Sutinku" — `gtag/js` + realus `page_view` collect ping iškart (be reload); po "Atmesti" — niekada nepasileidžia, net po reload.
+- **Svarbu kitai sesijai / vartotojui:** `NEXT_PUBLIC_GA_MEASUREMENT_ID` yra TIK `.env.local` (gitignored, nepasiekia Vercel). Kad GA veiktų production'e, reikia tą pačią reikšmę (`G-SQXZ5DL1W5`) pridėti Vercel project → Settings → Environment Variables, tada redeploy.
+
+---
+
 ## Žinomi neuždaryti dalykai (kitai sesijai)
 
 - **Mobile**: hero H1 tekstas ir mobile service strip (apačioje) galimai šiek tiek persidengia ~9px ties 390px pločiu — rasta, **nepataisyta** (pre-existing, ne šios sesijos pakeitimų pasekmė; vartotojas neprašė taisyti dabar).
@@ -128,4 +138,5 @@ Tęsinys po šio žurnalo pirmo įrašo. Keturi atskiri, vartotojo paeiliui užs
 - `/darbai` (portfolio) puslapis sąmoningai NEsukurtas — keletą kartų aiškiai atidėtas kaip atskiras darbas.
 - `/paslaugos/prekyba-augalais`, `/patarimai` puslapių vis dar nėra — `services-content.ts` jiems turi popup turinį, bet jokio route'o.
 - AI kalkuliatorius (`/api/calculate`) ir Airtable augalų kainų paieška (aprašyta `docs/ATD-remake.md`) — neimplementuota, tik planavimo dokumentuose.
+- **GA4 `NEXT_PUBLIC_GA_MEASUREMENT_ID` reikia pridėti Vercel env vars** (žr. skyrių 13) — kol nepridėta, production'e GA4 niekada nesikrauna, net jei vartotojas paspaudžia "Sutinku".
 - GitHub repo `master` šaka (nesusijusi istorija) — neištirta giliau, nepaliesta.
