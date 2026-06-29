@@ -59,7 +59,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <FacebookLink className="text-white/70" />
+              <FacebookLink />
             </li>
             <li className="text-white/50">{t.footer.area}</li>
             <li className="text-white/50">{t.footer.hours}</li>

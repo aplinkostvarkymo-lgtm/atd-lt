@@ -370,7 +370,7 @@ function CTA({ t }: { t: VejaT }) {
           >
             {t.cta_email}: Robertas@atd.lt
           </a>
-          <FacebookLink className="text-white/70" />
+          <FacebookLink />
         </motion.div>
 
         <motion.p

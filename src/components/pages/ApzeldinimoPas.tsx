@@ -299,7 +299,7 @@ function CTA({ t }: { t: T }) {
             className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors">
             {t.cta_email}: Robertas@atd.lt
           </a>
-          <FacebookLink className="text-white/70" />
+          <FacebookLink />
         </motion.div>
       </div>
     </section>

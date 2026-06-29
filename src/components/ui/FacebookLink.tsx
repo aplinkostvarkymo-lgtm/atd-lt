@@ -22,9 +22,9 @@ export function FacebookLink({
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
       className={cn(
-        "inline-flex items-center justify-center p-2 border border-current/30 outline-none transition-colors duration-200",
-        "hover:bg-current/10 hover:border-current/50",
-        "focus-visible:bg-current/10 focus-visible:border-current/50 focus-visible:ring-2 focus-visible:ring-current/30",
+        "inline-flex items-center justify-center p-2 bg-[#1877F2] text-white outline-none transition-colors duration-200",
+        "hover:bg-[#0C63D4]",
+        "focus-visible:bg-[#0C63D4] focus-visible:ring-2 focus-visible:ring-[#1877F2]/40",
         className
       )}
     >
