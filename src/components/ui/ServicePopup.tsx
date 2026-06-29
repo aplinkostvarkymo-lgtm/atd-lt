@@ -275,7 +275,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
               >
                 +370 657 85096
               </a>
-              <FacebookLink className="text-atd-gray-soft hover:text-atd-black" iconClassName="w-4 h-4" />
+              <FacebookLink className="text-atd-gray-soft" iconClassName="w-4 h-4" />
             </div>
           </motion.div>
         </>
