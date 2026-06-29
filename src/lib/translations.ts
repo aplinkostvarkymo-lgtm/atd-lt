@@ -5,6 +5,12 @@ export const translations = {
     common: {
       close: "Uždaryti",
     },
+    cookieConsent: {
+      message:
+        "Naudojame slapukus, siekdami pagerinti svetainės veikimą ir analizuoti lankomumą.",
+      accept: "Sutinku",
+      reject: "Atmesti",
+    },
     hero: {
       heading: "Aplinkos tvarkymas, apželdinimas.",
       subheading: "Laistymas, veja, apželdinimas, trinkelės.",
@@ -318,6 +324,12 @@ export const translations = {
   en: {
     common: {
       close: "Close",
+    },
+    cookieConsent: {
+      message:
+        "We use cookies to improve site performance and analyze traffic.",
+      accept: "Accept",
+      reject: "Decline",
     },
     hero: {
       heading: "Grounds Maintenance & Landscaping.",

@@ -6,6 +6,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SchemaOrg } from "@/components/SchemaOrg";
 import { localBusinessSchema } from "@/lib/schemas";
+import { Analytics } from "@/components/Analytics";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
@@ -58,7 +60,9 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <CookieConsent />
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
