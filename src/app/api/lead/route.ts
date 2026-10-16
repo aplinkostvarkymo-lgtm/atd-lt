@@ -7,6 +7,41 @@ const MAX_LENGTHS = {
   zinute: 2000,
 } as const;
 
+async function sendEmailNotification(data: {
+  vardas: string;
+  telefonas: string;
+  email?: string;
+  paslauga?: string;
+  plotas?: string;
+  zinute?: string;
+}): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return; // sąlyginis: jei raktų nėra, praleidžiame tyliai
+
+  const lines = [
+    `Vardas: ${data.vardas}`,
+    `Telefonas: ${data.telefonas}`,
+    data.email    ? `El. paštas: ${data.email}`    : null,
+    data.paslauga ? `Paslauga: ${data.paslauga}`   : null,
+    data.plotas   ? `Plotas: ${data.plotas} m²`    : null,
+    data.zinute   ? `\nŽinutė:\n${data.zinute}`    : null,
+  ].filter(Boolean).join("\n");
+
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: process.env.RESEND_FROM ?? "ATD svetainė <noreply@atd.lt>",
+      to: ["Robertas@atd.lt"],
+      subject: `Nauja užklausa iš atd.lt — ${data.vardas}`,
+      text: `Nauja užklausa iš atd.lt kontaktų formos:\n\n${lines}\n\n---\natd.lt`,
+    }),
+  });
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -46,16 +81,17 @@ export async function POST(request: Request) {
     return Response.json({ success: false, error: "Neteisingas užklausos formatas." }, { status: 400 });
   }
 
+  const leadData = {
+    vardas,
+    telefonas,
+    email: email || undefined,
+    paslauga: typeof data.paslauga === "string" ? data.paslauga.trim() || undefined : undefined,
+    plotas: typeof data.plotas === "string" ? data.plotas.trim() || undefined : undefined,
+    zinute: zinute || undefined,
+  };
+
   try {
-    await saveLead({
-      vardas,
-      telefonas,
-      email: email || undefined,
-      paslauga: typeof data.paslauga === "string" ? data.paslauga.trim() || undefined : undefined,
-      plotas: typeof data.plotas === "string" ? data.plotas.trim() || undefined : undefined,
-      zinute: zinute || undefined,
-    });
-    return Response.json({ success: true });
+    await saveLead(leadData);
   } catch (error) {
     console.error("Nepavyko išsaugoti lead'o į Airtable:", error);
     return Response.json(
@@ -63,4 +99,11 @@ export async function POST(request: Request) {
       { status: 502 }
     );
   }
+
+  // El. pašto klaida neblokuoja atsakymo vartotojui — praleidžiama tyliai
+  sendEmailNotification(leadData).catch((err) =>
+    console.error("El. pašto pranešimas nepavyko:", err)
+  );
+
+  return Response.json({ success: true });
 }

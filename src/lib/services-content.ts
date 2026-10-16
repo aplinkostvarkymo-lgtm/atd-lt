@@ -197,7 +197,7 @@ export const SERVICES: ServicePopupData[] = [
     heading: { lt: "170+ atliktų projektų", en: "170+ Completed Projects" },
     tagline: { lt: "Veja, apželdinimas, trinkelės Vilniuje ir rajone", en: "Lawn, planting, paving in Vilnius and surroundings" },
     ctaLabel: { lt: "Žiūrėti galeriją", en: "View Gallery" },
-    ctaHref: "/darbai",
+    ctaHref: "/kontaktai",
     blocks: [
       {
         type: "mini-stats",
@@ -299,7 +299,7 @@ export const SERVICES: ServicePopupData[] = [
     heading: { lt: "Sodo priežiūros patarimai", en: "Garden Care Tips" },
     tagline: { lt: "Praktiniai ATD ekspertų patarimai Lietuvos klimatui", en: "Practical ATD expert advice for the Lithuanian climate" },
     ctaLabel: { lt: "Skaityti visus patarimus", en: "Read All Tips" },
-    ctaHref: "/patarimai",
+    ctaHref: "/kontaktai",
     blocks: [
       {
         type: "list",

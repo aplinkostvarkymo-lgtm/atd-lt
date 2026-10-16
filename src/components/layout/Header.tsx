@@ -12,6 +12,7 @@ export const SERVICE_LINKS = [
   { href: "/paslaugos/veja",         key: "veja" },
   { href: "/paslaugos/laistymas",    key: "laistymas" },
   { href: "/paslaugos/trinkeles",    key: "trinkelės" },
+  { href: "/paslaugos/tvenkiniai",   key: "tvenkiniai" },
   /* "/paslaugos/prekyba-augalais" puslapio kol kas nėra — nuoroda pašalinta */
 ] as const;
 
