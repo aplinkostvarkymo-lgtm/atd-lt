@@ -131,6 +131,39 @@ Tęsinys po šio žurnalo pirmo įrašo. Keturi atskiri, vartotojo paeiliui užs
 
 ---
 
+## 14. 1 etapo paleidimo darbai — šaka `claude/atd-launch-and-polish-8bc650` (`71c4dec5`)
+
+Visa ši sesija dirba **atskiroje šakoje** (`claude/atd-launch-and-polish-8bc650`), ne `main`. Vercel duoda peržiūros URL iš šios šakos. `main` ir `new.atd.lt` nekeičiami, kol Robertas patvirtins.
+
+**a) Dead links pataisyti (`services-content.ts`)**
+- `ctaHref: "/darbai"` → `/kontaktai` (galerijos popup CTA)
+- `ctaHref: "/patarimai"` → `/kontaktai` (patarimų popup CTA)
+- Header ir GardenSceneHero jau buvo pataisyti ankstesnėje sesijoje (pašalintos/pakomentuotos nuorodos). Šioje sesijoje pataisyti tik services-content.ts likę du.
+
+**b) 301 redirect'ai (`next.config.ts`)**
+- 35 taisyklės pagal `redirectai.md` lentelę — visi seni atd.lt puslapių numeriai (`/lt/pages/<nr>/*`) → atitinkami nauji URL.
+- Svarbiausia: veja (`2187`, `2193`, `2199`), apželdinimas (`2188`, `2190`, `1934`), tvenkiniai (`1937`, `2194`, `2196`), kontaktai (`1947`).
+- Atsarginė taisyklė paskutinė: `/lt/pages/:path*` → `/`.
+- Redirektai taip pat: `/lt`, `/lt.php`, `/index.php`, `/en`, `/en.php`, `/lt/site-tree`, `/en/site-tree` ir t.t.
+
+**c) `/paslaugos/tvenkiniai` puslapis**
+- Nauja šaka navigacijoje (Header + Footer automatiškai per `SERVICE_LINKS`).
+- Turinys iš senos svetainės aprašymų: kasimas/įrengimas, valymas, įžuvinimas — be konkrečių kainų (`"Kaina pagal apžiūrą"`).
+- LT ir EN vertimas `translations.ts` (`tvenkiniaiPas` raktas).
+- Vertimas: `src/components/pages/TvenkiniaiPas.tsx`, route: `src/app/paslaugos/tvenkiniai/page.tsx`.
+- Struktūra: Hero → Services → Process → FAQ → CTA (lygiai kaip kiti paslaugų puslapiai).
+
+**d) El. pašto pranešimai (`/api/lead`)**
+- Resend REST API (direct fetch, nereikia npm paketo).
+- Klaida siunčiant emailą NEBLOKUOJA vartotojo atsakymo — `sendEmailNotification()` kviečiamas su `.catch()`.
+- Jei `RESEND_API_KEY` nenustatytas — email tiesiog praleidžiamas, Airtable vis tiek veikia.
+- **Reikalingi Vercel env vars** (Settings → Environment Variables → Production + Preview):
+  - `RESEND_API_KEY` — iš resend.com (nemokamas, 100 el./dieną)
+  - `RESEND_FROM` — opcionalus; numatytasis `"ATD svetainė <noreply@atd.lt>"` (reikia domeno verifikacijos Resend'e); kol domenų nėra, galima naudoti `"onboarding@resend.dev"` (tik testavimui).
+- **Kaip pasitikrinti**: užpildyti formą peržiūros URL → Airtable turi gautı įrašą, el. paštas `Robertas@atd.lt` turi gauti pranešimą.
+
+---
+
 ## Žinomi neuždaryti dalykai (kitai sesijai)
 
 - **Mobile**: hero H1 tekstas ir mobile service strip (apačioje) galimai šiek tiek persidengia ~9px ties 390px pločiu — rasta, **nepataisyta** (pre-existing, ne šios sesijos pakeitimų pasekmė; vartotojas neprašė taisyti dabar).
