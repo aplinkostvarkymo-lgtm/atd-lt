@@ -208,13 +208,120 @@ function Types({ t }: { t: VejaT }) {
   );
 }
 
+/* ── Step illustrations ───────────────────────────────────── */
+
+function IllustrationSiteVisit() {
+  return (
+    <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+      <rect width="320" height="240" fill="#EDEAE2"/>
+      <circle cx="160" cy="118" r="76" fill="#2D5016" opacity="0.07"/>
+      {/* House silhouette */}
+      <g opacity="0.45">
+        <rect x="34" y="144" width="62" height="50" stroke="#2D5016" strokeWidth="2"/>
+        <polygon points="28,146 65,112 102,146" stroke="#2D5016" strokeWidth="2"/>
+        <rect x="48" y="163" width="16" height="31" stroke="#2D5016" strokeWidth="1.5"/>
+      </g>
+      {/* Dashed line to clipboard */}
+      <path d="M98 168 Q118 162 118 138" stroke="#2D5016" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.35"/>
+      {/* Clipboard — floats */}
+      <g>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 0,-6; 0,0" dur="3.5s" repeatCount="indefinite"
+          calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" keyTimes="0;0.5;1"/>
+        <rect x="114" y="66" width="92" height="116" rx="6" fill="white" stroke="#2D5016" strokeWidth="2.5"/>
+        <rect x="137" y="56" width="46" height="18" rx="4" fill="#2D5016"/>
+        <line x1="128" y1="102" x2="196" y2="102" stroke="#2D5016" strokeWidth="1.5" opacity="0.28"/>
+        <line x1="128" y1="116" x2="196" y2="116" stroke="#2D5016" strokeWidth="1.5" opacity="0.28"/>
+        <line x1="128" y1="130" x2="185" y2="130" stroke="#2D5016" strokeWidth="1.5" opacity="0.28"/>
+        <path d="M129 154 L144 170 L172 144" stroke="#2D5016" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+      {/* Location pin */}
+      <g transform="translate(65,115)">
+        <path d="M0-13 C6-13 11-7 11,0 C11,7 0,18 0,18 C0,18-11,7-11,0 C-11,-7-6,-13 0,-13Z" fill="#2D5016" opacity="0.75"/>
+        <circle cx="0" cy="0" r="4" fill="white"/>
+      </g>
+      <rect y="218" width="320" height="22" fill="#2D5016" opacity="0.05"/>
+    </svg>
+  );
+}
+
+function IllustrationGroundPrep() {
+  return (
+    <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+      {/* Sky */}
+      <rect width="320" height="240" fill="#EDEAE2"/>
+      {/* Ground layers */}
+      <path d="M0 148 Q80 140 160 144 Q240 148 320 142 L320 240 L0 240Z" fill="#A08868"/>
+      <path d="M0 170 Q80 163 160 167 Q240 171 320 164 L320 240 L0 240Z" fill="#856A50"/>
+      <rect y="195" width="320" height="45" fill="#6B5438"/>
+      {/* Soil texture pebbles */}
+      <ellipse cx="55" cy="162" rx="9" ry="5" fill="#8B7055" opacity="0.7"/>
+      <ellipse cx="108" cy="158" rx="6" ry="4" fill="#8B7055" opacity="0.65"/>
+      <ellipse cx="200" cy="163" rx="8" ry="5" fill="#7A6045" opacity="0.7"/>
+      <ellipse cx="255" cy="157" rx="7" ry="4" fill="#7A6045" opacity="0.6"/>
+      <ellipse cx="290" cy="165" rx="5" ry="3" fill="#8B7055" opacity="0.55"/>
+      {/* Rake — swings left/right */}
+      <g>
+        <animateTransform attributeName="transform" type="rotate"
+          values="-6,160,95; 6,160,95; -6,160,95" dur="2.8s" repeatCount="indefinite"
+          calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" keyTimes="0;0.5;1"/>
+        {/* Handle */}
+        <line x1="160" y1="52" x2="160" y2="148" stroke="#8B6535" strokeWidth="9" strokeLinecap="round"/>
+        <line x1="160" y1="52" x2="160" y2="148" stroke="#A07840" strokeWidth="6" strokeLinecap="round"/>
+        {/* Head */}
+        <line x1="110" y1="148" x2="210" y2="148" stroke="#2D5016" strokeWidth="7" strokeLinecap="round"/>
+        {/* Tines */}
+        {[118, 133, 148, 163, 178, 193, 208].map((x, i) => (
+          <line key={i} x1={x} y1="148" x2={x - 4} y2="170" stroke="#2D5016" strokeWidth="3.5" strokeLinecap="round"/>
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+function IllustrationTurfLaying() {
+  return (
+    <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+      <rect width="320" height="240" fill="#EDEAE2"/>
+      {/* Bare soil right side */}
+      <rect x="160" y="128" width="160" height="112" fill="#A08868"/>
+      <rect x="160" y="160" width="160" height="80" fill="#8B7055"/>
+      {/* Turf left side */}
+      <rect x="0" y="128" width="160" height="112" fill="#3A6618"/>
+      {/* Grass blades */}
+      {[8,20,32,44,56,68,80,92,104,116,128,140,152].map((x) => (
+        <g key={x}>
+          <path d={`M${x} 128 Q${x+4} 116 ${x+8} 128`} stroke="#4a8a20" strokeWidth="2" strokeLinecap="round"/>
+          <path d={`M${x+4} 128 Q${x+7} 119 ${x+12} 128`} stroke="#2D5016" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+        </g>
+      ))}
+      {/* Seam */}
+      <line x1="160" y1="128" x2="160" y2="240" stroke="#1a3009" strokeWidth="2" opacity="0.4"/>
+      {/* Roll — gentle rotate */}
+      <g>
+        <animateTransform attributeName="transform" type="rotate"
+          values="0,160,128; 8,160,128; 0,160,128" dur="4s" repeatCount="indefinite"
+          calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" keyTimes="0;0.5;1"/>
+        <circle cx="160" cy="128" r="30" fill="#3A6618" stroke="#2D5016" strokeWidth="2.5"/>
+        <circle cx="160" cy="128" r="20" fill="none" stroke="#2D5016" strokeWidth="1.5" opacity="0.45"/>
+        <circle cx="160" cy="128" r="10" fill="none" stroke="#2D5016" strokeWidth="1.5" opacity="0.35"/>
+        <circle cx="160" cy="128" r="3" fill="#2D5016" opacity="0.6"/>
+        {/* Grass on roll top */}
+        {[-10,-2,6,14].map((x) => (
+          <path key={x} d={`M${160+x} 98 Q${163+x} 89 ${167+x} 98`} stroke="#4a8a20" strokeWidth="2" strokeLinecap="round"/>
+        ))}
+      </g>
+    </svg>
+  );
+}
+
 /* ── Process ──────────────────────────────────────────────── */
 
 function Process({ t }: { t: VejaT }) {
-  const steps: Array<{ n: string; title: string; desc: string; img?: string; imgAlt?: string }> = [
-    { n: "1", title: t.step1_title, desc: t.step1_desc },
-    { n: "2", title: t.step2_title, desc: t.step2_desc },
-    { n: "3", title: t.step3_title, desc: t.step3_desc, img: "/images/veja-process-rulone-1.jpg", imgAlt: t.step3_img_alt },
+  const steps = [
+    { n: "1", title: t.step1_title, desc: t.step1_desc, Illus: IllustrationSiteVisit },
+    { n: "2", title: t.step2_title, desc: t.step2_desc, Illus: IllustrationGroundPrep },
+    { n: "3", title: t.step3_title, desc: t.step3_desc, Illus: IllustrationTurfLaying },
   ];
 
   return (
@@ -238,11 +345,9 @@ function Process({ t }: { t: VejaT }) {
                 <div className="md:mt-5">
                   <h3 className="font-display font-bold text-lg text-atd-black">{step.title}</h3>
                   <p className="font-body text-sm text-atd-gray-soft mt-2 leading-relaxed">{step.desc}</p>
-                  {step.img && (
-                    <div className="relative aspect-[4/3] mt-4 overflow-hidden">
-                      <Image src={step.img} alt={step.imgAlt ?? ""} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                    </div>
-                  )}
+                  <div className="aspect-[4/3] mt-4 overflow-hidden">
+                    <step.Illus />
+                  </div>
                 </div>
               </div>
             </motion.div>
