@@ -21,7 +21,7 @@ function ComparisonBlock({ block, lang }: { block: Extract<ServiceBlock, { type:
         >
           <div className="flex items-start justify-between gap-2 mb-2">
             <p className="font-body font-semibold text-sm text-atd-black">{item.title[lang]}</p>
-            <span className="font-display font-bold text-atd-green text-sm whitespace-nowrap">{item.price}</span>
+            <span className="font-display font-bold text-atd-green text-sm whitespace-nowrap">{item.price[lang]}</span>
           </div>
           <ul className="space-y-1">
             {item.bullets[lang].map((b, j) => (
@@ -89,7 +89,7 @@ function MaterialsBlock({ block, lang }: { block: Extract<ServiceBlock, { type: 
               <p className="font-body font-semibold text-sm text-atd-black">{item.name[lang]}</p>
               {item.desc && <p className="font-body text-xs text-atd-gray-soft">{item.desc[lang]}</p>}
             </div>
-            <span className="font-display font-bold text-atd-green text-sm whitespace-nowrap">{item.price}</span>
+            <span className="font-display font-bold text-atd-green text-sm whitespace-nowrap">{item.price[lang]}</span>
           </div>
         ))}
       </div>

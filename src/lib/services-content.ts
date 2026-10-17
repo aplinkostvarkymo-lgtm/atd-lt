@@ -3,7 +3,7 @@ export type Lang = "lt" | "en";
 
 export interface ComparisonItem {
   title: BiLang;
-  price: string;
+  price: BiLang;
   highlight?: boolean;
   bullets: { lt: string[]; en: string[] };
 }
@@ -15,7 +15,7 @@ export interface StepItem {
 
 export interface MaterialItem {
   name: BiLang;
-  price: string;
+  price: BiLang;
   desc?: BiLang;
 }
 
@@ -56,7 +56,7 @@ export const SERVICES: ServicePopupData[] = [
         items: [
           {
             title: { lt: "Ruloninė veja", en: "Roll-out lawn" },
-            price: "nuo 8 €/m²",
+            price: { lt: "nuo 8 €/m²", en: "from 8 €/m²" },
             highlight: true,
             bullets: {
               lt: ["Paruošta iš karto", "Grunto paruošimas įskaičiuotas", "Garantija 30 dienų"],
@@ -65,7 +65,7 @@ export const SERVICES: ServicePopupData[] = [
           },
           {
             title: { lt: "Sėjama veja", en: "Seeded lawn" },
-            price: "nuo 4 €/m²",
+            price: { lt: "nuo 4 €/m²", en: "from 4 €/m²" },
             bullets: {
               lt: ["Sudygsta per 3–4 sav.", "Ekonomiška dideliems plotams", "Tinka nuo gegužės"],
               en: ["Grows in 3–4 weeks", "Cost-effective for large areas", "Suitable from May"],
@@ -240,10 +240,10 @@ export const SERVICES: ServicePopupData[] = [
         type: "materials",
         heading: { lt: "Medžiagos", en: "Materials" },
         items: [
-          { name: { lt: "Betoninės trinkelės", en: "Concrete paving" }, price: "nuo 40 €/m²", desc: { lt: "Patvarūs, platus spalvų pasirinkimas", en: "Durable, wide colour range" } },
-          { name: { lt: "Granito trinkelės", en: "Granite setts" },    price: "nuo 55 €/m²", desc: { lt: "Natūralus akmuo, ilgaamžiai", en: "Natural stone, long-lasting" } },
-          { name: { lt: "Klinkerinės trinkelės", en: "Clinker brick" }, price: "nuo 55 €/m²", desc: { lt: "Klasikinis stilius, atsparus šalčiui", en: "Classic style, frost-resistant" } },
-          { name: { lt: "Natūralus akmuo", en: "Natural stone" },      price: "nuo 65 €/m²", desc: { lt: "Premium išvaizda, unikali tekstūra", en: "Premium look, unique texture" } },
+          { name: { lt: "Betoninės trinkelės", en: "Concrete paving" }, price: { lt: "nuo 40 €/m²", en: "from 40 €/m²" }, desc: { lt: "Patvarūs, platus spalvų pasirinkimas", en: "Durable, wide colour range" } },
+          { name: { lt: "Granito trinkelės", en: "Granite setts" },    price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Natūralus akmuo, ilgaamžiai", en: "Natural stone, long-lasting" } },
+          { name: { lt: "Klinkerinės trinkelės", en: "Clinker brick" }, price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Klasikinis stilius, atsparus šalčiui", en: "Classic style, frost-resistant" } },
+          { name: { lt: "Natūralus akmuo", en: "Natural stone" },      price: { lt: "nuo 65 €/m²", en: "from 65 €/m²" }, desc: { lt: "Premium išvaizda, unikali tekstūra", en: "Premium look, unique texture" } },
         ],
       },
       {
