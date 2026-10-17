@@ -1,6 +1,8 @@
 # ATD.lt — SEO + LLM Optimizavimo Spec
 *Claude Code kūrimo instrukcija — AEO + GEO*
 
+> 2026-10-17 įgyvendinimo pastaba: žemiau pateikti pirminiai planavimo šablonai nėra dabartinių kainų ar maršrutų šaltinis. Aktualūs URL ir kalbos — `src/lib/navigation.ts`, metadata — `src/lib/site-metadata.ts`, sitemap — `src/app/sitemap.ts`, schemos — `src/lib/schemas.ts`, vartotojo tekstai ir kainos — `src/lib/translations.ts` bei `src/lib/services-content.ts`. Įgyvendinti 8 LT ir 8 EN puslapiai; `/kaina` ir `/apie` neegzistuoja. `llms.txt` pasirenkamas ir nėra Google AI matomumo reikalavimas. Negrąžinti pasenusių kainų, neegzistuojančių nuorodų ar automatiškai generuojamų „šiandien atnaujinta“ datų.
+
 ---
 
 ## Failai, kuriuos sukurti
@@ -291,7 +293,7 @@ export const metadata: Metadata = {
 - [ ] `https://atd.lt/robots.txt` — atsidaro, matosi GPTBot
 - [ ] `https://atd.lt/sitemap.xml` — atsidaro, matosi visi URL
 - [ ] https://validator.schema.org — validuoti JSON-LD
-- [ ] https://search.google.com/test/rich-results — FAQ rich snippet
+- [ ] DUK klausimai ir atsakymai prieinami lankytojams, schema atitinka puslapio kalbą ir turinį. FAQ rich rezultatai nebelaikomi priėmimo kriterijumi (Google jų rodymą nutraukė 2026-05-07).
 - [ ] Po 2–4 sav.: paklausti ChatGPT/Perplexity "kas tvarko aplinką Vilniuje"
 
 ---

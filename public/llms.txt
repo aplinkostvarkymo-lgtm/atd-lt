@@ -10,10 +10,18 @@
 - **Apželdinimas pagal projektą** (https://atd.lt/paslaugos/apzeldinimas) — augalų parinkimas ir sodinimas su 1 metų garantija
 - **Trinkelių ir takų įrengimas** (https://atd.lt/paslaugos/trinkeles) — betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m²
 - **Laistymo sistemų įrengimas** (https://atd.lt/paslaugos/laistymas) — automatinės sistemos, Hunter ir Rain Bird įranga, nemokamas projektas ir matavimas
+- **Tvenkinių kasimas ir priežiūra** (https://atd.lt/paslaugos/tvenkiniai) — kasimas, valymas ir įžuvinimas; kaina po apžiūros
+- **Atlikti darbai** (https://atd.lt/darbai) — ATD projektų nuotraukos, suskirstytos pagal paslaugas
+
+## English
+
+- English website: https://atd.lt/en
+- Contact ATD: https://atd.lt/en/kontaktai
+- Project gallery: https://atd.lt/en/darbai
 
 ## Aptarnavimo zona
 
-Vilnius, Vilniaus rajonas, Trakai. Dideliems projektams — visa Lietuva.
+Vilnius ir Vilniaus rajonas.
 
 ## Kontaktai
 
@@ -37,5 +45,5 @@ Vilniaus privatūs namų savininkai, nekilnojamojo turto valdytojai ir biurų pa
 ## Papildoma informacija
 
 - Dirba su architektų želdynų projekto dokumentacija (PDF planai, Excel kiekiai)
-- Augalus tiekia iš patikimų Olandijos daržynų (Udenhout Trees)
+- Augalus tiekia iš patikimų Olandijos medelynų (Udenhout Trees)
 - Nemokama objekto apžiūra ir konsultacija

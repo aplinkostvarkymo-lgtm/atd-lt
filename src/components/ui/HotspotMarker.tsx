@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+import Link from "@/components/ui/LocalizedLink";
+import { motion, useReducedMotion } from "framer-motion";
 
 const icons = {
   plant: (
@@ -83,6 +83,7 @@ interface HotspotMarkerProps {
 }
 
 export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMarkerProps) {
+  const reduceMotion = useReducedMotion();
   const pulseDelay = index * 0.38;
   const featured = data.variant === "featured";
 
@@ -98,10 +99,10 @@ export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMar
               ? "1.5px solid rgba(90, 180, 60, 0.7)"
               : "1px solid rgba(255,255,255,0.45)",
           }}
-          animate={{ scale: [1, 2.0], opacity: [0.7, 0] }}
+          animate={reduceMotion ? { scale: 1, opacity: 0 } : { scale: [1, 2.0], opacity: [0.7, 0] }}
           transition={{
             duration: 2.2,
-            repeat: Infinity,
+            repeat: reduceMotion ? 0 : Infinity,
             delay: pulseDelay,
             ease: "easeOut",
           }}
@@ -115,10 +116,10 @@ export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMar
               ? "1.5px solid rgba(90, 180, 60, 0.45)"
               : "1px solid rgba(255,255,255,0.25)",
           }}
-          animate={{ scale: [1, featured ? 1.65 : 1.5], opacity: [0.5, 0] }}
+          animate={reduceMotion ? { scale: 1, opacity: 0 } : { scale: [1, featured ? 1.65 : 1.5], opacity: [0.5, 0] }}
           transition={{
             duration: 2.2,
-            repeat: Infinity,
+            repeat: reduceMotion ? 0 : Infinity,
             delay: pulseDelay + 0.85,
             ease: "easeOut",
           }}
@@ -199,7 +200,7 @@ export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMar
       {onOpen ? (
         <button
           type="button"
-          className="flex flex-col items-center gap-1.5 outline-none cursor-pointer"
+          className="flex flex-col items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white cursor-pointer"
           tabIndex={isVisible ? 0 : -1}
           onClick={onOpen}
         >
@@ -208,7 +209,7 @@ export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMar
       ) : (
         <Link
           href={data.href}
-          className="flex flex-col items-center gap-1.5 outline-none"
+          className="flex flex-col items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white"
           tabIndex={isVisible ? 0 : -1}
         >
           {inner}

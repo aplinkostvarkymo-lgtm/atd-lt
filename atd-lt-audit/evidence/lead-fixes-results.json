@@ -1,0 +1,85 @@
+{
+  "passed": 15,
+  "externalWrites": 0,
+  "cases": [
+    {
+      "name": "honeypot",
+      "status": 200,
+      "saved": 0
+    },
+    {
+      "name": "missing-phone",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "invalid-phone",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "invalid-email",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "negative-area",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "nonfinite-area",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "unknown-service",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "long-service",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "wrong-type",
+      "status": 400,
+      "saved": 0
+    },
+    {
+      "name": "valid",
+      "status": 200,
+      "saved": 1
+    },
+    {
+      "name": "bounded-stream",
+      "status": 413
+    },
+    {
+      "name": "rate-limit-before-provider",
+      "statuses": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        429
+      ],
+      "saved": 5
+    },
+    {
+      "name": "email-after-response-registered-and-http-error-logged",
+      "callbacks": 1,
+      "errors": 1
+    },
+    {
+      "name": "storage-failure-no-email",
+      "status": 502
+    },
+    {
+      "name": "configured-shared-limit-fails-closed",
+      "status": 503
+    }
+  ]
+}

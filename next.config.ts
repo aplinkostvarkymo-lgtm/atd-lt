@@ -13,14 +13,13 @@ const nextConfig: NextConfig = {
       { source: "/lt",       destination: "/", permanent: true },
       { source: "/lt.php",   destination: "/", permanent: true },
       { source: "/index.php",destination: "/", permanent: true },
-      { source: "/en",       destination: "/", permanent: true },
-      { source: "/en.php",   destination: "/", permanent: true },
+      { source: "/en.php",   destination: "/en", permanent: true },
 
       // ── Svetainės medis / paieška ──────────────────────────────
       { source: "/lt/site-tree", destination: "/", permanent: true },
-      { source: "/en/site-tree", destination: "/", permanent: true },
+      { source: "/en/site-tree", destination: "/en", permanent: true },
       { source: "/lt/search",    destination: "/", permanent: true },
-      { source: "/en/search",    destination: "/", permanent: true },
+      { source: "/en/search",    destination: "/en", permanent: true },
 
       // ── Veja ──────────────────────────────────────────────────
       { source: "/lt/pages/2187/:path*", destination: "/paslaugos/veja", permanent: true },
@@ -51,24 +50,13 @@ const nextConfig: NextConfig = {
       { source: "/lt/pages/1946/:path*", destination: "/", permanent: true },
       { source: "/lt/pages/2191/:path*", destination: "/", permanent: true },
 
-      // ── Kitos paslaugos (neturi naujo puslapio) ────────────────
-      { source: "/lt/pages/1936/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/1935/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/1938/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/2192/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/2131/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/2195/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/2132/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/2189/:path*", destination: "/", permanent: true },
-
       // ── Galerija, karjera, misc ───────────────────────────────
-      { source: "/lt/gallery/:path*",    destination: "/", permanent: true },
+      { source: "/lt/gallery/:path*",    destination: "/darbai", permanent: true },
       { source: "/lt/pages/1948/:path*", destination: "/", permanent: true },
       { source: "/lt/pages/1949/:path*", destination: "/", permanent: true },
       { source: "/lt/pages/2198/:path*", destination: "/", permanent: true },
 
-      // ── Atsarginė taisyklė: visi kiti /lt/pages/... ──────────
-      { source: "/lt/pages/:path*", destination: "/", permanent: true },
+      // Legacy topics with no verified replacement intentionally return 404.
     ];
   },
 };

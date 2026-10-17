@@ -1,5 +1,8 @@
 import { buildFaqSchema } from "./buildFaqSchema";
 import { translations } from "./translations";
+import type { Lang } from "./translations";
+import { SERVICE_LINKS, localizedPath } from "./navigation";
+import { PAGE_META, SITE_URL, type PagePath } from "./site-metadata";
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -118,3 +121,41 @@ export const laistymasServiceSchema = {
 export const laistymasFaqSchema = buildFaqSchema(translations.lt.laistymasPas);
 
 export const kontaktaiFaqSchema = buildFaqSchema(translations.lt.kontaktaiPage);
+
+export function businessSchema(lang: Lang) {
+  return {
+    ...localBusinessSchema,
+    description: PAGE_META["/"].description[lang],
+    areaServed: [{ "@type": "City", name: "Vilnius" }, { "@type": "AdministrativeArea", name: lang === "lt" ? "Vilniaus rajonas" : "Vilnius district" }],
+    openingHoursSpecification: [
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "14:00" },
+    ],
+    hasOfferCatalog: { "@type": "OfferCatalog", name: translations[lang].nav.services, itemListElement: SERVICE_LINKS.map(({ key, href }) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: translations[lang].nav.services_sub[key], url: SITE_URL + localizedPath(href, lang) } })) },
+  };
+}
+
+export function pageSchemas(path: PagePath, lang: Lang): object[] {
+  const t = translations[lang];
+  const faq = {
+    "/paslaugos/veja": t.vejaPage, "/paslaugos/apzeldinimas": t.apzeldinimoPas,
+    "/paslaugos/trinkeles": t.trinkelesPas, "/paslaugos/laistymas": t.laistymasPas,
+    "/paslaugos/tvenkiniai": t.tvenkiniaiPas, "/kontaktai": t.kontaktaiPage,
+  };
+  const schemas: object[] = [];
+  if (path in faq) schemas.push(buildFaqSchema(faq[path as keyof typeof faq]));
+  if (path.startsWith("/paslaugos/")) {
+    const service = SERVICE_LINKS.find(item => item.href === path)!;
+    const prices = path === "/paslaugos/veja" ? [
+      { name: t.vejaPage.type1_name, price: "8" }, { name: t.vejaPage.type2_name, price: "4" },
+    ] : path === "/paslaugos/trinkeles" ? [
+      { name: lang === "lt" ? "Betoninės trinkelės" : "Concrete paving", price: "40" },
+      { name: lang === "lt" ? "Granito trinkelės" : "Granite paving", price: "55" },
+      { name: lang === "lt" ? "Klinkerinės trinkelės" : "Clinker paving", price: "55" },
+      { name: lang === "lt" ? "Natūralus akmuo" : "Natural stone", price: "65" },
+    ] : [];
+    schemas.push({ "@context": "https://schema.org", "@type": "Service", "@id": SITE_URL + localizedPath(path, lang) + "#service", name: t.nav.services_sub[service.key], description: PAGE_META[path].description[lang], url: SITE_URL + localizedPath(path, lang), provider: { "@id": SITE_URL }, areaServed: { "@type": "City", name: "Vilnius" }, ...(prices.length ? { offers: prices.map(item => ({ "@type": "Offer", ...item, priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: item.price, priceCurrency: "EUR", unitCode: "MTK" } })) } : {}) });
+  }
+  if (path !== "/") schemas.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: t.common.home, item: SITE_URL + localizedPath("/", lang) }, { "@type": "ListItem", position: 2, name: PAGE_META[path].title[lang], item: SITE_URL + localizedPath(path, lang) }] });
+  return schemas;
+}

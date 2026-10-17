@@ -1,20 +1,21 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { unlocalizedPath } from "@/lib/navigation";
 import { translations } from "@/lib/translations";
 
 export function MobileStickyCTA() {
   const { lang } = useLanguage();
   const t = translations[lang].mobileStickyCTA;
-  const pathname = usePathname();
+  const pathname = unlocalizedPath(usePathname());
 
   // No point showing on the contact page itself
   if (pathname === "/kontaktai") return null;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-atd-black/10">
+    <div className="mobile-sticky-cta fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-atd-black/10">
       <div className="flex gap-2 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <a
           href="tel:+37065785096"

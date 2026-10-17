@@ -2,23 +2,34 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# AI crawlers — explicit allow
+# Search discovery
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+
+# Training permissions are separate from search discovery.
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
-
-User-agent: anthropic-ai
-Allow: /
+Disallow: /api/
 
 Sitemap: https://atd.lt/sitemap.xml

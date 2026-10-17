@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Europe/Vilnius",
+  "target": {
+    "path": "C:/CURSOR/ATD_Remake/atd-lt/.claude/worktrees/atd-launch-and-polish-8bc650",
+    "branch": "claude/atd-launch-and-polish-8bc650",
+    "commit": "e1f4430f940498c5f97dafc2969f7339e883193d",
+    "runtime_base": "http://localhost:3100",
+    "deployment_verified": false
+  },
+  "summary": {
+    "health_score": 66,
+    "score_type": "Expert local readiness rubric, not measured search ranking or Lighthouse score",
+    "score_coverage_weight": 90,
+    "unscored_weight": 10,
+    "unscored_category": "Field Core Web Vitals",
+    "geo_readiness_heuristic": 58,
+    "ui_technical_rubric": {"score": 10, "maximum": 20},
+    "platform_visibility_scores": null,
+    "business_type": "Local landscaping service in Vilnius and Vilnius district",
+    "issue_counts": {"P0": 0, "P1": 7, "P2": 13, "P3": 5},
+    "top_findings": [
+      "A01: Next.js 16.2.4 matches security advisory ranges; exploitability conditions differ",
+      "A02: Gallery header text contrast 1.13:1",
+      "A03: Homepage primary content depends on client video state; no-JS stats start at zero",
+      "A04: Mobile fixed CTA covers hero service strip",
+      "A05: Desktop service menu fails keyboard and pointer-gap navigation",
+      "A06: Dialog and mobile menu focus/Escape handling incomplete",
+      "A07: Portfolio project provenance conflicts with handover document"
+    ],
+    "quick_wins": [
+      "Use appropriate header theme for gallery",
+      "Add two existing canonical URLs to sitemap",
+      "Correct legacy gallery redirect",
+      "Localize remaining accessibility labels",
+      "Correct stale llms facts without claiming ranking impact"
+    ]
+  },
+  "verification": {
+    "typescript": "passed",
+    "production_build": "passed after enabling font download",
+    "lint": {"status": "failed", "errors": 5, "rule": "react-hooks/set-state-in-effect"},
+    "browser": "Microsoft Edge 155.0.4283.45 via Playwright",
+    "page_viewport_combinations": 16,
+    "http_200_pages": 16,
+    "page_errors": 0,
+    "horizontal_overflow_found": false,
+    "screenshots": 21,
+    "sitemap_page_count": 6,
+    "public_page_count": 8,
+    "gallery_images": 13,
+    "missing_literal_image_paths": 0,
+    "lt_translation_leaf_count": 368,
+    "en_translation_leaf_count": 368,
+    "npm_advisory_package_counts": {"critical": 2, "high": 18, "moderate": 5, "low": 2},
+    "external_leads_or_messages_sent": false
+  },
+  "categories": [
+    {
+      "name": "Technical SEO", "score": 75, "weight": 22,
+      "what_works": ["All eight pages have route-specific canonical URLs and return 200 locally", "Robots, sitemap and llms return 200 locally"],
+      "findings": [
+        {"id": "A10", "title": "Sitemap covers six of eight pages", "severity": "Medium", "description": "Gallery and pond service are omitted", "recommendation": "Add both canonical URLs"},
+        {"id": "A12", "title": "Legacy gallery redirects home", "severity": "Medium", "description": "Local request returns 308 to /", "recommendation": "Map legacy content to relevant replacement"}
+      ]
+    },
+    {
+      "name": "Content Quality", "score": 55, "weight": 23,
+      "what_works": ["Specific service prices, scope and response times"],
+      "findings": [
+        {"id": "A07", "title": "Project provenance requires confirmation", "severity": "High", "description": "Real-project claims conflict with generic-image handover description", "recommendation": "Confirm ATD role and publication rights before publishing claims"},
+        {"id": "A14", "title": "Limited verifiable business and project evidence", "severity": "Medium", "description": "Contact channels exist but legal/provider and project context is sparse", "recommendation": "Publish confirmed provider and project facts"}
+      ]
+    },
+    {
+      "name": "On-Page SEO", "score": 65, "weight": 20,
+      "what_works": ["Eight unique Lithuanian titles and descriptions", "One H1 per rendered page"],
+      "findings": [
+        {"id": "A11", "title": "English content has no dedicated URL", "severity": "Medium", "description": "Client language switching leaves Lithuanian metadata", "recommendation": "If EN search is intended, use locale-specific URLs and server metadata"},
+        {"id": "A03", "title": "Primary homepage content depends on video state", "severity": "High", "description": "No-JS screenshot has hidden H1/CTA and initial stats 0+", "recommendation": "Make primary content visible and factual in initial HTML"}
+      ]
+    },
+    {
+      "name": "Schema / Structured Data", "score": 75, "weight": 10,
+      "what_works": ["Server-rendered JSON-LD parses", "FAQ data uses existing question/answer translation pairs"],
+      "findings": [
+        {"id": "A23", "title": "Schema coverage incomplete", "severity": "Low", "description": "Pond service absent from Service schema and catalog", "recommendation": "Synchronize schema with confirmed public services"},
+        {"id": "A25", "title": "Obsolete FAQ rich-result acceptance target", "severity": "Low", "description": "SEO spec relies on discontinued search feature", "recommendation": "Retain useful FAQ content, update acceptance criteria"}
+      ]
+    },
+    {
+      "name": "Performance (CWV)", "score": null, "weight": 10, "excluded_from_total": true,
+      "what_works": ["Optimized mobile hero images approximately 40-50 KB in local samples"],
+      "findings": [
+        {"id": "A03", "title": "Homepage LCP candidate does not represent visible primary content", "severity": "High", "description": "Primary hero opacity remained zero at end of one throttled sample", "recommendation": "Fix content visibility before interpreting LCP; obtain real deployment metrics"}
+      ]
+    },
+    {
+      "name": "AI Search Readiness", "score": 55, "weight": 10,
+      "what_works": ["Search bots allowed by robots rules", "Concrete self-contained price and scope answers"],
+      "findings": [
+        {"id": "A13", "title": "Stale llms facts", "severity": "Medium", "description": "Unconfirmed Trakai area and old service list", "recommendation": "Align public factual sources; llms is optional and gives no Google ranking score"}
+      ]
+    },
+    {
+      "name": "Images", "score": 80, "weight": 5,
+      "what_works": ["All literal source image paths exist", "Next Image responsive optimization", "Localized gallery alt text"],
+      "findings": [
+        {"id": "A23", "title": "No controlled Open Graph image", "severity": "Low", "description": "No OG image metadata or image convention asset", "recommendation": "Provide an authentic ATD social preview"}
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Launch quality", "timeframe": "Before release", "items": ["A01", "A02", "A03", "A04", "A05", "A06", "A07"]},
+      {"name": "Contact reliability and indexing", "timeframe": "Next implementation pass", "items": ["A08", "A09", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20"]},
+      {"name": "Content completion", "timeframe": "After core fixes", "items": ["A21", "A22", "A23", "A24", "A25"]},
+      {"name": "Deployment verification", "timeframe": "After approved deployment", "items": ["Verify production host, indexation, integration configuration and real field metrics"]}
+    ]
+  },
+  "limitations": ["No real deployment verification", "No GSC/GA4/GBP/backlink or platform-citation data", "No CrUX, INP or Lighthouse score", "No physical mobile-device or safe-area test", "No external form submissions", "No exploit attempts"],
+  "artifacts": {"report": "FULL-AUDIT-REPORT.md", "action_plan": "ACTION-PLAN.md", "findings_dir": "findings/", "screenshots_dir": "screenshots/", "browser_data": "browser-data.json", "production_checks": "production-checks.json"}
+}

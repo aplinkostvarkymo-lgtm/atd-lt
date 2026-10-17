@@ -1,20 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
-export const SERVICE_LINKS = [
-  { href: "/paslaugos/apzeldinimas", key: "apzeldinimas" },
-  { href: "/paslaugos/veja",         key: "veja" },
-  { href: "/paslaugos/laistymas",    key: "laistymas" },
-  { href: "/paslaugos/trinkeles",    key: "trinkelės" },
-  { href: "/paslaugos/tvenkiniai",   key: "tvenkiniai" },
-  /* "/paslaugos/prekyba-augalais" puslapio kol kas nėra — nuoroda pašalinta */
-] as const;
+import { SERVICE_LINKS, unlocalizedPath } from "@/lib/navigation";
+import { usePathname } from "next/navigation";
+import { Modal } from "@/components/ui/Modal";
+import { useRef, useId } from "react";
 
 type ServiceKey = typeof SERVICE_LINKS[number]["key"];
 
@@ -23,6 +19,10 @@ export function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen,   setMobileOpen]   = useState(false);
   const { lang } = useLanguage();
+  const path = unlocalizedPath(usePathname());
+  const menuId = useId();
+  const servicesButton = useRef<HTMLButtonElement>(null);
+  const darkHeader = scrolled || path === "/darbai";
   const t = translations[lang].nav;
 
   useEffect(() => {
@@ -32,16 +32,16 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const link = scrolled
+  const link = darkHeader
     ? "text-atd-black hover:text-atd-green"
     : "text-white hover:text-white/70";
-  const logoColor = scrolled ? "text-atd-green" : "text-white";
+  const logoColor = darkHeader ? "text-atd-green" : "text-white";
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+          darkHeader
             ? "bg-white/95 backdrop-blur-sm border-b border-atd-black/8 py-3 md:py-4"
             : "py-5 md:py-6"
         }`}
@@ -57,15 +57,17 @@ export function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-7 ml-6">
+          <nav className="hidden lg:flex items-center gap-7 ml-6">
             {/* Paslaugos dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
+              onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setServicesOpen(false); }}
+              onKeyDown={(event) => { if (event.key === "Escape") { setServicesOpen(false); servicesButton.current?.focus(); } }}
             >
-              <button className={`font-body text-sm font-medium transition-colors flex items-center gap-1.5 ${link}`}>
-                {t.services}
+              <button ref={servicesButton} type="button" aria-expanded={servicesOpen} aria-controls={menuId} onClick={() => setServicesOpen(!servicesOpen)} className={`min-h-11 font-body text-sm font-medium transition-colors flex items-center gap-1.5 ${link}`}>
+                <span className="link-underline">{t.services}</span>
                 <svg
                   width="10" height="6" viewBox="0 0 10 6" fill="none"
                   className={`transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
@@ -81,10 +83,12 @@ export function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-white border border-atd-black/8 shadow-lg py-1.5"
+                    id={menuId}
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-52"
                   >
+                    <div className="bg-white border border-atd-black/8 shadow-lg py-1.5">
                     {SERVICE_LINKS.map(({ href, key }) => (
-                      <Link
+                      <Link underline
                         key={key}
                         href={href}
                         className="block px-4 py-2.5 font-body text-sm text-atd-black hover:bg-atd-cream hover:text-atd-green transition-colors"
@@ -93,15 +97,16 @@ export function Header() {
                         {t.services_sub[key as ServiceKey]}
                       </Link>
                     ))}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            <Link href="/darbai" className={`font-body text-sm font-medium transition-colors ${link}`}>
+            <Link underline href="/darbai" className={`font-body text-sm font-medium transition-colors ${link}`}>
               {t.works}
             </Link>
-            <Link href="/kontaktai" className={`font-body text-sm font-medium transition-colors ${link}`}>
+            <Link underline href="/kontaktai" className={`font-body text-sm font-medium transition-colors ${link}`}>
               {t.contact}
             </Link>
           </nav>
@@ -110,13 +115,13 @@ export function Header() {
           <div className="flex items-center gap-4 ml-auto">
             <a
               href="tel:+37065785096"
-              className={`hidden md:inline font-body text-base lg:text-lg font-semibold transition-colors ${link}`}
+              className={`link-underline hidden md:inline font-body text-base lg:text-lg font-semibold transition-colors ${link}`}
             >
               +370 657 85096
             </a>
-            <LanguageToggle variant={scrolled ? "dark" : "light"} />
+            <LanguageToggle variant={darkHeader ? "dark" : "light"} />
             <button
-              className={`md:hidden transition-colors ${scrolled ? "text-atd-black" : "text-white"}`}
+              className={`lg:hidden w-11 h-11 flex items-center justify-center transition-colors ${darkHeader ? "text-atd-black" : "text-white"}`}
               onClick={() => setMobileOpen(true)}
               aria-label={t.menu_open}
             >
@@ -130,7 +135,7 @@ export function Header() {
       </header>
 
       {/* Mobile menu */}
-      <AnimatePresence>
+      <Modal open={mobileOpen} onClose={() => setMobileOpen(false)} label={t.services}>
         {mobileOpen && (
           <>
             <motion.div
@@ -150,7 +155,7 @@ export function Header() {
             >
               <div className="flex items-center justify-between px-6 py-5 border-b border-atd-black/8">
                 <span className="font-display font-bold text-xl text-atd-green">ATD</span>
-                <button onClick={() => setMobileOpen(false)} aria-label={t.menu_close} className="text-atd-black">
+                <button onClick={() => setMobileOpen(false)} aria-label={t.menu_close} className="text-atd-black w-11 h-11 flex items-center justify-center">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
@@ -163,7 +168,7 @@ export function Header() {
                 </p>
                 <div className="flex flex-col">
                   {SERVICE_LINKS.map(({ href, key }) => (
-                    <Link
+                    <Link underline
                       key={key}
                       href={href}
                       className="font-body text-[0.9375rem] text-atd-black py-3 border-b border-atd-black/6 hover:text-atd-green transition-colors"
@@ -173,14 +178,14 @@ export function Header() {
                     </Link>
                   ))}
                 </div>
-                <Link
+                <Link underline
                   href="/darbai"
                   className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors mt-2 block"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t.works}
                 </Link>
-                <Link
+                <Link underline
                   href="/kontaktai"
                   className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors block"
                   onClick={() => setMobileOpen(false)}
@@ -198,7 +203,7 @@ export function Header() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </Modal>
     </>
   );
 }

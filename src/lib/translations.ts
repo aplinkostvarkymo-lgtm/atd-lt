@@ -4,6 +4,8 @@ export const translations = {
   lt: {
     common: {
       close: "Uždaryti",
+      home: "Pagrindinis",
+      skipContent: "Pereiti prie turinio",
     },
     mobileStickyCTA: {
       call: "Paskambinti",
@@ -14,6 +16,8 @@ export const translations = {
         "Naudojame slapukus, siekdami pagerinti svetainės veikimą ir analizuoti lankomumą.",
       accept: "Sutinku",
       reject: "Atmesti",
+      settings: "Slapukų nustatymai",
+      title: "Slapukų pasirinkimas",
     },
     hero: {
       heading: "Aplinkos tvarkymas, apželdinimas.",
@@ -240,7 +244,7 @@ export const translations = {
       gallery_alt1: "Daugiabučio kiemo apželdinimas su gėlynu",
       gallery_alt2: "Parko gėlynas su žvyro taku ir statula",
       gallery_alt3: "Viešo objekto apželdinimas su laistymo sistema",
-      gallery_link_laistymas: "Taip pat siūlome laistymo sistemas →",
+      gallery_link_laistymas: "Taip pat siūlome laistymo sistemas",
     },
     laistymasPas: {
       breadcrumb_home: "Pagrindinis",
@@ -282,7 +286,7 @@ export const translations = {
       step3_desc: "Kasmetinė žieminimo paslauga — sistema išpučiama suspaustu oru ir paruošiama žiemai.",
       faq_heading: "Dažniausi klausimai",
       faq_q1: "Kiek kainuoja laistymo sistemos įrengimas?",
-      faq_a1: "Kaina priklauso nuo teritorijos ploto, sistemos tipo ir sudėtingumo. Standartiniam namų kiemuil (200–400 m²) — paprastai 800–2000 €. Tikslų pasiūlymą pateikiame po nemokamo matavimo.",
+      faq_a1: "Kaina priklauso nuo teritorijos ploto, sistemos tipo ir sudėtingumo. Standartiniam namų kiemui (200–400 m²) — paprastai 800–2000 €. Tikslų pasiūlymą pateikiame po nemokamo matavimo.",
       faq_q2: "Kokią įrangą naudojate?",
       faq_a2: "Naudojame Hunter ir Rain Bird — profesionalios klasės įrangą su ilgalaikia garantija. Atsarginės dalys prieinamos Lietuvoje.",
       faq_q3: "Ar sistema veiks žiemą?",
@@ -341,9 +345,9 @@ export const translations = {
       faq_q2: "Kaip dažnai reikia valyti tvenkinį?",
       faq_a2: "Paprastai rekomenduojama valyti kas 2–3 metai, arba kai vanduo pradeda žalti ir drumstis. Dažnumas priklauso nuo tvenkinio dydžio ir apkrovos.",
       faq_q3: "Ar tvenkinys žiemą nesušąla?",
-      faq_a3: "Pakankamai gilus tvenkinys (nuo 1,5 m) ties dugnusu nešąla. Žuvims žiemoti reikia bent 1,5 m gylio. Patarsime dėl jūsų konkretaus atvejo.",
-      faq_q4: "Kokios žuvys tinka sodybos tvenkiniu?",
-      faq_a4: "Karosas, karpis, šapalas — geri pradedantiesiems, atsparus temperatūros svyravimams. Patariame pagal tvenkinio dydį ir savininkų poreikius.",
+      faq_a3: "Pakankamai gilus tvenkinys (nuo 1,5 m) ties dugnu neužšąla. Žuvims žiemoti reikia bent 1,5 m gylio. Patarsime dėl jūsų konkretaus atvejo.",
+      faq_q4: "Kokios žuvys tinka sodybos tvenkiniui?",
+      faq_a4: "Karosas, karpis, šapalas — tinka pradedantiesiems, yra atsparūs temperatūros svyravimams. Patariame pagal tvenkinio dydį ir savininkų poreikius.",
       faq_q5: "Kokia aptarnavimo zona?",
       faq_a5: "Vilnius ir Vilniaus rajonas. Dideliems projektams — visa Lietuva.",
       cta_heading: "Nemokama tvenkinių apžiūra",
@@ -371,7 +375,10 @@ export const translations = {
       form_sending: "Siunčiama...",
       form_success: "Dėkojame! Susisieksime artimiausiu metu.",
       form_error: "Nepavyko išsiųsti užklausos. Patikrinkite duomenis arba paskambinkite tiesiogiai.",
-      whatsapp_label: "WhatsApp / Viber",
+      whatsapp_label: "WhatsApp",
+      map_title: "ATD aptarnaujama teritorija — Vilnius",
+      contact_person: "Kontaktinis asmuo: Robertas",
+      form_rate_limit: "Per daug užklausų. Palaukite kelias minutes arba paskambinkite.",
       map_heading: "Aptarnaujama teritorija",
       map_sub: "Vilnius ir Vilniaus rajonas",
       faq_heading: "Dažni klausimai",
@@ -409,6 +416,8 @@ export const translations = {
   en: {
     common: {
       close: "Close",
+      home: "Home",
+      skipContent: "Skip to content",
     },
     mobileStickyCTA: {
       call: "Call us",
@@ -419,6 +428,8 @@ export const translations = {
         "We use cookies to improve site performance and analyze traffic.",
       accept: "Accept",
       reject: "Decline",
+      settings: "Cookie settings",
+      title: "Cookie preferences",
     },
     hero: {
       heading: "Grounds Maintenance & Landscaping.",
@@ -645,7 +656,7 @@ export const translations = {
       gallery_alt1: "Apartment courtyard landscaping with flowerbed",
       gallery_alt2: "Park flowerbed with gravel path and statue",
       gallery_alt3: "Public space landscaping with irrigation system",
-      gallery_link_laistymas: "We also offer irrigation systems →",
+      gallery_link_laistymas: "We also offer irrigation systems",
     },
     laistymasPas: {
       breadcrumb_home: "Home",
@@ -776,7 +787,10 @@ export const translations = {
       form_sending: "Sending...",
       form_success: "Thank you! We will get back to you shortly.",
       form_error: "Failed to send the request. Please check your details or call us directly.",
-      whatsapp_label: "WhatsApp / Viber",
+      whatsapp_label: "WhatsApp",
+      map_title: "ATD service area — Vilnius",
+      contact_person: "Contact person: Robertas",
+      form_rate_limit: "Too many requests. Please wait a few minutes or call us.",
       map_heading: "Service area",
       map_sub: "Vilnius and Vilnius district",
       faq_heading: "Frequently asked questions",

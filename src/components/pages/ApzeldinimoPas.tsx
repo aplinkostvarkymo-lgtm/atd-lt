@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { ProcessSteps } from "@/components/ui/ProcessSteps";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
 type T = { [K in keyof typeof translations.lt.apzeldinimoPas]: string };
@@ -50,14 +51,14 @@ function Hero({ t }: { t: T }) {
           alt=""
           fill
           className="object-cover object-center"
-          priority
+          preload
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-atd-black/60" />
       </div>
       <div className="relative max-w-5xl mx-auto px-6">
         <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
-          <Link href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
+          <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
           <span className="text-white/60">{t.breadcrumb_services}</span>
           <span>/</span>
@@ -77,7 +78,7 @@ function Hero({ t }: { t: T }) {
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]">
             {t.hero_cta_call}: +370 657 85096
           </a>
-          <Link href="/kontaktai"
+          <Link arrow href="/kontaktai"
             className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]">
             {t.hero_cta_quote}
           </Link>
@@ -184,22 +185,7 @@ function Process({ t }: { t: T }) {
           <h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black">{t.process_heading}</h2>
           <p className="font-body text-atd-gray-soft mt-2">{t.process_sub}</p>
         </motion.div>
-        <div className="grid md:grid-cols-3 gap-8 md:gap-6 relative">
-          <div className="hidden md:block absolute top-6 left-[calc(16.67%-1px)] right-[calc(16.67%-1px)] h-px bg-atd-green/20" />
-          {steps.map((step, i) => (
-            <motion.div key={i} className="relative" {...fadeUp(i * 0.12)}>
-              <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-0">
-                <div className="shrink-0 w-12 h-12 rounded-full bg-atd-green flex items-center justify-center text-white font-display font-bold text-lg relative z-10">
-                  {step.n}
-                </div>
-                <div className="md:mt-5">
-                  <h3 className="font-display font-bold text-lg text-atd-black">{step.title}</h3>
-                  <p className="font-body text-sm text-atd-gray-soft mt-2 leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <ProcessSteps steps={steps} />
       </div>
     </section>
   );
@@ -232,8 +218,8 @@ function Gallery({ t }: { t: T }) {
 
         <div className="mt-6">
           <Link
-            href="/paslaugos/laistymas"
-            className="font-body text-sm text-atd-green font-medium hover:text-atd-green-light transition-colors"
+            underline arrow href="/paslaugos/laistymas"
+            className="inline-flex items-center font-body text-sm text-atd-green font-medium hover:text-atd-green-light transition-colors"
           >
             {t.gallery_link_laistymas}
           </Link>
@@ -323,7 +309,7 @@ export function ApzeldinimoPas() {
   const { lang } = useLanguage();
   const t = translations[lang].apzeldinimoPas;
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Hero t={t} />
       <Included t={t} />
       <Plants t={t} />

@@ -1,8 +1,9 @@
 "use client";
 
+import { Modal } from "@/components/ui/Modal";
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -128,13 +129,13 @@ export function DarbaiPage() {
   const filtered = active === "all" ? ITEMS : ITEMS.filter((i) => i.category === active);
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       {/* Hero */}
       <section className="bg-atd-cream pt-24 md:pt-28 pb-10 md:pb-14">
         <div className="max-w-6xl mx-auto px-6">
           <nav className="flex items-center gap-1.5 text-atd-gray-soft font-body text-xs mb-6">
-            <Link href="/" className="hover:text-atd-black transition-colors">
-              {lang === "lt" ? "Pagrindinis" : "Home"}
+            <Link underline href="/" className="hover:text-atd-black transition-colors">
+              {translations[lang].common.home}
             </Link>
             <span>/</span>
             <span className="text-atd-black">{t.heading}</span>
@@ -145,14 +146,15 @@ export function DarbaiPage() {
       </section>
 
       {/* Filter tabs */}
-      <section className="bg-white border-b border-atd-black/8 sticky top-[60px] z-10">
+      <section className="bg-white border-b border-atd-black/8 sticky top-[72px] md:top-[80px] z-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex gap-1 overflow-x-auto py-3 scrollbar-none">
             {categories.map(({ key, label }) => (
               <button
                 key={key}
                 onClick={() => setActive(key)}
-                className={`shrink-0 px-4 py-1.5 font-body text-sm transition-all ${
+                aria-pressed={active === key}
+                className={`shrink-0 px-4 py-2.5 font-body text-sm transition-all ${
                   active === key
                     ? "bg-atd-green text-white"
                     : "text-atd-gray-soft hover:text-atd-black"
@@ -193,7 +195,7 @@ export function DarbaiPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-atd-black/0 group-hover:bg-atd-black/30 transition-colors duration-300" />
-                  <div className="absolute bottom-0 inset-x-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-black/65">
                     <p className="font-body text-xs text-white font-medium">{item.title[lang]}</p>
                   </div>
                 </motion.button>
@@ -211,7 +213,7 @@ export function DarbaiPage() {
           <h2 className="font-display font-bold text-2xl md:text-3xl text-white">{t.cta_heading}</h2>
           <p className="font-body text-white/75 mt-3 mb-7">{t.cta_sub}</p>
           <Link
-            href="/kontaktai"
+            arrow href="/kontaktai"
             className="inline-flex items-center px-8 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]"
           >
             {t.cta_btn}
@@ -220,6 +222,7 @@ export function DarbaiPage() {
       </section>
 
       {/* Lightbox */}
+      <Modal open={!!lightbox} onClose={() => setLightbox(null)} label={lightbox?.title[lang] ?? t.heading}>
       <AnimatePresence>
         {lightbox && (
           <>
@@ -238,7 +241,6 @@ export function DarbaiPage() {
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{ duration: 0.22 }}
               className="fixed inset-4 md:inset-12 z-[90] flex flex-col items-center justify-center"
-              onClick={() => setLightbox(null)}
             >
               <div className="relative w-full h-full max-w-4xl mx-auto">
                 <Image
@@ -253,9 +255,9 @@ export function DarbaiPage() {
                 {lightbox.title[lang]}
               </p>
               <button
-                className="absolute top-0 right-0 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white"
+                className="absolute top-0 right-0 w-11 h-11 flex items-center justify-center text-white/70 hover:text-white"
                 onClick={() => setLightbox(null)}
-                aria-label="Uždaryti"
+                aria-label={translations[lang].common.close}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -265,6 +267,7 @@ export function DarbaiPage() {
           </>
         )}
       </AnimatePresence>
+      </Modal>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import "./component-utilities.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -129,4 +129,93 @@
 
 .hotspot-pulse {
   animation: hotspot-pulse 2s ease-in-out infinite;
+}
+
+:root { --atd-mobile-cta-height: calc(59px + max(12px, env(safe-area-inset-bottom))); }
+/* Text links keep their layout; only the underline and CTA arrow respond. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+a:focus-visible .link-underline, .link-underline:focus-visible,
+button:focus-visible .link-underline { background-size: 100% 1px; }
+@media (hover: hover) and (pointer: fine) {
+  a:hover .link-underline, a.link-underline:hover,
+  button:hover .link-underline { background-size: 100% 1px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .link-underline { transition: background-size 180ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .cta-arrow { transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .cta-link:focus-visible .cta-arrow { transform: translateX(3px); }
+  @media (hover: hover) and (pointer: fine) {
+    .cta-link:hover .cta-arrow { transform: translateX(3px); }
+  }
+}
+/* Process sequence: static by default, enhanced once when it enters view. */
+.process-step { --step-delay: 0ms; --line-delay: 60ms; }
+.process-step:nth-child(2) { --step-delay: 280ms; --line-delay: 340ms; }
+.process-step:nth-child(3) { --step-delay: 560ms; }
+.process-connector {
+  position: absolute;
+  pointer-events: none;
+  left: 24px;
+  top: 24px;
+  width: 1px;
+  height: calc(100% + 2rem);
+  background: color-mix(in srgb, var(--color-atd-green) 20%, transparent);
+  transform-origin: top;
+}
+.process-step:last-child .process-connector { display: none; }
+@media (min-width: 768px) {
+  .process-connector {
+    width: calc(100% + 1.5rem);
+    height: 1px;
+    transform-origin: left;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .process-steps[data-motion="pending"] .process-number { opacity: 0; }
+  .process-steps[data-motion="pending"] .process-connector { transform: scaleY(0); }
+  .process-steps[data-motion="playing"] .process-number {
+    animation: process-number-reveal 220ms cubic-bezier(0.16, 1, 0.3, 1) var(--step-delay) both;
+  }
+  .process-steps[data-motion="playing"] .process-connector {
+    animation: process-line-vertical 280ms cubic-bezier(0.16, 1, 0.3, 1) var(--line-delay) both;
+  }
+  @media (min-width: 768px) {
+    .process-steps[data-motion="pending"] .process-connector { transform: scaleX(0); }
+    .process-steps[data-motion="playing"] .process-connector { animation-name: process-line-horizontal; }
+  }
+}
+@keyframes process-number-reveal {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes process-line-horizontal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes process-line-vertical { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.site-content { padding-bottom: var(--atd-mobile-cta-height); }
+body:has(main):not(:has(.mobile-sticky-cta)) .site-content { padding-bottom: 0; }
+.garden-hero { height: calc(100svh - var(--atd-mobile-cta-height)); min-height: 600px; }
+.atd-dialog { position: fixed; inset: 0; margin: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; border: 0; padding: 0; background: transparent; color: inherit; overflow: hidden; }
+.atd-dialog::backdrop { background: transparent; }
+.skip-content { position: fixed; top: 0.5rem; left: 1rem; z-index: 100; padding: 0.75rem 1rem; background: white; color: #1E3610; transform: translateY(-200%); }
+.skip-content:focus { transform: none; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+::selection { background: #2D5016; color: white; }
+body[data-cookie-banner] .floating-chat, body[data-cookie-banner] .mobile-sticky-cta { visibility: hidden; pointer-events: none; }
+@media (min-width: 768px) {
+  :root { --atd-mobile-cta-height: 0px; }
+  .garden-hero { height: 100svh; }
+}
+@media (max-width: 767px) {
+  input:not([type="hidden"]), textarea, select { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hotspot-pulse { animation: none; }
 }

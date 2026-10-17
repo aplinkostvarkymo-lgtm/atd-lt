@@ -1,0 +1,49 @@
+[
+  {
+    "name": "honeypot",
+    "status": 200,
+    "saved": 0
+  },
+  {
+    "name": "missing-phone",
+    "status": 400,
+    "saved": 0
+  },
+  {
+    "name": "invalid-email",
+    "status": 200,
+    "saved": 1
+  },
+  {
+    "name": "unbounded-service",
+    "status": 200,
+    "saved": 1,
+    "serviceLength": 100000
+  },
+  {
+    "name": "negative-area",
+    "status": 200,
+    "saved": 1
+  },
+  {
+    "name": "identical-repeat",
+    "statuses": [
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "saved": 5
+  },
+  {
+    "name": "email-http-429",
+    "status": 200,
+    "loggedErrors": 0
+  },
+  {
+    "name": "email-pending-at-response",
+    "status": 200,
+    "emailFinished": false
+  }
+]

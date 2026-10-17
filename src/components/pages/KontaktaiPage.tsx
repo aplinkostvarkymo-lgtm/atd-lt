@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { SERVICE_LINKS } from "@/lib/navigation";
 import { translations } from "@/lib/translations";
 
 type T = { [K in keyof typeof translations.lt.kontaktaiPage]: string };
@@ -16,7 +17,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.5, delay },
 });
 
-const SERVICE_OPTIONS = ["apzeldinimas", "veja", "laistymas", "trinkelės"] as const;
+const SERVICE_OPTIONS = SERVICE_LINKS.map(({ key }) => key);
 
 /* ── Hero ─────────────────────────────────────────────────── */
 
@@ -29,7 +30,7 @@ function Hero({ t }: { t: T }) {
         alt=""
         fill
         className="object-cover object-center"
-        priority
+        preload
         sizes="100vw"
       />
       {/* Dark green overlay so text stays readable */}
@@ -37,7 +38,7 @@ function Hero({ t }: { t: T }) {
 
       <div className="relative max-w-5xl mx-auto px-6">
         <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
-          <Link href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
+          <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
           <span className="text-white/90">{t.breadcrumb_current}</span>
         </nav>
@@ -97,11 +98,15 @@ function Hero({ t }: { t: T }) {
 function FormSection({ t }: { t: T }) {
   const { lang } = useLanguage();
   const services_sub = translations[lang].nav.services_sub;
+  const [rateLimited, setRateLimited] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const statusRef = useRef<HTMLParagraphElement>(null);
+  useEffect(() => { if (status === "success") statusRef.current?.focus(); }, [status]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
+    setRateLimited(false);
 
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -114,6 +119,7 @@ function FormSection({ t }: { t: T }) {
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
+        signal: AbortSignal.timeout(20000),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           vardas: data.get("name"),
@@ -126,6 +132,7 @@ function FormSection({ t }: { t: T }) {
         }),
       });
 
+      if (res.status === 429) setRateLimited(true);
       if (!res.ok) throw new Error("request failed");
 
       setStatus("success");
@@ -142,17 +149,9 @@ function FormSection({ t }: { t: T }) {
         <motion.div {...fadeUp()}>
           <h2 className="font-display font-bold text-2xl text-atd-black mb-6">{t.form_heading}</h2>
 
-          {status === "success" ? (
-            <motion.p
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="font-body text-sm text-atd-green"
-            >
-              {t.form_success}
-            </motion.p>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <p ref={statusRef} role="status" aria-live="polite" aria-atomic="true" tabIndex={-1} className="font-body text-sm text-atd-green">{status === "success" ? t.form_success : status === "loading" ? t.form_sending : ""}</p>
+          {status !== "success" && (
+            <form onSubmit={handleSubmit} aria-busy={status === "loading"} className="space-y-4">
               {/* Honeypot */}
               <div className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden" aria-hidden="true">
                 <label htmlFor="company">Įmonė</label>
@@ -161,19 +160,19 @@ function FormSection({ t }: { t: T }) {
 
               <div>
                 <label htmlFor="name" className="block font-body text-xs text-atd-gray-soft mb-1.5">{t.form_name}</label>
-                <input id="name" name="name" type="text" required
+                <input id="name" name="name" type="text" autoComplete="name" maxLength={100} required
                   className="w-full border border-atd-black/15 px-3.5 py-2.5 font-body text-sm text-atd-black focus:outline-none focus:border-atd-green" />
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="phone" className="block font-body text-xs text-atd-gray-soft mb-1.5">{t.form_phone}</label>
-                  <input id="phone" name="phone" type="tel" required
+                  <input id="phone" name="phone" type="tel" autoComplete="tel" maxLength={30} minLength={7} required
                     className="w-full border border-atd-black/15 px-3.5 py-2.5 font-body text-sm text-atd-black focus:outline-none focus:border-atd-green" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block font-body text-xs text-atd-gray-soft mb-1.5">{t.form_email}</label>
-                  <input id="email" name="email" type="email"
+                  <input id="email" name="email" type="email" autoComplete="email" maxLength={100}
                     className="w-full border border-atd-black/15 px-3.5 py-2.5 font-body text-sm text-atd-black focus:outline-none focus:border-atd-green" />
                 </div>
               </div>
@@ -191,19 +190,19 @@ function FormSection({ t }: { t: T }) {
                 </div>
                 <div>
                   <label htmlFor="area" className="block font-body text-xs text-atd-gray-soft mb-1.5">{t.form_area}</label>
-                  <input id="area" name="area" type="number" min="0"
+                  <input id="area" name="area" type="number" min="1" max="10000000"
                     className="w-full border border-atd-black/15 px-3.5 py-2.5 font-body text-sm text-atd-black focus:outline-none focus:border-atd-green" />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block font-body text-xs text-atd-gray-soft mb-1.5">{t.form_message}</label>
-                <textarea id="message" name="message" rows={4}
+                <textarea id="message" name="message" rows={4} maxLength={2000}
                   className="w-full border border-atd-black/15 px-3.5 py-2.5 font-body text-sm text-atd-black focus:outline-none focus:border-atd-green resize-none" />
               </div>
 
               {status === "error" && (
-                <p className="font-body text-sm text-red-600">{t.form_error}</p>
+                <p role="alert" className="font-body text-sm text-red-700">{rateLimited ? t.form_rate_limit : t.form_error}</p>
               )}
 
               <motion.button
@@ -225,6 +224,7 @@ function FormSection({ t }: { t: T }) {
             <a href="tel:+37065785096" className="block font-display font-bold text-2xl text-atd-green hover:text-atd-green-light transition-colors">
               +370 657 85096
             </a>
+            <p className="font-body text-sm text-atd-black">{t.contact_person}</p>
             <a href="mailto:Robertas@atd.lt" className="block font-body text-sm text-atd-black hover:text-atd-green transition-colors">
               Robertas@atd.lt
             </a>
@@ -235,7 +235,7 @@ function FormSection({ t }: { t: T }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-body text-sm font-medium text-white px-3 py-1.5 rounded-full transition-opacity hover:opacity-90"
-                style={{ backgroundColor: "#25D366" }}
+                style={{ backgroundColor: "#0B7738" }}
               >
                 <svg viewBox="0 0 24 24" fill="white" className="w-3.5 h-3.5 shrink-0" aria-hidden="true">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -288,7 +288,7 @@ function MapSection({ t }: { t: T }) {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="ATD aptarnaujama teritorija — Vilnius"
+            title={t.map_title}
           />
         </motion.div>
       </div>
@@ -362,7 +362,7 @@ export function KontaktaiPage() {
   const t = translations[lang].kontaktaiPage;
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Hero t={t} />
       <FormSection t={t} />
       <MapSection t={t} />

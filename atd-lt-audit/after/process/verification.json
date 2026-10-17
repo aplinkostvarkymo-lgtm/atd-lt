@@ -1,0 +1,1507 @@
+{
+  "tests": [
+    {
+      "name": "1440 lt veja: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 937.1000000101048,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 937.1000000101048,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 937.1000000101048,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 937.1000000101048,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 937.1000000101048,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Grunto paruošimas",
+          "Sėjimas arba rolinimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 lt apzeldinimas: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 655.4729999916162,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 655.4729999916162,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 655.4729999916162,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 655.4729999916162,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 655.4729999916162,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Apžiūra ir planas",
+          "Augalų parinkimas",
+          "Sodinimas ir mulčiavimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 lt trinkeles: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 632.6550000230782,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.6550000230782,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.6550000230782,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.6550000230782,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.6550000230782,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Grunto ir pagrindo paruošimas",
+          "Skaldos ir smėlio sluoksniai",
+          "Klojimas ir siūlių užpildymas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 lt laistymas: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 628.7960000045132,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.7960000045132,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.7960000045132,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.7960000045132,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.7960000045132,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Projektavimas",
+          "Montavimas",
+          "Žieminimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 lt tvenkiniai: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 628.9080000133254,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.9080000133254,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.9080000133254,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.9080000133254,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 628.9080000133254,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Darbai pagal planą",
+          "Aplinkos sutvarkymas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 en veja: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 632.8339999890886,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.8339999890886,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.8339999890886,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.8339999890886,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 632.8339999890886,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Free site visit",
+          "Ground preparation",
+          "Seeding or turf laying"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 en apzeldinimas: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 624.697000021115,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 624.697000021115,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 624.697000021115,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 624.697000021115,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 624.697000021115,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Site visit and plan",
+          "Plant selection",
+          "Planting and mulching"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 en trinkeles: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 613.8400000054389,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 613.8400000054389,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 613.8400000054389,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 613.8400000054389,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 613.8400000054389,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Ground and base preparation",
+          "Gravel and sand layers",
+          "Laying and joint filling"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 en laistymas: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 615.380000002915,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 615.380000002915,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 615.380000002915,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 615.380000002915,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 615.380000002915,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "System design",
+          "Installation",
+          "Winterisation"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440 en tvenkiniai: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 605.8909999846946,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.8909999846946,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.8909999846946,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.8909999846946,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.8909999846946,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Free site visit",
+          "Works per plan",
+          "Surroundings finished"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "390 lt veja: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 729.0600000123959,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 729.0600000123959,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 729.0600000123959,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 729.0600000123959,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 729.0600000123959,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Grunto paruošimas",
+          "Sėjimas arba rolinimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "390 lt apzeldinimas: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 614.4959999946877,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 614.4959999946877,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 614.4959999946877,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 614.4959999946877,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 614.4959999946877,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 1,
+            "height": 159,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Apžiūra ir planas",
+          "Augalų parinkimas",
+          "Sodinimas ir mulčiavimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "390 lt trinkeles: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 605.6500000122469,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.6500000122469,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.6500000122469,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.6500000122469,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 605.6500000122469,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Grunto ir pagrindo paruošimas",
+          "Skaldos ir smėlio sluoksniai",
+          "Klojimas ir siūlių užpildymas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "390 lt laistymas: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 598.3030000061262,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 598.3030000061262,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 598.3030000061262,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 598.3030000061262,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 598.3030000061262,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Projektavimas",
+          "Montavimas",
+          "Žieminimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "390 lt tvenkiniai: sequence, alignment, no replay",
+      "passed": true,
+      "details": {
+        "motion": "playing",
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [
+          {
+            "start": 596.4370000001509,
+            "state": "finished",
+            "delay": 60,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 596.4370000001509,
+            "state": "finished",
+            "delay": 0,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 596.4370000001509,
+            "state": "finished",
+            "delay": 340,
+            "direction": "normal",
+            "duration": 280,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 596.4370000001509,
+            "state": "finished",
+            "delay": 280,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          {
+            "start": 596.4370000001509,
+            "state": "finished",
+            "delay": 560,
+            "direction": "normal",
+            "duration": 220,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        ],
+        "lines": [
+          {
+            "width": 1,
+            "height": 113.5,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 113.5,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Darbai pagal planą",
+          "Aplinkos sutvarkymas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "1440: reduced motion immediately visible",
+      "passed": true,
+      "details": {
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Grunto paruošimas",
+          "Sėjimas arba rolinimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "390: reduced motion immediately visible",
+      "passed": true,
+      "details": {
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [],
+        "lines": [
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Grunto paruošimas",
+          "Sėjimas arba rolinimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "No JavaScript: readable steps and static lines",
+      "passed": true,
+      "details": {
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [],
+        "lines": [
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 1,
+            "height": 136.25,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Grunto paruošimas",
+          "Sėjimas arba rolinimas"
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "name": "Live reduced-motion preference change reveals pending steps",
+      "passed": true,
+      "details": {
+        "opacity": [
+          1,
+          1,
+          1
+        ],
+        "animations": [],
+        "lines": [
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          },
+          {
+            "width": 333.328125,
+            "height": 1,
+            "color": "color(srgb 0.176471 0.313726 0.0862745 / 0.2)"
+          }
+        ],
+        "text": [
+          "Nemokama apžiūra",
+          "Grunto paruošimas",
+          "Sėjimas arba rolinimas"
+        ],
+        "overflow": false
+      }
+    }
+  ],
+  "errors": [],
+  "passed": 19,
+  "failed": 0
+}

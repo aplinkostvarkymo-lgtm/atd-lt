@@ -1,109 +1,62 @@
+import { after } from "next/server";
 import { saveLead } from "@/lib/airtable";
+import { validateLead, MAX_LEAD_BYTES, type LeadData } from "@/lib/lead-validation";
+import { limitLead } from "@/lib/lead-rate-limit";
 
-const MAX_LENGTHS = {
-  vardas: 100,
-  telefonas: 30,
-  email: 100,
-  zinute: 2000,
-} as const;
-
-async function sendEmailNotification(data: {
-  vardas: string;
-  telefonas: string;
-  email?: string;
-  paslauga?: string;
-  plotas?: string;
-  zinute?: string;
-}): Promise<void> {
+async function sendEmailNotification(data: LeadData) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return; // sąlyginis: jei raktų nėra, praleidžiame tyliai
-
-  const lines = [
-    `Vardas: ${data.vardas}`,
-    `Telefonas: ${data.telefonas}`,
-    data.email    ? `El. paštas: ${data.email}`    : null,
-    data.paslauga ? `Paslauga: ${data.paslauga}`   : null,
-    data.plotas   ? `Plotas: ${data.plotas} m²`    : null,
-    data.zinute   ? `\nŽinutė:\n${data.zinute}`    : null,
+  if (!apiKey) { console.warn("Lead saved; RESEND_API_KEY is not configured."); return; }
+  const text = [
+    `Vardas: ${data.vardas}`, `Telefonas: ${data.telefonas}`,
+    data.email && `El. paštas: ${data.email}`, data.paslauga && `Paslauga: ${data.paslauga}`,
+    data.plotas && `Plotas: ${data.plotas} m²`, data.zinute && `Žinutė:\n${data.zinute}`,
   ].filter(Boolean).join("\n");
-
-  await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: process.env.RESEND_FROM ?? "ATD svetainė <noreply@atd.lt>",
-      to: ["Robertas@atd.lt"],
-      subject: `Nauja užklausa iš atd.lt — ${data.vardas}`,
-      text: `Nauja užklausa iš atd.lt kontaktų formos:\n\n${lines}\n\n---\natd.lt`,
-    }),
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST", headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: process.env.RESEND_FROM ?? "ATD svetainė <noreply@atd.lt>", to: ["Robertas@atd.lt"], subject: `Nauja užklausa iš atd.lt — ${data.vardas.replace(/[\r\n]/g, " ")}`, text }),
+    signal: AbortSignal.timeout(10000),
   });
+  if (!response.ok) throw new Error(`Resend HTTP ${response.status}`);
 }
 
 export async function POST(request: Request) {
+  const failure = (error: string, status = 400, headers?: HeadersInit) => Response.json({ success: false, error }, { status, headers });
+  if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) return failure("unsupported_content_type", 415);
+  const declaredLength = Number(request.headers.get("content-length"));
+  if (declaredLength > MAX_LEAD_BYTES) return failure("payload_too_large", 413);
   let body: unknown;
+  const reader = request.body?.getReader();
+  if (!reader) return failure("invalid_body");
   try {
-    body = await request.json();
-  } catch {
-    return Response.json({ success: false, error: "Neteisingas užklausos formatas." }, { status: 400 });
-  }
+    let bytes = 0;
+    let text = "";
+    const decoder = new TextDecoder();
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      bytes += value.byteLength;
+      if (bytes > MAX_LEAD_BYTES) { await reader.cancel(); return failure("payload_too_large", 413); }
+      text += decoder.decode(value, { stream: true });
+    }
+    body = JSON.parse(text + decoder.decode());
+  } catch { return failure("invalid_json"); }
+  finally { reader.releaseLock(); }
 
-  if (typeof body !== "object" || body === null) {
-    return Response.json({ success: false, error: "Neteisingas užklausos formatas." }, { status: 400 });
-  }
-
-  const data = body as Record<string, unknown>;
-
-  // Honeypot — žmogui nematomas laukas. Jei užpildytas, tai bot'as: apsimetame
-  // sėkme (nepasiduodam, kad aptikti), bet NIEKADA nesiunčiame į Airtable.
-  const honeypot = typeof data.company === "string" ? data.company.trim() : "";
-  if (honeypot) {
-    return Response.json({ success: true });
-  }
-
-  const vardas = typeof data.vardas === "string" ? data.vardas.trim() : "";
-  const telefonas = typeof data.telefonas === "string" ? data.telefonas.trim() : "";
-  const email = typeof data.email === "string" ? data.email.trim() : "";
-  const zinute = typeof data.zinute === "string" ? data.zinute.trim() : "";
-
-  if (!vardas || !telefonas) {
-    return Response.json({ success: false, error: "Vardas ir telefonas yra privalomi." }, { status: 400 });
-  }
-
-  if (
-    vardas.length > MAX_LENGTHS.vardas ||
-    telefonas.length > MAX_LENGTHS.telefonas ||
-    email.length > MAX_LENGTHS.email ||
-    zinute.length > MAX_LENGTHS.zinute
-  ) {
-    return Response.json({ success: false, error: "Neteisingas užklausos formatas." }, { status: 400 });
-  }
-
-  const leadData = {
-    vardas,
-    telefonas,
-    email: email || undefined,
-    paslauga: typeof data.paslauga === "string" ? data.paslauga.trim() || undefined : undefined,
-    plotas: typeof data.plotas === "string" ? data.plotas.trim() || undefined : undefined,
-    zinute: zinute || undefined,
-  };
-
+  const validation = validateLead(body);
+  if ("honeypot" in validation) return Response.json({ success: true });
+  if ("error" in validation) return failure(validation.error);
   try {
-    await saveLead(leadData);
+    const limit = await limitLead(request);
+    if (!limit.allowed) return failure("rate_limited", 429, { "Retry-After": String(limit.retryAfter) });
   } catch (error) {
-    console.error("Nepavyko išsaugoti lead'o į Airtable:", error);
-    return Response.json(
-      { success: false, error: "Nepavyko išsaugoti užklausos. Bandykite vėliau arba paskambinkite tiesiogiai." },
-      { status: 502 }
-    );
+    console.error("Lead rate limiter unavailable:", error);
+    return failure("temporarily_unavailable", 503);
   }
-
-  // El. pašto klaida neblokuoja atsakymo vartotojui — praleidžiama tyliai
-  sendEmailNotification(leadData).catch((err) =>
-    console.error("El. pašto pranešimas nepavyko:", err)
-  );
-
+  try { await saveLead(validation.data); }
+  catch (error) { console.error("Lead storage failed:", error); return failure("storage_unavailable", 502); }
+  after(async () => {
+    try { await sendEmailNotification(validation.data); }
+    catch (error) { console.error("Lead email notification failed:", error); }
+  });
   return Response.json({ success: true });
 }

@@ -1,0 +1,731 @@
+{
+  "base": "http://localhost:3100",
+  "browser": "155.0.4283.45",
+  "checks": [
+    {
+      "width": 320,
+      "overflow": false,
+      "h1Group": {
+        "x": 19.1875,
+        "y": 520.484375,
+        "w": 300.8125,
+        "h": 256,
+        "text": "Aplinkos tvarkymas, apželdinimas.\n\nLaistymas, veja, apželdinimas, trinkelės.\n\nGauti preliminarią kainą"
+      },
+      "strip": {
+        "x": 0,
+        "y": 786,
+        "w": 320,
+        "h": 58,
+        "text": "Apželdinimas\nLaistymo sistemos\nVejos įrengimas\nTakai, trinkelės"
+      },
+      "fixed": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 72,
+          "text": "ATD\nLT/EN",
+          "z": "50"
+        },
+        {
+          "x": 0,
+          "y": 773,
+          "w": 320,
+          "h": 71,
+          "text": "Paskambinti\nGauti pasiūlymą",
+          "z": "40"
+        },
+        {
+          "x": 256,
+          "y": 652,
+          "w": 48,
+          "h": 104,
+          "text": "",
+          "z": "45"
+        }
+      ],
+      "effectiveH1Opacity": "1"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "h1Group": {
+        "x": 23.390625,
+        "y": 588.484375,
+        "w": 366.609375,
+        "h": 188,
+        "text": "Aplinkos tvarkymas, apželdinimas.\n\nLaistymas, veja, apželdinimas, trinkelės.\n\nGauti preliminarią kainą"
+      },
+      "strip": {
+        "x": 0,
+        "y": 786,
+        "w": 390,
+        "h": 58,
+        "text": "Apželdinimas\nLaistymo sistemos\nVejos įrengimas\nTakai, trinkelės"
+      },
+      "fixed": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 72,
+          "text": "ATD\nLT/EN",
+          "z": "50"
+        },
+        {
+          "x": 0,
+          "y": 773,
+          "w": 390,
+          "h": 71,
+          "text": "Paskambinti\nGauti pasiūlymą",
+          "z": "40"
+        },
+        {
+          "x": 326,
+          "y": 652,
+          "w": 48,
+          "h": 104,
+          "text": "",
+          "z": "45"
+        }
+      ],
+      "effectiveH1Opacity": "1"
+    },
+    {
+      "type": "popup",
+      "width": 390,
+      "dialogCount": 0,
+      "focus": "<button type=\"button\" class=\"flex-shrink-0 bg-white/15 border border-white/30 text-white text-xs font-body px-4 py-2 whitespace-nowrap\">Vejos įrengimas</button>",
+      "overflow": "hidden"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "h1Group": {
+        "x": 161.265625,
+        "y": 623.125,
+        "w": 576,
+        "h": 204,
+        "text": "Aplinkos tvarkymas, apželdinimas.\n\nLaistymas, veja, apželdinimas, trinkelės.\n\nGauti preliminarią kainą"
+      },
+      "strip": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "text": "ApželdinimasLaistymo sistemosVejos įrengimasTakai, trinkelės"
+      },
+      "fixed": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 80,
+          "text": "ATD\nPaslaugos\nDarbai\nKontaktai\n+370 657 85096\nLT/EN",
+          "z": "50"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "text": "PaskambintiGauti pasiūlymą",
+          "z": "40"
+        },
+        {
+          "x": 704,
+          "y": 724,
+          "w": 48,
+          "h": 104,
+          "text": "",
+          "z": "45"
+        }
+      ],
+      "effectiveH1Opacity": "1"
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "h1Group": {
+        "x": 215.03125,
+        "y": 607.125,
+        "w": 576,
+        "h": 220,
+        "text": "Aplinkos tvarkymas, apželdinimas.\n\nLaistymas, veja, apželdinimas, trinkelės.\n\nGauti preliminarią kainą"
+      },
+      "strip": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "text": "ApželdinimasLaistymo sistemosVejos įrengimasTakai, trinkelės"
+      },
+      "fixed": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 1024,
+          "h": 80,
+          "text": "ATD\nPaslaugos\nDarbai\nKontaktai\n+370 657 85096\nLT/EN",
+          "z": "50"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "text": "PaskambintiGauti pasiūlymą",
+          "z": "40"
+        },
+        {
+          "x": 960,
+          "y": 724,
+          "w": 48,
+          "h": 104,
+          "text": "",
+          "z": "45"
+        }
+      ],
+      "effectiveH1Opacity": "1"
+    }
+  ],
+  "performance": [
+    {
+      "route": "/",
+      "mode": "single local production cold-context sample; slow4G 1.6Mbps/150ms, CPU4x",
+      "lcp": [
+        {
+          "t": 1528,
+          "size": 1962,
+          "tag": "A",
+          "url": ""
+        }
+      ],
+      "cls": [],
+      "longtasks": [
+        116
+      ],
+      "nav": [
+        {
+          "ttfb": 5.4000000059604645,
+          "dcl": 1408.5,
+          "load": 6515.200000017881
+        }
+      ],
+      "paint": [
+        {
+          "name": "first-paint",
+          "t": 1528
+        },
+        {
+          "name": "first-contentful-paint",
+          "t": 1528
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://localhost:3100/_next/static/media/2a65768255d6b625-s.p.14by5b4al-y~f.woff2",
+          "type": "link",
+          "bytes": 38760,
+          "duration": 1147.5
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/5c285b27cdda1fe8-s.p.0yo6-5yoeeudq.woff2",
+          "type": "link",
+          "bytes": 37280,
+          "duration": 1134.4000000059605
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/70e3db2de7f94926-s.p.0~0iy9faq3424.woff2",
+          "type": "link",
+          "bytes": 39188,
+          "duration": 1206.0999999940395
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/ae8872c8a32e309c-s.p.05txd3dlozf45.woff2",
+          "type": "link",
+          "bytes": 23632,
+          "duration": 842.8000000119209
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/b49b0d9b851e4899-s.p.0yfy_qj1.2qn0.woff2",
+          "type": "link",
+          "bytes": 21280,
+          "duration": 811.0999999940395
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/c3cb240f9c892514-s.p.163v2i5cux7-c.woff2",
+          "type": "link",
+          "bytes": 18492,
+          "duration": 738.7000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fmain_one.png&w=600&q=75",
+          "type": "link",
+          "bytes": 50432,
+          "duration": 1906
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0iygcl3h7_3-c.css",
+          "type": "link",
+          "bytes": 11303,
+          "duration": 1192
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0zaia6i55l01..js",
+          "type": "link",
+          "bytes": 8078,
+          "duration": 1223.4000000059605
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0pqt~8bl3ukh4.js",
+          "type": "script",
+          "bytes": 9536,
+          "duration": 1506.2000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0v9c2uadhpd-i.js",
+          "type": "script",
+          "bytes": 71028,
+          "duration": 2786.5
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/turbopack-0ooz_85g8rq69.js",
+          "type": "script",
+          "bytes": 4448,
+          "duration": 1521.8999999761581
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0257pdz1-imal.js",
+          "type": "script",
+          "bytes": 40531,
+          "duration": 2365.2999999821186
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/02c-kxcev_ed3.js",
+          "type": "script",
+          "bytes": 10884,
+          "duration": 1668.300000011921
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/17sk8jt4z-q8z.js",
+          "type": "script",
+          "bytes": 9437,
+          "duration": 1950.4000000059605
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0.6bsw~vt8qh8.js",
+          "type": "script",
+          "bytes": 60773,
+          "duration": 2822
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0d3shmwh5_nmn.js",
+          "type": "script",
+          "bytes": 13175,
+          "duration": 2146.2999999821186
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/06ils2oxy6i_0.js",
+          "type": "script",
+          "bytes": 15079,
+          "duration": 2461.699999988079
+        },
+        {
+          "url": "http://localhost:3100/videos/hero.mp4",
+          "type": "video",
+          "bytes": 300,
+          "duration": 2756
+        },
+        {
+          "url": "http://localhost:3100/videos/hero.mp4",
+          "type": "video",
+          "bytes": 15253,
+          "duration": 236.09999999403954
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=1r34m",
+          "type": "fetch",
+          "bytes": 704,
+          "duration": 173.59999999403954
+        },
+        {
+          "url": "http://localhost:3100/?_rsc=1pn8p",
+          "type": "fetch",
+          "bytes": 1074,
+          "duration": 172.5
+        },
+        {
+          "url": "http://localhost:3100/?_rsc=nn07o",
+          "type": "fetch",
+          "bytes": 1971,
+          "duration": 199.90000000596046
+        },
+        {
+          "url": "http://localhost:3100/?_rsc=ivliq",
+          "type": "fetch",
+          "bytes": 709,
+          "duration": 185
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=1pn8p",
+          "type": "fetch",
+          "bytes": 1084,
+          "duration": 176.40000000596046
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=gksco",
+          "type": "fetch",
+          "bytes": 603,
+          "duration": 174.10000002384186
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=ya7zw",
+          "type": "fetch",
+          "bytes": 1677,
+          "duration": 181.2000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0021fv.ml4w99.js",
+          "type": "script",
+          "bytes": 10504,
+          "duration": 270.2999999821186
+        }
+      ],
+      "heroVisible": "0"
+    },
+    {
+      "route": "/paslaugos/veja",
+      "mode": "single local production cold-context sample; slow4G 1.6Mbps/150ms, CPU4x",
+      "lcp": [
+        {
+          "t": 1072,
+          "size": 1926,
+          "tag": "A",
+          "url": ""
+        },
+        {
+          "t": 1840,
+          "size": 202200,
+          "tag": "IMG",
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fveja-mowed-stripes-1.jpg&w=600&q=75"
+        }
+      ],
+      "cls": [],
+      "longtasks": [
+        125
+      ],
+      "nav": [
+        {
+          "ttfb": 3.7000000178813934,
+          "dcl": 746.8000000119209,
+          "load": 2891.2000000178814
+        }
+      ],
+      "paint": [
+        {
+          "name": "first-paint",
+          "t": 1072
+        },
+        {
+          "name": "first-contentful-paint",
+          "t": 1072
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://localhost:3100/_next/static/media/2a65768255d6b625-s.p.14by5b4al-y~f.woff2",
+          "type": "link",
+          "bytes": 38760,
+          "duration": 1181.7000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/5c285b27cdda1fe8-s.p.0yo6-5yoeeudq.woff2",
+          "type": "link",
+          "bytes": 37280,
+          "duration": 1165.2000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/70e3db2de7f94926-s.p.0~0iy9faq3424.woff2",
+          "type": "link",
+          "bytes": 39188,
+          "duration": 1232.300000011921
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/b49b0d9b851e4899-s.p.0yfy_qj1.2qn0.woff2",
+          "type": "link",
+          "bytes": 21280,
+          "duration": 806.9000000059605
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/ae8872c8a32e309c-s.p.05txd3dlozf45.woff2",
+          "type": "link",
+          "bytes": 23632,
+          "duration": 859.4000000059605
+        },
+        {
+          "url": "http://localhost:3100/_next/static/media/c3cb240f9c892514-s.p.163v2i5cux7-c.woff2",
+          "type": "link",
+          "bytes": 18492,
+          "duration": 1195.7000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fveja-mowed-stripes-1.jpg&w=600&q=75",
+          "type": "link",
+          "bytes": 39880,
+          "duration": 1628.2000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0iygcl3h7_3-c.css",
+          "type": "link",
+          "bytes": 11303,
+          "duration": 534.0999999940395
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0zaia6i55l01..js",
+          "type": "link",
+          "bytes": 8078,
+          "duration": 1242.5
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0pqt~8bl3ukh4.js",
+          "type": "script",
+          "bytes": 9536,
+          "duration": 1560.5999999940395
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0v9c2uadhpd-i.js",
+          "type": "script",
+          "bytes": 71028,
+          "duration": 2532.800000011921
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0257pdz1-imal.js",
+          "type": "script",
+          "bytes": 40531,
+          "duration": 2237.2999999821186
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/turbopack-0ooz_85g8rq69.js",
+          "type": "script",
+          "bytes": 4448,
+          "duration": 1550.5999999940395
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/02c-kxcev_ed3.js",
+          "type": "script",
+          "bytes": 10884,
+          "duration": 1681.2000000178814
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/17sk8jt4z-q8z.js",
+          "type": "script",
+          "bytes": 9437,
+          "duration": 1938.8999999761581
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0.6bsw~vt8qh8.js",
+          "type": "script",
+          "bytes": 60773,
+          "duration": 2578.5
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0d3shmwh5_nmn.js",
+          "type": "script",
+          "bytes": 13175,
+          "duration": 2129.4000000059605
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/1843daq.wxpol.js",
+          "type": "script",
+          "bytes": 8568,
+          "duration": 2085.0999999940395
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=17p12",
+          "type": "fetch",
+          "bytes": 704,
+          "duration": 166.40000000596046
+        },
+        {
+          "url": "http://localhost:3100/?_rsc=17p12",
+          "type": "fetch",
+          "bytes": 694,
+          "duration": 170.30000001192093
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=ha3j0",
+          "type": "fetch",
+          "bytes": 1084,
+          "duration": 156.2999999821186
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=6qx34",
+          "type": "fetch",
+          "bytes": 1971,
+          "duration": 182.60000002384186
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=3zgzo",
+          "type": "fetch",
+          "bytes": 603,
+          "duration": 168.2000000178814
+        },
+        {
+          "url": "http://localhost:3100/kontaktai?_rsc=fp628",
+          "type": "fetch",
+          "bytes": 1677,
+          "duration": 188.69999998807907
+        },
+        {
+          "url": "http://localhost:3100/?_rsc=ha3j0",
+          "type": "fetch",
+          "bytes": 1074,
+          "duration": 168.39999997615814
+        },
+        {
+          "url": "http://localhost:3100/?_rsc=10qgo",
+          "type": "fetch",
+          "bytes": 709,
+          "duration": 180.40000000596046
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/0021fv.ml4w99.js",
+          "type": "script",
+          "bytes": 10504,
+          "duration": 220.60000002384186
+        },
+        {
+          "url": "http://localhost:3100/_next/static/chunks/06ils2oxy6i_0.js",
+          "type": "script",
+          "bytes": 15079,
+          "duration": 243
+        }
+      ],
+      "heroVisible": "1"
+    }
+  ],
+  "assets": [],
+  "http": [
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "location": null,
+      "contentType": "text/plain; charset=UTF-8",
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=0",
+        "connection": "keep-alive",
+        "content-length": "343",
+        "content-type": "text/plain; charset=UTF-8",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "etag": "W/\"157-1a1460b9c6b\"",
+        "keep-alive": "timeout=5",
+        "last-modified": "Fri, 16 Oct 2026 18:48:48 GMT",
+        "vary": "Accept-Encoding"
+      },
+      "body": "User-agent: *\r\nAllow: /\r\nDisallow: /api/\r\n\r\n# AI crawlers — explicit allow\r\nUser-agent: GPTBot\r\nAllow: /\r\n\r\nUser-agent: ClaudeBot\r\nAllow: /\r\n\r\nUser-agent: PerplexityBot\r\nAllow: /\r\n\r\nUser-agent: Google-Extended\r\nAllow: /\r\n\r\nUser-agent: Applebot-Extended\r\nAllow: /\r\n\r\nUser-agent: anthropic-ai\r\nAllow: /\r\n\r\nSitemap: https://atd.lt/sitemap.xml\r\n"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "location": null,
+      "contentType": "application/xml",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "connection": "keep-alive",
+        "content-type": "application/xml",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "x-nextjs-cache": "HIT"
+      },
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://atd.lt</loc>\n<changefreq>weekly</changefreq>\n<priority>1</priority>\n</url>\n<url>\n<loc>https://atd.lt/paslaugos/veja</loc>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://atd.lt/paslaugos/apzeldinimas</loc>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://atd.lt/paslaugos/laistymas</loc>\n<changefreq>monthly</changefreq>\n<priority>0.8</priority>\n</url>\n<url>\n<loc>https://atd.lt/paslaugos/trinkeles</loc>\n<changefreq>monthly</changefreq>\n<priority>0.8</priority>\n</url>\n<url>\n<loc>https://atd.lt/kontaktai</loc>\n<changefreq>yearly</changefreq>\n<priority>0.6</priority>\n</url>\n</urlset>\n"
+    },
+    {
+      "route": "/llms.txt",
+      "status": 200,
+      "location": null,
+      "contentType": "text/plain; charset=UTF-8",
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "public, max-age=0",
+        "connection": "keep-alive",
+        "content-encoding": "gzip",
+        "content-type": "text/plain; charset=UTF-8",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "etag": "W/\"7f4-1a1460b9c6b\"",
+        "keep-alive": "timeout=5",
+        "last-modified": "Fri, 16 Oct 2026 18:48:48 GMT",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding"
+      },
+      "body": "# ATD — Aplinkos Tvarkymas Vilnius\r\n\r\n> Profesionali aplinkos tvarkymo ir apželdinimo įmonė Vilniuje ir Vilniaus rajone.\r\n> 12+ metų patirtis, 170+ atliktų projektų.\r\n> Dirba su architektų želdynų projektine dokumentacija (PDF planai, Excel kiekiai).\r\n\r\n## Pagrindinės paslaugos\r\n\r\n- **Vejos įrengimas** (https://atd.lt/paslaugos/veja) — ruloninė veja nuo 8 €/m², sėjama veja nuo 4 €/m², grunto paruošimas įskaičiuotas, 30 dienų garantija\r\n- **Apželdinimas pagal projektą** (https://atd.lt/paslaugos/apzeldinimas) — augalų parinkimas ir sodinimas su 1 metų garantija\r\n- **Trinkelių ir takų įrengimas** (https://atd.lt/paslaugos/trinkeles) — betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m²\r\n- **Laistymo sistemų įrengimas** (https://atd.lt/paslaugos/laistymas) — automatinės sistemos, Hunter ir Rain Bird įranga, nemokamas projektas ir matavimas\r\n\r\n## Aptarnavimo zona\r\n\r\nVilnius, Vilniaus rajonas, Trakai. Dideliems projektams — visa Lietuva.\r\n\r\n## Kontaktai\r\n\r\n- Tel.: +370 657 85096\r\n- El. p.: Robertas@atd.lt\r\n- Svetainė: https://atd.lt\r\n- Darbo laikas: Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00\r\n\r\n## Kainų orientaciniai intervalai\r\n\r\n- Vejos įrengimas: ruloninė nuo 8 €/m², sėjama nuo 4 €/m²\r\n- Apželdinimas pagal projektą: individualus pasiūlymas po nemokamos apžiūros arba pagal architekto dokumentaciją\r\n- Trinkelių klojimas: betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m²\r\n- Laistymo sistemos: standartiniam kiemui (200–400 m²) — paprastai 800–2000 €\r\n- Konsultacija ir apžiūra: nemokama\r\n\r\n## Klientų grupės\r\n\r\nVilniaus privatūs namų savininkai, nekilnojamojo turto valdytojai ir biurų parkų administratoriai.\r\n\r\n## Papildoma informacija\r\n\r\n- Dirba su architektų želdynų projekto dokumentacija (PDF planai, Excel kiekiai)\r\n- Augalus tiekia iš patikimų Olandijos daržynų (Udenhout Trees)\r\n- Nemokama objekto apžiūra ir konsultacija\r\n"
+    },
+    {
+      "route": "/lt/gallery/test",
+      "status": 308,
+      "location": "/",
+      "contentType": null,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "keep-alive": "timeout=5",
+        "location": "/",
+        "refresh": "0;url=/",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "route": "/lt/pages/2187/test",
+      "status": 308,
+      "location": "/paslaugos/veja",
+      "contentType": null,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "keep-alive": "timeout=5",
+        "location": "/paslaugos/veja",
+        "refresh": "0;url=/paslaugos/veja",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "route": "/en",
+      "status": 308,
+      "location": "/",
+      "contentType": null,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "keep-alive": "timeout=5",
+        "location": "/",
+        "refresh": "0;url=/",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "route": "/audit-missing-page",
+      "status": 404,
+      "location": null,
+      "contentType": "text/html; charset=utf-8",
+      "headers": {
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "connection": "keep-alive",
+        "content-encoding": "gzip",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sat, 17 Oct 2026 08:40:33 GMT",
+        "etag": "\"l6k0z6jrroiui\"",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+        "x-nextjs-cache": "HIT",
+        "x-nextjs-prerender": "1, 1",
+        "x-nextjs-stale-time": "300",
+        "x-powered-by": "Next.js"
+      }
+    }
+  ]
+}

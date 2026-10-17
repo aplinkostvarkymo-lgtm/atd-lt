@@ -45,11 +45,11 @@ function useVisibleOnce(ref: React.RefObject<HTMLElement | null>): boolean {
 }
 
 function useCountUp(target: number, inView: boolean, skip: boolean): number {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   const started = useRef(false);
 
   useEffect(() => {
-    if (skip) { setCount(target); return; }
+    if (skip) return;
     if (!inView || started.current) return;
     started.current = true;
     const duration = 1600;
@@ -60,10 +60,11 @@ function useCountUp(target: number, inView: boolean, skip: boolean): number {
       setCount(Math.round(eased * target));
       if (progress < 1) requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    const frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
   }, [inView, skip, target]);
 
-  return count;
+  return skip ? target : count;
 }
 
 export function StatsBar() {

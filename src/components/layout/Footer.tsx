@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
-import { SERVICE_LINKS } from "@/components/layout/Header";
+import { SERVICE_LINKS } from "@/lib/navigation";
+import { openCookieSettings } from "@/lib/cookieConsent";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
 export function Footer() {
@@ -31,7 +32,7 @@ export function Footer() {
           <ul className="space-y-2">
             {SERVICE_LINKS.map(({ href, key }) => (
               <li key={key}>
-                <Link
+                <Link underline
                   href={href}
                   className="font-body text-sm text-white/70 hover:text-white transition-colors"
                 >
@@ -49,12 +50,12 @@ export function Footer() {
           </p>
           <ul className="space-y-2 font-body text-sm">
             <li>
-              <a href="tel:+37065785096" className="text-white/70 hover:text-white transition-colors">
+              <a href="tel:+37065785096" className="link-underline text-white/70 hover:text-white transition-colors">
                 +370 657 85096
               </a>
             </li>
             <li>
-              <a href="mailto:Robertas@atd.lt" className="text-white/70 hover:text-white transition-colors">
+              <a href="mailto:Robertas@atd.lt" className="link-underline text-white/70 hover:text-white transition-colors">
                 Robertas@atd.lt
               </a>
             </li>
@@ -64,7 +65,7 @@ export function Footer() {
             <li className="text-white/50">{t.footer.area}</li>
             <li className="text-white/50">{t.footer.hours}</li>
             <li className="pt-1">
-              <Link href="/kontaktai" className="text-white/70 hover:text-white transition-colors">
+              <Link underline href="/kontaktai" className="text-white/70 hover:text-white transition-colors">
                 {t.nav.contact}
               </Link>
             </li>
@@ -74,7 +75,8 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 font-body text-xs text-white/40">
-          © {new Date().getFullYear()} ATD — Aplinkos Tvarkymas. {t.footer.rights}
+          <span>© {new Date().getFullYear()} ATD — Aplinkos Tvarkymas. {t.footer.rights}</span>
+          <button type="button" onClick={openCookieSettings} className="block sm:inline-flex sm:ml-6 mt-3 sm:mt-0 min-h-11 text-white/75 underline underline-offset-4 hover:text-white">{t.cookieConsent.settings}</button>
         </div>
       </div>
     </footer>

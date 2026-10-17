@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { ProcessSteps } from "@/components/ui/ProcessSteps";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
 type T = { [K in keyof typeof translations.lt.tvenkiniaiPas]: string };
@@ -37,7 +38,7 @@ function Hero({ t }: { t: T }) {
     <section className="bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16">
       <div className="max-w-5xl mx-auto px-6">
         <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
-          <Link href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
+          <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
           <span className="text-white/60">{t.breadcrumb_services}</span>
           <span>/</span>
@@ -57,7 +58,7 @@ function Hero({ t }: { t: T }) {
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]">
             {t.hero_cta_call}: +370 657 85096
           </a>
-          <Link href="/kontaktai"
+          <Link arrow href="/kontaktai"
             className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]">
             {t.hero_cta_quote}
           </Link>
@@ -152,20 +153,7 @@ function Process({ t }: { t: T }) {
           <h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black">{t.process_heading}</h2>
           <p className="font-body text-atd-gray-soft mt-2 text-sm">{t.process_sub}</p>
         </motion.div>
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 relative">
-          <div className="hidden md:block absolute top-6 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] h-px bg-atd-green/20" />
-          {steps.map((step, i) => (
-            <motion.div key={i} className="relative" {...fadeUp(i * 0.1)}>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-atd-green text-white font-display font-bold text-base flex items-center justify-center shrink-0 relative z-10">
-                  {i + 1}
-                </div>
-                <h3 className="font-display font-bold text-lg text-atd-black">{step.title}</h3>
-              </div>
-              <p className="font-body text-sm text-atd-gray-soft leading-relaxed pl-[3.25rem]">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        <ProcessSteps steps={steps} />
       </div>
     </section>
   );

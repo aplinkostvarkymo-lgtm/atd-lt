@@ -173,3 +173,47 @@ Visa ši sesija dirba **atskiroje šakoje** (`claude/atd-launch-and-polish-8bc65
 - AI kalkuliatorius (`/api/calculate`) ir Airtable augalų kainų paieška (aprašyta `docs/ATD-remake.md`) — neimplementuota, tik planavimo dokumentuose.
 - **GA4 `NEXT_PUBLIC_GA_MEASUREMENT_ID` reikia pridėti Vercel env vars** (žr. skyrių 13) — kol nepridėta, production'e GA4 niekada nesikrauna, net jei vartotojas paspaudžia "Sutinku".
 - GitHub repo `master` šaka (nesusijusi istorija) — neištirta giliau, nepaliesta.
+
+---
+
+## 15. Nepriklausomas Codex auditas — 2026-10-17
+
+Perskaitytas CODEX_REVIEW.md ir atliktas esamos šakos `claude/atd-launch-and-polish-8bc650`, HEAD `e1f4430f`, vizualinis, kodo, SEO ir GEO auditas. Rezultatas: `atd-lt-audit/FULL-AUDIT-REPORT.md`, atskiras ACTION-PLAN.md, penkios sričių ataskaitos, struktūriniai JSON įrodymai ir 21 production ekrano kopija.
+
+- Programos kodas ir paketai nekeisti, jokių commit / push / deploy. Ankstesni žurnalo įrašai palikti istorijai; jų sąrašas apie dar neegzistuojančią galeriją nebėra dabartinės būklės patvirtinimas.
+- TypeScript ir production build praėjo (build prireikė tinklo Google Fonts). Lint nepraeina dėl penkių react-hooks/set-state-in-effect klaidų. Nominali z-index tvarka teisinga, bet mobile hero paslaugų juostą uždengia sticky CTA.
+- Patikrinti visi 8 vieši puslapiai 1440 ir 390 px, papildomi homepage pločiai 320 / 768 / 1024. 200 atsakymai, 0 pageerror, dokumento horizontalus overflow nerastas. /darbai header kontrastas 1,13:1, dropdown nevaldomas klaviatūra ir nutrūksta pereinant pelės tarpą; dialogams trūksta fokuso / Escape valdymo. No-JS homepage H1/CTA nematomi, statistika HTML rodo 0+.
+- Kainų BiLang pakeitimas teisingas, visos galerijos nuotraukos egzistuoja, filtrų patikra praėjo. Nėra patvirtinto šriftų gedimo ar „dingusių sekcijų“ klaidos; pirmų screenshot skenavimo smooth-scroll artefaktas atskirtas ir pataisytas audito skripte.
+- Sitemap apima 6/8 puslapių, EN tik kliento būsena su LT metadata, llms tebeskelbia nepatvirtintus Trakus. Galerijos „tikri ATD projektai“ teiginiai turi būti suderinti su CODEX_REVIEW nuotraukų kilmės pastaba; auditas netvirtina, kad nuotraukos svetimos.
+- npm audit gautas iš registro, rastos priklausomybių pranešimų versijų atitiktys; ne kiekviena pranešimo taikymo sąlyga čia tenkinama. Detalės security.md, jokių išnaudojimo bandymų.
+- API bandymai tik su mock; jokių įrašų Airtable ar el. laiškų. Tikras production indeksavimas, GSC/GBP/AI citavimas ir CrUX nepatvirtinti; vietiniai lab duomenys atskirti. Joks SEO/GEO rubrikos balas nėra realaus platformų matomumo matavimas.
+
+## 16. Autorizuoti audito pataisymai, išsaugant durų efektą — 2026-10-17
+
+Vartotojas autorizavo klaidų taisymą ir aiškiai paprašė išsaugoti hero durų atsidarymo efektą. Taip pat patvirtino, kad **visos 13 galerijos nuotraukų yra ATD darbai**. Hero video ir pagrindinis kadras nepakeisti, 2× playbackRate bei desktop žymeklių koordinatės išsaugoti; pridėtas video klaidos / užstrigimo ir no-JS fallback. SHA-256 patvirtinta prieš Git HEAD.
+
+Įgyvendinti navigacijos, native dialogų ir fokuso, mobiliosios CTA / hero išdėstymo, formos / API validacijos ir dažnio ribojimo, email `after` / HTTP klaidų, slapukų nustatymų, kontrasto, lokalizacijos, reduced motion ir SEO pakeitimai. LT URL išsaugoti, EN turi /en URL. Pagal naujos Next versijos vadovą puslapiai generuojami `src/app/[lang]/[[...slug]]/page.tsx`, šakninis layout perkeltas į `[lang]`; `src/proxy.ts` tik viduje perrašo LT į /lt. Sitemap dabar 16 kalbinių URL.
+
+Next / third-parties / eslint-config-next 16.4.2; nereikalingas shadcn CLI pašalintas, jo CSS utilities saugomos src/app/component-utilities.css. `npm audit --omit=dev` — 0; pilname audite liko 5 high kūrimo įrankių įrašai vienoje braces grandinėje, saugaus suderinamo pataisymo registre nėra. Force downgrade netaikytas.
+
+Patikros: build, lint, tsc ir diff --check PASS; 375 / 375 LT/EN vertimų raktai; 46/46 naršyklės ir 15/15 izoliuotų API bandymų, 0 pageerror. Jokių tikrų lead / el. laiškų ar deploy. Pasirenkamam bendram serverless limitui reikalingi UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN; be jų veikia per-process limitas. Tikri hosting env / tiekėjai / indeksavimas nepatvirtinti.
+
+Pilna pataisymų suvestinė, ribos ir įrodymai: `atd-lt-audit/FIXES.md`, `atd-lt-audit/after/verification.json`, `atd-lt-audit/evidence/lead-fixes-results.json`. Pradinio audito balai palikti kaip istorinė būklė, o ne naujas įvertinimas. Commit / push neatlikti; darbas vykdytas toje pačioje atskiroje peržiūros šakoje.
+
+## 17. Vienkartinė paslaugų proceso animacija — 2026-10-17
+
+Vartotojas paprašė visų penkių paslaugų 1–2–3 sekose vieną kartą nupiešti jungiamąją liniją ir paeiliui atskleisti numerius, palaikant reduced motion. Bendras `ProcessSteps.tsx` pakeičia dubliuotą etapų atvaizdavimą; LT/EN tekstai išsaugoti. Desktop jungtis horizontali, telefone vertikali, tiksliai tarp numerių centrų. Visa seka 780 ms, be ciklų ir pakartotinio paleidimo slenkant. Aprašymai neanimuojami; esami heading efektai išsaugoti. Be JavaScript / IntersectionObserver arba įjungus reduced motion numeriai ir linijos statiškai matomi. Pakeitus judesio nuostatą sesijos metu efektas taip pat pašalinamas. Naujų priklausomybių nėra.
+
+Patikra: 19/19 Edge testų, 0 pageerror; visi penki LT puslapiai 1440 / 390 px ir penki EN desktop, sumažintas judesys, jo pakeitimas sesijos metu, no-JS, animacijos seka / trukmė / nepasikartojimas, jungčių geometrija. Viena bendra desktop / mobile vizualinė peržiūra, taisymų po jos nereikėjo. Įrodymai `atd-lt-audit/after/process/verification.json`, dvi ekrano kopijos tame pačiame kataloge, skriptas `atd-lt-audit/evidence/verify-process-motion.cjs`.
+
+Lint ir tsc PASS. `next build` Turbopack šiame paleidime nutrūko dėl PostCSS pagalbinio Node proceso (ir sandbox, ir išplėstomis teisėmis); production `npx next build --webpack` PASS. package.json build komanda nepakeista. Hero MP4 SHA-256 tebėra `d91249bb704834626f73b9579641fe245eb9bb07e1d97a1265bc9406c1d577ed`; hero komponentas šiame pakeitime neliestas. Production peržiūra atnaujinta `http://localhost:3100`, exec session 4518. Commit / push / deploy neatlikti.
+
+## 18. Nuorodų pabraukimas ir CTA rodyklės — 2026-10-17
+
+Vartotojas autorizavo abu mikroefektus. `LocalizedLink` turi pasirenkamus `underline` / `arrow` parametrus, kurie nepatenka į HTML atributus. Tekstinėse header / dropdown / mobile meniu, footer ir breadcrumb nuorodose tekstas pabraukiamas iš kairės per 180 ms užvedus pelę arba gavus `focus-visible`. Pabraukiama pagal teksto, ne visos meniu eilutės plotį. CTA SVG rodyklės (aria-hidden) pasislenka 3 px per 180 ms: homepage kainos mygtuke, penkių paslaugų kainos / pasiūlymo mygtukuose, darbų puslapio kontakte ir service popup. Apželdinimo nuorodos į laistymą tekstinė rodyklė abiem kalbomis pakeista tuo pačiu SVG. Telefono / email mygtukams papildomos rodyklės nedėtos. Reduced motion: pabraukimas momentinis, rodyklė nejuda; hover animacija tik fine pointer / hover įrenginiams. Jokių naujų priklausomybių.
+
+Patikra: 24/24 Edge testų, 0 pageerror; visi 8 LT ir EN puslapiai, mouse / keyboard fokusas, poslinkis be layout shift, reduced motion ir penki 320 px touch scenarijai. Pradinis vienos patikros neatitikimas buvo computed CSS nulio formatas (0px vs 0%), pataisytas tik tikrinimas. Dvi desktop / mobile ekrano kopijos vizualiai peržiūrėtos, UI pataisymų po peržiūros nereikėjo. Įrodymai `atd-lt-audit/after/links/verification.json`, skriptas `atd-lt-audit/evidence/verify-link-motion.cjs`. Lint / tsc / diff --check ir production webpack build PASS. Hero intro / video / fonas / žymekliai nepakeisti, `GardenSceneHero` pridėtas tik CTA arrow parametras. Peržiūra localhost:3100 atnaujinta, exec session 46702. Commit / push / deploy neatlikti. Vartotojas šiuo metu savarankiškai siunčiasi 419 nuotraukų iš Google Drive; atranka dar nepradėta.
+
+## 19. Audito pataisymų ir animacijų commit / push autorizacija — 2026-10-17
+
+Vartotojas aiškiai paprašė commitinti ir pushinti audito pataisymus bei naujas animacijas. Po `git fetch origin` patvirtinta, kad `origin/main` ir darbo šakos HEAD sutampa (`e1f4430f`), todėl galimas įprastas fast-forward push. Parengtas vienas bendras commit su kodu, audito ataskaitomis ir patikrų įrodymais. Publikavimo tikslas pagal CLAUDE.md — `main`, taip pat išsaugoma `claude/atd-launch-and-polish-8bc650` šaka. Anksčiau vartotojo pateiktas untracked `CODEX_REVIEW.md` nėra mūsų pakeitimas ir paliekamas vietoje neįtrauktas į commit. Ankstesnės sekcijos apie commit / push nebuvimą aprašo tų etapų būseną. Galutinės patikros: lint, tsc, webpack production build, 46 bendros naršyklės / 15 API / 19 proceso animacijos / 24 nuorodų ir CTA patikros; vėlesnės patikros atitinka vėlesnių pakeitimų apimtį.

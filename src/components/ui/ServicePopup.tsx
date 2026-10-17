@@ -2,11 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import { getService, type ServiceBlock, type Lang } from "@/lib/services-content";
+import { Modal } from "@/components/ui/Modal";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
 /* ── Block renderers ──────────────────────────────────────── */
@@ -161,23 +162,6 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
   const { lang } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Close on Escape
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
-
-  // Lock body scroll while open
-  useEffect(() => {
-    if (serviceId) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [serviceId]);
-
   // Reset scroll on service change
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = 0;
@@ -186,6 +170,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
   const service = serviceId ? getService(serviceId) : null;
 
   return (
+    <Modal open={!!service} onClose={onClose} label={service?.heading[lang] ?? translations[lang].nav.services}>
     <AnimatePresence>
       {service && (
         <>
@@ -231,7 +216,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
               <button
                 type="button"
                 onClick={onClose}
-                className="shrink-0 w-8 h-8 flex items-center justify-center text-atd-gray-soft hover:text-atd-black transition-colors mt-0.5"
+                className="shrink-0 w-11 h-11 flex items-center justify-center text-atd-gray-soft hover:text-atd-black transition-colors mt-0.5"
                 aria-label={translations[lang].common.close}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -263,7 +248,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
             {/* Footer CTA — fixed */}
             <div className="shrink-0 px-6 py-4 border-t border-atd-black/8 bg-white/60 backdrop-blur-sm flex items-center gap-4">
               <Link
-                href={service.ctaHref}
+                arrow href={service.ctaHref}
                 onClick={onClose}
                 className="inline-flex items-center px-5 py-2.5 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-all active:scale-[0.97]"
               >
@@ -281,5 +266,6 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
         </>
       )}
     </AnimatePresence>
+    </Modal>
   );
 }

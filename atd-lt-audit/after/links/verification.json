@@ -1,0 +1,230 @@
+{
+  "tests": [
+    {
+      "name": "lt /: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 12,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /paslaugos/veja: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /paslaugos/apzeldinimas: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 2,
+        "underlines": 14,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /paslaugos/trinkeles: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /paslaugos/laistymas: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /paslaugos/tvenkiniai: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /darbai: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "lt /kontaktai: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 0,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 12,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /paslaugos/veja: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /paslaugos/apzeldinimas: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 2,
+        "underlines": 14,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /paslaugos/trinkeles: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /paslaugos/laistymas: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /paslaugos/tvenkiniai: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /darbai: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 1,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "en /kontaktai: arrows, labels, layout",
+      "passed": true,
+      "details": {
+        "arrows": 0,
+        "underlines": 13,
+        "overflow": false,
+        "leakedProps": 0,
+        "decorative": true
+      }
+    },
+    {
+      "name": "Mouse: underline draws, CTA arrow moves 3px without layout shift",
+      "passed": true,
+      "details": {
+        "offset": 3,
+        "duration": 180,
+        "layoutShift": false
+      }
+    },
+    {
+      "name": "Keyboard: navigation underline and CTA arrow respond to Tab",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion: immediate underline, static arrow",
+      "passed": true,
+      "details": {
+        "arrow": {
+          "transform": "none",
+          "duration": "0s"
+        },
+        "label": {
+          "size": "100% 1px",
+          "duration": "0s"
+        }
+      }
+    },
+    {
+      "name": "320 touch /: CTA fits",
+      "passed": true
+    },
+    {
+      "name": "320 touch /paslaugos/veja: CTA fits",
+      "passed": true
+    },
+    {
+      "name": "320 touch /paslaugos/apzeldinimas: CTA fits",
+      "passed": true
+    },
+    {
+      "name": "320 touch /en/paslaugos/laistymas: CTA fits",
+      "passed": true
+    },
+    {
+      "name": "320 touch /darbai: CTA fits",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": 24,
+  "failed": 0
+}

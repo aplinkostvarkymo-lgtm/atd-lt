@@ -1,38 +1,10 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://atd.lt";
+import { PAGE_PATHS, localizedPath } from "@/lib/navigation";
+import { SITE_URL } from "@/lib/site-metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: BASE_URL,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${BASE_URL}/paslaugos/veja`,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/paslaugos/apzeldinimas`,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/paslaugos/laistymas`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/paslaugos/trinkeles`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/kontaktai`,
-      changeFrequency: "yearly",
-      priority: 0.6,
-    },
-  ];
+  return PAGE_PATHS.flatMap(path => (["lt", "en"] as const).map(lang => ({
+    url: SITE_URL + localizedPath(path, lang),
+    alternates: { languages: { lt: SITE_URL + localizedPath(path, "lt"), en: SITE_URL + localizedPath(path, "en") } },
+  })));
 }

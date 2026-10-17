@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/LocalizedLink";
 import { motion, useReducedMotion } from "framer-motion";
 import { HotspotMarker, type HotspotData } from "@/components/ui/HotspotMarker";
 import { ServicePopup } from "@/components/ui/ServicePopup";
@@ -10,11 +10,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import type { IconName } from "@/components/ui/HotspotMarker";
 
-/* "prekyba" (/paslaugos/prekyba-augalais), "darbai" (/darbai), "patarimai" (/patarimai)
-   ir "kontaktai" (/kontaktai) hotspot'ai pašalinti — šių puslapių kol kas nėra */
-/* Originalios koordinatės, atitinkančios nuotraukos turinį (gėlynas/purškikliai/
-   veja/takas). Tekstinio bloko kolizija su "apzeldinimas" sprendžiama paslenkant
-   PATĮ TEKSTĄ žemiau (žr. main text bloko bottom-[8%] md:bottom-[2%]), ne hotspot'us. */
+/* Keep the four original desktop coordinates aligned with the photographed garden.
+   Mobile copy and service controls reserve space above the fixed contact bar. */
 const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeof translations.lt.hotspots }> = [
   {
     id: "apzeldinimas",
@@ -48,7 +45,8 @@ const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeo
 
 export function GardenSceneHero() {
   const shouldReduceMotion = useReducedMotion();
-  const [showImage, setShowImage] = useState(false);
+  const [videoFinished, setVideoFinished] = useState(false);
+  const showImage = videoFinished || shouldReduceMotion === true;
   const [showHotspots, setShowHotspots] = useState(false);
   const [activeService, setActiveService] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -61,15 +59,19 @@ export function GardenSceneHero() {
   }));
 
   useEffect(() => {
-    if (shouldReduceMotion === true) {
-      setShowImage(true);
-      setShowHotspots(true);
-    }
+    const video = videoRef.current;
+    if (!video || shouldReduceMotion) return;
+    video.playbackRate = 2;
+    // Preserve the doors sequence; only recover if playback never starts or stalls.
+    let fallback = window.setTimeout(() => setVideoFinished(true), 10000);
+    const progress = () => {
+      window.clearTimeout(fallback);
+      fallback = window.setTimeout(() => setVideoFinished(true), 10000);
+    };
+    video.addEventListener("timeupdate", progress);
+    video.play().catch(() => setVideoFinished(true));
+    return () => { window.clearTimeout(fallback); video.removeEventListener("timeupdate", progress); };
   }, [shouldReduceMotion]);
-
-  useEffect(() => {
-    if (videoRef.current) videoRef.current.playbackRate = 2;
-  }, []);
 
   useEffect(() => {
     if (!showImage) return;
@@ -77,11 +79,11 @@ export function GardenSceneHero() {
     return () => clearTimeout(timer);
   }, [showImage]);
 
-  const revealImage = () => setShowImage(true);
+  const revealImage = () => setVideoFinished(true);
 
   return (
     <>
-      <section className="relative w-full h-screen min-h-[600px] overflow-hidden bg-black">
+      <section className="garden-hero relative w-full overflow-hidden bg-black">
 
         {/* Video intro */}
         {!shouldReduceMotion && (
@@ -99,12 +101,12 @@ export function GardenSceneHero() {
         )}
 
         {/* Background image */}
-        <div className={`absolute inset-0 transition-opacity duration-700 ${showImage ? "opacity-100" : "opacity-0"}`}>
+        <div className={`hero-image absolute inset-0 transition-opacity duration-700 ${showImage ? "opacity-100" : "opacity-0"}`}>
           <Image
             src="/images/main_one.png"
             alt={t.hero.imageAlt}
             fill
-            priority
+            preload
             className="object-cover"
             sizes="100vw"
           />
@@ -112,26 +114,21 @@ export function GardenSceneHero() {
         </div>
 
         {/* Hotspots — desktop only */}
-        <div className="absolute inset-0 z-10 hidden md:block">
+        <div className="hero-hotspots absolute inset-0 z-10 hidden md:block">
           {HOTSPOTS.map((hotspot, i) => (
             <HotspotMarker
               key={hotspot.id}
               data={hotspot}
-              isVisible={showHotspots}
+              isVisible={showHotspots || shouldReduceMotion === true}
               index={i}
               onOpen={() => setActiveService(hotspot.id)}
             />
           ))}
         </div>
 
-        {/* Main text — desktop: nuleista žemiau (md:bottom-[2%]) ir paslinkta arčiau
-            centro (md:left-[21%], +15% nuo left-[6%]), kad atidengtų "apzeldinimas"
-            hotspot'ą jo originalioje vietoje (left:30% top:52%) — vertikalus tarpas
-            (žr. bottom-[2%]) išlieka pakankamas net pasislinkus horizontaliai.
-            Mobile (left-[6%] bottom-[8%]) nekeičiamas — neturi susikirsti su mobile
-            service strip ir netampa siauresnis dėl judesio į centrą. */}
+        {/* Desktop composition is preserved; mobile copy clears the service strip. */}
         <motion.div
-          className="absolute bottom-[8%] md:bottom-[2%] left-[6%] md:left-[21%] z-10 max-w-xl"
+          className="hero-copy absolute bottom-[5.5rem] md:bottom-[2%] left-[6%] right-[6%] md:right-auto md:left-[21%] z-10 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showImage ? 1 : 0, y: showImage ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -152,12 +149,11 @@ export function GardenSceneHero() {
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <Link
-              href="/kontaktai"
+              arrow href="/kontaktai"
               className="inline-flex items-center px-6 py-3 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-all active:scale-[0.97]"
             >
               {t.hero.cta_price}
             </Link>
-            {/* "Žiūrėti darbus" (/darbai) CTA pašalintas — puslapio kol kas nėra */}
           </div>
           {/* Telefono eilutė po CTA pašalinta — telefonas akcentuojamas header'yje */}
         </motion.div>
@@ -170,7 +166,7 @@ export function GardenSceneHero() {
                 key={hotspot.id}
                 type="button"
                 onClick={() => setActiveService(hotspot.id)}
-                className="flex-shrink-0 bg-white/15 border border-white/30 text-white text-xs font-body px-4 py-2 whitespace-nowrap"
+                className="flex-shrink-0 bg-white/15 border border-white/30 text-white text-xs font-body px-4 py-3 whitespace-nowrap"
               >
                 {hotspot.label}
               </button>
@@ -182,7 +178,7 @@ export function GardenSceneHero() {
         {!shouldReduceMotion && !showImage && (
           <div className="absolute top-20 right-4 z-[60]">
             <button
-              className="font-body text-xs text-white/60 hover:text-white transition-colors"
+              className="hero-skip font-body text-sm text-white bg-black/60 px-3 min-h-11 hover:bg-black/80 transition-colors"
               onClick={revealImage}
             >
               {t.hero.skip}

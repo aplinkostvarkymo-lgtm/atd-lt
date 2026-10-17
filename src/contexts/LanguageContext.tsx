@@ -1,6 +1,8 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { localizedPath } from "@/lib/navigation";
 import type { Lang } from "@/lib/translations";
 
 interface LanguageContextValue {
@@ -13,21 +15,16 @@ const LanguageContext = createContext<LanguageContextValue>({
   setLang: () => {},
 });
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("lt");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("atd-lang") as Lang | null;
-    if (saved === "lt" || saved === "en") setLangState(saved);
-  }, []);
-
+export function LanguageProvider({ children, lang }: { children: React.ReactNode; lang: Lang }) {
+  const pathname = usePathname();
+  const router = useRouter();
   useEffect(() => {
     document.documentElement.lang = lang;
+    try { localStorage.setItem("atd-lang", lang); } catch { /* URL remains usable without storage. */ }
   }, [lang]);
-
   const setLang = (newLang: Lang) => {
-    setLangState(newLang);
-    localStorage.setItem("atd-lang", newLang);
+    try { localStorage.setItem("atd-lang", newLang); } catch { /* URLs work without storage. */ }
+    router.push(localizedPath(pathname, newLang) + window.location.search + window.location.hash);
   };
 
   return (
