@@ -43,8 +43,19 @@ function Hero({ t }: { t: T }) {
     { value: t.hero_stat3, label: t.hero_stat3_label },
   ];
   return (
-    <section className="bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="relative bg-atd-green pt-20 md:pt-24 pb-14 md:pb-20 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/apzeldinimas-courtyard-wide-1.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-atd-black/60" />
+      </div>
+      <div className="relative max-w-5xl mx-auto px-6">
         <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
           <Link href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
@@ -52,11 +63,11 @@ function Hero({ t }: { t: T }) {
           <span>/</span>
           <span className="text-white/90">{t.breadcrumb_current}</span>
         </nav>
-        <motion.h1 className="font-display font-bold text-3xl md:text-5xl text-white leading-tight"
+        <motion.h1 className="font-display font-bold text-4xl md:text-6xl text-white leading-tight max-w-3xl"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           {t.hero_heading}
         </motion.h1>
-        <motion.p className="font-body text-base md:text-lg text-white/75 mt-4 max-w-xl leading-relaxed"
+        <motion.p className="font-body text-base md:text-lg text-white/80 mt-5 max-w-xl leading-relaxed"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
           {t.hero_tagline}
         </motion.p>
@@ -71,12 +82,12 @@ function Hero({ t }: { t: T }) {
             {t.hero_cta_quote}
           </Link>
         </motion.div>
-        <motion.div className="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-white/15 max-w-sm"
+        <motion.div className="grid grid-cols-3 gap-6 mt-12 max-w-sm"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}>
           {stats.map((s, i) => (
             <div key={i}>
               <div className="font-display font-bold text-2xl text-white">{s.value}</div>
-              <div className="font-body text-xs text-white/55 mt-0.5 leading-tight">{s.label}</div>
+              <div className="font-body text-xs text-white/60 mt-0.5 leading-tight">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -108,7 +119,7 @@ function Included({ t }: { t: T }) {
           </motion.div>
 
           {/* Architect docs feature callout */}
-          <motion.div className="bg-atd-green/8 border border-atd-green/20 p-6" {...fadeUp(0.12)}>
+          <motion.div className="bg-atd-green/8 p-6" {...fadeUp(0.12)}>
             <div className="flex items-center gap-2 mb-3">
               <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-atd-green shrink-0">
                 <path d="M4 4h12v12H4V4zm3 4h6M7 10h6M7 12h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -147,7 +158,7 @@ function Plants({ t }: { t: T }) {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {plants.map((plant, i) => (
-            <motion.div key={i} className="border border-atd-black/8 px-4 py-3 flex items-center gap-2.5" {...fadeUp(i * 0.06)}>
+            <motion.div key={i} className="bg-atd-cream-dark/60 px-4 py-3 flex items-center gap-2.5" {...fadeUp(i * 0.06)}>
               <span className="w-1.5 h-1.5 rounded-full bg-atd-green shrink-0" />
               <span className="font-body text-sm text-atd-black leading-snug">{plant}</span>
             </motion.div>
@@ -250,11 +261,11 @@ function FAQ({ t }: { t: T }) {
         <motion.h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black mb-8" {...fadeUp()}>
           {t.faq_heading}
         </motion.h2>
-        <div className="divide-y divide-atd-black/8">
+        <div className="space-y-1">
           {items.map((item, i) => (
             <motion.div key={i} {...fadeUp(i * 0.05)}>
               <button type="button" aria-expanded={open === i}
-                className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                className="w-full flex items-center justify-between gap-4 py-6 text-left"
                 onClick={() => setOpen(open === i ? null : i)}>
                 <span className="font-body font-semibold text-sm md:text-base text-atd-black leading-snug">{item.q}</span>
                 <span className={`transition-colors ${open === i ? "text-atd-green" : "text-atd-gray-soft"}`}>

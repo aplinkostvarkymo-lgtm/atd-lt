@@ -53,8 +53,19 @@ function Hero({ t }: { t: VejaT }) {
   ];
 
   return (
-    <section className="bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="relative bg-atd-green pt-20 md:pt-24 pb-14 md:pb-20 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/veja-mowed-stripes-1.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-atd-black/60" />
+      </div>
+      <div className="relative max-w-5xl mx-auto px-6">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
           <Link href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
@@ -65,7 +76,7 @@ function Hero({ t }: { t: VejaT }) {
         </nav>
 
         <motion.h1
-          className="font-display font-bold text-3xl md:text-5xl text-white leading-tight"
+          className="font-display font-bold text-4xl md:text-6xl text-white leading-tight max-w-3xl"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -74,7 +85,7 @@ function Hero({ t }: { t: VejaT }) {
         </motion.h1>
 
         <motion.p
-          className="font-body text-base md:text-lg text-white/75 mt-4 max-w-xl leading-relaxed"
+          className="font-body text-base md:text-lg text-white/80 mt-5 max-w-xl leading-relaxed"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -103,7 +114,7 @@ function Hero({ t }: { t: VejaT }) {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-white/15 max-w-sm"
+          className="grid grid-cols-3 gap-6 mt-12 max-w-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -111,7 +122,7 @@ function Hero({ t }: { t: VejaT }) {
           {stats.map((s, i) => (
             <div key={i}>
               <div className="font-display font-bold text-2xl text-white">{s.value}</div>
-              <div className="font-body text-xs text-white/55 mt-0.5 leading-tight">{s.label}</div>
+              <div className="font-body text-xs text-white/60 mt-0.5 leading-tight">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -295,7 +306,7 @@ function FAQ({ t }: { t: VejaT }) {
           {t.faq_heading}
         </motion.h2>
 
-        <div className="divide-y divide-atd-black/8">
+        <div className="space-y-1">
           {items.map((item, i) => (
             <motion.div key={i} {...fadeUp(i * 0.05)}>
               <button

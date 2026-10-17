@@ -43,11 +43,11 @@ function Hero({ t }: { t: T }) {
           <span>/</span>
           <span className="text-white/90">{t.breadcrumb_current}</span>
         </nav>
-        <motion.h1 className="font-display font-bold text-3xl md:text-5xl text-white leading-tight"
+        <motion.h1 className="font-display font-bold text-4xl md:text-6xl text-white leading-tight max-w-3xl"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           {t.hero_heading}
         </motion.h1>
-        <motion.p className="font-body text-base md:text-lg text-white/75 mt-4 max-w-xl leading-relaxed"
+        <motion.p className="font-body text-base md:text-lg text-white/80 mt-5 max-w-xl leading-relaxed"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
           {t.hero_tagline}
         </motion.p>
@@ -62,7 +62,7 @@ function Hero({ t }: { t: T }) {
             {t.hero_cta_quote}
           </Link>
         </motion.div>
-        <motion.div className="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-white/15 max-w-sm"
+        <motion.div className="grid grid-cols-3 gap-6 mt-12 max-w-sm"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}>
           {stats.map((s, i) => (
             <div key={i}>
@@ -121,7 +121,7 @@ function Services({ t }: { t: T }) {
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((svc, i) => (
             <motion.div key={i}
-              className="border border-atd-black/8 p-6 flex flex-col gap-4"
+              className="bg-atd-cream/60 p-6 flex flex-col gap-4"
               {...fadeUp(i * 0.08)}>
               <div className="text-atd-green">{svc.icon}</div>
               <div className="font-display font-bold text-lg text-atd-black leading-tight">{svc.name}</div>
@@ -188,7 +188,7 @@ function FAQ({ t }: { t: T }) {
         <motion.h2 className="font-display font-bold text-2xl md:text-3xl text-atd-black mb-8" {...fadeUp()}>
           {t.faq_heading}
         </motion.h2>
-        <div className="divide-y divide-atd-black/8">
+        <div className="space-y-1">
           {items.map((item, i) => (
             <motion.div key={i} {...fadeUp(i * 0.05)}>
               <button
