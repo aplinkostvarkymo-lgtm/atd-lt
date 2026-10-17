@@ -265,7 +265,7 @@ export function ServicePopup({ serviceId, onClose }: ServicePopupProps) {
               <Link
                 href={service.ctaHref}
                 onClick={onClose}
-                className="inline-flex items-center px-5 py-2.5 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-colors"
+                className="inline-flex items-center px-5 py-2.5 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-all active:scale-[0.97]"
               >
                 {service.ctaLabel[lang]}
               </Link>

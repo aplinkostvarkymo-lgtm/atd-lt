@@ -74,11 +74,11 @@ function Hero({ t }: { t: T }) {
         <motion.div className="flex flex-wrap gap-3 mt-8"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.18 }}>
           <a href="tel:+37065785096"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-colors">
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]">
             {t.hero_cta_call}: +370 657 85096
           </a>
           <Link href="/kontaktai"
-            className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors">
+            className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]">
             {t.hero_cta_quote}
           </Link>
         </motion.div>
@@ -300,14 +300,14 @@ function CTA({ t }: { t: T }) {
         </motion.div>
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8" {...fadeUp(0.12)}>
           <a href="tel:+37065785096"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-colors">
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]">
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
             </svg>
             {t.hero_cta_call}: +370 657 85096
           </a>
           <a href="mailto:Robertas@atd.lt"
-            className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors">
+            className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]">
             {t.cta_email}: Robertas@atd.lt
           </a>
           <FacebookLink />

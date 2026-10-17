@@ -55,13 +55,13 @@ function Hero({ t }: { t: T }) {
         >
           <a
             href="tel:+37065785096"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]"
           >
             +370 657 85096
           </a>
           <a
             href="mailto:Robertas@atd.lt"
-            className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-colors"
+            className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]"
           >
             Robertas@atd.lt
           </a>
@@ -122,7 +122,14 @@ function FormSection({ t }: { t: T }) {
           <h2 className="font-display font-bold text-2xl text-atd-black mb-6">{t.form_heading}</h2>
 
           {status === "success" ? (
-            <p className="font-body text-sm text-atd-green">{t.form_success}</p>
+            <motion.p
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="font-body text-sm text-atd-green"
+            >
+              {t.form_success}
+            </motion.p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Honeypot — botams skirtas spąstas, žmonėms nematomas ir nepasiekiamas.
@@ -186,13 +193,15 @@ function FormSection({ t }: { t: T }) {
                 <p className="font-body text-sm text-red-600">{t.form_error}</p>
               )}
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={status === "loading"}
+                whileTap={status !== "loading" ? { scale: 0.97 } : undefined}
+                transition={{ duration: 0.12, ease: "easeOut" }}
                 className="inline-flex items-center px-6 py-3 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {status === "loading" ? t.form_sending : t.form_submit}
-              </button>
+              </motion.button>
             </form>
           )}
         </motion.div>

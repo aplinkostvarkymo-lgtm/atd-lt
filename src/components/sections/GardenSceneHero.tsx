@@ -153,7 +153,7 @@ export function GardenSceneHero() {
           <div className="flex flex-wrap gap-3 mt-6">
             <Link
               href="/kontaktai"
-              className="inline-flex items-center px-6 py-3 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-atd-green text-white font-body font-medium text-sm hover:bg-atd-green-light transition-all active:scale-[0.97]"
             >
               {t.hero.cta_price}
             </Link>

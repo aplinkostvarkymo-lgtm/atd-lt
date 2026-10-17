@@ -194,6 +194,7 @@ export function HotspotMarker({ data, isVisible, index = 0, onOpen }: HotspotMar
       animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
       transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 200 }}
       whileHover="hovered"
+      whileTap={{ scale: 0.92 }}
     >
       {onOpen ? (
         <button
