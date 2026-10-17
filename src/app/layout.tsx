@@ -8,6 +8,7 @@ import { SchemaOrg } from "@/components/SchemaOrg";
 import { localBusinessSchema } from "@/lib/schemas";
 import { Analytics } from "@/components/Analytics";
 import { CookieConsent } from "@/components/CookieConsent";
+import { MobileStickyCTA } from "@/components/ui/MobileStickyCTA";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
@@ -58,9 +59,12 @@ export default function RootLayout({
         <SchemaOrg schema={localBusinessSchema} />
         <LanguageProvider>
           <Header />
-          {children}
-          <Footer />
+          <div className="pb-[4.5rem] md:pb-0">
+            {children}
+            <Footer />
+          </div>
           <CookieConsent />
+          <MobileStickyCTA />
         </LanguageProvider>
         <Analytics />
       </body>

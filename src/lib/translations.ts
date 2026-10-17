@@ -5,6 +5,10 @@ export const translations = {
     common: {
       close: "Uždaryti",
     },
+    mobileStickyCTA: {
+      call: "Paskambinti",
+      quote: "Gauti pasiūlymą",
+    },
     cookieConsent: {
       message:
         "Naudojame slapukus, siekdami pagerinti svetainės veikimą ir analizuoti lankomumą.",
@@ -372,6 +376,10 @@ export const translations = {
   en: {
     common: {
       close: "Close",
+    },
+    mobileStickyCTA: {
+      call: "Call us",
+      quote: "Get a quote",
     },
     cookieConsent: {
       message:
