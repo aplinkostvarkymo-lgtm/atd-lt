@@ -98,7 +98,9 @@ export function Header() {
               </AnimatePresence>
             </div>
 
-            {/* /darbai, /patarimai, /kontaktai puslapių kol kas nėra — nuorodos pašalintos */}
+            <Link href="/kontaktai" className={`font-body text-sm font-medium transition-colors ${link}`}>
+              {t.contact}
+            </Link>
           </nav>
 
           {/* Right: phone + LT/EN + hamburger */}
@@ -168,7 +170,13 @@ export function Header() {
                     </Link>
                   ))}
                 </div>
-                {/* /darbai, /patarimai, /kontaktai puslapių kol kas nėra — nuorodos pašalintos */}
+                <Link
+                  href="/kontaktai"
+                  className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors mt-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t.contact}
+                </Link>
               </nav>
 
               <div className="px-6 py-5 border-t border-atd-black/8 flex items-center justify-between">
