@@ -9,6 +9,7 @@ import { localBusinessSchema } from "@/lib/schemas";
 import { Analytics } from "@/components/Analytics";
 import { CookieConsent } from "@/components/CookieConsent";
 import { MobileStickyCTA } from "@/components/ui/MobileStickyCTA";
+import { FloatingChat } from "@/components/ui/FloatingChat";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
@@ -65,6 +66,7 @@ export default function RootLayout({
           </div>
           <CookieConsent />
           <MobileStickyCTA />
+          <FloatingChat />
         </LanguageProvider>
         <Analytics />
       </body>

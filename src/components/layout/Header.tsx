@@ -98,6 +98,9 @@ export function Header() {
               </AnimatePresence>
             </div>
 
+            <Link href="/darbai" className={`font-body text-sm font-medium transition-colors ${link}`}>
+              {t.works}
+            </Link>
             <Link href="/kontaktai" className={`font-body text-sm font-medium transition-colors ${link}`}>
               {t.contact}
             </Link>
@@ -171,8 +174,15 @@ export function Header() {
                   ))}
                 </div>
                 <Link
+                  href="/darbai"
+                  className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors mt-2 block"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t.works}
+                </Link>
+                <Link
                   href="/kontaktai"
-                  className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors mt-2"
+                  className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors block"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t.contact}

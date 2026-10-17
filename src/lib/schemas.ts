@@ -116,3 +116,5 @@ export const laistymasServiceSchema = {
 };
 
 export const laistymasFaqSchema = buildFaqSchema(translations.lt.laistymasPas);
+
+export const kontaktaiFaqSchema = buildFaqSchema(translations.lt.kontaktaiPage);

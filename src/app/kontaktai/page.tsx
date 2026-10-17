@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { KontaktaiPage } from "@/components/pages/KontaktaiPage";
 import { SchemaOrg } from "@/components/SchemaOrg";
-import { localBusinessSchema } from "@/lib/schemas";
+import { localBusinessSchema, kontaktaiFaqSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Kontaktai | ATD Aplinkos tvarkymas Vilniuje",
@@ -29,6 +29,7 @@ export default function Page() {
   return (
     <>
       <SchemaOrg schema={localBusinessSchema} />
+      <SchemaOrg schema={kontaktaiFaqSchema} />
       <KontaktaiPage />
     </>
   );
