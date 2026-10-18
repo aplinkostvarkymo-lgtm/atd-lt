@@ -5,7 +5,7 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (pathname === "/en" || pathname.startsWith("/en/")) return NextResponse.next();
   if (pathname === "/lt" || pathname.startsWith("/lt/")) {
-    if (!PAGE_PATHS.some(path => path === unlocalizedPath(pathname))) return NextResponse.next();
+    if (!PAGE_PATHS.some(path => path === unlocalizedPath(pathname)) && !unlocalizedPath(pathname).startsWith("/darbai/")) return NextResponse.next();
     const target = request.nextUrl.clone();
     target.pathname = pathname.slice(3) || "/";
     return NextResponse.redirect(target, 308);

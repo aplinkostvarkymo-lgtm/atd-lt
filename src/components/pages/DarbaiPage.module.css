@@ -1,0 +1,72 @@
+.page { background: white; color: var(--color-atd-black); font-family: var(--font-body), sans-serif; }
+.container { width: min(100% - 48px, 1152px); margin-inline: auto; }
+.intro { background: var(--color-atd-cream); padding: 112px 0 36px; }
+.breadcrumb { display: flex; gap: 10px; font-size: 12px; color: #53564e; margin-bottom: 24px; }
+.intro h1 { font-family: var(--font-display), Georgia, serif; font-size: clamp(36px, 4vw, 56px); font-weight: 600; line-height: 1.1; }
+.intro p { max-width: 65ch; color: #53564e; margin-top: 16px; line-height: 1.65; }
+.work { padding: 28px 0 72px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 20px; border-bottom: 1px solid #dfe3dc; }
+.filters button { min-height: 44px; padding: 10px 16px; color: #40483a; cursor: pointer; transition: background-color .18s; }
+.filters button:hover { background: #eef2ea; }
+.filters button[aria-pressed="true"] { background: var(--color-atd-green); color: white; }
+.count { font-size: 13px; color: #53564e; margin: 20px 0 26px; font-variant-numeric: tabular-nums; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 28px; }
+.project { min-width: 0; }
+.openProject { width: 100%; display: block; text-align: left; cursor: pointer; }
+.cover { display: block; position: relative; overflow: hidden; background: #edf0e8; aspect-ratio: 3 / 2; }
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+.openArrow { position: absolute; bottom: 0; right: 0; padding: 16px; background: var(--color-atd-green); color: white; transition: padding-right .2s; }
+.openProject:hover .openArrow { padding-right: 22px; }
+.projectMeta { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; margin-top: 16px; font-size: 12px; line-height: 1.6; color: #53564e; }
+.projectMeta > span { white-space: nowrap; }
+.project h2 { font-family: var(--font-display), Georgia, serif; font-size: clamp(23px, 2.2vw, 29px); font-weight: 600; line-height: 1.25; margin-top: 8px; text-wrap: balance; }
+.viewStory { display: inline-flex; align-items: center; gap: 10px; margin-top: 13px; font-size: 13px; color: var(--color-atd-green); text-decoration: underline; text-underline-offset: 5px; }
+.more { margin-top: 48px; text-align: center; }
+.projectLink { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--color-atd-green); text-decoration: underline; text-underline-offset: 4px; }
+.directory { border-top: 1px solid #dfe3dc; margin-top: 56px; padding-top: 32px; }
+.directory h2 { font-family: var(--font-display), Georgia, serif; font-size: 28px; margin-bottom: 24px; }
+.directory ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; }
+.directory a { font-size: 14px; line-height: 1.65; color: var(--color-atd-green); text-decoration: underline; text-underline-offset: 4px; }
+.storyLink { display: inline-block; margin-top: 24px; text-decoration: underline; text-underline-offset: 5px; color: white; }
+.more button { background: var(--color-atd-green); color: white; padding: 16px 24px; min-height: 48px; cursor: pointer; }
+.more button > span { margin-left: 24px; font-variant-numeric: tabular-nums; }
+.more button:hover { background: var(--color-atd-green-dark); }
+.cta { background: var(--color-atd-green); padding: 56px 0; text-align: center; color: white; }
+.cta h2 { font-family: var(--font-display), Georgia, serif; font-size: 32px; font-weight: 600; }
+.cta p { margin: 12px 0 24px; }
+.cta a { display: inline-flex; padding: 14px 28px; background: white; color: var(--color-atd-green); }
+.viewer { position: fixed; inset: 0; display: flex; flex-direction: column; background: #131a11; color: #fff; font-family: var(--font-body), sans-serif; }
+.viewerHeader { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; gap: 16px; padding: 12px 24px; border-bottom: 1px solid #364131; }
+.viewerHeader h2 { font-size: 16px; font-weight: 500; line-height: 1.4; }
+.viewerHeader button { display: grid; place-items: center; width: 48px; height: 48px; flex-shrink: 0; cursor: pointer; }
+.viewerHeader button:hover { background: #2b3826; }
+.viewerScroll { overflow-y: auto; overscroll-behavior: contain; scrollbar-color: #819674 #131a11; }
+.figure { margin: 0 auto; max-width: 1280px; }
+.photoStage { position: relative; display: flex; justify-content: center; align-items: center; height: min(63dvh, 760px); min-height: 240px; }
+.photoStage > img { width: 100%; height: 100%; object-fit: contain; }
+.photoStage button { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; display: grid; place-items: center; background: #131a11e8; color: white; cursor: pointer; }
+.photoStage button:hover { background: var(--color-atd-green); }
+.previous { left: 16px; }.next { right: 16px; }
+.figure figcaption { display: flex; gap: 20px; padding: 14px 24px; font-size: 13px; line-height: 1.6; color: #e2e9dd; }
+.figure figcaption > span:first-child { flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.thumbnails { display: flex; gap: 8px; max-width: 1232px; margin: 0 auto; padding: 8px 12px 16px; overflow-x: auto; scrollbar-color: #819674 #131a11; }
+.thumbnails button { position: relative; flex: 0 0 88px; height: 64px; cursor: pointer; border: 2px solid transparent; }
+.thumbnails button[aria-pressed="true"] { border-color: white; }
+.thumbnails img { width: 100%; height: 100%; object-fit: cover; }
+.thumbnails span { position: absolute; left: 0; bottom: 0; background: #131a11ed; color: white; padding: 0 5px; font-size: 11px; }
+.story { max-width: 78ch; margin: 0 auto; padding: 28px 24px 56px; }
+.story h3 { font-family: var(--font-display), Georgia, serif; font-size: 27px; margin-bottom: 14px; }
+.story p { color: #e2e9dd; line-height: 1.8; }
+.story .collection { font-size: 13px; margin-bottom: 12px; }
+.story .scope { margin-top: 20px; font-size: 14px; }
+@media (max-width: 700px) {
+ .intro { padding-top: 96px; padding-bottom: 28px; }
+ .grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+ .filters { gap: 2px; }.filters button { padding: 10px 12px; font-size: 13px; }
+ .viewerHeader { padding: 8px 12px; }.viewerHeader h2 { font-size: 14px; }
+ .photoStage { height: 49dvh; }.previous { left: 6px; }.next { right: 6px; }
+ .figure figcaption { padding: 12px 16px; gap: 6px; flex-direction: column; }
+ .story { padding: 24px 20px 40px; }
+ .directory ul { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .openArrow, .filters button { transition: none; } }

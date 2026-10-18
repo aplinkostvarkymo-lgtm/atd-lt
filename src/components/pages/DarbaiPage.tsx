@@ -1,272 +1,109 @@
 "use client";
 
-import { Modal } from "@/components/ui/Modal";
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import Link from "@/components/ui/LocalizedLink";
-import { motion, AnimatePresence } from "framer-motion";
+import { Modal } from "@/components/ui/Modal";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import styles from "./DarbaiPage.module.css";
 
-type Category = "all" | "veja" | "apzeldinimas" | "trinkeles" | "laistymas";
+type Category = "all" | "veja" | "apzeldinimas" | "trinkeles" | "laistymas" | "tvenkiniai" | "bendruomene";
+type Project = (typeof translations.lt.darbaiPage.projects)[number];
+type Photo = Project["photos"][number];
 
-interface GalleryItem {
-  id: number;
-  src: string;
-  category: Category;
-  alt: { lt: string; en: string };
-  title: { lt: string; en: string };
+function PhotoImage({ photo, alt, large = false, eager = false, className }: { photo: Photo; alt: string; large?: boolean; eager?: boolean; className?: string }) {
+  const variants = photo.variants;
+  const source = variants[large ? variants.length - 1 : 0];
+  return (
+    // Pre-exported responsive WebP variants retain their original proportions.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={source.src} srcSet={variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes={large ? "(max-width: 900px) 100vw, 1100px" : "(max-width: 700px) 100vw, 560px"} width={source.width} height={source.height} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" className={className} />
+  );
 }
-
-const ITEMS: GalleryItem[] = [
-  {
-    id: 1,
-    src: "/images/veja-mowed-stripes-1.jpg",
-    category: "veja",
-    alt: { lt: "Ruloninė veja — lygūs žali dryžiai", en: "Roll-on lawn — neat green stripes" },
-    title: { lt: "Ruloninė veja su dryžiais", en: "Striped roll-on lawn" },
-  },
-  {
-    id: 2,
-    src: "/images/veja-mowed-stripes-2.jpg",
-    category: "veja",
-    alt: { lt: "Prižiūrėta veja verslo teritorijoje", en: "Maintained lawn at business premises" },
-    title: { lt: "Veja verslo teritorijoje", en: "Business property lawn" },
-  },
-  {
-    id: 3,
-    src: "/images/veja-lakeside-large-1.jpg",
-    category: "veja",
-    alt: { lt: "Platus vejos plotas prie vandens", en: "Large lawn area by the water" },
-    title: { lt: "Didelio ploto veja prie ežero", en: "Large lawn by the lake" },
-  },
-  {
-    id: 4,
-    src: "/images/veja-process-rulone-1.jpg",
-    category: "veja",
-    alt: { lt: "Ruloninės vejos klojimo procesas", en: "Roll-on lawn laying process" },
-    title: { lt: "Ruloninės vejos klojimas", en: "Roll-on lawn installation" },
-  },
-  {
-    id: 5,
-    src: "/images/apzeldinimas-courtyard-wide-1.jpg",
-    category: "apzeldinimas",
-    alt: { lt: "Apželdintas kiemas su augalais", en: "Landscaped courtyard with plants" },
-    title: { lt: "Kiemo apželdinimas", en: "Courtyard landscaping" },
-  },
-  {
-    id: 6,
-    src: "/images/apzeldinimas-traku-vokes-dvaras-1.jpg",
-    category: "apzeldinimas",
-    alt: { lt: "Trakų Vokės dvaro teritorija — apželdinimas", en: "Trakai Vokė manor grounds landscaping" },
-    title: { lt: "Trakų Vokės dvaro apželdinimas", en: "Trakai Vokė manor landscaping" },
-  },
-  {
-    id: 7,
-    src: "/images/apzeldinimas-nt-projektas-1.jpg",
-    category: "apzeldinimas",
-    alt: { lt: "NT projekto apželdinimas pagal projektą", en: "Real estate project landscaping by design" },
-    title: { lt: "NT projekto teritorija", en: "Real estate project grounds" },
-  },
-  {
-    id: 8,
-    src: "/images/apzeldinimas-park-path-statue-1.jpg",
-    category: "apzeldinimas",
-    alt: { lt: "Parko takelio ir skulptūros apželdinimas", en: "Park path and sculpture landscaping" },
-    title: { lt: "Parko apželdinimas su takais", en: "Park landscaping with paths" },
-  },
-  {
-    id: 9,
-    src: "/images/apzeldinimas-closeup-flowers-1.jpg",
-    category: "apzeldinimas",
-    alt: { lt: "Gėlių sodinimas iš arti", en: "Flower planting close-up" },
-    title: { lt: "Gėlių sodinimas", en: "Flower planting" },
-  },
-  {
-    id: 10,
-    src: "/images/apzeldinimas-closeup-flowers-2.jpg",
-    category: "apzeldinimas",
-    alt: { lt: "Dekoratyviniai augalai ir gėlės", en: "Decorative plants and flowers" },
-    title: { lt: "Dekoratyviniai augalai", en: "Decorative plants" },
-  },
-  {
-    id: 11,
-    src: "/images/trinkeles-plaza-1.jpg",
-    category: "trinkeles",
-    alt: { lt: "Trinkelių klojimas — plaza", en: "Paving — plaza" },
-    title: { lt: "Trinkelių klojimas, plaza", en: "Paving project, plaza" },
-  },
-  {
-    id: 12,
-    src: "/images/laistymas-sprinkler-action-1.jpg",
-    category: "laistymas",
-    alt: { lt: "Automatinė laistymo sistema veikimo metu", en: "Automatic irrigation system in action" },
-    title: { lt: "Automatinė laistymo sistema", en: "Automatic irrigation system" },
-  },
-  {
-    id: 13,
-    src: "/images/apzeldinimas-public-irrigation-1.jpg",
-    category: "laistymas",
-    alt: { lt: "Laistymo sistema viešoje erdvėje", en: "Irrigation system in public space" },
-    title: { lt: "Viešos erdvės laistymas", en: "Public space irrigation" },
-  },
-];
 
 export function DarbaiPage() {
   const { lang } = useLanguage();
   const t = translations[lang].darbaiPage;
   const [active, setActive] = useState<Category>("all");
-  const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
-
+  const [limit, setLimit] = useState(10);
+  const [selected, setSelected] = useState<Project | null>(null);
+  const [index, setIndex] = useState(0);
+  const thumbs = useRef<HTMLDivElement>(null);
   const categories: { key: Category; label: string }[] = [
-    { key: "all", label: t.all },
-    { key: "veja", label: t.category_veja },
-    { key: "apzeldinimas", label: t.category_apzeldinimas },
-    { key: "trinkeles", label: t.category_trinkeles },
-    { key: "laistymas", label: t.category_laistymas },
+    { key: "all", label: t.all }, { key: "apzeldinimas", label: t.category_apzeldinimas },
+    { key: "veja", label: t.category_veja }, { key: "trinkeles", label: t.category_trinkeles },
+    { key: "laistymas", label: t.category_laistymas }, { key: "tvenkiniai", label: t.category_tvenkiniai },
+    { key: "bendruomene", label: t.category_bendruomene },
   ];
-
-  const filtered = active === "all" ? ITEMS : ITEMS.filter((i) => i.category === active);
+  const filtered = t.projects.filter(p => active === "all" || p.categories.includes(active));
+  const photo = selected?.photos[index];
+  useEffect(() => {
+    thumbs.current?.querySelector<HTMLElement>(`[data-photo-index="${index}"]`)?.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
+  }, [index]);
+  function step(direction: number) {
+    if (selected) setIndex(current => (current + direction + selected.photos.length) % selected.photos.length);
+  }
 
   return (
-    <main id="main-content" tabIndex={-1}>
-      {/* Hero */}
-      <section className="bg-atd-cream pt-24 md:pt-28 pb-10 md:pb-14">
-        <div className="max-w-6xl mx-auto px-6">
-          <nav className="flex items-center gap-1.5 text-atd-gray-soft font-body text-xs mb-6">
-            <Link underline href="/" className="hover:text-atd-black transition-colors">
-              {translations[lang].common.home}
-            </Link>
-            <span>/</span>
-            <span className="text-atd-black">{t.heading}</span>
-          </nav>
-          <h1 className="font-display font-bold text-3xl md:text-5xl text-atd-black leading-tight">{t.heading}</h1>
-          <p className="font-body text-base text-atd-gray-soft mt-3">{t.tagline}</p>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
+      <section className={styles.intro}>
+        <div className={styles.container}>
+          <nav className={styles.breadcrumb} aria-label={t.heading}><Link href="/" underline>{translations[lang].common.home}</Link><span aria-hidden="true">/</span><span>{t.heading}</span></nav>
+          <h1>{t.heading}</h1>
+          <p>{t.tagline}</p>
         </div>
       </section>
-
-      {/* Filter tabs */}
-      <section className="bg-white border-b border-atd-black/8 sticky top-[72px] md:top-[80px] z-10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex gap-1 overflow-x-auto py-3 scrollbar-none">
-            {categories.map(({ key, label }) => (
-              <button
-                key={key}
-                onClick={() => setActive(key)}
-                aria-pressed={active === key}
-                className={`shrink-0 px-4 py-2.5 font-body text-sm transition-all ${
-                  active === key
-                    ? "bg-atd-green text-white"
-                    : "text-atd-gray-soft hover:text-atd-black"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+      <section className={styles.work} aria-label={t.heading}>
+        <div className={styles.container}>
+          <div className={styles.filters} aria-label={t.projectCount}>
+            {categories.map(({ key, label }) => <button key={key} type="button" aria-pressed={active === key} onClick={() => { setActive(key); setLimit(10); }}>{label}</button>)}
           </div>
+          <p className={styles.count} role="status">{t.projectCount}: {filtered.length}</p>
+          <div className={styles.grid}>
+            {filtered.slice(0, limit).map((project, position) => {
+              const cover = project.photos[project.cover];
+              return <article key={project.id} className={styles.project}>
+                <button type="button" className={styles.openProject} onClick={() => { setSelected(project); setIndex(0); }} aria-label={`${t.viewProject}: ${project.title[lang]}`}>
+                  <span className={styles.cover}><PhotoImage photo={cover} alt={cover.alt[lang]} eager={position < 2} /><span className={styles.openArrow} aria-hidden="true"><ArrowRight size={22} /></span></span>
+                  <span className={styles.projectMeta}>{project.collection ? t.collection : project.categories.map(category => categories.find(c => c.key === category)?.label).filter(Boolean).join(" · ")}<span>{project.photos.length} {t.photoCount}</span></span>
+                  <h2>{project.title[lang]}</h2>
+                  <span className={styles.viewStory}>{t.viewProject}<ArrowRight size={16} aria-hidden="true" /></span>
+                </button>
+                <Link className={styles.projectLink} href={`/darbai/${project.id}`}>{t.fullStory}</Link>
+              </article>;
+            })}
+          </div>
+          {!filtered.length && <p>{t.empty}</p>}
+          {limit < filtered.length && <div className={styles.more}><button type="button" onClick={() => setLimit(current => current + 10)}>{t.showMore}<span aria-hidden="true">{Math.min(limit, filtered.length)} / {filtered.length}</span></button></div>}
+          <nav className={styles.directory} aria-labelledby="project-directory"><h2 id="project-directory">{t.allProjects}</h2><ul>{t.projects.map(project => <li key={project.id}><Link href={`/darbai/${project.id}`}>{project.title[lang]}</Link></li>)}</ul></nav>
         </div>
       </section>
+      <section className={styles.cta}><div className={styles.container}><h2>{t.cta_heading}</h2><p>{t.cta_sub}</p><Link href="/kontaktai" arrow>{t.cta_btn}</Link></div></section>
 
-      {/* Grid */}
-      <section className="bg-white py-10 md:py-14">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            layout
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            <AnimatePresence mode="popLayout">
-              {filtered.map((item) => (
-                <motion.button
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.22 }}
-                  onClick={() => setLightbox(item)}
-                  className="group relative aspect-[4/3] overflow-hidden bg-atd-cream text-left w-full"
-                  aria-label={item.title[lang]}
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.alt[lang]}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-atd-black/0 group-hover:bg-atd-black/30 transition-colors duration-300" />
-                  <div className="absolute bottom-0 inset-x-0 p-3 bg-black/65">
-                    <p className="font-body text-xs text-white font-medium">{item.title[lang]}</p>
-                  </div>
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          <p className="font-body text-xs text-atd-gray-soft text-center mt-10">{t.more_soon}</p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-atd-green py-12 md:py-16 text-center">
-        <div className="max-w-lg mx-auto px-6">
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-white">{t.cta_heading}</h2>
-          <p className="font-body text-white/75 mt-3 mb-7">{t.cta_sub}</p>
-          <Link
-            arrow href="/kontaktai"
-            className="inline-flex items-center px-8 py-3 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]"
-          >
-            {t.cta_btn}
-          </Link>
-        </div>
-      </section>
-
-      {/* Lightbox */}
-      <Modal open={!!lightbox} onClose={() => setLightbox(null)} label={lightbox?.title[lang] ?? t.heading}>
-      <AnimatePresence>
-        {lightbox && (
-          <>
-            <motion.div
-              key="backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/85 z-[80]"
-              onClick={() => setLightbox(null)}
-            />
-            <motion.div
-              key="lb"
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.92 }}
-              transition={{ duration: 0.22 }}
-              className="fixed inset-4 md:inset-12 z-[90] flex flex-col items-center justify-center"
-            >
-              <div className="relative w-full h-full max-w-4xl mx-auto">
-                <Image
-                  src={lightbox.src}
-                  alt={lightbox.alt[lang]}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 900px"
-                />
+      <Modal open={!!selected} onClose={() => setSelected(null)} label={selected?.title[lang] ?? t.heading}>
+        {selected && photo && <div className={styles.viewer} onKeyDown={event => {
+          if (event.key === "ArrowRight") { event.preventDefault(); step(1); }
+          if (event.key === "ArrowLeft") { event.preventDefault(); step(-1); }
+        }}>
+          <header className={styles.viewerHeader}><h2>{selected.title[lang]}</h2><button type="button" autoFocus onClick={() => setSelected(null)} aria-label={translations[lang].common.close}><X size={24} /></button></header>
+          <div className={styles.viewerScroll}>
+            <figure className={styles.figure}>
+              <div className={styles.photoStage}><PhotoImage key={photo.variants[0].src} photo={photo} alt={photo.alt[lang]} large eager />
+                {selected.photos.length > 1 && <><button type="button" className={styles.previous} onClick={() => step(-1)} aria-label={t.previous}><ArrowLeft size={24} /></button><button type="button" className={styles.next} onClick={() => step(1)} aria-label={t.next}><ArrowRight size={24} /></button></>}
               </div>
-              <p className="absolute bottom-4 left-1/2 -translate-x-1/2 font-body text-xs text-white/70 text-center px-4">
-                {lightbox.title[lang]}
-              </p>
-              <button
-                className="absolute top-0 right-0 w-11 h-11 flex items-center justify-center text-white/70 hover:text-white"
-                onClick={() => setLightbox(null)}
-                aria-label={translations[lang].common.close}
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
-              </button>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              <figcaption aria-live="polite"><span>{t.photo} {index + 1} / {selected.photos.length}</span><span>{photo.alt[lang]}</span></figcaption>
+            </figure>
+            <div ref={thumbs} className={styles.thumbnails} aria-label={t.photoCount}>
+              {selected.photos.map((item, number) => <button key={item.id} data-photo-index={number} type="button" aria-label={`${t.photo} ${number + 1}: ${item.alt[lang]}`} aria-pressed={index === number} onClick={() => setIndex(number)}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={item.variants[0].src} width={item.variants[0].width} height={item.variants[0].height} alt="" loading="lazy" decoding="async" />
+                <span>{number + 1}</span>
+              </button>)}
+            </div>
+            <div className={styles.story}><h3>{t.projectDetails}</h3>{selected.collection && <p className={styles.collection}>{t.collection}</p>}<p>{selected.description[lang]}</p>{selected.scope && <p className={styles.scope}>{selected.scope[lang]}</p>}<Link className={styles.storyLink} href={`/darbai/${selected.id}`} onClick={() => setSelected(null)}>{t.fullStory}</Link></div>
+          </div>
+        </div>}
       </Modal>
     </main>
   );

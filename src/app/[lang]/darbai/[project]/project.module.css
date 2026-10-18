@@ -1,0 +1,23 @@
+.page { background: white; padding: 112px 0 64px; color: var(--color-atd-black); font-family: var(--font-body), sans-serif; }
+.container { width: min(100% - 48px, 1152px); margin-inline: auto; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 12px; color: #53564e; margin-bottom: 32px; }
+.breadcrumb a, .services a, .related a { text-decoration: underline; text-underline-offset: 4px; color: var(--color-atd-green); }
+.intro { max-width: 76ch; }
+.intro h1 { font-family: var(--font-display), Georgia, serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.2; font-weight: 600; text-wrap: balance; }
+.credit { margin-top: 20px; color: #53564e; font-size: 13px; }
+.description { margin-top: 24px; font-size: 17px; line-height: 1.85; }
+.scope { margin-top: 20px; color: #454f3f; line-height: 1.75; }
+.collection { margin-top: 16px; font-size: 14px; }
+.services { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; font-size: 14px; }
+.photos { margin-top: 56px; }
+.page h2 { font-family: var(--font-display), Georgia, serif; font-size: 29px; line-height: 1.3; margin-bottom: 24px; font-weight: 600; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 28px; align-items: start; }
+.grid figure { min-width: 0; margin: 0; }
+.grid img { width: 100%; height: auto; max-height: 620px; object-fit: contain; background: #f1f3ee; }
+.grid figcaption { display: flex; gap: 12px; margin-top: 10px; color: #53564e; font-size: 13px; line-height: 1.65; }
+.grid figcaption span { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.related { margin-top: 64px; padding-top: 32px; border-top: 1px solid #dfe3dc; }
+.related li { margin-top: 16px; line-height: 1.65; }
+.actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+.actions a { background: var(--color-atd-green); padding: 14px 24px; color: white; }
+@media (max-width: 700px) { .page { padding-top: 96px; }.grid { grid-template-columns: minmax(0, 1fr); }.description { font-size: 16px; }.photos { margin-top: 40px; } }

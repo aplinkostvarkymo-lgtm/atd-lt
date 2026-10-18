@@ -217,3 +217,317 @@ Patikra: 24/24 Edge testų, 0 pageerror; visi 8 LT ir EN puslapiai, mouse / keyb
 ## 19. Audito pataisymų ir animacijų commit / push autorizacija — 2026-10-17
 
 Vartotojas aiškiai paprašė commitinti ir pushinti audito pataisymus bei naujas animacijas. Po `git fetch origin` patvirtinta, kad `origin/main` ir darbo šakos HEAD sutampa (`e1f4430f`), todėl galimas įprastas fast-forward push. Parengtas vienas bendras commit su kodu, audito ataskaitomis ir patikrų įrodymais. Publikavimo tikslas pagal CLAUDE.md — `main`, taip pat išsaugoma `claude/atd-launch-and-polish-8bc650` šaka. Anksčiau vartotojo pateiktas untracked `CODEX_REVIEW.md` nėra mūsų pakeitimas ir paliekamas vietoje neįtrauktas į commit. Ankstesnės sekcijos apie commit / push nebuvimą aprašo tų etapų būseną. Galutinės patikros: lint, tsc, webpack production build, 46 bendros naršyklės / 15 API / 19 proceso animacijos / 24 nuorodų ir CTA patikros; vėlesnės patikros atitinka vėlesnių pakeitimų apimtį.
+
+## 20. Senos informacijos migracija, patarimų skiltis ir SEO / GEO — 2026-10-18
+
+Vartotojas paprašė peržiūrėti seną www.atd.lt naudingą informaciją, naujos svetainės SEO ir galimybes būti randamiems / rekomenduojamiems AI. Naudoti jo nurodyti seo-geo, seo-page ir seo-flow; UI plėtrai incumbent Impeccable gairės. Vartotojas patvirtino dabartinį juridinį pavadinimą **MB „ATD.LT“** ir kryptį į penkias naujos svetainės paslaugas: medžių / krūmų pjovimo ir apleistų sklypų tvarkymo nebesiūlome.
+
+Tiesioginis HTTP patvirtino: www.atd.lt/ → senas /lt/ (200); senas robots visus leidžia, /sitemap.xml tuo metu 500. Nauja vieša Vercel versija pasiekiama 200 ir canonical nukreipia į atd.lt, kuris dar rodo seną sistemą. DNS / hostingas / profiliai nekeisti.
+
+Senoje patarimų skiltyje rasti 6 teminiai įrašai ir „test“. Svarbi klaida: 2193 pavadinimas apie veją, tekstas apie krūmų pjovimo broką. 2192 turi senus teisinius tekstus ir kainas litais; nekopijuotas. 2195 nebeatitinka dabartinių paslaugų. 2196 biologiniai / kiekių / rūšių patarimai neperpublikuoti automatiškai. 2191 ir 2194 temos perrašytos be senų kainų ir nepagrįstų teiginių.
+
+Pridėta /patarimai ir du straipsniai abiem kalbomis (6 nauji URL): darbų planas ir tvenkinio kasimo planavimas. Article / CollectionPage / BreadcrumbList, localized metadata / OG / hreflang, sitemap dabar 22 URL, tikros header / footer / homepage ir straipsnių nuorodos. Popup „Skaityti visus patarimus“ pagaliau veda į tikrą skiltį ir nebežada neegzistuojančių straipsnių. Visi nauji UI / redakciniai tekstai centralizuoti translations.ts, tips-content tik reexport. Datos / autoriaus kvalifikacijos / rekomendacijų balai neišgalvoti. Prieš publikavimą savininkas gali patikslinti praktinius tekstus.
+
+1946 → hub, 2191 → planavimo straipsnis, 2194 → tvenkinio straipsnis (308), taip pat jų /lt/lt/pages variantai. Nebeaktualios temos ir „test“ 404; 2193 / 2196 ankstesni service redirect išsaugoti. MB ATD.LT matoma footer / kontaktuose ir legalName schemoje; iš schemos pašalintas nepatvirtintas foundingDate 2012. Homepage po hero ir stats pridėtas aiškus įmonės / geografijos / 5 paslaugų pristatymas. Hero durų komponentas ir media šiame etape nepakeisti, MP4 SHA-256 vis dar D91249BB704834626F73B9579641FE245EB9BB07E1D97A1265BC9406C1D577ED.
+
+Patikra: lint / tsc / webpack production build PASS; 25/25 Edge bandymai, 0 pageerror. SSR / no-JS, LT/EN, visų naujų straipsnių nuorodos, schema / metadata / sitemap, 308 / 404 ir mobile meniu. Vienas bendras desktop / mobile vizualinis turas; viena pataisymų partija (skaitymo metu telefonuose paslėpti floating chat, homepage pridėtas pristatymas), vienas patvirtinimo turas. Vietinė peržiūra localhost:3100, session 83590. Šio etapo commit / push neatliktas, ankstesnis bfb4e199 jau GitHub.
+
+Ataskaita ir faktiniai ribojimai: `atd-lt-audit/seo-content-2026-10-18/GEO-ANALYSIS.md`; inventorius `legacy-content-map.csv`; `public-endpoints.json`, `page-samples.json`, `verification.json`, 8 screenshots. Tikro GBP profilio, GSC / Bing / GA paskyrų, realių CWV ir AI rekomendacijų dažnio nepatvirtinta. llms.txt netraktuojamas kaip citavimo ar Google reitingo garantija. Svarbiausi tolesni veiksmai: domeno migracija, GSC / GBP ir viešų įmonės duomenų nuoseklumas, tikrų projektų istorijos iš vartotojo tvarkomų nuotraukų.
+
+## 21. Objektų nuotraukų atrankos pradžia — 2026-10-18
+
+Vartotojas autorizavo nuotraukų peržiūrą, rūšiavimą ir paruošimą svetainei iš `C:\CURSOR\ATD_Remake\Objektų_foto`, siūlydamas dirbti po vieną aplanką ir klausti neaiškių faktų. Rasti 31 objekto / teminiai aplankai. Pirmas peržiūrėtas `34 istorijos`: 23 JPG ir 1 MP4. Taikytos seo-images failų paruošimo gairės. Svetainės komponentai ir hero nepakeisti.
+
+Sukurtas `34 istorijos\Svetainei`: 8 atrinktų originalų kopijos, 16 WebP (ilgoji kraštinė iki 800 / 1600 px, q82, be didinimo ir apkarpymo, EXIF pasukimas), 4 šlaito darbų originalų kopijos atskirame rezerve, visų nuotraukų kontaktinis lapas, SKAITYTI.md ir atranka.json su LT/EN alt tekstų pasiūlymais / originalų atitikmenimis / SHA-256 / matmenimis / svoriu / visų JPG sprendimais. Originalai nejudinti ir nekeisti; WebP neperkeliamas EXIF / GPS. 16 variantų iškoduoti ir patikrinti matmenys; atrinktų kopijų hash sutampa su originalais. WebP bendras dydis 4 654 032 baitai, vieno failo 49 614–684 740 baitų; didieji variantai yra paruošti šaltiniai, svetainėje dar reikės naudoti tinkamus responsive dydžius. Pagrindinis kandidatas 20200623_142501.jpg vizualiai patikrintas po konvertavimo. MP4 neperžiūrėtas, neparuoštas publikavimui.
+
+Pateiktas klausimas vartotojui dėl atliktų ATD darbų apimties, viešo pavadinimo / vietovės ir šlaito nuotraukų priklausymo šiam objektui; atsakymo šiame etape dar nėra. Prieš / po poros nepatvirtintos, darbų datos nespėjamos iš failų vardų. Kiti 30 aplankų neperžiūrėti. Į svetainę nieko nekelta, commit / push neatlikti. Atrankos pagalbiniai skriptai `atd-lt-audit/evidence/prepare-photo-selection.cjs`, `export-34-istorijos.cjs`, darbinė peržiūra `atd-lt-audit/photo-selection/34-istorijos/`.
+
+### 21.1. „34 istorijos“ faktų patvirtinimas ir antras aplankas
+
+Vartotojas patvirtino: visas „34 istorijos“ aplankas, įskaitant šlaito seką, yra tas pats objektas; ATD atliko želdinimą, grunto paruošimą, šlaito formavimą, bet NE takų ir trinkelių įrengimą. Viešas pavadinimas „34 istorijos“ leidžiamas. Atnaujinti Svetainei/atranka.json ir SKAITYTI.md, pridėti 2 šlaito kadrai: dabar 10 atrinktų kopijų ir 20 WebP. Parengtas LT/EN projekto aprašo ruošinys su aiškiomis darbų ribomis. Prieš/po slankiklio pora tebėra nepatvirtinta.
+
+Vieši šaltiniai: Omberg straipsnis https://omberg.lt/naujienos/omberg-group-parduoti-daugiau-nei-2000-butu-paraiska-ilgalaikei-lyderystei/ įvardija projektą Gineitiškėse; https://citify.eu/lt/projects/8600/34-istorijos/ — Pakonių g., Vilnius. Viešam projekto aprašui parinkta „Vilnius“. Konkretus Google Maps įrašas netikrintas. Pagalbinis papildymo skriptas evidence/confirm-34-istorijos.cjs.
+
+Pradėta „Alvydas simlita“ peržiūra: 11 JPG, kontaktinis lapas ir techninis inventorius atd-lt-audit/photo-selection/alvydas-simlita/. Yra 800x600 ir 600x800 originalų — jų nedidinti. Matosi sodinimo eiga; savininko paprašyta patvirtinti ATD darbų ribas, viešą vietovę / projekto pavadinimą. Šio objekto Svetainei dar nesukurtas, faktai nespėjami. Į svetainę nieko nekelta, commit/push neatlikti.
+
+### 21.2. Senasis Tarpupis — atranka ir patvirtintos darbų ribos
+
+Vartotojas patvirtino „Alvydas simlita“ objekto vietovę — Senasis Tarpupis — ir darbus: veja, augalų sodinimas, geotekstilės klojimas, mulčas. Aiškiai nurodė nenaudoti vardų. Viešas rinkinio pavadinimas „Privataus sklypo apželdinimas Senajame Tarpupyje“, failų prefiksas senasis-tarpupis; originalaus aplanko pavadinimas paliktas tik vidiniam atsekamumui.
+
+Sukurtas objekto Svetainei aplankas: 7 originalų kopijos ir 12 WebP (2 mažos raiškos atrinktiems originalams tik po vieną 800 px variantą; kitiems 800/1600). Originalai nepakeisti, kopijų SHA-256 patikrinti, visi WebP iškoduoti, matmenys ir EXIF nebuvimas patikrinti. Vienas didelis WebP vizualiai peržiūrėtas. Atranka.json turi LT/EN aprašų / alt tekstų ruošinius, patvirtintas darbų ribas, visų 11 JPG sprendimus; SKAITYTI.md ir bendras kontaktinis lapas. Galutinio užmulčiuoto želdyno kadro nepatvirtinta; dauguma nuotraukų rodo darbų eigą, nebaigtą geotekstilę / augalus vazonuose. Prieš/po poros neparinkta. Takų / trinkelių darbai ATD nepriskiriami. Generavimas / retušas netaikytas.
+
+Pakartotinai panaudojamas exporter: atd-lt-audit/evidence/export-project-photos.cjs; objekto nustatymai photo-selection/alvydas-simlita/selection-config.json. Šis exporter stabdo darbą, jei Svetainei jau egzistuoja, ir nedubliuoja mažų failų variantų.
+
+Peržiūrėtas trečio aplanko „Aš mykliu gamtą renginys vaikams“ penkių JPG kontaktinis lapas; jame dar 3 MP4, kurie neperžiūrėti. Nuotraukos — panašūs grupiniai renginio kadrai. Vartotojo paklausta apie ATD vaidmenį ir ar ruošti kaip veiklos istoriją, ar kol kas praleisti. Renginio Svetainei dar nesukurtas. Svetainės kodas ir hero nepakeisti, commit / push neatlikti.
+
+### 21.3. Renginys „Kuo vardu tavo žuvis?“
+
+Savininkas pateikė istorinį https://atd.lt/lt/pages/1949/aplinkos-tvarkymas/myliu-gamta ir paaiškino konkretų vaikų renginį: pokalbis apie gamtos saugojimą / elgesį gamtoje, jo nupirkti karosiukai, kiekvienas vaikas žuvytei suteikė vardą ir ją paleido. Savininkas norėtų renginį tęsti. Tai užfiksuota kaip noras, ne suplanuotas kitas renginys.
+
+Perskaitytas www variantas per web (tiesioginis hosto HTTP bandymas DNS nesėkmingas). Senas tekstas pristato platesnę „Aš Myliu Gamtą“ iniciatyvą; konkretaus vaikų renginio pavadinimo iš jo netvirtiname. Senų pažadų dalį pajamų skirti iniciatyvai, prekybos atributika ir ekologinių rezultatų į naują ruošinį neperkėlėme. Renginio faktai remiasi savininko pasakojimu. Šaltinio apibendrinimas ir ribos išsaugoti selection-config.json / atranka.json, ne pažodinis seno straipsnio kopijavimas.
+
+Sukurtas renginio Svetainei: 2 JPG kopijos, 4 WebP, patikrintos kopijos / matmenys / dekodavimas / EXIF nebuvimas, pagrindinis variantas peržiūrėtas. LT/EN pasakojimo ir alt tekstų ruošiniai; neviešinta. Trys MP4 dar neperžiūrėti. Paklausta renginio datos / vietos ir ar grupines dalyvių nuotraukas galima viešinti. Nepriskirta komercinių projektų galerijai.
+
+Pradėta „Augalai vietoj trinkelių“ peržiūra: 8 JPG kontaktinis lapas ir inventorius photo-selection/augalai-vietoj-trinkeliu/. Matosi dangos išardymo vietos, sodinimas ir paruoštas gruntas. Paklausta ATD darbų apimties, vietovės ir ar dangos šalinimo tikslas buvo pakeisti ją želdiniais. Svetainei dar neparuoštas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.4. Renginio vieta / data / viešinimas ir Galgių rinkinys
+
+Savininkas patvirtino renginio vietą: Užupis, prie Užupio prūdelio, dalyvavo viena darželio grupė (įstaiga neprisimenama). Leido nuotraukas viešinti ATD svetainėje ir paminėti skirtą laiką bei iš objektų uždirbtas lėšas. Tikslių metų neprisiminė. Patikrintas trijų originalių JPG EXIF TIFF DateTimeOriginal: 20160520_113508 -> 2016:05:20 11:35:07; 113510 -> 11:35:09; 113525 -> 11:35:24. Visur 2016-05-20; fotoaparato laikrodžio nepriklausomai netikrinome. Viešas ruošinys pažymi 2016 m. pagal nuotraukų metaduomenis. Atnaujinti renginio selection-config.json, Svetainei/atranka.json ir SKAITYTI.md. Naujo renginio nėra suplanuota; fiksuota kiekvieno užsakymo finansavimo dalis nepatvirtinta.
+
+„Augalai vietoj trinkelių“ savininkas patvirtino: Galgiai, naujo namo savininkui trūko želdinių, vietos parinktos pagal automobiliams reikalingą erdvę; ATD pjovė / ardė esamas trinkeles, sodino augalus ir papildomai paruošė / pasėjo veją. Sukurtas Svetainei su 6 originalų kopijomis, 12 patikrintų WebP, LT/EN aprašais / alt, visų 8 failų sprendimais. Pagrindinis rezultato WebP vizualiai patikrintas. Pradinės būklės ir pasodintų augalų kadrai yra, tačiau skirtingų rakursų; slankiklio pora nepatvirtinta. Nėra sužaliavusios naujos vejos kadro. Originalai nepakeisti.
+
+Kitas aplankas „Avia solutions pušis“ turi 17 JPG. SHA-256 patvirtinta, kad 8 failai yra identiškos Galgių aplanko nuotraukos — nekelti į Avia projekto istoriją ir neištrinti originalų. Įrodymai photo-selection/augalai-vietoj-trinkeliu/cross-folder-duplicates.json. Likę 9 JPG rodo didelių pušų atvežimą / sodinimą ir vėlesnį vaizdą. Peržiūrėtas kontaktinis lapas photo-selection/avia-solutions-pusis/. Paklausta darbų, vietovės, viešo pavadinimo ir ar 9 kadrai yra vienas objektas. Svetainei šiame aplanke dar nesukurtas. Svetainės komponentai nepakeisti, commit/push neatlikti.
+
+### 21.5. „AeroCity Tech Valley“ atranka
+
+Savininkas patvirtino vietovę / objekto pavadinimą „AeroCity Tech Valley“ ir vieną objektą visoms 9 pušų atvežimo, sodinimo ir vėlesnių želdinių nuotraukoms. Patvirtinti ATD darbai — didelių pušų atvežimas, sodinimas ir želdiniai. Viešame tekste naudojamas šis pavadinimas; papildomas „Avia Solutions“ užsakovo vardas nepridedamas.
+
+Sukurtas „Avia solutions pušis/Svetainei“: 6 atrinktų originalų kopijos, 12 WebP, LT/EN tekstų / alt ruošiniai, visų 17 originalų sprendimai ir kontaktinis lapas. 8 SHA-256 patvirtinti Galgių dubliai neįtraukti į publikavimo atranką; originalai palikti. Kontaktinis lapas rodo visus aplanko originalus, įskaitant dublį — SKAITYTI aiškiai nurodo šiam projektui naudoti tik atrinktus originalus / WebP. Kopijos ir WebP patikrinti exporter; bendro vėlesnio vaizdo WebP peržiūrėtas. Prieš / po slankiklio pora neparinkta, kiekių / aukščių / datų nespėta.
+
+Toliau peržiūrėtas „Belmontas“: 17 JPG ir vienas MP4 (neperžiūrėtas). Kontaktinis lapas / inventorius photo-selection/belmontas/. Matosi grunto darbai, akmenų šlaitas, latakas, laistymo įranga ir dangų eiga; savininko paklausta, kokie darbai ATD, kokį pavadinimą naudoti ir ar yra baigto rezultato vaizdų / ar MP4 rodo rezultatą. Svetainei dar nesukurtas. Svetainės kodas ir hero nepakeisti; commit/push neatlikti.
+
+### 21.6. Belmonto projektas ir video kadrai
+
+Savininkas patvirtino pavadinimą „Belmonto projektas“, rezultatą MP4 ir darbų apimtį: grunto keitimas, atraminės sienelės ardymas, akmenų šlaitas, tako betonavimas, akmeninės trinkelės, laistymas, tinklas nuo kurmių. Pagrindinė specifika — vos 97 cm pločio įvažiavimas; didžioji darbų ir medžiagų pervežimo dalis rankomis, kastuvais / karučiais, daliai darbų itin mažas krautuvas. Neaprašyti visi darbai kaip absoliučiai be technikos.
+
+MP4 20260911_171427.mp4: 1080x1920, 75.454813 s, 265562207 B. Playwright-bundled FFmpeg šio MP4 neišdekodavo. Sukurtas evidence/inspect-local-video.cjs: tik laikinas vietinis HTTP range serveris ir Edge dekoderis; paimti 12 kadrų per visą video, sudarytas kontaktinis lapas / video-review.json. Sandbox Edge nepasileido; su require_escalated peržiūra pavyko. Browser ir serveris uždaromi skripto finally. Tai atrankinė vizualinė kadrų peržiūra, garso nevertinome, ne kiekvieno kadro patikra.
+
+Sukurtas Belmontas/Svetainei: 6 originalių darbų eigos JPG kopijos, 3 aiškiai išvestiniais pažymėti rezultato JPG kadrai iš video (33.01 / 45.59 / 58.16 s) atskirame 03-kadrai-is-video, 18 WebP, LT/EN aprašas apie 97 cm priėjimą, alt / sha256 / matmenys, nuotraukų ir video kontaktiniai lapai. Kopijos ir visi WebP patikrinti, tako rezultato WebP peržiūrėtas. Kadre kai kur dar yra medžiagų; jų neretušavome. Terasos darbai ATD nepriskirti. Originalus video nepakeistas ir nekopijuotas; internetui suspausta MP4 / iškarpa dar NEparuošta. Prieš/po slankiklio poros nepatvirtinta. Exporter papildytas derivedFrom / sourceFile / atskirų video kadrų palaikymu.
+
+Toliau peržiūrėtas Bendrusai: 10 vaizdų (5 PNG, 4 HEIC, 1 JPEG). HEIC Sharp dekoduoja sėkmingai; kontaktinių lapų skriptas papildytas HEIC / HEIF, sudarytas visų 10 kadrų lapas / inventorius photo-selection/bendrusai/. Svetainei dar nesukurtas. Paklausta patikslinti viešą vietovę / pavadinimą, ATD darbus, ar visi kadrai vieno objekto ir ar yra sužaliavusios vejos rezultatas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.7. Bebrusų projekto faktai ir rinkinys
+
+Savininkas atskirai patvirtino vietovės rašybą „Bebrusai“ (originalus aplankas „Bendrusai“ paliktas). Darbai: šlaitų formavimas, grunto keitimas ir lyginimas, vejos sėja. Objektas prie ežero; dėl padėties ir privažiavimo ribojimų didžioji dalis darbų rankomis. Takai ir trinkelės kitų rangovų. Augalų sodinimo / laistymo ATD nepriskiriame, nes nepatvirtinta.
+
+Bendrusai/Svetainei paruoštos 6 originalų kopijos, 12 patikrintų WebP, LT/EN faktai / aprašai / alt ir visų 10 failų sprendimai. Viešas pavadinimas „Šlaitų formavimas ir vejos sėja Bebrusuose“, failų prefiksas bebrusai. Originalai nepakeisti. Šlaito WebP vizualiai peržiūrėtas. Nėra sužaliavusios vejos rezultato. Kai kuriuose kadruose technika, todėl nevadinti visiškai rankiniu objektu. Žemesnės raiškos 960x467 JPEG nedidintas; jo variantai 800 ir 960 px.
+
+Pradėta Bukiškio progimnazijos 7 HEIC peržiūra. Šie failai tikri HEVC, kurio Sharp dekoderis nepalaiko (ankstesni Messenger HEIC buvo nuskaitomi). Į realaus vartotojo TEMP/atd-photo-heif-tools atskirai įdiegtas pillow-heif 1.8.1 su Pillow 13.0.0, nekeičiant projekto package.json / lock. decode-heic.py kuria PNG peržiūros kopijas tik worktree, originalų nekeičia. Įdiegimo TEMP skiriasi nuo sandbox TEMP, tad dekodavimo komandą reikia paleisti įprasto vartotojo kontekstu. prepare-photo-selection palaiko atskirą decode aplanką; exporter decodeFile laukas leidžia kopijuoti tikrą HEIC originalą, bet WebP kurti iš jo iškoduotos PNG kopijos. Šio objekto faktai dar nepatvirtinti ir Svetainei nesukurtas.
+
+Bukiškio tęsinys: visi 7 HEIC iškoduoti ir bendras kontaktinis lapas peržiūrėtas. Matosi grunto darbai, atvežamas gruntas, takas ir vienas vėlesnis vejos vaizdas. Paklausta patvirtinti ATD darbus, tako priklausymą ir viešą pavadinimą „Bukiškio progimnazijos teritorijos tvarkymas“. Svetainei dar nesukurtas; PNG dekodavimo kopijos worktree tik vidiniam naudojimui.
+
+### 21.8. Bukiškio progimnazijos atranka ir Gilužio rivjeros peržiūra
+
+Savininkas patvirtino viešą pavadinimą „Bukiškio progimnazijos teritorijos tvarkymas“ ir tik šiuos ATD darbus: grunto atvežimas / keitimas, lyginimas, vejos sėja. Tako ATD neįrengė. Paruoštas Bukiškio progimnazija/Svetainei: 4 nepakeistų HEIC originalų kopijos, 8 WebP iš visos raiškos dekoduotų PNG, LT/EN aprašai / alt, visų 7 failų sprendimai, bendras kontaktinis lapas. Exporter patikrino kopijas ir variantus; vėlesnės vejos WebP vizualiai peržiūrėtas. Labai vertikalų rezultato kadrą naudoti tinkamame bloke. Prieš / po slankiklio poros nepatvirtinta, svetainėje dar nepublikuota.
+
+„Gilužio rivjera“: 158 vaizdai (141 JPG, 17 HEIC) ir 1 MP4. Visi vaizdai peržiūrėti 7 kontaktiniuose lapuose po 24. HEIC sukurti tik 1200 px PNG peržiūros variantai — prieš eksportą atrinktus HEVC HEIC būtina iškoduoti visa raiška į atskirą decoded katalogą; nekurti 1600 px iš 1200 px peržiūros. decode-heic.py dabar priima neprivalomą max-edge; be jo visos raiškos, su 1200 tik peržiūros. prepare-photo-selection papildytas atskirais contact-page-01..07.jpg ir mišriu preview / original fallback.
+
+Yra 18 vaizdinių kandidatų visual-shortlist.json (tik kandidatų sąrašas, ne viešas rinkinys). Matosi skirtingi įrengimo etapai, augalų atvežimas, geotekstilė, vejos / gyvatvorės ir sezoninis žydėjimas. Nr. 10 (20220503_123255.jpg) ir Nr. 119 (20230612_131542.jpg) panaši tos pačios vietos kompozicija, tačiau slankiklio poros tiksliai nepatikrinta ir nežadama. MP4 neperžiūrėtas. Savininko paklausta ATD darbų ribų (įskaitant takus / trinkeles / pergoles), ar visi kadrai šio objekto ir ar pavadinimą galima viešinti. Svetainei nesukurtas, faktai nespėjami. Svetainės kodas ir hero nepakeisti, commit/push neatlikti.
+
+### 21.9. „Gilužio rivjeros“ patvirtintas darbų mastas ir galutinė nuotraukų atranka
+
+Savininkas patvirtino viešą pavadinimą „Gilužio rivjera“, ATD darbus: gruntą / šlaitus, veją, augalų tiekimą ir sodinimą, geotekstilę / mulčą, laistymą ir želdinių priežiūrą. Takai, trinkelės ir pergolės kitų rangovų. Savininko pateiktas apytikslis pasodintų augalų kiekis ~16 000 — viešai rašyti „apie 16 000“, tai nėra nepriklausoma inventorizacija. Vartotojo pateikta https://www.giluziorivjera.lt/ perskaityta per web, patvirtina gyvenamąjį projektą Pilaitėje prie ežero; ATD darbų ir kiekio šaltinis savininkas, ne vystytojo puslapis.
+
+Sukurtas Gilužio rivjera/Svetainei: 16 originalų kopijų, 32 WebP, visų 158 vaizdų sprendimai, LT/EN projekto / alt ruošiniai ir 7 atskiri kontaktiniai lapai. Atranka apima pradžią, grunto darbus, augalų atvežimą, sodinimą / geotekstilę, mulčą, veją ir skirtingų sezonų žydėjimą. Dvi atrinktos HEVC HEIC iškoduotos visa raiška į decoded-full; 1200 px peržiūros eksportui nenaudotos. Exporter patikrino kopijas ir visus WebP. Geltonai žydinčio želdyno WebP vizualiai patikrintas.
+
+Tos pačios vietos 20220503_123255.jpg ir 20230612_131542.jpg peržiūrėti didesniu formatu: rakursas ir pastato perspektyva skiriasi. Tinka atskiram pradžia / rezultatas pasakojimui, ne tiesioginiam suregistruotam slankikliui. Originalai nekarpyti / neperspektyvinti. Projektinių planų ekrano kadrai neatrinkti. Dviejų atskiro akmenų sienelės kampo kadrų (106, 107) konkretus kontekstas nepatvirtintas, todėl nepublikuojami ir neatrinkti. MP4 20220718_174350.mp4 dar neperžiūrėtas / internetui neparuoštas. Konfigūraciją kuria evidence/configure-giluzio-selection.cjs.
+
+Toliau peržiūrėtas „Helsinkio“: 16 JPG, kontaktinis lapas photo-selection/helsinkio/. Matosi grunto darbai ir vėlesnė veja prie mūrinių pastatų. Paklausta viešo pavadinimo / vietovės, ATD darbų ribų ir ar visi kadrai vienas objektas. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.10. Helsinkio projektas ir mišrus vejos aplankas
+
+Savininkas patvirtino „Helsinkio“ kaip vieną objektą Helsinkio gatvėje ir ATD darbų apimtį: grunto keitimas / lyginimas, šlaitai, vejos sėja, takai ir kiti matomi darbai. Papildomos neįvardytos darbų rūšys ruošinyje nespėjamos. Pateikė https://maps.app.goo.gl/QwvbYE7UAEaFfu3z8. Web trumpųjų nuorodų neatidarė, sandbox DNS neveikė; įprasto vartotojo Invoke-WebRequest tik peradresavimo skaitymas grąžino Google Maps search 54.719089,+25.202312. Koordinatės vidiniame atranka.json; viešame tekste tik Helsinkio gatvė, be privataus adreso.
+
+Helsinkio/Svetainei sukurtos 7 originalų kopijos, 14 WebP, LT/EN projekto / alt ruošiniai, visų 16 failų sprendimai. Kopijos / WebP patikrinti, pagrindinis vejos WebP vizualiai peržiūrėtas. Takų kadrai rodo darbų eigą, ne jų galutinį rezultatą. Tiksli vienodo rakurso prieš/po pora neparinkta. Originalai nepakeisti, svetainėje dar nepublikuota.
+
+Toliau visi 46 „Įvairūs vejos projektai“ vaizdai peržiūrėti dviejuose kontaktiniuose lapuose: 24 JPG ir 22 HEIC, pastariesiems tik 1200 px dekodavimo peržiūros. Prieš HEVC HEIC eksportą reikės pilnos raiškos dekodavimo atskirai. Matosi skirtingi objektai; nesujungti į vieną fiktyvų projektą. Vartotojo paklausta, ar ruošti bendrą bevardį / be vietovių vejos darbų rinkinį ir ar grunto paruošimas / sėja visuose kadruose ATD. Taip pat atskirai paklausta, ar purkštuvų Nr. 38–41 ir trinkelių Nr. 43–46 darbai ATD (Nr. 42 bendras grunto vaizdas). Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.11. Mišri darbų kolekcija ir Jomanto parko peržiūra
+
+Savininkas patvirtino, kad „Įvairūs vejos projektai“ yra skirtingų objektų kratinys be vardų ir vietovių; ATD atliko grunto keitimą / paruošimą, vejos įrengimą ir dalį priežiūros. Atskirai patvirtino laistymą ir trinkeles anksčiau nurodytuose kadruose.
+
+Sukurtas Įvairūs vejos projektai/Svetainei: 14 originalų kopijų, 28 WebP. Kopijos ir WebP fiziškai sugrupuoti pagal veja (9), laistymas (2), trinkeles (3); manifestas turi serviceGroup ir collection=true. Nesuformuota viena fiktyvi projekto istorija ir nesuporuoti skirtingų vietų prieš / po kadrai. 6 HEVC HEIC iškoduoti visa raiška į decoded-full, neeksportuota iš 1200 px peržiūrų. Kopijų hash / WebP patikrinti, purkštuvo WebP vizualiai peržiūrėtas. LT/EN tekstai / alt, sprendimai visiems 46, 2 peržiūros lapai. Originalai nepakeisti.
+
+Exporter papildytas serviceGroup palaikymu — naujiems rinkiniams kuria paslaugų poaplankius, ankstesni rinkiniai neperrašyti. Kolekcijos generatorius evidence/configure-mixed-lawns-selection.cjs.
+
+Toliau peržiūrėti visi 56 „Jomanto parkas“ vaizdai 3 kontaktiniuose lapuose, HEIC peržiūros tik 1200 px. Yra darbai palei dviračių taką, jauni kiemų želdiniai ir žydintis vėlesnis vaizdas. 13 preliminarių kandidatų visual-shortlist.json. Paklausta ATD darbų ribų, ar gatvės ir kiemų kadrai vienas projektas, viešo pavadinimo / vietovės ir takų autorystės. Svetainei nesukurtas. HEVC HEIC atrinkus reikia iškoduoti visa raiška. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.12. „Jomanto parko“ patvirtintas rinkinys
+
+Savininkas patvirtino „Jomanto parkas“ pavadinimą ir ATD darbus: augalų tiekimas / sodinimas, gruntas, geotekstilė / mulčas, veja, laistymas, priežiūra. Takai kitų rangovų. Pateiktas https://galio.lt/lt/gyvenimui/jomanto-parkas/ perskaitytas: pavadinimas, Vilnius / Baltupiai; svetainėje nurodyta statybų pabaiga nėra ATD darbų data ir į ruošinį neperkelta.
+
+Jomanto parkas/Svetainei paruošta 10 originalų kopijų, 20 WebP iš kiemo želdinių kadrų: jauni augalai, mulčas, vėlesnis žydėjimas, bendri kiemo vaizdai ir žiedų detalė. 4 atrinkti HEVC HEIC iškoduoti visa raiška į decoded-full. Kopijos / WebP patikrinti, pagrindinis platus želdinių kadras vizualiai peržiūrėtas. LT/EN projekto ir alt ruošiniai, sprendimai visiems 56, 3 kontaktiniai lapai. Gatvės prie dviračių tako kadrai Nr. 3–8 ir 22–23 palikti rezerve, nes savininkas atskirai nepatvirtino šios atkarpos apimties; patvirtintos kiemo istorijos jie neblokuoja. Exporto konfigūracija kuriama configure-jomanto-selection.cjs. Prieš / po slankiklio pora neparinkta, kiekių / plotų / datų nespėjama.
+
+Toliau „Kazimiero Namas“: peržiūrėti 33 HEIC (1200 px peržiūros) dviejuose kontaktiniuose lapuose; 3 MP4 neperžiūrėti. Matosi grunto darbai, vamzdžiai, augalai, akmenų juostos ir ruloninė veja, laistymo vožtuvų dėžė. Paklausta tikslių ATD darbų ir viešos vietovės / neutralaus pavadinimo, asmens vardas viešam rinkiniui nenaudojamas. Atskiras Nr. 6 (20240419_131623.heic) rodo kitokį didelės statybvietės kontekstą — paklausta, ar priklauso šiam objektui. Svetainei nesukurtas. Atrinktus HEVC HEIC prieš eksportą reikės dekoduoti visa raiška. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.13. „Individualus namas“ — vidinio kiemo logistika
+
+Savininkas patvirtino neutralų viešą pavadinimą „Individualus namas“ ir ATD darbus: grunto keitimas, drenažas / vandens nuvedimas, laistymas, augalų sodinimas, akmenų kompozicijos, ruloninė veja. Esminis iššūkis: iš gatvės į vidinį kiemą galima patekti tik per garažą ir garaže esančias duris, todėl visi gruntai, akmenys, sistemų medžiagos ir ruloninė veja suvežti šiuo keliu. Durų plotis, kiekiai ir konkretūs drenažo sprendiniai nepatvirtinti ir nespėjami. Vietovė nepateikta, nenaudojama. Vardas viešai neskelbiamas.
+
+20240419_131623.heic savininkas nurodė ignoruoti kaip galimai pašalinį kadrą — neatrinktas. Originalai ir visų pradinių failų vidinis kontaktinis lapas palikti, tai ne publikavimo galerija.
+
+Kazimiero Namas/Svetainei sukurtos 10 originalių HEIC kopijų, 20 WebP iš visos raiškos dekoduotų PNG, LT/EN aprašas / alt ir visų 33 failų sprendimai, 2 kontaktiniai lapai. Kopijos / WebP patikrinti, pagrindinis vejos kadras vizualiai peržiūrėtas (matosi įrankis priekinio plano apačioje; tai darbų rezultato, ne retušuota reprezentacinė foto). Patvirtinti darbai atskirti nuo terasos / pastato konteksto. 3 MP4 neperžiūrėti / internetui neparuošti. Prieš/po slankiklio pora neparengta. Generatorius evidence/configure-individual-house-selection.cjs.
+
+Toliau „KIntų 11“: 11 JPG peržiūrėti, kontaktinis lapas / inventorius photo-selection/kintu-11/. Matosi augalai prie pastato ir terasos augalų loviai. Paklausta viešo pavadinimo / vietovės, ATD darbų apimties ir ar abi zonos vienas objektas bei ATD įrengtos. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.14. „Kintų 11“ — kiemas ir terasa, patikslinta apimtis
+
+Pirmoje savininko žinutėje patvirtinti grunto darbai, mulčiavimas, augalai ir priežiūra, akcentuota terasa. Tolesne žinute savininkas aiškiai patikslino, kad ATD apželdino IR vidinį kiemą žemės lygyje, IR terasą. Ankstesnė komentarų prielaida apie tik terasą atšaukta prieš kuriant rinkinį; iki patikslinimo Svetainei neegzistavo. Viešas pavadinimas „Kintų 11“.
+
+Vartotojui leidus ieškoti internete, rastas oficialus https://galio.lt/lt/verslui/kintu-11/ (biurų / verslo pastatas Vilniuje, Šnipiškėse, terasa). Vystytojo duomenys tik vietovės / projekto kontekstas, ATD darbų šaltinis savininkas. Vejos / laistymo, terasos konstrukcijų / lovių gamybos darbai nepatvirtinti ir ATD nepriskiriami.
+
+KIntų 11/Svetainei: 7 JPG kopijos (3 kiemas, 4 terasa), 14 WebP, LT/EN abiejų zonų tekstai / alt, area laukas ir zonas nurodantys failų pavadinimai, sprendimai visiems 11. Kopijos / WebP patikrinti, pagrindinis terasos WebP vizualiai peržiūrėtas. Originalai nepakeisti, visi kadrai vertikalūs; prieš/po nėra. Generatorius configure-kintu-selection.cjs.
+
+Toliau peržiūrėtos 14 JPG aplanke „Liepsnele, lopselis-darzelis“, kontaktinis lapas photo-selection/liepsnele/. Matosi takų ardymas / pagrindo darbai / bortai / vėlesnė danga. Paklausta vietovės, viešo pavadinimo, ATD darbų ribų ir ar senos plytelės perklotos, ar danga nauja. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.15. „Liepsnelės“ lauko teritorija
+
+Savininkas patvirtino lopšelio-darželio „Liepsnelė“ lauko / išorinės teritorijos darbus: senų plytelių pakeitimas naujomis, vejos bortai, veja, šulinių aukščių reguliavimas, altitudės ir nuolydžiai, lauko teritorijos paruošimas naudojimui. Ne pastato vidus. Vietovė nepateikta ir neįrašyta. Nauja danga neaprašyta kaip senų plytelių perklojimas; šulinių reguliavimas nevadinamas naujo nuotekų tinklo įrengimu.
+
+Liepsnele, lopselis-darzelis/Svetainei: 7 JPG kopijos, 14 WebP, LT/EN aprašai / alt, visų 14 failų sprendimai ir kontaktinis lapas. Kopijos / WebP patikrinti, pagrindinis tako WebP vizualiai peržiūrėtas. Sužaliavusios naujos vejos atskiro rezultato nėra; darbą patvirtino savininkas. Kai kuriuose kadruose dar matosi medžiagos, neretušuota. Prieš/po slankiklio pora neparinkta, specifikacijos / kiekiai / datos nespėjami. Generatorius configure-liepsnele-selection.cjs.
+
+Toliau visi 25 „Lino Namas“ JPG peržiūrėti 2 lapuose photo-selection/privatus-namas-l/. Matosi dangų / takų ir vejos grunto darbai, želdiniai. Nr. 13 (20260807_203452.jpg) atsitiktinis kojos kadras, neatrinkti; nereikia vartotojo paaiškinimo. Paklausta neutralaus viešo pavadinimo / vietovės, konkrečių ATD darbų ir ar visos zonos vienas objektas. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.16. Privataus namo takų ir dangų rinkinys
+
+Savininkas patvirtino „Lino Namas“ kaip vieną objektą ir tik ATD trinkeles / takus, bortus bei grunto paruošimą. Konkretaus neutralaus pavadinimo ar vietovės nepateikė; parinktas aprašomasis „Privataus namo takų ir dangų įrengimas“, be asmens vardo / adreso. Vejos sėja, augalų sodinimas ir laistymas nepatvirtinti, ATD nepriskiriami.
+
+Lino Namas/Svetainei: 8 originalų kopijos, 16 WebP, LT/EN tekstai / alt, visų 25 sprendimai ir 2 kontaktiniai lapai. Exporter patikrino kopijas / variantus. Didesnė 20260807_181713.jpg peržiūra parodė neužbaigtus tako kraštus ir įrankius: išvestinių failų slug pataisytas iš 05-takas-palei-nama į 05-tako-klojimo-eiga, role / alt / aprašas patikslinti į darbų eigą, ne baigtą rezultatą. Generatorius configure-private-paving-selection.cjs ir atranka.json / SKAITYTI.md sinchronizuoti; visų 16 nuorodų failai egzistuoja. Originalai nepakeisti. Atsitiktinis kojos kadras 20260807_203452.jpg neatrinktas.
+
+Toliau visi 17 „Mangirdo akmenys ir veja“ JPG peržiūrėti kontakte photo-selection/akmenys-ir-veja/. 15 failų ilgoji kraštinė tik 800 px, 2 didesnės raiškos (IMG_20210719_130041.jpg ir IMG_20210809_143849.jpg). Matosi akmenys / siena, grunto ir sėjos eiga, balta danga, vėlesnė veja ir purkštuvai. Paklausta neutralaus pavadinimo / vietovės, konkrečių ATD darbų, ar visos zonos vienas objektas ir ar yra didesni originalai. Mažų failų nedidinti. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.17. Verkių akmenų ir vejos projektas
+
+Vartotojas paaiškino, kad ankstesnį klausimą praleido netyčia. Patvirtino darbus: grunto keitimas, vejos sėja, laistymo sistemos montavimas, akmenų atvežimas, laužavietė, pasisėdėjimo zona ir atraminė siena iš akmenų; šiame aplanke matomi darbai ATD. Vietovės rašyba atskirai patvirtinta „Verkiai“.
+
+Mangirdo akmenys ir veja/Svetainei paruoštos 8 originalų kopijos, 10 WebP, neutralus LT/EN pavadinimas „Akmenų kompozicijos ir veja Verkiuose“, patvirtintas aprašas / alt, visų 17 sprendimai, kontaktinis lapas. 6 atrinkti mažos raiškos originalai turi tik vieną 800 px variantą, du didesni (IMG_20210719_130041.jpg ir IMG_20210809_143849.jpg) po 800/1600. Maži failai nedidinti. Kopijos / WebP patikrinti, didelis vejos / purkštuvo rezultato kadras vizualiai peržiūrėtas. Kontaktai su automobilių numeriais tik faktinis scenos fonas, neretušuota. Techninių sienos skaičiavimų / kiekių / datų nespėjama. Generatorius configure-verkiai-selection.cjs.
+
+Toliau „MO garden“: peržiūrėti 12 JPG, kontaktinis lapas / inventorius photo-selection/mo-garden/. Matosi ruloninės vejos atvežimas ir vėlesnė veja tarp sublokuotų namų; 1 MP4 neperžiūrėtas. Paklausta viešo pavadinimo / vietovės, ATD darbų (gruntas, ruloninės vejos tiekimas / klojimas, laistymas, priežiūra) ir ar visi kadrai vienas objektas. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.18. „MO Garden“ ir Naujosios Anglijos peržiūra
+
+Savininkas patvirtino „MO Garden“ kaip vieną objektą ir darbus: grunto paruošimas, ruloninės vejos tiekimas / klojimas, laistymas. Pateiktas https://mogarden.lt/ perskaitytas: oficiali vietovė Vilnius / Pilaitė, Mozūriškių g. 200; tai tik projekto konteksto šaltinis, ne ATD rangos darbų įrodymas. Priežiūra nepatvirtinta ir neįrašyta.
+
+MO garden/Svetainei: 5 originalų kopijos, 10 WebP, LT/EN ruošiniai / alt, visų 12 sprendimai, kontaktinis lapas. Kopijos / WebP patikrinti, pagrindinis vejos tarp namų WebP vizualiai peržiūrėtas. Atrinktas atvežimas ir skirtingi įrengtos vejos plotai, atskirų aiškių grunto / laistymo montavimo kadrų nėra. Visi originalai vertikalūs. MP4 20230630_162225.mp4 dar neperžiūrėtas / internetui neparuoštas. Generatorius configure-mo-garden-selection.cjs.
+
+Toliau „Naujoji Anglija“: 14 JPG kontaktinis lapas peržiūrėtas photo-selection/naujoji-anglija/. Matosi grunto / šlaito darbai, balta danga ir vėlesni takų / aplinkos vaizdai. Pastatų architektūra panaši į „Helsinkio“, bet nepriskirta tam pačiam objektui be patvirtinimo. Paklausta pavadinimo / vietovės, ar atskiras objektas ar Helsinkio dalis, ATD darbų ribų ir baltos dangos tipo / paskirties. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.19. „Naujoji Anglija“ — ilgas šlaitas ir privažiavimas iš apačios
+
+Savininkas pateikė https://rewo.lt/projektai/naujoji-anglija-2/ ir paaiškino užduotį: suformuoti ilgą vientisą lygų šlaitą išlaikant altitudes, be vingių / duobių. Keli ilgastrėliai ekskavatoriai, technikos privažiavimas tik iš apačios, ne iš viršaus. Balta danga — agrotekstilė; savininko nurodytas naudojimo tikslas palankesnė temperatūra / spartesnis vejos dygimas ir apsauga nuo lietaus bei paukščių. Ruošinyje tai projekto tikslas, ne išmatuotas efektas ar garantija.
+
+Oficialus REWO puslapis perskaitytas: „Naujoji Anglija“, Mozūriškių g. 138, Vilnius. Jo sklypo plotas / statybų datos nėra ATD darbų kiekiai / datos ir neperkelti. Helsinkio projekto ryšys nepatvirtintas, istorijos nesujungtos. Takai, laistymas ar pastatų darbai šiame etape nepatvirtinti ir nepriskiriami ATD.
+
+Naujoji Anglija/Svetainei: 5 JPG kopijos, 10 WebP, LT/EN šlaito istorija / alt, visų 14 sprendimai ir kontaktinis lapas. Kopijos / WebP patikrinti, platus agrotekstile uždengto šlaito WebP vizualiai peržiūrėtas. Atranka koncentruota į formavimą ir dangą; sužaliavusio šlaito rezultato nėra. Generatorius configure-naujoji-anglija-selection.cjs.
+
+Toliau visi 44 „Nok Nok“ JPG peržiūrėti 2 kontaktiniuose lapuose, photo-selection/nok-nok/. SHA-256 patvirtintos 6 tikslių dublikatų poros (38 unikalūs vaizdai), duplicates.json; originalai neištrinti. Matosi grunto / dangų darbai, ruloninės vejos klojimas ir vėlesnė veja, medžiai. Paklausta viešo pavadinimo / vietovės, konkrečių ATD darbų ir ar visos zonos vienas objektas. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.20. „Nok Nok Home“ — darbas nuo statybų pradžios
+
+Savininkas patvirtino pavadinimą „Nok Nok Home“, vieną objektą visoms zonoms ir ATD gruntą / altitudes, šulinių / drenažo darbus, takus / trinkeles / stovėjimo vietas / bortus, pagrindų smėlį / skaldą / tankinimą, grunto keitimą, ruloninę veją, medžius, laistymą ir priežiūrą. Pagrindinė specifika — ATD pradėjo grunto darbus dar prieš pastatų atsiradimą, vėliau dirbo etapais kartu su statybomis, pabaigoje visame projekte įrengė ruloninę veją. Pastatų statyba ATD nepriskiriama.
+
+Vartotojo nuoroda https://maps.app.goo.gl/WXnzqQUZ7EL6eW3H8 perskaityta peradresavimu į Google Maps vietą „Nok Nok Home“, žymeklis 54.7095587,25.166095. URL pašalintas gale buvęs NBSP. Tikslios koordinatės vidiniame manifeste; miesto / rajono papildomai nespėta.
+
+Nok Nok/Svetainei: 11 originalų kopijų, 22 WebP, LT/EN etapinio darbo istorija / alt, visų 44 failų sprendimai, 6 SHA-256 dublikatų poros ir 2 kontaktiniai lapai. Pasirinkti failai be Copy dublikatų. Kopijos / WebP patikrinti, pagrindinis vejos WebP vizualiai peržiūrėtas. Ankstyvas gruntas, dangos, ruloninės vejos eiga ir vėlesnis vaizdas. Plotų / sluoksnių storių / tūrių / kalendorinių datų nespėti. Generatorius configure-nok-nok-selection.cjs.
+
+Toliau visi 104 Pilaitės gimnazijos vaizdai peržiūrėti 5 kontaktiniuose lapuose, photo-selection/pilaites-gimnazija/. 3 HEIC turi tik 1200 px peržiūros kopijas; prieš eksportą pasirinktiems HEVC reikia pilnos raiškos dekodavimo. 17 kandidatų visual-shortlist.json, ne galutinė atranka. Matosi medžių perkėlimas / atvežimas, didelių medžių kėlimas, kiemo ir terasų želdiniai, gruntas, laistymas, gatvės ir vėlesni žydintys plotai. Paklausta ATD darbų ribų (įskaitant takus), ar visos zonos ta pati apimtis, viešo pavadinimo ir reikšmingo masto / iššūkio. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.21. Pilaitės gimnazijos pavadinimo ir vietos patvirtinimas
+
+Vartotojas pateikė „Vilnius Pilaitė Gymnasium“ ir https://maps.app.goo.gl/yrngWAYe9bzeegia8. Nuorodos peradresavimas perskaitytas: vieta tuo pačiu pavadinimu, žymeklis 54.7076803,25.1807977. Vidiniai faktai išsaugoti photo-selection/pilaites-gimnazija/confirmed-facts.json; LT pavadinimas „Vilniaus Pilaitės gimnazija“.
+
+Ši vartotojo žinutė patvirtino tik pavadinimą / vietą, ne ankstesniame klausime išvardytą darbų apimtį. Dar kartą tikslingai paklausta, ar ATD medžių perkėlimas, augalų tiekimas / sodinimas, gruntas, veja, laistymas, mulčias / priežiūra, ir kam priklausė takai / terasos bei gatvės ir kiemo želdiniai. Svetainei dar nesukurtas, darbų autorystė iš nuotraukų nespėjama. Kiti objektai šiame etape nepradėti. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+### 21.22. Pilaitės gimnazijos patvirtinta apimtis ir atranka
+
+Savininkas patvirtino esamų medžių iškėlimą dar prieš pastato statybą, kiemo ir gatvės želdinius, augalų / medžių sodinimą, grunto darbus ir mulčiavimą. Mastas: 35 000 augalų, 1 200 m³ augalinio grunto, 96 erdviniai metrai mulčio. Laistymo sistemos ATD neįrengė; takai ir trinkelės — UAB „Kerista“. Vejos įrengimo / priežiūros apimtis atskirai nepatvirtinta ir ruošinyje nepriskirta.
+
+Iššūkiai — ilgastrėlis kranas sunkiai pasiekiamoms zonoms ir trumpi darbų langai tarp kitų rangovų darbų. Kelias rekordines dienas pasodinta po 3 500 augalų; tai nėra vidurkis ar būsimo našumo pažadas. Kiekiai grindžiami savininko informacija, ne nuotraukų skaičiavimu.
+
+Pilaitės gimazija/Svetainei: 14 originalų kopijų, 28 WebP, LT/EN ruošiniai ir alt, visų 104 nuotraukų sprendimai, 5 peržiūros lapai. Vienas pasirinktas HEIC dekoduotas pilna 3024 × 4032 raiška. SHA-256 kopijos ir visi WebP patikrinti; pagrindinis žydinčių želdinių WebP vizualiai peržiūrėtas. Generatorius configure-pilaites-selection.cjs. Į svetainę neįkelta.
+
+Toliau „Popieriaus fabrikas“: peržiūrėti visi 30 JPG dviejuose kontaktiniuose lapuose, photo-selection/popieriaus-fabrikas/. Matosi kasimo technika prie vandens, krantai / akmenys, vejos klojimo eiga ir vėlesnis žalias rezultatas prie senų pastatų. Vienas MP4 neperžiūrėtas. Paklausta pavadinimo / vietovės, konkrečios ATD darbų apimties, ar visi kadrai vienas objektas ir iššūkio. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.23. Popieriaus fabriko kanalo rekonstrukcija
+
+Savininkas patvirtino viešą pavadinimą „Popieriaus fabriko teritorija“, vieną objektą visiems 30 kadrų, kanalo valymą / rekonstrukciją / performavimą, krantų ir šlaitų tvarkymą, geotekstilę kanale, akmenis ir skaldą dugne, altitudes / nuolydžius, ruloninę veją ir dalies augalų sodinimą. Iššūkiai — purvinas kanalo valymas, siauri pravažiavimai, ilgastrėlis ekskavatorius prie senų saugomų pastatų išlaikant teritorijos vaizdą. Pastatų restauravimas ir aplinkosauginis rezultatas nepriskirti.
+
+Pateiktos https://maps.app.goo.gl/HRhNrpKHtkFFwUde7 nuorodos peradresavimas perskaitytas: Google Maps koordinačių paieška 54.767637,25.332484, be vietos pavadinimo. Koordinatės vidiniame manifeste, miesto / istorinio fabriko pavadinimas nespėtas.
+
+Popieriaus fabrikas/Svetainei: 9 originalų kopijos, 18 WebP, LT/EN ruošiniai / alt, visų 30 nuotraukų sprendimai ir 2 kontaktiniai lapai. SHA-256 kopijos, WebP matmenys, dekodavimas ir EXIF nebuvimas patikrinti; pagrindinis kanalo / seno pastato WebP vizualiai peržiūrėtas. MP4 neperžiūrėtas ir neparuoštas. Generatorius configure-popieriaus-selection.cjs.
+
+Toliau „Rasos namas“: peržiūrėti visi 16 JPG kontaktiniame lape photo-selection/privatus-namas-r/. Matosi laiptų / aikštelės darbai, betonavimas, dangos, veja ir želdiniai, baseino zona. Paklausta neutralaus viešo pavadinimo / vietovės, darbų apimties, ar visi kadrai vienas objektas ir ar baseino dangos ATD. Asmens vardas viešai nenaudojamas. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.24. Individualus namas Lazdynėliuose — aplinkos perdarymas
+
+Savininkas patvirtino vieną objektą Lazdynėliuose, trinkelių perklojimą, įėjimų / laiptų perbetonavimą, nuolydžių perdarymą, vejos persėjimą, augalų persodinimą ir visos aplinkos aplink baseiną darbus. Baseino ATD neįrengė. Keturių žmonių komanda dirbo apie mėnesį. Technikos tiesioginio patekimo nėra; dalį medžiagų perkėlė sunkvežimiu per tvorą iš gatvės, kitas gabeno rankomis.
+
+Ankstesnių rangovų darbų kokybės paaiškinimas saugomas vidiniuose faktuose kaip savininko pasakojimas. Viešas ruošinys aprašo konkrečius ATD taisymus, ne nepriklausomą statybos kokybės ekspertizę. Viešas pavadinimas „Individualaus namo aplinkos atnaujinimas Lazdynėliuose“, asmens vardas neviešinamas.
+
+Rasos namas/Svetainei: 8 originalų kopijos, 16 WebP, LT/EN ruošiniai / alt ir visų 16 nuotraukų sprendimai. Kopijų SHA-256, WebP dekodavimas, matmenys ir EXIF nebuvimas patikrinti; pagrindinis tako / želdinių vaizdas vizualiai peržiūrėtas. Laiptų ir baseino darbų eigos vaizdai nevadinami pilnai užbaigtais. Generatorius configure-lazdyneliai-selection.cjs.
+
+Toliau „Švaros broliai“: peržiūrėta 16 JPG kontaktiniame lape photo-selection/svaros-broliai/. Augalai, geotekstilės / mulčio zonos, akmenų atvežimas ir gręžimas, vėlesnės kompozicijos prie plovyklos. Vienas 800 × 600 originalas, kiti didelės raiškos. Paklausta vietovės / plovyklos, viešo pavadinimo, ATD darbų apimties, ar vienas objektas, ir akmens gręžimo paskirties. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+
+### 21.25. PRO BRO Express — apželdinimas ir akmenų nuvalymas
+
+Savininkas pateikė PRO BRO Express plovyklos pavadinimą ir vietą https://maps.app.goo.gl/6ybD387sfkjnExei9. Peradresavimas patvirtina vietą tuo pačiu pavadinimu, koordinatės 54.6733595,25.2978381. Patvirtinta ATD apimtis: gruntas, augalų tiekimas / sodinimas, akmenų kompozicijos, geotekstilė, mulčiavimas, laistymas ir priežiūra.
+
+SVARBUS ankstesnės vaizdo interpretacijos pataisymas: akmuo NEBUVO gręžiamas, jis valomas nuo atvežant prilipusio purvo / molio. Savininkas prieš objekto perdavimą akmenis nuplauna ir nuvalo, prireikus metaliniais šepečiais. Gręžimo / vandens elemento / akmens apšvietimo teiginiai netaikomi. Atskiras visų 16 kadrų priklausymo vienam objektui patvirtinimas negautas, manifeste tai aiškiai palikta nepatvirtinta.
+
+Švaros broliai/Svetainei: 7 originalų kopijos, 14 WebP, LT/EN tekstas / alt ir visų 16 failų sprendimai. Kopijų SHA-256, WebP dekodavimas / matmenys ir EXIF nebuvimas patikrinti. Pagrindinis augalų / akmenų ir nuvalyto akmens vaizdas vizualiai peržiūrėti; pastarojo alt patikslintas kaip jau nuvalyto akmens detalė. Generatorius configure-pro-bro-selection.cjs. Originalai nekeičiami.
+
+Toliau Trakų Vokės Dvaras: visi 143 JPG peržiūrėti 6 kontaktiniuose lapuose photo-selection/traku-vokes-dvaras/. Medžių atvežimas / sodinimas, gruntas, gėlynai, veja, laistymo vaizdai, vėlesni želdiniai. 2 MP4 neperžiūrėti. 5 FB_IMG vaizdai (įskaitant iš oro) kilmė / naudojimo teisė tikslinama, į publikavimo atranką kol kas neįtraukiami. Paklausta konkrečios ATD apimties, takų / bortų / fontano autorystės, visų zonų priklausymo projektui ir reikšmingų skaičių / iššūkių. Svetainei nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.26. Trakų Vokės dvaras — nuosekli transformacija
+
+Savininkas patvirtino: dvejų metų darbas, 5,5 ha pasėtos vejos, 55 000 augalų įskaitant svogūninius, 12 vilkikų augalų. ATD grunto keitimas / atvežimas, altitudės, medžių ir kitų augalų tiekimas / sodinimas, visi gėlynai, laistymas ir priežiūra. Visų želdinių zonų gruntai ir želdiniai ATD. Elektra, takai, bortai, fontanai ir pastato restauracija ne ATD.
+
+Savininkas aiškiai pageidavo ne vien prieš / po, o visos evoliucijos nuo duobių ir medžių iki rezultato. FB_IMG vaizdus iš oro autorizavo naudoti savo atsakomybe, pirminio šaltinio neprisimena (gal savivaldybės puslapis); prašant numatė išimti. Tiksli autorystė / pirminė licencija nepatvirtinta ir taip užfiksuota, nevadinama ATD fotografija.
+
+Trakų Vokės Dvaras/Svetainei: 22 originalų kopijos ir 43 WebP. Šeši etapai stage laukuose ir numeruoti failai: gruntas / duobės; medžiai; gėlynai / gruntas; veja / medžiai; vėlesni želdiniai / laistymas; bendri vaizdai iš oro. Įtraukti 2 FB_IMG, ne visi 5; iki 1081 / 1080 px be didinimo. Vienas 800 px želdinių prie rūmų vaizdas turi tik vieną variantą. Visiems 143 vaizdams sprendimai, LT/EN tekstai / alt, kontaktinis lapas ir 6 atskiri peržiūros lapai. Kopijų SHA-256 ir WebP dekodavimas / matmenys / EXIF nebuvimas patikrinti; didelės raiškos pagrindinis gėlynas ir vienas vaizdas iš oro vizualiai peržiūrėti. Generatorius configure-traku-voke-selection.cjs. 2 MP4 dar neperžiūrėti. Į svetainę neįkelta.
+
+Toliau Turniškės senas prūdas: visi 38 JPG peržiūrėti 2 kontaktiniuose lapuose photo-selection/turniskes-senas-prudas/. 7 MP4 neperžiūrėti. Matosi senas tvenkinys, ardymas / gruntas, akmenys / juoda danga / skalda, vėlesnė vešli augalų kompozicija. Nepriskirta sausam sodui / veikiančiam vandens elementui be savininko atsakymo. Paklausta darbų apimties, viešo pavadinimo, ar vienas objektas, ir atskirai žaidimų aikštelės 20190409_172603.jpg (Nr. 10) priklausymo. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.27. Eureka mokyklos vieta ir žaidimų aikštelės kadro atmetimas
+
+Savininkas patvirtino objekto pavadinimą Eureka primary school ir https://maps.app.goo.gl/hEJTs1xvK1XgwM6q9. Peradresavimas perskaitytas: Eureka primary school, žymeklis 54.7381689,25.2926119. Užfiksuota photo-selection/turniskes-senas-prudas/confirmed-facts.json.
+
+20190409_172603.jpg (Nr. 10, žaidimų aikštelė) savininko nurodymu ignoruojamas tvenkinio transformacijos istorijoje. Originalas neištrintas ir neperkeltas; nepadaryta prielaida, kad jis kito objekto. Darbų apimtis / ar panaikintas vandens elementas šiame atsakyme nepatvirtinta, todėl pakartotinai tikslingai paklausta. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.28. Eureka — seno tvenkinio transformacija
+
+Savininkas patvirtino seno tvenkinio užpylimą dėl vaikų įkritimo rizikos ir naują akmenų / augalų kompoziciją su kalvelėmis bei takeliais. Užpylimui 24 sunkvežimiai grunto (ne m³, talpa nepatvirtinta). Paliktas vienas veikiantis vandens elementas — šaltinis ir tarp akmenų / želdinių tekantis upelis. Negalima teigti, kad visas vanduo panaikintas. ATD visas gruntas, akmenys, geotekstilė, skalda, sodinimas, laistymas, veja ir takeliai; visi kompozicijos kadrai vienas projektas.
+
+Turniškės senas prūdas/Svetainei: 12 originalų kopijų, 24 WebP, LT/EN ruošiniai ir alt, visų 38 nuotraukų sprendimai, kontaktinis ir 2 paginuoti lapai. Nr. 10 žaidimų aikštelė neatrinkta savininko nurodymu, originalas paliktas. Kopijos / eksportai patikrinti SHA-256, dekodavimu, matmenimis ir EXIF nebuvimu; pagrindinis suaugusių želdinių / takelių vaizdas vizualiai peržiūrėtas. 7 MP4 neperžiūrėti. Generatorius configure-eureka-selection.cjs.
+
+Toliau Turniškių dominija: visi 142 JPG peržiūrėti 6 kontaktiniuose lapuose photo-selection/turniskiu-dominija/. Matosi gruntas, augalų / pušų atvežimas, sodinimas, šilokų kilimai, mulčias, veja, vėlesni gausūs želdiniai; 3 MP4 neperžiūrėti. Paklausta pavadinimo / vietos, konkrečios ATD apimties, takų / bortų / aikštelių autorystės, masto / iššūkio. Atskirai paklausta tvenkinio / plataus šlaito kadrų ir 20190225 statybvietės priklausymo projektui. Svetainei dar nesukurtas. Svetainės kodas / hero nepakeisti, commit/push neatlikti.
+
+### 21.29. Turniškių dominija — pirmasis didesnis apželdinimo projektas
+
+Savininkas patvirtino 2 650 augalų, gruntą, augalų / didelių pušų tiekimą ir sodinimą, šilokų kilimus, geotekstilę / mulčią, veją, laistymą, šlaitus / drenažą. Takai, bortai, aikštelės — kitų rangovų. Tai savininko pirmasis didesnis želdinimo užsakymas, atspirties taškas į didesnius objektus. REWO pateikto projekto puslapio paieškos rezultatas patvirtino Turniškių g. 34A, Vilnius, bet vystytojo datos / plotai nepriskirti ATD darbams. Tvenkinio vaizdai neatrinkti, miškingas šlaitas su balta agroplėvele patvirtintas. 20190225 statybvietės priklausymas liko nepatvirtintas, kadrai neatrinkti.
+
+Turniškių dominija/Svetainei: 18 originalų kopijų, 36 WebP, LT/EN aprašas / alt ir visų 142 kadrų sprendimai. Kopijos ir eksportai patikrinti; pagrindinis suaugusių želdinių vaizdas vizualiai peržiūrėtas. 3 MP4 neperžiūrėti. Generatorius configure-dominija-selection.cjs.
+
+### 21.30. Likę keturi rinkiniai užbaigti
+
+Vartotojas, išvykdamas, nurodė toliau dirbti savarankiškai ir užbaigus nuotraukas pradėti svetainės atliktų darbų galeriją. Tvenkiniai ir Veja — įvairių objektų bendri rinkiniai be vietovių / užsakovų. Veja Turniškės — vieno namo pasėta veja. Gimnazija — senos dangos ardymas, visų smėlio / skaldos pagrindų pakeitimas, apie 850 m² naujos dangos ir 500 m² vejos; netikėta žiema, įšalusio grunto atitirpinimas ir darbų užbaigimas.
+
+Tvenkiniai/Svetainei: 11 kopijų / 22 WebP iš 46 JPG; dumblių detalės ir nesusijęs vejos kadras praleisti. Veja/Svetainei: 7 / 14 iš 28 JPG. Veja Turniškės/Svetainei: 2 / 4 iš 2 JPG. Vilniaus šv. Jono Pauliaus II gimnazija/Svetainei: 8 / 16 iš 27 vaizdų, vienas pasirinktas rezultato HEIC dekoduotas pilna 3024 × 4032 raiška. EFFECTS variantas ir vizualiai nesusijęs grunto kadras Nr. 27 neatrinkti. Visos kopijos / WebP patikrinti, pagrindinis gimnazijos rezultatas vizualiai peržiūrėtas. Grunto sluoksnių storiai, atitirpinimo metodas ir tvenkinių matmenys nespėti. Generatorius configure-final-selections.cjs. Visi 31 pirminio lygio nuotraukų aplankai dabar turi Svetainei atranką. Originalai nekeisti.
+
+### 21.31. Atliktų darbų galerija — 31 istorija ir 276 nuotraukos
+
+Autorizacija tiesiogiai iš vartotojo: baigus aplankus pradėti galeriją svetainėje; dirbti savarankiškai. Esama /darbai galerija pakeista į projektų / bendrų rinkinių naršymą, ne vien 13 padrikų vaizdų. /en/darbai palaikoma. Vieši neutralūs pavadinimai ir tekstai imti iš savininko patvirtintų atrankų manifestų. Mišrių objektų rinkiniai aiškiai pažymėti; renginys turi atskirą Bendruomenei grupę. Foto kopijos / GPS / vidiniai manifestai į public neperkelti.
+
+Duomenys src/lib/gallery-projects.json: 31 istorija / rinkinys, 276 nuotraukos, 543 WebP variantai (~149,6 MB diske, ne vienu metu naršyklėje). Vieši failai public/images/projects/<neutralus-id>/. Tik 10 projekto viršelių pradžioje, native lazy loading ir responsive srcset; daugiau rodoma mygtuku. Visi projekto vaizdai atsidaro numeruota darbų eigos seka, su caption / LT/EN aprašu ir patvirtintų darbų ribomis. Modal: rodyklės, miniatiūros, klaviatūros ArrowLeft / ArrowRight, Escape, fokuso grąžinimas ir inert fonas per esamą Modal. Nuotraukos peržiūroje contain, failai neapkarpyti; viršeliai vizualiai cover.
+
+Failai: DarbaiPage.tsx, DarbaiPage.module.css, gallery-projects.json, papildyti translations.ts darbaiPage LT/EN. Generatorius build-gallery-assets.cjs; atd-lt-audit/photo-selection/gallery-provenance.json atseka visus viešus failus į originalų atrankas ir SHA-256. FB_IMG autorystės neapibrėžtumas / savininko leidimas išlikęs vidiniame manifeste. Kitų rangovų darbų ribos aiškiai įrašytos atitinkamiems objektams. Jokio naujo tikslių adresų / datų / kiekių spėjimo.
+
+Patikros: tsc --noEmit ir tikslinis ESLint praėjo; Impeccable detector [] (vienas paleidimas). Numatyto npm run build Turbopack pirmiausia krito dėl senos CSS worker podėlio būsenos. Patikrintame worktree .next/cache/turbopack perkeltas į atkuriamą .next/cache/turbopack-before-gallery; po to įprastas npm run build PRAĖJO, visos 26 svetainės statinės / SSG išvestys. Webpack build taip pat buvo praėjęs. Joks projekto build režimas / konfigūracija dėl to neperrašyta.
+
+verify-project-gallery.cjs patikrino 543 failų egzistavimą, LT/EN prie 1440 / 390 px, filtrus, visų 31 parodymą, modal rodykles, Escape, fokuso grąžinimą, horizontalų overflow ir JS klaidas: viskas praėjo. Ekrano kopijos tik po visų img.decode: .impeccable/review/desktop.png, mobile.png, *-first.png, *-viewer.png; gallery-checks.json. Pradiniai neužkrautų lazy vaizdų capture pakeisti pilnai dekoduotais. git diff --check praėjo (tik informaciniai LF/CRLF pranešimai).
+
+Impeccable finish reviewer SHIP: atd-lt-audit/gallery-finish-review.md. Documenter: atd-lt-audit/gallery-design-documentation.md — esama sistema išlaikyta, seno PRODUCT formato / trūkstamo DESIGN konteksto netvarkė nepaprašytas. Galerijos kryptis atd-lt-audit/gallery-surface-brief.md. Tai esamos galerijos papildymas, ne nauja vizualinė tapatybė. Hero durys / GardenSceneHero / jo greitis / hotspotai nepakeisti. Ankstesni SEO pakeitimai išlikę; jokio commit / push / deploy.
+
+Peržiūra palikta http://localhost:3100/darbai ir /en/darbai, galutinis production serveris exec session 36971; Codex browser atidarymas grąžino queued. Vaizdo įrašai (išskyrus anksčiau atrinktus Belmonto kadrus) daugumoje aplankų tebėra neperžiūrėti / internetui neparuošti, kaip nurodyta jų manifestuose. Šis darbas užbaigė nuotraukų, ne visų MP4 apdorojimą.
+
+### 21.32. Galerijos SEO / GEO, indeksuojamos istorijos ir paruošimas publikavimui
+
+Vartotojas aiškiai nurodė sutvarkyti SEO / GEO, tada atlikti commit ir push, po to tikrins online. Pridėti 31 atskiri projekto / rinkinio puslapiai kiekviena kalba (62 URL) maršrute src/app/[lang]/darbai/[project]/page.tsx. Aprašai ir visos projekto nuotraukos / caption pateikiami statiniame HTML, nepriklausomai nuo modal ar JavaScript. Naudoti tik patvirtinti galerijos duomenys, įmonės autorystė ATD / MB ATD.LT; neišgalvotos darbų / publikavimo datos ar nauji kiekiai.
+
+SEO: unikalūs title / meta description, self canonical, LT/EN/x-default alternates, projekto viršelio OG / Twitter, index/follow. Struktūriniai duomenys: galerijos CollectionPage / ItemList su 31 tikru URL, projektų Article su matomu aprašu, ImageGallery / ImageObject ir BreadcrumbList. Susijusių projektų / paslaugų / kontaktų nuorodos. Galerijoje visų 31 istorijų HTML nuorodų sąrašas ir tiesioginės pilno aprašo nuorodos. Sitemap dabar 84 URL (22 buvę + 62 projektų), abiejų kalbų alternates ir projektų viršeliai image sitemap. /lt/darbai/<id> nukreipia į kanoninį /darbai/<id>; nežinomi projektai 404. Header kontrastas taikomas ir projektų puslapiams.
+
+GEO remiasi įskaitomu pirmosios šalies HTML / faktais / vidinėmis nuorodomis ir tikslia įmonės autoryste; nėra AI pozicijų ar citavimo garantijų. Tikrinta pagal oficialius Google AI features ir JavaScript SEO dokumentus. Esamas robots leidžia Google ir AI paieškos crawler prieigą; treniravimo leidimai nepakeisti. llms.txt nelaikomas reitingavimo priemone.
+
+Patikros: TypeScript, tikslinis ESLint ir npm run build (Turbopack) praėjo; sugeneruotos 88 svetainės išvestys. verify-gallery-seo.cjs patikrino visus 62 projekto URL: 200, pilnas matomas HTML aprašas, viena H1, canonical, LT/EN alternates, visas nuotraukų skaičius ir Article / ImageGallery / Breadcrumb. Sitemap 84 URL; visų istorijų HTML nuorodos; 404 ir LT redirect; 1440 / 390 vaizdai be overflow, įskaitomas header. Atskiras verify-project-gallery.cjs pakartotinai patvirtino filtrus, modal / klaviatūrą ir 543 failus. Metaduomenų heuristika pagrindiniam galerijos puslapiui: templated false, low risk. git diff --check praėjo.
+
+Commit / push bus atliekami į origin/main iš esamo worktree HEAD (remote main šiuo metu sutampa su pradiniu bfb4e199). Į commit įtraukiamas svetainės kodas ir 543 vieši WebP (~149,6 MB), bet ne ~652 MB vidinių kontaktinių lapų / dekoduotų originalų, ne asmeniniai nuotraukų šaltiniai. Hero durys ir GardenSceneHero nekeičiami. Iki commit viskas patikrinta vietiniame production serveryje 3100. GitHub CLI nėra prisijungęs, todėl deploy būsenai naudojamas prijungtas GitHub connector / viešo URL patikra, o git tinklo kredencialai veikia per fetch.

@@ -214,6 +214,7 @@ body[data-cookie-banner] .floating-chat, body[data-cookie-banner] .mobile-sticky
 }
 @media (max-width: 767px) {
   input:not([type="hidden"]), textarea, select { font-size: 16px; }
+  body:has(.tips-page) .floating-chat { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

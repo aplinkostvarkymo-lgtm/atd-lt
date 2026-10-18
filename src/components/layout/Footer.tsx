@@ -22,6 +22,7 @@ export function Footer() {
           <p className="font-body text-sm text-white/60 mt-3 max-w-xs leading-relaxed">
             {t.footer.tagline}
           </p>
+          <p className="font-body text-sm text-white/70 mt-3">MB „ATD.LT“</p>
         </div>
 
         {/* Services */}
@@ -64,6 +65,9 @@ export function Footer() {
             </li>
             <li className="text-white/50">{t.footer.area}</li>
             <li className="text-white/50">{t.footer.hours}</li>
+            <li className="pt-1">
+              <Link underline href="/patarimai" className="text-white/70 hover:text-white transition-colors">{t.nav.tips}</Link>
+            </li>
             <li className="pt-1">
               <Link underline href="/kontaktai" className="text-white/70 hover:text-white transition-colors">
                 {t.nav.contact}

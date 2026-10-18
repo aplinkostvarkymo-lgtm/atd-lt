@@ -224,7 +224,7 @@ function FormSection({ t }: { t: T }) {
             <a href="tel:+37065785096" className="block font-display font-bold text-2xl text-atd-green hover:text-atd-green-light transition-colors">
               +370 657 85096
             </a>
-            <p className="font-body text-sm text-atd-black">{t.contact_person}</p>
+            <p className="font-body text-sm text-atd-black">MB „ATD.LT“ · {t.contact_person}</p>
             <a href="mailto:Robertas@atd.lt" className="block font-body text-sm text-atd-black hover:text-atd-green transition-colors">
               Robertas@atd.lt
             </a>

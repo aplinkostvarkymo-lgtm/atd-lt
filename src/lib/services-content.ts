@@ -296,27 +296,14 @@ export const SERVICES: ServicePopupData[] = [
   /* ── NAUDINGI PATARIMAI ─────────────────────────────────── */
   {
     id: "patarimai",
-    heading: { lt: "Sodo priežiūros patarimai", en: "Garden Care Tips" },
-    tagline: { lt: "Praktiniai ATD ekspertų patarimai Lietuvos klimatui", en: "Practical ATD expert advice for the Lithuanian climate" },
-    ctaLabel: { lt: "Skaityti visus patarimus", en: "Read All Tips" },
-    ctaHref: "/kontaktai",
-    blocks: [
-      {
-        type: "list",
-        heading: { lt: "Populiariausi straipsniai", en: "Popular articles" },
-        items: [
-          { lt: "Ruloninė vs sėjama veja: kurią pasirinkti?", en: "Roll-out vs seeded lawn: which to choose?" },
-          { lt: "Trinkelių klojimas: ką reikia žinoti iš anksto", en: "Paving: what to know before you start" },
-          { lt: "Automatinė laistymo sistema: ar verta namuose?", en: "Automatic irrigation: is it worth it at home?" },
-          { lt: "10 geriausių augalų šešėliui Lietuvoje", en: "10 best plants for shade in Lithuania" },
-          { lt: "Kaip paruošti sodą žiemai", en: "How to prepare your garden for winter" },
-        ],
-      },
-      {
-        type: "note",
-        text: { lt: "Nauji straipsniai kiekvieną sezoną — praktiniai patarimai iš realių projektų.", en: "New articles every season — practical tips from real projects." },
-      },
-    ],
+    heading: { lt: "Naudinga informacija", en: "Useful Information" },
+    tagline: { lt: "Pasiruoškite sklypo ir tvenkinio darbams", en: "Prepare for landscaping and pond work" },
+    ctaLabel: { lt: "Skaityti visus patarimus", en: "Read All Guides" },
+    ctaHref: "/patarimai",
+    blocks: [{ type: "list", heading: { lt: "Straipsniai", en: "Guides" }, items: [
+      { lt: "Kaip suplanuoti aplinkos tvarkymo darbus?", en: "How to plan a landscaping project" },
+      { lt: "Tvenkinio kasimas: ką aptarti prieš pradedant?", en: "Planning pond excavation: questions to ask first" },
+    ] }],
   },
 
   /* ── KONTAKTAI ──────────────────────────────────────────── */

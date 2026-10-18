@@ -1,3 +1,5 @@
+import galleryProjects from "./gallery-projects.json";
+
 export type Lang = "lt" | "en";
 
 export const translations = {
@@ -401,8 +403,25 @@ export const translations = {
     },
     darbaiPage: {
       heading: "Atlikti darbai",
-      tagline: "Realūs ATD projektai Vilniuje",
-      all: "Visos",
+      tagline: "Nuo pirmųjų grunto darbų iki suaugusių želdinių. Mūsų projektai ir jų istorijos.",
+      all: "Visi darbai",
+      projects: galleryProjects,
+      category_tvenkiniai: "Tvenkiniai",
+      category_bendruomene: "Bendruomenei",
+      projectCount: "Projektai ir darbų rinkiniai",
+      photoCount: "nuotraukos",
+      viewProject: "Peržiūrėti istoriją",
+      collection: "Įvairių objektų rinkinys",
+      showMore: "Rodyti daugiau darbų",
+      previous: "Ankstesnė nuotrauka",
+      next: "Kita nuotrauka",
+      photo: "Nuotrauka",
+      projectDetails: "Apie darbus",
+      projectPhotos: "Darbų eiga ir rezultatas",
+      relatedProjects: "Susiję darbai",
+      allProjects: "Visi projektai ir darbų rinkiniai",
+      fullStory: "Visas projekto aprašas",
+      empty: "Šios grupės darbų kol kas nėra. Pasirinkite kitą grupę.",
       category_veja: "Veja",
       category_apzeldinimas: "Apželdinimas",
       category_trinkeles: "Trinkelės",
@@ -813,8 +832,25 @@ export const translations = {
     },
     darbaiPage: {
       heading: "Our Work",
-      tagline: "Real ATD projects in Vilnius",
+      tagline: "From the first ground works to established planting. Our projects and their stories.",
       all: "All",
+      projects: galleryProjects,
+      category_tvenkiniai: "Ponds",
+      category_bendruomene: "Community",
+      projectCount: "Projects and work collections",
+      photoCount: "photos",
+      viewProject: "Explore the story",
+      collection: "A collection from different sites",
+      showMore: "Show more work",
+      previous: "Previous photo",
+      next: "Next photo",
+      photo: "Photo",
+      projectDetails: "About the work",
+      projectPhotos: "Work in progress and results",
+      relatedProjects: "Related work",
+      allProjects: "All projects and work collections",
+      fullStory: "Full project story",
+      empty: "There is no work in this category yet. Choose another category.",
       category_veja: "Lawn",
       category_apzeldinimas: "Landscaping",
       category_trinkeles: "Paving",
@@ -828,3 +864,92 @@ export const translations = {
 } as const;
 
 export type Translations = typeof translations;
+
+
+// Editorial content and UI copy for the bilingual guides.
+type TipLocalized = Record<Lang, string>;
+export type TipArticle = {
+  path: string;
+  title: TipLocalized;
+  description: TipLocalized;
+  intro: TipLocalized;
+  service: string;
+  sections: { heading: TipLocalized; text: TipLocalized; bullets?: Record<Lang, string[]> }[];
+};
+
+export const planningArticle: TipArticle = {
+  path: "/patarimai/aplinkos-tvarkymo-darbu-planas",
+  title: { lt: "Kaip suplanuoti aplinkos tvarkymo darbus?", en: "How to Plan a Landscaping Project" },
+  description: { lt: "Nuo sklypo apžiūros iki vejos: kaip suderinti takus, laistymą ir augalų sodinimą, palyginti pasiūlymus ir pasiruošti pokalbiui su rangovu.", en: "Plan your landscaping work from the site visit to the lawn. Coordinate paving, irrigation and planting, compare quotes and prepare for a contractor visit." },
+  intro: { lt: "Aplinkos tvarkymą pradėkite nuo bendro sklypo plano ir darbų ribų, o ne nuo atskirų augalų ar trinkelių pirkimo. Viename plane suderinkite takus, vejos plotus, želdinius ir laistymą. Taip lengviau numatyti darbų eiliškumą ir išvengti jau sutvarkytų vietų ardymo.", en: "Start with a plan for the whole site and a clear scope of work before buying plants or paving. Coordinate paths, lawn areas, planting and irrigation on the same plan. This helps establish the work sequence and avoids digging up finished areas later." },
+  service: "/paslaugos/apzeldinimas",
+  sections: [
+    {
+      heading: { lt: "Ką pasiruošti prieš sklypo apžiūrą?", en: "What should you prepare for a site visit?" },
+      text: { lt: "Rangovui pateikite sklypo planą, esamų komunikacijų informaciją ir, jei turite, architekto želdynų projektą. Nurodykite, kur turi likti pravažiavimas, kur planuojate ilsėtis ir kurias sklypo vietas norite išsaugoti. Turint šią informaciją pasiūlymai būna aiškiau palyginami.", en: "Share your site plan, information about existing utilities and an architect’s planting plan if you have one. Identify vehicle access, seating areas and features you want to keep. This information helps contractors prepare quotes that can be compared on the same basis." },
+      bullets: {
+        lt: ["Sklypo planas ir keli bendro vaizdo kadrai.", "Norimi vejos, takų ir želdinių plotai.", "Vandens šaltinio vieta, jei planuojamas automatinis laistymas.", "Pageidaujamas terminas ir biudžeto ribos."],
+        en: ["A site plan and a few overview photographs.", "Proposed lawn, paving and planting areas.", "Water supply location if automatic irrigation is planned.", "Your preferred schedule and budget range."],
+      },
+    },
+    {
+      heading: { lt: "Kokia darbų seka padeda išvengti perdarymo?", en: "What work sequence helps avoid rework?" },
+      text: { lt: "Pirmiausia suderinkite sklypo aukščius, vandens judėjimo kryptis ir požeminių sistemų vietas. Tuomet planuokite pagrindų bei takų įrengimą, laistymo vamzdyną, augalų sodinimą ir veją. Tiksli seka priklauso nuo projekto ir technikos privažiavimo. Svarbiausia dar prieš užbaigiant dangas žinoti, kur reikės kasti.", en: "First agree on site levels, water movement and underground system locations. Then coordinate bases and paving, irrigation pipes, planting and the lawn. The precise order depends on the design and machinery access. The key is to know where excavation is needed before finishing surfaces." },
+    },
+    {
+      heading: { lt: "Kaip palyginti aplinkos tvarkymo kainų pasiūlymus?", en: "How should you compare landscaping quotes?" },
+      text: { lt: "Lyginkite vienodą darbų apimtį. Viename pasiūlyme gali būti numatytas grunto paruošimas, medžiagų atvežimas ir išlyginimas, kitame – tik pats įrengimas. Paprašykite atskirai išvardyti darbus, medžiagas ir galimus papildomus kaštus. Žema pradinė suma mažai pasako, jei neaišku, kas už ją bus atlikta.", en: "Compare the same scope of work. One quote may include ground preparation, delivery and levelling, while another covers installation only. Ask for a clear breakdown of labour, materials and potential extras. A low starting figure tells you little unless the included work is defined." },
+      bullets: { lt: ["Kas įskaičiuota į kainą ir kaip matuojami kiekiai?", "Kas parūpina ir atveža medžiagas?", "Kaip derinami papildomi darbai?", "Kokios priežiūros reikės po darbų ir kokios garantijos sąlygos?"], en: ["What is included and how are quantities measured?", "Who supplies and delivers materials?", "How are additional works agreed?", "What aftercare is needed and what are the warranty terms?"] },
+    },
+    {
+      heading: { lt: "Ar visus darbus būtina atlikti vienu metu?", en: "Does everything need to be done at once?" },
+      text: { lt: "Ne. Projektą galima skaidyti etapais, tačiau bendra jo kryptis turi būti aiški nuo pradžių. Pavyzdžiui, sodinimą galima atidėti, bet būsimas augalų vietas verta numatyti planuojant laistymą ir takus. Etapų ribas užrašykite pasiūlyme, kad būtų aišku, kokios būklės sklypas paliekamas po kiekvieno darbų etapo.", en: "No. A project can be delivered in stages, provided the overall plan is clear from the start. Planting may be deferred, but future planting areas should be considered when laying out irrigation and paths. Record each stage’s scope so you know the condition in which the site will be left." },
+    },
+  ],
+};
+
+export const pondArticle: TipArticle = {
+  path: "/patarimai/tvenkinio-kasimo-planavimas",
+  title: { lt: "Tvenkinio kasimas: ką aptarti prieš pradedant?", en: "Planning Pond Excavation: Questions to Ask First" },
+  description: { lt: "Tvenkinio planavimo klausimai: paskirtis, grunto įvertinimas, iškastos žemės tvarkymas, šlaitai ir aiški darbų sąmata prieš atvykstant technikai.", en: "Prepare for pond excavation: define its purpose, assess the site, agree on excavated soil handling and bank works, and request a clear scope and quote." },
+  intro: { lt: "Prieš tvenkinio kasimą susitarkite dėl jo paskirties, vietos, grunto įvertinimo ir iškastos žemės tvarkymo. Vien tvenkinio plotas neapibrėžia visų darbų. Prieš atvykstant technikai turi būti aišku, kas įskaičiuota į pasiūlymą ir kokį galutinį rezultatą rangovas perduos.", en: "Before excavation, agree on the pond’s purpose, location, site assessment and handling of excavated soil. Surface area alone does not define the full job. Before machinery arrives, establish what the quote includes and what completed result the contractor will hand over." },
+  service: "/paslaugos/tvenkiniai",
+  sections: [
+    {
+      heading: { lt: "Kam bus naudojamas tvenkinys?", en: "What will the pond be used for?" },
+      text: { lt: "Aptarkite, ar svarbiausia maudynės, dekoratyvinis vaizdas, žuvys, ar keli tikslai kartu. Nuo to priklausys zonų išdėstymas ir būsima priežiūra. Maudymosi vietą, priėjimą prie vandens ir numatomas želdinių zonas pažymėkite plane. Sprendimus dėl žuvų ir augalų priimkite pagal konkretaus telkinio sąlygas.", en: "Discuss whether the priority is swimming, appearance, fish or a combination. This affects the arrangement of different areas and future maintenance. Mark access to the water, any swimming area and planting zones on the plan. Decisions about fish and plants should reflect the conditions of the particular pond." },
+    },
+    {
+      heading: { lt: "Kaip įvertinti sklypą prieš kasimą?", en: "How should the site be assessed?" },
+      text: { lt: "Grunto ir vandens sąlygas įvertinkite prieš pasirenkant galutinį sprendimą. Jei jos neaiškios, su specialistu aptarkite, kokių tyrimų reikia. Taip pat patikrinkite technikos privažiavimą ir vietą laikinai laikyti iškastą gruntą. Vien nuotraukos ar bendras pažadas, kad vanduo laikysis, nepakeičia vietos įvertinimo.", en: "Assess ground and water conditions before settling on the design. Where conditions are uncertain, discuss the necessary investigations with a specialist. Check machinery access and temporary storage for excavated soil. Photographs or a general assurance that the pond will hold water cannot replace a site assessment." },
+    },
+    {
+      heading: { lt: "Kas turi būti nurodyta darbų pasiūlyme?", en: "What should the quote specify?" },
+      text: { lt: "Raštu suderinkite technikos atvežimą, kasimo apimtį ir tai, kas bus daroma su iškastu gruntu. Žemės paskleidimas šalia tvenkinio ir jos pervežimas į kitą sklypo vietą gali būti skirtingi darbai. Atskirai aptarkite šlaitų užbaigimą ir tvarką, pagal kurią keičiama apimtis radus nenumatytas sąlygas.", en: "Agree in writing on machinery transport, excavation scope and what happens to the excavated soil. Spreading soil beside the pond and transporting it to another area can be different operations. Discuss bank finishing separately and agree how changes will be handled if unexpected conditions are encountered." },
+      bullets: { lt: ["Kasimo ir galutinio reljefo ribos.", "Grunto laikymo, paskleidimo arba išvežimo vieta.", "Šlaitų ir priėjimų užbaigimas.", "Papildomų darbų suderinimas ir atsiskaitymo tvarka."], en: ["Excavation limits and finished landform.", "Soil storage, spreading or removal location.", "Finishing of banks and access points.", "Approval of extra work and payment terms."] },
+    },
+    {
+      heading: { lt: "Ką išspręsti iki technikos atvykimo?", en: "What should be resolved before machinery arrives?" },
+      text: { lt: "Turėkite suderintą darbų apimtį ir aiškų atsakingą kontaktą. Prieš kasimą išsiaiškinkite konkrečiam sklypui taikomus reikalavimus su kompetentinga institucija ar projektuotoju. Vieno tvenkinio sprendimas nebūtinai tinka kitam. Šis pasiruošimo sąrašas nepakeičia konkretaus sklypo projekto ar privalomų derinimų.", en: "Have an agreed scope and a named contact responsible for decisions. Before excavation, establish the requirements for your specific site with the relevant authority or designer. A solution suitable for one pond may not suit another. This preparation checklist does not replace a site-specific design or required approvals." },
+    },
+  ],
+};
+
+export const TIPS_ARTICLES = [planningArticle, pondArticle];
+export const tipsCopy = {
+  lt: { heading: "Naudinga informacija", intro: "Praktiniai patarimai planuojantiems sklypo, sodo ar tvenkinio darbus. Nuo ko pradėti, ką aptarti su rangovu ir kaip palyginti pasiūlymus.", read: "Skaityti patarimus", publisher: "Parengė ATD komanda · MB „ATD.LT“", related: "Susijusios paslaugos ir darbai", service: "Daugiau apie paslaugą", projects: "Atlikti ATD darbai", contact: "Aptarkime jūsų projektą", breadcrumb: "Puslapio vieta", all: "Visi patarimai" },
+  en: { heading: "Useful Information", intro: "Practical guidance for planning garden, landscaping and pond work. Learn where to start, what to discuss with a contractor and how to compare quotes.", read: "Read the guide", publisher: "Prepared by the ATD team · MB ATD.LT", related: "Related services and projects", service: "Explore the service", projects: "ATD project gallery", contact: "Discuss your project", breadcrumb: "Breadcrumb", all: "All guides" },
+};
+
+export const homeIntroCopy = {
+    lt: {
+      title: "Aplinkos tvarkymas Vilniuje ir Vilniaus rajone",
+      text: "ATD – MB „ATD.LT“ – įrengia vejas, sodina augalus pagal apželdinimo projektus, kloja trinkeles, montuoja laistymo sistemas ir įrengia bei prižiūri tvenkinius. Darbų apimtį ir kainą deriname pagal jūsų sklypo sąlygas. Susisiekite su Robertu: +370 657 85096 arba Robertas@atd.lt.",
+      guides: "Planuojate darbus? Peržiūrėkite naudingą informaciją",
+    },
+    en: {
+      title: "Landscaping in Vilnius and Vilnius district",
+      text: "ATD – MB ATD.LT – installs lawns, plants gardens from landscape plans, lays paving, installs irrigation systems and constructs and maintains ponds. The scope and price reflect your site’s conditions. Contact Robertas on +370 657 85096 or at Robertas@atd.lt.",
+      guides: "Planning a project? Explore our practical guides",
+    },
+};

@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import { localizedPath, PAGE_PATHS } from "./navigation";
 import type { Lang } from "./translations";
+import { planningArticle, pondArticle } from "./tips-content";
 
 export type PagePath = typeof PAGE_PATHS[number];
 export const SITE_URL = "https://atd.lt";
 export const PAGE_META = {
+  "/patarimai": {
+    title: { lt: "Naudinga informacija ir aplinkos tvarkymo patarimai | ATD", en: "Landscaping Guides and Useful Information | ATD" },
+    description: { lt: "Praktiniai ATD patarimai: kaip suplanuoti aplinkos tvarkymo darbus, pasiruošti tvenkinio kasimui ir palyginti rangovų pasiūlymus.", en: "Practical ATD landscaping guides: plan your garden work, prepare for pond excavation and compare contractor quotes with a clear scope." },
+  },
+  "/patarimai/aplinkos-tvarkymo-darbu-planas": { title: planningArticle.title, description: planningArticle.description },
+  "/patarimai/tvenkinio-kasimo-planavimas": { title: pondArticle.title, description: pondArticle.description },
   "/": {
     title: { lt: "ATD — Aplinkos tvarkymas Vilniuje | Veja, apželdinimas, trinkelės", en: "ATD — Landscaping in Vilnius | Lawns, Planting & Paving" },
     description: { lt: "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas nuo 8 €/m². Apželdinimas, trinkelių klojimas, laistymo sistemos. Nemokama apžiūra.", en: "Landscaping in Vilnius and Vilnius district. Roll-on lawn from €8/m², planting, paving, irrigation and pond services. Free site visit." },
@@ -35,7 +42,7 @@ export const PAGE_META = {
   },
   "/darbai": {
     title: { lt: "Atlikti darbai | ATD Aplinkos tvarkymas Vilniuje", en: "Our Work — ATD Landscaping Projects in Vilnius" },
-    description: { lt: "Realūs ATD projektai Vilniuje. Veja, apželdinimas, trinkelės ir laistymo sistemos. Peržiūrėkite mūsų atliktus darbus.", en: "Real ATD projects in Vilnius: lawns, landscape planting, paving and irrigation systems. Explore our completed work." },
+    description: { lt: "ATD darbų istorijos: Trakų Vokės dvaras, Pilaitės gimnazija ir kiti objektai. Apželdinimo, vejos, dangų ir tvenkinių darbų eiga bei rezultatai.", en: "ATD project stories: Trakų Vokė Manor, Pilaitė Gymnasium and other sites. Explore planting, lawn, paving and pond work from preparation to results." },
   },
 } as const;
 
@@ -46,7 +53,7 @@ export function pageMetadata(path: PagePath, lang: Lang): Metadata {
   return {
     metadataBase: new URL(SITE_URL), title, description,
     alternates: { canonical: url, languages: { lt: SITE_URL + localizedPath(path, "lt"), en: SITE_URL + localizedPath(path, "en"), "x-default": SITE_URL + localizedPath(path, "lt") } },
-    openGraph: { title, description, url, locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", type: "website", images: [{ url: "/images/og-atd.jpg", width: 1200, height: 630, alt: "ATD" }] },
+    openGraph: { title, description, url, locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", type: path.startsWith("/patarimai/") ? "article" : "website", images: [{ url: "/images/og-atd.jpg", width: 1200, height: 630, alt: "ATD" }] },
     twitter: { card: "summary_large_image", title, description, images: ["/images/og-atd.jpg"] },
   };
 }

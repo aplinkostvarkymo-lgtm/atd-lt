@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { GardenSceneHero } from "@/components/sections/GardenSceneHero";
 import { StatsBar } from "@/components/sections/StatsBar";
+import { HomeIntroduction } from "@/components/sections/HomeIntroduction";
 import { VejaPage } from "@/components/pages/VejaPage";
 import { ApzeldinimoPas } from "@/components/pages/ApzeldinimoPas";
 import { TrinkelesPas } from "@/components/pages/TrinkelesPas";
@@ -8,6 +9,7 @@ import { LaistymasPas } from "@/components/pages/LaistymasPas";
 import { TvenkiniaiPas } from "@/components/pages/TvenkiniaiPas";
 import { KontaktaiPage } from "@/components/pages/KontaktaiPage";
 import { DarbaiPage } from "@/components/pages/DarbaiPage";
+import { TipsPage } from "@/components/pages/TipsPage";
 import { SchemaOrg } from "@/components/SchemaOrg";
 import { PAGE_PATHS } from "@/lib/navigation";
 import { pageMetadata, type PagePath } from "@/lib/site-metadata";
@@ -25,7 +27,10 @@ export async function generateMetadata({ params }: { params: Params }) { const {
 export default async function Page({ params }: { params: Params }) {
   const { lang, path } = route(await params);
   const pages = {
-    "/": <main id="main-content" tabIndex={-1}><GardenSceneHero /><StatsBar /></main>,
+    "/patarimai": <TipsPage lang={lang} path={path} />,
+    "/patarimai/aplinkos-tvarkymo-darbu-planas": <TipsPage lang={lang} path={path} />,
+    "/patarimai/tvenkinio-kasimo-planavimas": <TipsPage lang={lang} path={path} />,
+    "/": <main id="main-content" tabIndex={-1}><GardenSceneHero /><StatsBar /><HomeIntroduction lang={lang} /></main>,
     "/paslaugos/veja": <VejaPage />, "/paslaugos/apzeldinimas": <ApzeldinimoPas />,
     "/paslaugos/trinkeles": <TrinkelesPas />, "/paslaugos/laistymas": <LaistymasPas />,
     "/paslaugos/tvenkiniai": <TvenkiniaiPas />, "/kontaktai": <KontaktaiPage />, "/darbai": <DarbaiPage />,

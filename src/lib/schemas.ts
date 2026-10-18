@@ -3,19 +3,21 @@ import { translations } from "./translations";
 import type { Lang } from "./translations";
 import { SERVICE_LINKS, localizedPath } from "./navigation";
 import { PAGE_META, SITE_URL, type PagePath } from "./site-metadata";
+import { TIPS_ARTICLES, tipsCopy } from "./tips-content";
+import { gallerySchema } from "./gallery-seo";
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://atd.lt",
   name: "ATD — Aplinkos Tvarkymas",
+  legalName: "MB ATD.LT",
   description:
     "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas, apželdinimas pagal projektą, trinkelių klojimas, laistymo sistemos.",
   url: "https://atd.lt",
   telephone: "+37065785096",
   email: "Robertas@atd.lt",
   sameAs: ["https://www.facebook.com/RoberasATD.LT"],
-  foundingDate: "2012",
   areaServed: {
     "@type": "GeoCircle",
     geoMidpoint: { "@type": "GeoCoordinates", latitude: 54.6872, longitude: 25.2797 },
@@ -143,6 +145,10 @@ export function pageSchemas(path: PagePath, lang: Lang): object[] {
     "/paslaugos/tvenkiniai": t.tvenkiniaiPas, "/kontaktai": t.kontaktaiPage,
   };
   const schemas: object[] = [];
+  if (path === "/darbai") schemas.push(gallerySchema(lang));
+  const article = TIPS_ARTICLES.find(item => item.path === path);
+  if (path === "/patarimai") schemas.push({ "@context": "https://schema.org", "@type": "CollectionPage", name: tipsCopy[lang].heading, url: SITE_URL + localizedPath(path, lang), inLanguage: lang, mainEntity: { "@type": "ItemList", itemListElement: TIPS_ARTICLES.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.title[lang], url: SITE_URL + localizedPath(item.path, lang) })) } });
+  if (article) schemas.push({ "@context": "https://schema.org", "@type": "Article", "@id": SITE_URL + localizedPath(path, lang) + "#article", headline: article.title[lang], description: article.description[lang], inLanguage: lang, mainEntityOfPage: SITE_URL + localizedPath(path, lang), author: { "@type": "Organization", "@id": SITE_URL, name: "ATD", url: SITE_URL }, publisher: { "@id": SITE_URL }, image: SITE_URL + "/images/og-atd.jpg" });
   if (path in faq) schemas.push(buildFaqSchema(faq[path as keyof typeof faq]));
   if (path.startsWith("/paslaugos/")) {
     const service = SERVICE_LINKS.find(item => item.href === path)!;
@@ -156,6 +162,6 @@ export function pageSchemas(path: PagePath, lang: Lang): object[] {
     ] : [];
     schemas.push({ "@context": "https://schema.org", "@type": "Service", "@id": SITE_URL + localizedPath(path, lang) + "#service", name: t.nav.services_sub[service.key], description: PAGE_META[path].description[lang], url: SITE_URL + localizedPath(path, lang), provider: { "@id": SITE_URL }, areaServed: { "@type": "City", name: "Vilnius" }, ...(prices.length ? { offers: prices.map(item => ({ "@type": "Offer", ...item, priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: item.price, priceCurrency: "EUR", unitCode: "MTK" } })) } : {}) });
   }
-  if (path !== "/") schemas.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: t.common.home, item: SITE_URL + localizedPath("/", lang) }, { "@type": "ListItem", position: 2, name: PAGE_META[path].title[lang], item: SITE_URL + localizedPath(path, lang) }] });
+  if (path !== "/") schemas.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: t.common.home, item: SITE_URL + localizedPath("/", lang) }, ...(article ? [{ "@type": "ListItem", position: 2, name: tipsCopy[lang].heading, item: SITE_URL + localizedPath("/patarimai", lang) }] : []), { "@type": "ListItem", position: article ? 3 : 2, name: PAGE_META[path].title[lang], item: SITE_URL + localizedPath(path, lang) }] });
   return schemas;
 }
