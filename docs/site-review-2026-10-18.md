@@ -19,6 +19,8 @@ Savininkas patvirtino 170+ projektų, 12+ metų patirtį, paskelbtus vejos ir da
 
 Papildymas: savininkas nurodė, kad ankstesnė Robertas@atd.lt dėžutė nepasiekiama. Viešiems kontaktams ir formos pranešimų gavimui visoje LT/EN svetainėje laikinai naudojamas **aplinkostvarkymo@gmail.com**. Kontaktai ir poraštė paaiškina, kad tai laikinas adresas dėl techninių kliūčių. Patikrinti visų 84 puslapių matomi adresai, mailto ir įmonės struktūriniai duomenys. Savininkas atskirai leido vieną naują testą Gmail gavėjui; senasis formos testas nepatvirtina šios dėžutės pristatymo.
 
+Gmail testas po `87e05297` paskelbimo **pavyko**: vienas POST 2026-10-18 16:51:27 UTC, HTTP 200 / success, forma parodė padėką. Pranešimas „Nauja užklausa iš atd.lt — ATD TESTAS GMAIL 2026-10-18“ 16:51:31 UTC rastas būtent aplinkostvarkymo@gmail.com gautųjų aplanke, su unikalia testo žyma ATD-AUDIT-20261018-GMAIL. Patvirtintas ir išsaugojimas, ir pristatymas. Kitas tikras pateikimas nebuvo atliekamas.
+
 ## Patikros
 
 - Production build: sėkmingai sugeneruotos 88 Next.js išvestys; TypeScript ir pakeistų šaltinių ESLint praėjo.

@@ -12,6 +12,8 @@ For the separately authorized domain migration:
 4. Confirm production page HTML contains `index, follow`, correct atd.lt canonical and reciprocal language links. Confirm previews still contain `noindex`.
 5. Submit the sitemap and inspect representative URLs in the owner's Search Console account.
 
-Do not mark domain launch or search indexing complete merely because a Vercel build succeeded. Local review used mocked form responses; actual lead storage and email delivery require an explicitly authorized test.
+The temporary contact and form notification recipient is aplinkostvarkymo@gmail.com. The owner-authorized test on 2026-10-18 confirmed successful storage and actual Gmail inbox delivery. That internal notification currently arrives from the configured Resend test sender, onboarding@resend.dev; configure a verified branded sender when preparing the primary-domain launch. Do not substitute an arbitrary Gmail From address without provider verification.
+
+Do not mark domain launch or search indexing complete merely because a Vercel build succeeded. Only run additional real lead tests with explicit authorization; local interface regression checks can use mocked responses.
 
 References: [Google noindex guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Schema.org unit pricing](https://schema.org/UnitPriceSpecification).
