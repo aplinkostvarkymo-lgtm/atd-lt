@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "./contact";
 import { buildFaqSchema } from "./buildFaqSchema";
 import { translations } from "./translations";
 import type { Lang } from "./translations";
@@ -16,7 +17,7 @@ export const localBusinessSchema = {
     "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas, apželdinimas pagal projektą, trinkelių klojimas, laistymo sistemos.",
   url: "https://atd.lt",
   telephone: "+37065785096",
-  email: "Robertas@atd.lt",
+  email: CONTACT_EMAIL,
   sameAs: ["https://www.facebook.com/RoberasATD.LT"],
   areaServed: {
     "@type": "GeoCircle",

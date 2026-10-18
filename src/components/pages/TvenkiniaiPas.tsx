@@ -1,5 +1,7 @@
 "use client";
 
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/contact";
+
 import { useState } from "react";
 import Link from "@/components/ui/LocalizedLink";
 import { motion, AnimatePresence } from "framer-motion";
@@ -226,9 +228,9 @@ function CTA({ t }: { t: T }) {
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-atd-green font-body font-semibold text-sm hover:bg-atd-cream transition-all active:scale-[0.97]">
             {t.cta_call}: +370 657 85096
           </a>
-          <a href="mailto:Robertas@atd.lt"
+          <a href={CONTACT_EMAIL_HREF}
             className="inline-flex items-center px-7 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]">
-            {t.cta_email}: Robertas@atd.lt
+            {t.cta_email}: {CONTACT_EMAIL}
           </a>
           <FacebookLink />
         </motion.div>

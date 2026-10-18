@@ -1,5 +1,7 @@
 "use client";
 
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/contact";
+
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "@/components/ui/LocalizedLink";
@@ -22,6 +24,7 @@ const SERVICE_OPTIONS = SERVICE_LINKS.map(({ key }) => key);
 /* ── Hero ─────────────────────────────────────────────────── */
 
 function Hero({ t }: { t: T }) {
+  const { lang } = useLanguage();
   return (
     <section className="relative bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16 overflow-hidden">
       {/* Background image */}
@@ -74,10 +77,10 @@ function Hero({ t }: { t: T }) {
             +370 657 85096
           </a>
           <a
-            href="mailto:Robertas@atd.lt"
+            href={CONTACT_EMAIL_HREF}
             className="inline-flex items-center px-6 py-3 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]"
           >
-            Robertas@atd.lt
+            {CONTACT_EMAIL}
           </a>
           <a
             href="https://wa.me/37065785096"
@@ -88,6 +91,7 @@ function Hero({ t }: { t: T }) {
             {t.whatsapp_label}
           </a>
         </motion.div>
+        <p className="font-body text-sm text-white/85 mt-4 max-w-xl leading-relaxed">{translations[lang].common.temporary_email_notice}</p>
       </div>
     </section>
   );
@@ -230,9 +234,10 @@ function FormSection({ t }: { t: T }) {
               +370 657 85096
             </a>
             <p className="font-body text-sm text-atd-black">MB „ATD.LT“ · {t.contact_person}</p>
-            <a href="mailto:Robertas@atd.lt" className="block font-body text-sm text-atd-black hover:text-atd-green transition-colors">
-              Robertas@atd.lt
+            <a href={CONTACT_EMAIL_HREF} className="block font-body text-sm text-atd-black hover:text-atd-green transition-colors">
+              {CONTACT_EMAIL}
             </a>
+            <p className="font-body text-xs text-atd-gray-soft leading-relaxed">{translations[lang].common.temporary_email_notice}</p>
             {/* WhatsApp + Viber */}
             <div className="flex gap-3 pt-1">
               <a

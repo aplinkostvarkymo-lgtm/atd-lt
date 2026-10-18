@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "./contact";
 import galleryProjects from "./gallery-projects.json";
 
 export type Lang = "lt" | "en";
@@ -8,6 +9,7 @@ export const translations = {
       close: "Uždaryti",
       home: "Pagrindinis",
       skipContent: "Pereiti prie turinio",
+      temporary_email_notice: "Dėl techninių kliūčių laikinai naudojame šį el. pašto adresą.",
     },
     mobileStickyCTA: {
       call: "Paskambinti",
@@ -437,6 +439,7 @@ export const translations = {
       close: "Close",
       home: "Home",
       skipContent: "Skip to content",
+      temporary_email_notice: "We are temporarily using this email address due to technical issues.",
     },
     mobileStickyCTA: {
       call: "Call us",
@@ -944,12 +947,12 @@ export const tipsCopy = {
 export const homeIntroCopy = {
     lt: {
       title: "Aplinkos tvarkymas Vilniuje ir Vilniaus rajone",
-      text: "ATD – MB „ATD.LT“ – įrengia vejas, sodina augalus pagal apželdinimo projektus, kloja trinkeles, montuoja laistymo sistemas ir įrengia bei prižiūri tvenkinius. Darbų apimtį ir kainą deriname pagal jūsų sklypo sąlygas. Susisiekite su Robertu: +370 657 85096 arba Robertas@atd.lt.",
+      text: `ATD – MB „ATD.LT“ – įrengia vejas, sodina augalus pagal apželdinimo projektus, kloja trinkeles, montuoja laistymo sistemas ir įrengia bei prižiūri tvenkinius. Darbų apimtį ir kainą deriname pagal jūsų sklypo sąlygas. Susisiekite su Robertu: +370 657 85096 arba ${CONTACT_EMAIL}.`,
       guides: "Planuojate darbus? Peržiūrėkite naudingą informaciją",
     },
     en: {
       title: "Landscaping in Vilnius and Vilnius district",
-      text: "ATD – MB ATD.LT – installs lawns, plants gardens from landscape plans, lays paving, installs irrigation systems and constructs and maintains ponds. The scope and price reflect your site’s conditions. Contact Robertas on +370 657 85096 or at Robertas@atd.lt.",
+      text: `ATD – MB ATD.LT – installs lawns, plants gardens from landscape plans, lays paving, installs irrigation systems and constructs and maintains ponds. The scope and price reflect your site’s conditions. Contact Robertas on +370 657 85096 or at ${CONTACT_EMAIL}.`,
       guides: "Planning a project? Explore our practical guides",
     },
 };

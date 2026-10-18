@@ -1,5 +1,7 @@
 "use client";
 
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/contact";
+
 import Link from "@/components/ui/LocalizedLink";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -56,9 +58,10 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:Robertas@atd.lt" className="link-underline text-white/70 hover:text-white transition-colors">
-                Robertas@atd.lt
+              <a href={CONTACT_EMAIL_HREF} className="link-underline text-white/70 hover:text-white transition-colors">
+                {CONTACT_EMAIL}
               </a>
+              <p className="text-xs text-white/65 mt-1 max-w-xs leading-relaxed">{t.common.temporary_email_notice}</p>
             </li>
             <li>
               <FacebookLink />

@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
 import { after } from "next/server";
 import { saveLead } from "@/lib/airtable";
 import { validateLead, MAX_LEAD_BYTES, type LeadData } from "@/lib/lead-validation";
@@ -13,7 +14,7 @@ async function sendEmailNotification(data: LeadData) {
   ].filter(Boolean).join("\n");
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST", headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from: process.env.RESEND_FROM ?? "ATD svetainė <noreply@atd.lt>", to: ["Robertas@atd.lt"], subject: `Nauja užklausa iš atd.lt — ${data.vardas.replace(/[\r\n]/g, " ")}`, text }),
+    body: JSON.stringify({ from: process.env.RESEND_FROM ?? "ATD svetainė <noreply@atd.lt>", to: [CONTACT_EMAIL], subject: `Nauja užklausa iš atd.lt — ${data.vardas.replace(/[\r\n]/g, " ")}`, text }),
     signal: AbortSignal.timeout(10000),
   });
   if (!response.ok) throw new Error(`Resend HTTP ${response.status}`);

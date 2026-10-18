@@ -1,5 +1,7 @@
 "use client";
 
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/contact";
+
 import { useState } from "react";
 import Link from "@/components/ui/LocalizedLink";
 import Image from "next/image";
@@ -355,10 +357,10 @@ function CTA({ t }: { t: VejaT }) {
             {t.hero_cta_call}: +370 657 85096
           </a>
           <a
-            href="mailto:Robertas@atd.lt"
+            href={CONTACT_EMAIL_HREF}
             className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/50 text-white font-body font-medium text-sm hover:bg-white/10 transition-all active:scale-[0.97]"
           >
-            {t.cta_email}: Robertas@atd.lt
+            {t.cta_email}: {CONTACT_EMAIL}
           </a>
           <FacebookLink />
         </motion.div>

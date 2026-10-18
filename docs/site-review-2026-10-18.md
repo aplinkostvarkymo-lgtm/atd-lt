@@ -17,6 +17,8 @@ Peržiūrėtos lietuviška ir angliška versijos. Svetainė ir nuotraukų portfo
 
 Savininkas patvirtino 170+ projektų, 12+ metų patirtį, paskelbtus vejos ir dangų tarifus bei „Udenhout Trees“ pavadinimo naudojimą. Šie faktai išlaikyti.
 
+Papildymas: savininkas nurodė, kad ankstesnė Robertas@atd.lt dėžutė nepasiekiama. Viešiems kontaktams ir formos pranešimų gavimui visoje LT/EN svetainėje laikinai naudojamas **aplinkostvarkymo@gmail.com**. Kontaktai ir poraštė paaiškina, kad tai laikinas adresas dėl techninių kliūčių. Patikrinti visų 84 puslapių matomi adresai, mailto ir įmonės struktūriniai duomenys. Savininkas atskirai leido vieną naują testą Gmail gavėjui; senasis formos testas nepatvirtina šios dėžutės pristatymo.
+
 ## Patikros
 
 - Production build: sėkmingai sugeneruotos 88 Next.js išvestys; TypeScript ir pakeistų šaltinių ESLint praėjo.
