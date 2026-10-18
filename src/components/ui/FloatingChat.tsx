@@ -1,8 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { unlocalizedPath } from "@/lib/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -10,19 +7,10 @@ const PHONE = "37065785096";
 
 export function FloatingChat() {
   const { lang } = useLanguage();
-  const pathname = unlocalizedPath(usePathname());
-  const [heroVisible, setHeroVisible] = useState(true);
-  useEffect(() => {
-    const hero = document.querySelector(".garden-hero");
-    if (!hero) return;
-    const observer = new IntersectionObserver(([entry]) => setHeroVisible(entry.isIntersecting));
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, [pathname]);
   const t = translations[lang].whatsappViber;
 
   return (
-    <div className={`floating-chat fixed bottom-4 right-4 z-[45] flex flex-col gap-2 max-md:bottom-[calc(var(--atd-mobile-cta-height)+1rem)] ${pathname === "/" && heroVisible ? "max-md:hidden" : ""}`}>
+    <div className="floating-chat fixed bottom-4 right-4 z-[45] hidden md:flex flex-col gap-2">
       {/* WhatsApp */}
       <a
         href={`https://wa.me/${PHONE}`}

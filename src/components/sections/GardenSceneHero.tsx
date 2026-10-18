@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "@/components/ui/LocalizedLink";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useMotionPreference } from "@/lib/use-motion-preference";
 import { HotspotMarker, type HotspotData } from "@/components/ui/HotspotMarker";
 import { ServicePopup } from "@/components/ui/ServicePopup";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -44,7 +45,7 @@ const HOTSPOT_CONFIG: Array<Omit<HotspotData, "label"> & { labelKey: keyof typeo
 ];
 
 export function GardenSceneHero() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useMotionPreference();
   const [videoFinished, setVideoFinished] = useState(false);
   const showImage = videoFinished || shouldReduceMotion === true;
   const [showHotspots, setShowHotspots] = useState(false);
@@ -60,7 +61,7 @@ export function GardenSceneHero() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || shouldReduceMotion) return;
+    if (!video || shouldReduceMotion !== false) return;
     video.playbackRate = 2;
     // Preserve the doors sequence; only recover if playback never starts or stalls.
     let fallback = window.setTimeout(() => setVideoFinished(true), 10000);

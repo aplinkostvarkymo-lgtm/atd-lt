@@ -37,10 +37,10 @@ function Hero({ t }: { t: T }) {
   return (
     <section className="bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16">
       <div className="max-w-5xl mx-auto px-6">
-        <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
+        <nav className="flex items-center gap-1.5 text-white/85 font-body text-xs mb-8">
           <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
-          <span className="text-white/60">{t.breadcrumb_services}</span>
+          <span className="text-white/85">{t.breadcrumb_services}</span>
           <span>/</span>
           <span className="text-white/90">{t.breadcrumb_current}</span>
         </nav>
@@ -243,12 +243,12 @@ export function TvenkiniaiPas() {
   const { lang } = useLanguage();
   const t = translations[lang].tvenkiniaiPas as T;
   return (
-    <>
+    <main id="main-content" tabIndex={-1}>
       <Hero t={t} />
       <Services t={t} />
       <Process t={t} />
       <FAQ t={t} />
       <CTA t={t} />
-    </>
+    </main>
   );
 }

@@ -27,7 +27,7 @@ export function Footer() {
 
         {/* Services */}
         <div>
-          <p className="font-body text-[10px] uppercase tracking-widest text-white/40 mb-3">
+          <p className="font-body text-[10px] uppercase tracking-widest text-white/65 mb-3">
             {t.nav.services}
           </p>
           <ul className="space-y-2">
@@ -46,7 +46,7 @@ export function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="font-body text-[10px] uppercase tracking-widest text-white/40 mb-3">
+          <p className="font-body text-[10px] uppercase tracking-widest text-white/65 mb-3">
             {t.nav.contact}
           </p>
           <ul className="space-y-2 font-body text-sm">
@@ -63,8 +63,8 @@ export function Footer() {
             <li>
               <FacebookLink />
             </li>
-            <li className="text-white/50">{t.footer.area}</li>
-            <li className="text-white/50">{t.footer.hours}</li>
+            <li className="text-white/65">{t.footer.area}</li>
+            <li className="text-white/65">{t.footer.hours}</li>
             <li className="pt-1">
               <Link underline href="/patarimai" className="text-white/70 hover:text-white transition-colors">{t.nav.tips}</Link>
             </li>
@@ -78,7 +78,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 font-body text-xs text-white/40">
+        <div className="max-w-7xl mx-auto px-6 py-5 font-body text-xs text-white/65">
           <span>© {new Date().getFullYear()} ATD — Aplinkos Tvarkymas. {t.footer.rights}</span>
           <button type="button" onClick={openCookieSettings} className="block sm:inline-flex sm:ml-6 mt-3 sm:mt-0 min-h-11 text-white/75 underline underline-offset-4 hover:text-white">{t.cookieConsent.settings}</button>
         </div>

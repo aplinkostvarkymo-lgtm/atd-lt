@@ -46,7 +46,7 @@ export const vejaServiceSchema = {
   "@type": "Service",
   name: "Vejos įrengimas Vilniuje",
   description:
-    "Profesionalus vejos įrengimas Vilniuje. Ruloninė veja nuo 8 €/m², sėjama veja nuo 4 €/m². Nemokama apžiūra.",
+    "Profesionalus vejos įrengimas Vilniuje. Ruloninė veja nuo 8 €/m², sėjama veja nuo 4 €/m². Pirminė konsultacija nemokama.",
   provider: {
     "@type": "LocalBusiness",
     "@id": "https://atd.lt",
@@ -58,18 +58,16 @@ export const vejaServiceSchema = {
     {
       "@type": "Offer",
       name: "Ruloninė veja",
-      description: "Ruloninė veja — paruošta iš karto. Grunto paruošimas įskaičiuotas.",
-      price: "8",
+      description: "Ruloninė veja. Darbų, medžiagų ir priežiūros apimtis nustatoma pasiūlyme.",
       priceCurrency: "EUR",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "8", priceCurrency: "EUR", unitCode: "MTK" },
+      priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 8, priceCurrency: "EUR", unitCode: "MTK" },
     },
     {
       "@type": "Offer",
       name: "Sėjama veja",
       description: "Sėjama veja — ekonomiška dideliems plotams.",
-      price: "4",
       priceCurrency: "EUR",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "4", priceCurrency: "EUR", unitCode: "MTK" },
+      priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 4, priceCurrency: "EUR", unitCode: "MTK" },
     },
   ],
 };
@@ -84,9 +82,9 @@ export const trinkelesServiceSchema = {
   areaServed: { "@type": "City", name: "Vilnius" },
   serviceType: "Paving and path installation",
   offers: [
-    { "@type": "Offer", name: "Betoninės trinkelės", price: "40", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "40", priceCurrency: "EUR", unitCode: "MTK" } },
-    { "@type": "Offer", name: "Granito trinkelės",   price: "55", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "55", priceCurrency: "EUR", unitCode: "MTK" } },
-    { "@type": "Offer", name: "Natūralus akmuo",     price: "65", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "65", priceCurrency: "EUR", unitCode: "MTK" } },
+    { "@type": "Offer", name: "Betoninės trinkelės", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 40, priceCurrency: "EUR", unitCode: "MTK" } },
+    { "@type": "Offer", name: "Granito trinkelės", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 55, priceCurrency: "EUR", unitCode: "MTK" } },
+    { "@type": "Offer", name: "Natūralus akmuo", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 65, priceCurrency: "EUR", unitCode: "MTK" } },
   ],
 };
 
@@ -97,7 +95,7 @@ export const apzeldinimosServiceSchema = {
   "@type": "Service",
   name: "Teritorijos apželdinimas Vilniuje",
   description:
-    "Profesionalus teritorijų apželdinimas Vilniuje. Augalų parinkimas, sodinimas su 1 metų garantija, mulčiavimas. Dirbame su architektų želdynų projektais.",
+    "Profesionalus teritorijų apželdinimas Vilniuje. Augalų parinkimas, sodinimas pagal suderintą planą, mulčiavimas. Dirbame su architektų želdynų projektais.",
   provider: { "@type": "LocalBusiness", "@id": "https://atd.lt", name: "ATD — Aplinkos Tvarkymas" },
   areaServed: { "@type": "City", name: "Vilnius" },
   serviceType: "Landscape planting",
@@ -114,7 +112,7 @@ export const laistymasServiceSchema = {
   name: "Laistymo sistemų įrengimas",
   url: "https://atd.lt/paslaugos/laistymas",
   description:
-    "Automatinių laistymo sistemų įrengimas Vilniuje. Hunter ir Rain Bird įranga. Pop-up purškikliai, lašelinis ir mikrolaistymas. Nemokamas projektas ir matavimas.",
+    "Automatinių laistymo sistemų įrengimas Vilniuje. Hunter ir Rain Bird įranga. Pop-up purškikliai, lašelinis ir mikrolaistymas. Projektavimas ir matavimas pagal susitarimą.",
   provider: { "@type": "LocalBusiness", "@id": "https://atd.lt", name: "ATD — Aplinkos Tvarkymas" },
   areaServed: { "@type": "City", name: "Vilnius" },
   serviceType: "Irrigation system installation",
@@ -160,7 +158,7 @@ export function pageSchemas(path: PagePath, lang: Lang): object[] {
       { name: lang === "lt" ? "Klinkerinės trinkelės" : "Clinker paving", price: "55" },
       { name: lang === "lt" ? "Natūralus akmuo" : "Natural stone", price: "65" },
     ] : [];
-    schemas.push({ "@context": "https://schema.org", "@type": "Service", "@id": SITE_URL + localizedPath(path, lang) + "#service", name: t.nav.services_sub[service.key], description: PAGE_META[path].description[lang], url: SITE_URL + localizedPath(path, lang), provider: { "@id": SITE_URL }, areaServed: { "@type": "City", name: "Vilnius" }, ...(prices.length ? { offers: prices.map(item => ({ "@type": "Offer", ...item, priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: item.price, priceCurrency: "EUR", unitCode: "MTK" } })) } : {}) });
+    schemas.push({ "@context": "https://schema.org", "@type": "Service", "@id": SITE_URL + localizedPath(path, lang) + "#service", name: t.nav.services_sub[service.key], description: PAGE_META[path].description[lang], url: SITE_URL + localizedPath(path, lang), provider: { "@id": SITE_URL }, areaServed: { "@type": "City", name: "Vilnius" }, ...(prices.length ? { offers: prices.map(item => ({ "@type": "Offer", name: item.name, description: `${lang === "lt" ? "Nuo" : "From"} ${item.price} €/m²`, priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: Number(item.price), priceCurrency: "EUR", unitCode: "MTK" } })) } : {}) });
   }
   if (path !== "/") schemas.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: t.common.home, item: SITE_URL + localizedPath("/", lang) }, ...(article ? [{ "@type": "ListItem", position: 2, name: tipsCopy[lang].heading, item: SITE_URL + localizedPath("/patarimai", lang) }] : []), { "@type": "ListItem", position: article ? 3 : 2, name: PAGE_META[path].title[lang], item: SITE_URL + localizedPath(path, lang) }] });
   return schemas;

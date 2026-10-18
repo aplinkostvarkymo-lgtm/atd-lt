@@ -59,16 +59,16 @@ export const SERVICES: ServicePopupData[] = [
             price: { lt: "nuo 8 €/m²", en: "from 8 €/m²" },
             highlight: true,
             bullets: {
-              lt: ["Paruošta iš karto", "Grunto paruošimas įskaičiuotas", "Garantija 30 dienų"],
-              en: ["Ready immediately", "Ground prep included", "30-day guarantee"],
+              lt: ["Žalias vaizdas iš karto; naudoti po įsišaknijimo", "Grunto darbai pagal pasiūlymą", "Garantijų sąlygos sutartyje"],
+              en: ["Immediate green appearance; use after rooting", "Ground works as quoted", "Warranty terms in the contract"],
             },
           },
           {
             title: { lt: "Sėjama veja", en: "Seeded lawn" },
             price: { lt: "nuo 4 €/m²", en: "from 4 €/m²" },
             bullets: {
-              lt: ["Sudygsta per 3–4 sav.", "Ekonomiška dideliems plotams", "Tinka nuo gegužės"],
-              en: ["Grows in 3–4 weeks", "Cost-effective for large areas", "Suitable from May"],
+              lt: ["Dygimas priklauso nuo sąlygų", "Ekonomiška dideliems plotams", "Tinka nuo gegužės"],
+              en: ["Germination depends on conditions", "Cost-effective for large areas", "Suitable from May"],
             },
           },
         ],
@@ -79,11 +79,11 @@ export const SERVICES: ServicePopupData[] = [
         steps: [
           {
             title: { lt: "Grunto paruošimas", en: "Ground preparation" },
-            desc: { lt: "Senoji veja ir šaknys šalinamos, žemė lyginami ir tręšiama", en: "Old lawn and roots removed, ground leveled and fertilized" },
+            desc: { lt: "Senoji veja ir šaknys šalinamos, gruntas lyginamas ir paruošiamas", en: "Old lawn and roots removed, ground leveled and fertilized" },
           },
           {
-            title: { lt: "Sėjimas arba rolinas", en: "Seeding or turf roll" },
-            desc: { lt: "Pagal pasirinktą tipą — dedamas rolininis kilimas arba sėjama", en: "Depending on choice — turf rolls laid or seeds sown evenly" },
+            title: { lt: "Sėja arba ruloninės vejos klojimas", en: "Seeding or turf roll" },
+            desc: { lt: "Pagal pasirinktą tipą — klojama ruloninė veja arba sėjama", en: "Depending on choice — turf rolls laid or seeds sown evenly" },
           },
           {
             title: { lt: "Pirmas laistymas", en: "First watering" },
@@ -93,7 +93,7 @@ export const SERVICES: ServicePopupData[] = [
       },
       {
         type: "note",
-        text: { lt: "Sezonas: gegužė–rugsėjis. Vietos apžiūra nemokama.", en: "Season: May–September. Site visit is free." },
+        text: { lt: "Darbų sezoną, apžiūros kainą ir garantijų sąlygas suderiname individualiai.", en: "The work season, site visit fee and warranty terms are agreed individually." },
       },
     ],
   },
@@ -102,7 +102,7 @@ export const SERVICES: ServicePopupData[] = [
   {
     id: "apzeldinimas",
     heading: { lt: "Teritorijos apželdinimas", en: "Landscape Planting" },
-    tagline: { lt: "Kaina pagal projektą — nemokama apžiūra", en: "Priced per project — free site visit" },
+    tagline: { lt: "Kaina ir apžiūros sąlygos pagal susitarimą", en: "Project pricing and site visits by agreement" },
     image: {
       src: "/images/apzeldinimas-courtyard-wide-1.jpg",
       alt: { lt: "Daugiabučio kiemo apželdinimas su gėlynu", en: "Apartment courtyard landscaping with flowerbed" },
@@ -112,12 +112,12 @@ export const SERVICES: ServicePopupData[] = [
     blocks: [
       {
         type: "list",
-        heading: { lt: "Kas įeina", en: "What's included" },
+        heading: { lt: "Galima darbų apimtis", en: "Available scope of work" },
         items: [
           { lt: "Augalų parinkimas pagal vietą, dirvą ir stilių", en: "Plant selection by location, soil and style" },
-          { lt: "Sodinimas su 1 metų garantija", en: "Planting with 1-year guarantee" },
+          { lt: "Sodinimas pagal suderintą planą", en: "Planting according to the agreed plan" },
           { lt: "Mulčiavimas ir apsauga nuo piktžolių", en: "Mulching and weed protection" },
-          { lt: "Pirmos priežiūros konsultacija", en: "First-care consultation included" },
+          { lt: "Priežiūros sąlygų aptarimas", en: "Discussing aftercare arrangements" },
         ],
       },
       {
@@ -126,7 +126,7 @@ export const SERVICES: ServicePopupData[] = [
         steps: [
           {
             title: { lt: "Apžiūra ir projektas", en: "Site visit and plan" },
-            desc: { lt: "Atvykstame nemokamai, aptariame poreikius ir teritoriją", en: "We visit for free, discuss needs and site conditions" },
+            desc: { lt: "Aptariame poreikius; apžiūros ir projektavimo apimtį bei kainą suderiname individualiai", en: "We discuss your needs; visit and design scope and fees are agreed individually" },
           },
           {
             title: { lt: "Augalų parinkimas", en: "Plant selection" },
@@ -172,7 +172,7 @@ export const SERVICES: ServicePopupData[] = [
         steps: [
           {
             title: { lt: "Projektavimas", en: "System design" },
-            desc: { lt: "Pagal teritorijos planą apskaičiuojamas slėgis, sektoriai ir šlangų trasa", en: "Pressure, zones and pipe routing calculated from site plan" },
+            desc: { lt: "Įvertiname vandens šaltinio duomenis, numatome sektorius ir vamzdžių trasas", en: "We assess water-source data and plan zones and pipe routes" },
           },
           {
             title: { lt: "Montavimas", en: "Installation" },
@@ -186,7 +186,7 @@ export const SERVICES: ServicePopupData[] = [
       },
       {
         type: "note",
-        text: { lt: "Kaina pagal plotą ir sistemos sudėtingumą. Nemokamas matavimas.", en: "Priced by area and system complexity. Free survey." },
+        text: { lt: "Matavimo, projektavimo ir įrengimo apimtį bei kainą suderiname individualiai.", en: "Survey, design and installation scope and fees are agreed individually." },
       },
     ],
   },
@@ -197,7 +197,7 @@ export const SERVICES: ServicePopupData[] = [
     heading: { lt: "170+ atliktų projektų", en: "170+ Completed Projects" },
     tagline: { lt: "Veja, apželdinimas, trinkelės Vilniuje ir rajone", en: "Lawn, planting, paving in Vilnius and surroundings" },
     ctaLabel: { lt: "Žiūrėti galeriją", en: "View Gallery" },
-    ctaHref: "/kontaktai",
+    ctaHref: "/darbai",
     blocks: [
       {
         type: "mini-stats",
@@ -219,7 +219,7 @@ export const SERVICES: ServicePopupData[] = [
       },
       {
         type: "note",
-        text: { lt: "Galerija su filtrais pagal paslaugos tipą. Kiekvienas projektas su aprašymu ir vieta.", en: "Gallery with filters by service type. Each project with description and location." },
+        text: { lt: "Galerija su filtrais pagal paslaugos tipą. Projektai su aprašymais ir darbų eiga.", en: "Gallery with filters by service type. Projects with descriptions and work sequences." },
       },
     ],
   },
@@ -228,7 +228,7 @@ export const SERVICES: ServicePopupData[] = [
   {
     id: "trinkelės",
     heading: { lt: "Trinkelių klojimas ir takai", en: "Paving & Paths" },
-    tagline: { lt: "40–65 €/m² priklausomai nuo medžiagos", en: "40–65 €/m² depending on material" },
+    tagline: { lt: "Nuo 40 €/m²; galutinė kaina pagal darbų apimtį", en: "From 40 €/m²; final price based on the scope of work" },
     image: {
       src: "/images/trinkeles-plaza-1.jpg",
       alt: { lt: "Trinkelių aikštė prie pastato", en: "Paved plaza next to a building" },
@@ -240,8 +240,8 @@ export const SERVICES: ServicePopupData[] = [
         type: "materials",
         heading: { lt: "Medžiagos", en: "Materials" },
         items: [
-          { name: { lt: "Betoninės trinkelės", en: "Concrete paving" }, price: { lt: "nuo 40 €/m²", en: "from 40 €/m²" }, desc: { lt: "Patvarūs, platus spalvų pasirinkimas", en: "Durable, wide colour range" } },
-          { name: { lt: "Granito trinkelės", en: "Granite setts" },    price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Natūralus akmuo, ilgaamžiai", en: "Natural stone, long-lasting" } },
+          { name: { lt: "Betoninės trinkelės", en: "Concrete paving" }, price: { lt: "nuo 40 €/m²", en: "from 40 €/m²" }, desc: { lt: "Patvarios, platus spalvų pasirinkimas", en: "Durable, wide colour range" } },
+          { name: { lt: "Granito trinkelės", en: "Granite setts" },    price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Natūralus akmuo, ilgaamžės", en: "Natural stone, long-lasting" } },
           { name: { lt: "Klinkerinės trinkelės", en: "Clinker brick" }, price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Klasikinis stilius, atsparus šalčiui", en: "Classic style, frost-resistant" } },
           { name: { lt: "Natūralus akmuo", en: "Natural stone" },      price: { lt: "nuo 65 €/m²", en: "from 65 €/m²" }, desc: { lt: "Premium išvaizda, unikali tekstūra", en: "Premium look, unique texture" } },
         ],
@@ -288,7 +288,7 @@ export const SERVICES: ServicePopupData[] = [
       },
       {
         type: "note",
-        text: { lt: "Pristatymas į vietą ir sodinimas — viena paslauga. Konsultacija augalų priežiūrai įskaičiuota.", en: "Delivery and planting — one service. Care consultation included." },
+        text: { lt: "Augalų tiekimo, pristatymo, sodinimo ir priežiūros konsultacijų apimtį bei kainą suderiname individualiai.", en: "Plant supply, delivery, planting and care advice scope and fees are agreed individually." },
       },
     ],
   },
@@ -310,7 +310,7 @@ export const SERVICES: ServicePopupData[] = [
   {
     id: "kontaktai",
     heading: { lt: "Susisiekite su ATD", en: "Contact ATD" },
-    tagline: { lt: "Nemokama apžiūra ir konsultacija Vilniuje", en: "Free site visit and consultation in Vilnius" },
+    tagline: { lt: "Nemokama pirminė konsultacija; apžiūra pagal susitarimą", en: "Free initial consultation; site visits by agreement" },
     ctaLabel: { lt: "Skambinti dabar", en: "Call Now" },
     ctaHref: "tel:+37065785096",
     blocks: [
@@ -318,11 +318,11 @@ export const SERVICES: ServicePopupData[] = [
         type: "contact-info",
         hours:    { lt: "Pr.–Pt. 8:00–18:00 · Š. 9:00–14:00", en: "Mon–Fri 8:00–18:00 · Sat 9:00–14:00" },
         area:     { lt: "Vilnius ir Vilniaus rajonas", en: "Vilnius and Vilnius district" },
-        response: { lt: "Kainų pasiūlymas per 24–48 val.", en: "Price proposal within 24–48 hours." },
+        response: { lt: "Pasiūlymo pateikimo terminą suderiname individualiai.", en: "The quotation timeline is agreed individually." },
       },
       {
         type: "note",
-        text: { lt: "Vietos apžiūra nemokama — atvykstame, įvertiname ir paruošiame pasiūlymą.", en: "Site visit is free — we come, assess and prepare a proposal." },
+        text: { lt: "Nemokama tik pirminė konsultacija. Apžiūros, matavimo ir projektavimo sąlygas aptariame iš anksto.", en: "Only the initial consultation is free. Site visit, survey and design terms are agreed in advance." },
       },
     ],
   },

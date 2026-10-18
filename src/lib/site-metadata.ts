@@ -5,6 +5,10 @@ import { planningArticle, pondArticle } from "./tips-content";
 
 export type PagePath = typeof PAGE_PATHS[number];
 export const SITE_URL = "https://atd.lt";
+// The Vercel site is a review copy until the owner migrates atd.lt.
+// Enable only for the primary-domain launch; branch previews stay noindex.
+export const SITE_INDEXABLE = process.env.ATD_INDEXING_ENABLED === "true" && process.env.VERCEL_ENV !== "preview";
+export const SITE_ROBOTS: Metadata["robots"] = { index: SITE_INDEXABLE, follow: true };
 export const PAGE_META = {
   "/patarimai": {
     title: { lt: "Naudinga informacija ir aplinkos tvarkymo patarimai | ATD", en: "Landscaping Guides and Useful Information | ATD" },
@@ -14,31 +18,31 @@ export const PAGE_META = {
   "/patarimai/tvenkinio-kasimo-planavimas": { title: pondArticle.title, description: pondArticle.description },
   "/": {
     title: { lt: "ATD — Aplinkos tvarkymas Vilniuje | Veja, apželdinimas, trinkelės", en: "ATD — Landscaping in Vilnius | Lawns, Planting & Paving" },
-    description: { lt: "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas nuo 8 €/m². Apželdinimas, trinkelių klojimas, laistymo sistemos. Nemokama apžiūra.", en: "Landscaping in Vilnius and Vilnius district. Roll-on lawn from €8/m², planting, paving, irrigation and pond services. Free site visit." },
+    description: { lt: "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas nuo 8 €/m². Apželdinimas, trinkelių klojimas, laistymo sistemos. Pirminė konsultacija nemokama.", en: "Landscaping in Vilnius and Vilnius district. Roll-on lawn from €8/m², planting, paving, irrigation and pond services. Free initial consultation." },
   },
   "/paslaugos/veja": {
     title: { lt: "Vejos įrengimas Vilniuje — Ruloninė nuo 8 €/m²", en: "Lawn Installation in Vilnius — Roll-on Lawn from €8/m² | ATD" },
-    description: { lt: "Profesionalus vejos įrengimas Vilniuje. Ruloninė veja nuo 8 €/m², sėjama veja nuo 4 €/m². Grunto paruošimas įskaičiuotas. Nemokama apžiūra. 170+ atliktų projektų.", en: "Roll-on lawn from €8/m² and seeded lawn from €4/m² in Vilnius. Ground preparation included. Free site visit. 170+ completed projects." },
+    description: { lt: "Profesionalus vejos įrengimas Vilniuje. Ruloninė veja nuo 8 €/m², sėjama veja nuo 4 €/m². Darbų apimtis pagal pasiūlymą. Pirminė konsultacija nemokama. 170+ atliktų projektų.", en: "Roll-on lawn from €8/m² and seeded lawn from €4/m² in Vilnius. Scope as agreed in your quote. Free initial consultation. 170+ completed projects." },
   },
   "/paslaugos/apzeldinimas": {
     title: { lt: "Teritorijos apželdinimas Vilniuje — Augalų sodinimas", en: "Landscape Planting in Vilnius — Plants & Garden Projects | ATD" },
-    description: { lt: "Augalų parinkimas ir sodinimas Vilniuje. Dirbame su architektų želdynų projektais. Sodinimas su 1 metų garantija. Nemokama apžiūra.", en: "Plant selection and landscape planting in Vilnius. We work from architects’ planting plans. One-year planting guarantee. Free site visit." },
+    description: { lt: "Augalų parinkimas ir sodinimas Vilniuje. Dirbame su architektų želdynų projektais. Garantijų sąlygos pagal sutartį. Pirminė konsultacija nemokama.", en: "Plant selection and landscape planting in Vilnius. We work from architects’ planting plans. Warranty terms agreed in the contract. Free initial consultation." },
   },
   "/paslaugos/trinkeles": {
     title: { lt: "Trinkelių klojimas Vilniuje — Betoninės nuo 40 €/m²", en: "Paving Installation in Vilnius — Concrete from €40/m² | ATD" },
-    description: { lt: "Trinkelių klojimas Vilniuje. Betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m². Pagrindo paruošimas įskaičiuotas.", en: "Paving in Vilnius: concrete from €40/m², granite and clinker from €55/m², natural stone from €65/m². Base preparation included." },
+    description: { lt: "Trinkelių klojimas Vilniuje. Betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m². Pagrindo darbai pagal pasiūlymą.", en: "Paving in Vilnius: concrete from €40/m², granite and clinker from €55/m², natural stone from €65/m². Base work as agreed in your quote." },
   },
   "/paslaugos/laistymas": {
     title: { lt: "Laistymo sistemų įrengimas Vilniuje — Hunter & Rain Bird", en: "Irrigation Systems in Vilnius — Hunter & Rain Bird | ATD" },
-    description: { lt: "Automatinių laistymo sistemų įrengimas Vilniuje. Hunter ir Rain Bird įranga. Pop-up purškikliai, lašelinis ir mikrolaistymas. Nemokamas projektas ir matavimas.", en: "Automatic irrigation in Vilnius with Hunter and Rain Bird equipment. Pop-up sprinklers, drip and micro-irrigation. Free design and measurement." },
+    description: { lt: "Automatinių laistymo sistemų įrengimas Vilniuje. Hunter ir Rain Bird įranga. Pop-up purškikliai, lašelinis ir mikrolaistymas. Projektavimas ir matavimas pagal susitarimą.", en: "Automatic irrigation in Vilnius with Hunter and Rain Bird equipment. Pop-up sprinklers, drip and micro-irrigation. Design and surveys by agreement." },
   },
   "/paslaugos/tvenkiniai": {
     title: { lt: "Tvenkinių kasimas ir priežiūra Vilniuje — ATD", en: "Pond Construction & Maintenance in Vilnius | ATD" },
-    description: { lt: "Profesionalus tvenkinių kasimas, valymas ir įžuvinimas Vilniuje ir Vilniaus rajone. Nemokama apžiūra. Kainų pasiūlymas per 24–48 val.", en: "Pond construction, cleaning and fish stocking in Vilnius and Vilnius district. Free site visit. Price proposal within 24–48 hours." },
+    description: { lt: "Profesionalus tvenkinių kasimas, valymas ir įžuvinimas Vilniuje ir Vilniaus rajone. Pirminė konsultacija nemokama. Pasiūlymo terminas derinamas individualiai.", en: "Pond construction, cleaning and fish stocking in Vilnius and Vilnius district. Free initial consultation. Quotation timelines are agreed individually." },
   },
   "/kontaktai": {
     title: { lt: "Kontaktai | ATD Aplinkos tvarkymas Vilniuje", en: "Contact ATD — Landscaping in Vilnius" },
-    description: { lt: "Susisiekite su ATD — nemokama apžiūra ir konsultacija. Tel. +370 657 85096. Dirbame Vilniuje ir rajone. Kainų pasiūlymas per 24–48 val.", en: "Contact ATD for a free landscaping site visit in Vilnius and Vilnius district. Call +370 657 85096. Price proposal within 24–48 hours." },
+    description: { lt: "Susisiekite su ATD — nemokama pirminė konsultacija. Tel. +370 657 85096. Dirbame Vilniuje ir rajone. Pasiūlymo terminas derinamas individualiai.", en: "Contact ATD for a free initial landscaping consultation in Vilnius and Vilnius district. Call +370 657 85096. Quotation timelines are agreed individually." },
   },
   "/darbai": {
     title: { lt: "Atlikti darbai | ATD Aplinkos tvarkymas Vilniuje", en: "Our Work — ATD Landscaping Projects in Vilnius" },

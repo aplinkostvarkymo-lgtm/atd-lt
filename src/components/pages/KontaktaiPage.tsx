@@ -34,10 +34,10 @@ function Hero({ t }: { t: T }) {
         sizes="100vw"
       />
       {/* Dark green overlay so text stays readable */}
-      <div className="absolute inset-0 bg-atd-green/75" />
+      <div className="absolute inset-0 bg-atd-green/85" />
 
       <div className="relative max-w-5xl mx-auto px-6">
-        <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
+        <nav className="flex items-center gap-1.5 text-white/85 font-body text-xs mb-8">
           <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
           <span className="text-white/90">{t.breadcrumb_current}</span>

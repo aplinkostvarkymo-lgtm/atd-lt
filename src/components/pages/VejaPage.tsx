@@ -64,14 +64,14 @@ function Hero({ t }: { t: VejaT }) {
           preload
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-atd-black/60" />
+        <div className="absolute inset-0 bg-atd-black/70" />
       </div>
       <div className="relative max-w-5xl mx-auto px-6">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-white/50 font-body text-xs mb-8">
+        <nav className="flex items-center gap-1.5 text-white/85 font-body text-xs mb-8">
           <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
-          <span className="text-white/60">{t.breadcrumb_services}</span>
+          <span className="text-white/85">{t.breadcrumb_services}</span>
           <span>/</span>
           <span className="text-white/90">{t.breadcrumb_current}</span>
         </nav>
@@ -123,7 +123,7 @@ function Hero({ t }: { t: VejaT }) {
           {stats.map((s, i) => (
             <div key={i}>
               <div className="font-display font-bold text-2xl text-white">{s.value}</div>
-              <div className="font-body text-xs text-white/60 mt-0.5 leading-tight">{s.label}</div>
+              <div className="font-body text-xs text-white/85 mt-0.5 leading-tight">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -364,7 +364,7 @@ function CTA({ t }: { t: VejaT }) {
         </motion.div>
 
         <motion.p
-          className="font-body text-xs text-white/40 mt-8"
+          className="font-body text-xs text-white/65 mt-8"
           {...fadeUp(0.2)}
         >
           {t.cta_season}

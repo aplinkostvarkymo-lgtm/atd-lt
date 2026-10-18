@@ -11,6 +11,9 @@ import { Analytics } from "@/components/Analytics";
 import { CookieConsent } from "@/components/CookieConsent";
 import { MobileStickyCTA } from "@/components/ui/MobileStickyCTA";
 import { FloatingChat } from "@/components/ui/FloatingChat";
+import { SITE_ROBOTS } from "@/lib/site-metadata";
+
+export const metadata = { robots: SITE_ROBOTS };
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],

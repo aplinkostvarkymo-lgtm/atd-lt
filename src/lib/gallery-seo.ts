@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import projects from "./gallery-projects.json";
 import type { Lang } from "./translations";
 import { localizedPath } from "./navigation";
-import { SITE_URL } from "./site-metadata";
+import { SITE_URL, SITE_ROBOTS } from "./site-metadata";
 
 export { projects };
 export type GalleryProject = (typeof projects)[number];
@@ -19,7 +19,7 @@ export function projectMetadata(project: GalleryProject, lang: Lang): Metadata {
     alternates: { canonical: url, languages: { lt: SITE_URL + localizedPath(path, "lt"), en: SITE_URL + localizedPath(path, "en"), "x-default": SITE_URL + path } },
     openGraph: { title, description, url, type: "article", locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", images: [{ url: image.src, width: image.width, height: image.height, alt: project.photos[project.cover].alt[lang] }] },
     twitter: { card: "summary_large_image", title, description, images: [image.src] },
-    robots: { index: true, follow: true },
+    robots: SITE_ROBOTS,
   };
 }
 
