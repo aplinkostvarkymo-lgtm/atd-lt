@@ -11,41 +11,41 @@ export const SITE_INDEXABLE = process.env.ATD_INDEXING_ENABLED === "true" && pro
 export const SITE_ROBOTS: Metadata["robots"] = { index: SITE_INDEXABLE, follow: true };
 export const PAGE_META = {
   "/patarimai": {
-    title: { lt: "Naudinga informacija ir aplinkos tvarkymo patarimai | ATD", en: "Landscaping Guides and Useful Information | ATD" },
+    title: { lt: "Naudinga informacija ir aplinkos tvarkymo patarimai | ATD", en: "Landscaping guides and advice | ATD" },
     description: { lt: "Praktiniai ATD patarimai: kaip suplanuoti aplinkos tvarkymo darbus, pasiruošti tvenkinio kasimui ir palyginti rangovų pasiūlymus.", en: "Practical ATD landscaping guides: plan your garden work, prepare for pond excavation and compare contractor quotes with a clear scope." },
   },
   "/patarimai/aplinkos-tvarkymo-darbu-planas": { title: planningArticle.title, description: planningArticle.description },
   "/patarimai/tvenkinio-kasimo-planavimas": { title: pondArticle.title, description: pondArticle.description },
   "/": {
-    title: { lt: "ATD — Aplinkos tvarkymas Vilniuje | Veja, apželdinimas, trinkelės", en: "ATD — Landscaping in Vilnius | Lawns, Planting & Paving" },
-    description: { lt: "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas nuo 8 €/m². Apželdinimas, trinkelių klojimas, laistymo sistemos. Pirminė konsultacija nemokama.", en: "Landscaping in Vilnius and Vilnius district. Roll-on lawn from €8/m², planting, paving, irrigation and pond services. Free initial consultation." },
+    title: { lt: "ATD | Aplinkos tvarkymas Vilniuje | Veja, apželdinimas, trinkelės", en: "ATD | Landscaping in Vilnius | Lawns, Planting & Paving" },
+    description: { lt: "Įrengiame vejas, sodiname augalus, klojame trinkeles ir montuojame laistymą Vilniuje bei rajone. Ruloninė veja nuo 8 €/m². Pirminė konsultacija nemokama.", en: "We lay lawns, plant gardens, build paths and install irrigation in Vilnius and the district. Turf from €8/m². Free initial consultation." },
   },
   "/paslaugos/veja": {
-    title: { lt: "Vejos įrengimas Vilniuje — Ruloninė nuo 8 €/m²", en: "Lawn Installation in Vilnius — Roll-on Lawn from €8/m² | ATD" },
-    description: { lt: "Profesionalus vejos įrengimas Vilniuje. Ruloninė veja nuo 8 €/m², sėjama veja nuo 4 €/m². Darbų apimtis pagal pasiūlymą. Pirminė konsultacija nemokama. 170+ atliktų projektų.", en: "Roll-on lawn from €8/m² and seeded lawn from €4/m² in Vilnius. Scope as agreed in your quote. Free initial consultation. 170+ completed projects." },
+    title: { lt: "Vejos įrengimas Vilniuje | Ruloninė nuo 8 €/m²", en: "Lawn Installation in Vilnius | Turf from €8/m² | ATD" },
+    description: { lt: "Vejos įrengimas Vilniuje: ruloninė nuo 8 €/m², sėjama nuo 4 €/m². Įvertiname gruntą ir pateikiame darbų pasiūlymą. Pirminė konsultacija nemokama.", en: "Lawn installation in Vilnius: turf from €8/m² or seed from €4/m². We assess the ground and quote for the work needed. Free initial consultation." },
   },
   "/paslaugos/apzeldinimas": {
-    title: { lt: "Teritorijos apželdinimas Vilniuje — Augalų sodinimas", en: "Landscape Planting in Vilnius — Plants & Garden Projects | ATD" },
-    description: { lt: "Augalų parinkimas ir sodinimas Vilniuje. Dirbame su architektų želdynų projektais. Garantijų sąlygos pagal sutartį. Pirminė konsultacija nemokama.", en: "Plant selection and landscape planting in Vilnius. We work from architects’ planting plans. Warranty terms agreed in the contract. Free initial consultation." },
+    title: { lt: "Teritorijos apželdinimas Vilniuje | Augalų sodinimas", en: "Landscape Planting in Vilnius | Plants & Garden Projects | ATD" },
+    description: { lt: "Parenkame ir sodiname augalus Vilniuje. Dirbame pagal architektų želdynų planus, mulčiuojame ir prižiūrime želdinius. Pirminė konsultacija nemokama.", en: "Planting in Vilnius, from choosing plants to mulching and maintenance. We work from architects’ planting plans. Free initial consultation." },
   },
   "/paslaugos/trinkeles": {
-    title: { lt: "Trinkelių klojimas Vilniuje — Betoninės nuo 40 €/m²", en: "Paving Installation in Vilnius — Concrete from €40/m² | ATD" },
-    description: { lt: "Trinkelių klojimas Vilniuje. Betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m². Pagrindo darbai pagal pasiūlymą.", en: "Paving in Vilnius: concrete from €40/m², granite and clinker from €55/m², natural stone from €65/m². Base work as agreed in your quote." },
+    title: { lt: "Trinkelių klojimas Vilniuje | Betoninės nuo 40 €/m²", en: "Paving Installation in Vilnius | Concrete from €40/m² | ATD" },
+    description: { lt: "Klojame trinkeles Vilniuje: betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², akmuo nuo 65 €/m². Pagrindo darbus išvardijame pasiūlyme.", en: "Paving in Vilnius: concrete from €40/m², granite and clay from €55/m², natural stone from €65/m². Your quote lists the base preparation needed." },
   },
   "/paslaugos/laistymas": {
-    title: { lt: "Laistymo sistemų įrengimas Vilniuje — Hunter & Rain Bird", en: "Irrigation Systems in Vilnius — Hunter & Rain Bird | ATD" },
-    description: { lt: "Automatinių laistymo sistemų įrengimas Vilniuje. Hunter ir Rain Bird įranga. Pop-up purškikliai, lašelinis ir mikrolaistymas. Projektavimas ir matavimas pagal susitarimą.", en: "Automatic irrigation in Vilnius with Hunter and Rain Bird equipment. Pop-up sprinklers, drip and micro-irrigation. Design and surveys by agreement." },
+    title: { lt: "Laistymo sistemų įrengimas Vilniuje | Hunter & Rain Bird", en: "Irrigation Systems in Vilnius | Hunter & Rain Bird | ATD" },
+    description: { lt: "Įrengiame laistymą Vilniuje su Hunter ir Rain Bird įranga: purkštuvus, lašelinį laistymą ir mikrolaistymą. Matavimo ir projekto kainą aptariame iš anksto.", en: "We install Hunter and Rain Bird irrigation in Vilnius: sprinklers, drip lines and micro-irrigation. Survey and design fees agreed in advance." },
   },
   "/paslaugos/tvenkiniai": {
-    title: { lt: "Tvenkinių kasimas ir priežiūra Vilniuje — ATD", en: "Pond Construction & Maintenance in Vilnius | ATD" },
-    description: { lt: "Profesionalus tvenkinių kasimas, valymas ir įžuvinimas Vilniuje ir Vilniaus rajone. Pirminė konsultacija nemokama. Pasiūlymo terminas derinamas individualiai.", en: "Pond construction, cleaning and fish stocking in Vilnius and Vilnius district. Free initial consultation. Quotation timelines are agreed individually." },
+    title: { lt: "Tvenkinių kasimas ir priežiūra Vilniuje | ATD", en: "Pond Construction & Maintenance in Vilnius | ATD" },
+    description: { lt: "Kasame, valome ir įžuviname tvenkinius Vilniuje bei rajone. Darbus parenkame apžiūrėję telkinį ir sklypą. Pirminė konsultacija nemokama.", en: "Pond excavation, cleaning and fish stocking in Vilnius and the district. We assess your site before quoting. Free initial consultation." },
   },
   "/kontaktai": {
-    title: { lt: "Kontaktai | ATD Aplinkos tvarkymas Vilniuje", en: "Contact ATD — Landscaping in Vilnius" },
-    description: { lt: "Susisiekite su ATD — nemokama pirminė konsultacija. Tel. +370 657 85096. Dirbame Vilniuje ir rajone. Pasiūlymo terminas derinamas individualiai.", en: "Contact ATD for a free initial landscaping consultation in Vilnius and Vilnius district. Call +370 657 85096. Quotation timelines are agreed individually." },
+    title: { lt: "Kontaktai | ATD Aplinkos tvarkymas Vilniuje", en: "Contact ATD | Landscaping in Vilnius" },
+    description: { lt: "Planuojate aplinkos tvarkymo darbus Vilniuje ar rajone? Skambinkite Robertui +370 657 85096 arba rašykite. Pirminė konsultacija nemokama.", en: "Planning landscaping work in Vilnius or the district? Call Robertas on +370 657 85096 or send us a message. The initial consultation is free." },
   },
   "/darbai": {
-    title: { lt: "Atlikti darbai | ATD Aplinkos tvarkymas Vilniuje", en: "Our Work — ATD Landscaping Projects in Vilnius" },
+    title: { lt: "Atlikti darbai | ATD Aplinkos tvarkymas Vilniuje", en: "Our Work | ATD Landscaping Projects in Vilnius" },
     description: { lt: "ATD darbų istorijos: Trakų Vokės dvaras, Pilaitės gimnazija ir kiti objektai. Apželdinimo, vejos, dangų ir tvenkinių darbų eiga bei rezultatai.", en: "ATD project stories: Trakų Vokė Manor, Pilaitė Gymnasium and other sites. Explore planting, lawn, paving and pond work from preparation to results." },
   },
 } as const;

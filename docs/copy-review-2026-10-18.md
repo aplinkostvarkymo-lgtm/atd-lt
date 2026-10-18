@@ -1,0 +1,19 @@
+# LT ir EN tekstų redagavimas
+
+Savininko prašymu įdiegtas [blader/humanizer](https://github.com/blader/humanizer) v3.1.0 į `C:/Users/aplin/.codex/skills/humanizer`. Perskaitytos ir pritaikytos jo redagavimo taisyklės. Darbas apima svetainės tekstus abiem kalbomis, ne tik pateiktą renginio pavyzdį.
+
+Peržiūrėti pagrindinio puslapio, penkių paslaugų puslapių, kontaktų, galerijos, projektų ir dviejų patarimų straipsnių tekstai, meniu, mygtukai, paslaugų langai, nuotraukų aprašai ir metaduomenys. Natūraliai skambantys tekstai palikti, dirbtini ar netiksliai išversti perrašyti. Perrašyti visi 31 projekto / darbų rinkinio LT ir EN aprašai. Sutvarkytos tokios formuluotės kaip „Premium išvaizda“, „formos formavimas“, „Seeding or turf roll“, „min. žalos vejai“ ir pasakojimas apie vidinį nuotraukų atrinkimą. Angliškos matomo turinio antraštės suvienodintos į sakinio rašybą.
+
+„Kuo vardu tavo žuvis?“ dabar pasakojama ATD vardu pagal savininko paaiškinimą: susitikimas su darželio vaikais prie Užupio prūdelio, pokalbis apie elgesį gamtoje, nupirkti karosiukai, vaikų duoti vardai ir žuvyčių paleidimas, skirtas laikas bei iš darbų uždirbti pinigai, noras renginį pakartoti. Metai praleisti, nes savininkas jų neprisimena; nuotraukų metaduomenys nėra jo patvirtinta renginio data. Darželio pavadinimas neišgalvotas. Noras kartoti renginį nepaverstas paskelbtu būsimu renginiu.
+
+Išsaugoti patvirtinti projektų kiekiai ir iššūkiai: Trakų Vokės 5,5 ha / 55 000 augalų / 12 vilkikų / dveji metai; Pilaitės 35 000 augalų / 1 200 m³ grunto / 96 erdviniai metrai mulčio / atskiros 3 500 augalų dienos; Gilužio apie 16 000; Turniškių dominijos 2 650; „Eureka“ 24 sunkvežimiai; Belmonto 97 cm; gimnazijos apie 850 m² dangos ir 500 m² vejos; Lazdynėlių keturi žmonės ir apie mėnesį. Kitų rangovų darbai ir ATD darbų ribos paliktos. Papildomų datų, klientų vardų, apdovanojimų ar būsimų rezultatų nepridėta.
+
+Komercinės taisyklės išlaikytos: nemokama tik pirminė konsultacija; apžiūra, matavimas ir projektavimas sutariami atskirai. Kainos lieka „nuo“, darbų apimtis pateikiama pasiūlyme. Garantijos terminai individualūs. Nemokamas medžių ir krūmų keitimas taikomas tik ATD nuolat prižiūrimuose objektuose pagal pasiūlymą ar sutartį. Vien tiekimas ar sodinimas nemokamo keitimo neįtraukia. Matomi FAQ ir jų struktūriniai duomenys remiasi tuo pačiu tekstu.
+
+SEO tekstai redaguoti kartu su matomu turiniu. Projektų schema ir aprašų metaduomenys automatiškai naudoja atnaujintus aprašus. URL, canonical, hreflang, sitemap struktūra, peržiūros noindex, kontaktinis Gmail ir formos gavėjas nepakeisti. Techninis palyginimas patvirtino tuos pačius 31 projekto identifikatorius, nuotraukų tvarką, viršelius ir visus 276 nuotraukų / 543 variantų įrašus.
+
+Patikros: TypeScript, tikslinis ESLint, git diff --check ir įprastas Next/Turbopack build (88 išvestys). Dėl pasenusio Turbopack CSS worker podėlio pirmi build nepraėjo; tik patikrintame worktree podėlis perkeltas į `.next/cache/turbopack-before-humanizer`, po to įprastas build praėjo. Build konfigūracija neperrašyta. Visi 84 sitemap puslapiai grąžino 200, išlaikė vieną H1, kalbą, canonical, alternates, JSON-LD ir preview noindex; 84 vidinės nuorodos ir 298 naudojami paveikslų URL veikia. Tikrinti nauji tekstai 1440 ir 390 px pločiais. Formos užklausos šio redagavimo metu nesiųstos.
+
+Vidiniai redagavimo skriptai ir naršyklės įrodymai saugomi `atd-lt-audit/evidence/humanize-*.cjs` ir `atd-lt-audit/humanizer-review/`; jie nėra svetainės veikimo dalis.
+
+Naršyklės patikra apėmė 56 puslapio, kalbos ir pločio derinius; JavaScript klaidų ir horizontalaus teksto išsikišimo neaptikta. Vizualiai peržiūrėta renginio LT mobilioji ir EN kompiuterio versija. Po šios peržiūros renginiui pritaikytos antraštės „Renginio akimirkos“, „Apie renginį“ ir renginio skaitymo nuorodos, kad jam nebūtų taikomi statybos darbų pavadinimai.

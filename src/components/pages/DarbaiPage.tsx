@@ -70,7 +70,7 @@ export function DarbaiPage() {
                   <h2>{project.title[lang]}</h2>
                   <span className={styles.viewStory}>{t.viewProject}<ArrowRight size={16} aria-hidden="true" /></span>
                 </button>
-                <Link className={styles.projectLink} href={`/darbai/${project.id}`}>{t.fullStory}</Link>
+                <Link className={styles.projectLink} href={`/darbai/${project.id}`}>{project.categories.includes("bendruomene") ? t.eventStory : t.fullStory}</Link>
               </article>;
             })}
           </div>
@@ -101,7 +101,7 @@ export function DarbaiPage() {
                 <span>{number + 1}</span>
               </button>)}
             </div>
-            <div className={styles.story}><h3>{t.projectDetails}</h3>{selected.collection && <p className={styles.collection}>{t.collection}</p>}<p>{selected.description[lang]}</p>{selected.scope && <p className={styles.scope}>{selected.scope[lang]}</p>}<Link className={styles.storyLink} href={`/darbai/${selected.id}`} onClick={() => setSelected(null)}>{t.fullStory}</Link></div>
+            <div className={styles.story}><h3>{selected.categories.includes("bendruomene") ? t.eventDetails : t.projectDetails}</h3>{selected.collection && <p className={styles.collection}>{t.collection}</p>}<p>{selected.description[lang]}</p>{selected.scope && <p className={styles.scope}>{selected.scope[lang]}</p>}<Link className={styles.storyLink} href={`/darbai/${selected.id}`} onClick={() => setSelected(null)}>{selected.categories.includes("bendruomene") ? t.eventStory : t.fullStory}</Link></div>
           </div>
         </div>}
       </Modal>

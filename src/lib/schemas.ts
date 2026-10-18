@@ -14,7 +14,7 @@ export const localBusinessSchema = {
   name: "ATD — Aplinkos Tvarkymas",
   legalName: "MB ATD.LT",
   description:
-    "Profesionalus aplinkos tvarkymas Vilniuje. Vejos įrengimas, apželdinimas pagal projektą, trinkelių klojimas, laistymo sistemos.",
+    "ATD įrengia vejas, sodina augalus, kloja trinkeles ir montuoja laistymo sistemas Vilniuje.",
   url: "https://atd.lt",
   telephone: "+37065785096",
   email: CONTACT_EMAIL,
@@ -96,7 +96,7 @@ export const apzeldinimosServiceSchema = {
   "@type": "Service",
   name: "Teritorijos apželdinimas Vilniuje",
   description:
-    "Profesionalus teritorijų apželdinimas Vilniuje. Augalų parinkimas, sodinimas pagal suderintą planą, mulčiavimas. Dirbame su architektų želdynų projektais.",
+    "Parenkame ir sodiname augalus Vilniuje, mulčiuojame želdinius. Dirbame pagal sutartą planą, taip pat pagal architektų želdynų projektus.",
   provider: { "@type": "LocalBusiness", "@id": "https://atd.lt", name: "ATD — Aplinkos Tvarkymas" },
   areaServed: { "@type": "City", name: "Vilnius" },
   serviceType: "Landscape planting",
@@ -113,7 +113,7 @@ export const laistymasServiceSchema = {
   name: "Laistymo sistemų įrengimas",
   url: "https://atd.lt/paslaugos/laistymas",
   description:
-    "Automatinių laistymo sistemų įrengimas Vilniuje. Hunter ir Rain Bird įranga. Pop-up purškikliai, lašelinis ir mikrolaistymas. Projektavimas ir matavimas pagal susitarimą.",
+    "Įrengiame laistymą Vilniuje su Hunter ir Rain Bird įranga: purkštuvus, lašelinį laistymą ir mikrolaistymą. Matavimo ir projekto kainą aptariame iš anksto.",
   provider: { "@type": "LocalBusiness", "@id": "https://atd.lt", name: "ATD — Aplinkos Tvarkymas" },
   areaServed: { "@type": "City", name: "Vilnius" },
   serviceType: "Irrigation system installation",

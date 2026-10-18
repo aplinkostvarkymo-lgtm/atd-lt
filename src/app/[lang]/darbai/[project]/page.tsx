@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
           {services.length > 0 && <ul className={styles.services}>{services.map(service => <li key={service.key}><Link href={localizedPath(service.href, lang)}>{service.label}</Link></li>)}</ul>}
         </header>
         <section id="photos" aria-labelledby="photo-heading" className={styles.photos}>
-          <h2 id="photo-heading">{t.projectPhotos}</h2>
+          <h2 id="photo-heading">{project.categories.includes("bendruomene") ? t.eventPhotos : t.projectPhotos}</h2>
           <div className={styles.grid}>{project.photos.map((photo, i) => { const largest = photo.variants.at(-1)!; return <figure key={photo.id}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={largest.src} srcSet={photo.variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes="(max-width: 700px) 100vw, 560px" width={largest.width} height={largest.height} alt={photo.alt[lang]} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
