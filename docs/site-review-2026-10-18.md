@@ -25,7 +25,8 @@ Savininkas patvirtino 170+ projektų, 12+ metų patirtį, paskelbtus vejos ir da
 - Atskirai patikrinti visi 62 projekto puslapiai: aprašai bei nuotraukos yra serverio HTML, galerija susieta su visomis istorijomis, sitemap turi 84 URL.
 - Pirminė vizualinė peržiūra: 48 LT/EN kombinacijos 1440 ir 390 px pločiu, visi 11 pagrindinių maršrutų ir vienas išsamus projektas. Sugedusių nuotraukų ar horizontalaus dokumento perslinkimo nerasta.
 - Po pataisymų: 32 tikslinės kombinacijos, įskaitant 320 px mobilų plotį ir pagrindinį puslapį su abiem judesio nuostatomis. Hidratacijos klaidų nėra, įprastu režimu patvirtintas 2× vaizdo greitis; sumažinto judesio režimu vaizdo elementas nerodomas. Patvirtinta vizualiai penkiuose peržiūros lapuose.
-- Formos: LT/EN validacija, imituoti sėkmės ir klaidos atsakymai, reikšmių išlaikymas, fokusas, meniu, galerijos klaviatūra ir slapukų pasirinkimas patikrinti. Savininkas leido vieną tikrą testinę užklausą; ji numatyta po šios versijos paskelbimo. Tikras el. laiško pristatymas dar nepatvirtintas šio dokumento rengimo metu.
+- Formos: LT/EN validacija, imituoti sėkmės ir klaidos atsakymai, reikšmių išlaikymas, fokusas, meniu, galerijos klaviatūra ir slapukų pasirinkimas patikrinti. Po paskelbimo savininko leista vienintelė tikra užklausa „ATD TESTAS 2026-10-18“ grąžino HTTP 200 / success; serverio kode sėkmė grąžinama tik po Airtable išsaugojimo. Tuo metu svetainė parodė padėką. Tikras el. laiško gavimas dar laukia gavėjo patvirtinimo.
+- Po šio bandymo nustatyta papildoma darbalaukio sąsajos klaida: susitraukus formai sėkmės tekstas galėjo atsidurti už fiksuoto meniu. Tekstas dabar fokusuojamas ir parodomas matomos srities centre. Pakartotinė patikra naudoja tik imituotus atsakymus; antro tikro pateikimo nebuvo.
 
 ## Iki pagrindinio domeno paleidimo
 

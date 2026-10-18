@@ -101,7 +101,12 @@ function FormSection({ t }: { t: T }) {
   const [rateLimited, setRateLimited] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const statusRef = useRef<HTMLParagraphElement>(null);
-  useEffect(() => { if (status === "success") statusRef.current?.focus(); }, [status]);
+  useEffect(() => {
+    if (status !== "success") return;
+    const message = statusRef.current;
+    message?.focus({ preventScroll: true });
+    message?.scrollIntoView({ block: "center", behavior: "instant" });
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
