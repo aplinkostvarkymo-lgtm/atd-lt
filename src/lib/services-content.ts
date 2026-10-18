@@ -149,7 +149,7 @@ export const SERVICES: ServicePopupData[] = [
   {
     id: "laistymas",
     heading: { lt: "Automatinės laistymo sistemos", en: "Automatic irrigation systems" },
-    tagline: { lt: "Hunter · Rain Bird įranga · Įrengimas ir žieminimas", en: "Hunter · Rain Bird · Installation and winterisation" },
+    tagline: { lt: "Hunter · Rain Bird įranga · Įrengimas ir nuorinimas", en: "Hunter · Rain Bird · Installation and system blowout" },
     image: {
       src: "/images/laistymas-sprinkler-action-1.jpg",
       alt: { lt: "Veikianti automatinė laistymo sistema", en: "Automatic irrigation system in action" },
@@ -179,7 +179,7 @@ export const SERVICES: ServicePopupData[] = [
             desc: { lt: "Iškasame tranšėjas, paklojame vamzdžius ir suprogramuojame valdiklį", en: "We dig trenches, lay pipes and programme the controller" },
           },
           {
-            title: { lt: "Žieminimas", en: "Winterisation" },
+            title: { lt: "Nuorinimas", en: "System blowout" },
             desc: { lt: "Prieš žiemą iš sistemos išpučiame vandenį. Paslaugą užsakote atskirai", en: "We blow the water out of the system before winter. This service is booked separately" },
           },
         ],
