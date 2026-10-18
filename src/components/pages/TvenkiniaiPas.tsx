@@ -3,6 +3,7 @@
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/contact";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "@/components/ui/LocalizedLink";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -37,8 +38,19 @@ function Hero({ t }: { t: T }) {
     { value: t.hero_stat3, label: t.hero_stat3_label },
   ];
   return (
-    <section className="bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="relative bg-atd-green pt-20 md:pt-24 pb-12 md:pb-16 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/projects/tvenkiniai/tvenkiniu-kasimas-11-tvenkinio-bendras-vaizdas-1600.webp"
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-atd-black/70" />
+      </div>
+      <div className="relative max-w-5xl mx-auto px-6">
         <nav className="flex items-center gap-1.5 text-white/85 font-body text-xs mb-8">
           <Link underline href="/" className="hover:text-white/80 transition-colors">{t.breadcrumb_home}</Link>
           <span>/</span>
