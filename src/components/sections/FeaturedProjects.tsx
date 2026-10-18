@@ -5,13 +5,12 @@ import { localizedPath } from "@/lib/navigation";
 
 export function FeaturedProjects({ lang }: { lang: Lang }) {
   const copy = featuredCopy[lang];
-  const featuredPhotos: Record<string, number> = { lazdyneliai: 6, belmontas: 7 };
   return <section className="featured-projects" aria-labelledby="featured-heading">
     <div className="featured-container">
       <div className="featured-heading"><h2 id="featured-heading">{copy.heading}</h2><Link href={localizedPath("/darbai", lang)}>{copy.all}</Link></div>
       <div className="featured-grid">{copy.items.map(item => {
         const project = projects.find(p => p.id === item.id)!;
-        const photo = project.photos[featuredPhotos[project.id] ?? project.cover];
+        const photo = project.photos[project.cover];
         const image = photo.variants.at(-1)!;
         return <article key={project.id}><Link href={localizedPath(`/darbai/${project.id}`, lang)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}

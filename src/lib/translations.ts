@@ -903,14 +903,14 @@ export const featuredCopy = {
   lt: { heading: "Mūsų atlikti darbai", all: "Visi darbai", read: "Apie projektą", items: [
     { id: "traku-vokes-dvaras", fact: "Dveji darbo metai, 5,5 ha vejos ir 55 000 augalų." },
     { id: "pilaites-gimnazija", fact: "35 000 augalų. Sunkiai pasiekiamose vietose dirbome ilgastrėliu kranu." },
-    { id: "lazdyneliai", fact: "Keturiese per maždaug mėnesį atnaujinome privataus kiemo dangas, veją ir želdinius." },
-    { id: "belmontas", fact: "Vos 97 cm pločio įvažiavimas. Beveik visą objektą įrengėme rankomis." },
+    { id: "nok-nok-home", fact: "Gruntą ruošėme dar prieš pastatų statybą. Įrengėme takus, stovėjimo vietas ir ruloninę veją." },
+    { id: "giluzio-rivjera", fact: "Pasodinome apie 16 000 augalų, suformavome šlaitus, įrengėme veją ir laistymą." },
   ] },
   en: { heading: "Work we have completed", all: "All our work", read: "About the project", items: [
     { id: "traku-vokes-dvaras", fact: "Two years of work, 5.5 hectares of lawn and 55,000 plants." },
     { id: "pilaites-gimnazija", fact: "35,000 plants. A long-reach crane took trees into areas we could not otherwise reach." },
-    { id: "lazdyneliai", fact: "Four of us spent about a month renewing the paving, lawn and planting in a private garden." },
-    { id: "belmontas", fact: "An entrance just 97 cm wide. We did almost all the work by hand." },
+    { id: "nok-nok-home", fact: "We prepared the ground before the buildings went up, then built paths and parking areas and laid turf." },
+    { id: "giluzio-rivjera", fact: "We planted around 16,000 plants, shaped the slopes and installed lawns and irrigation." },
   ] },
 };
 
