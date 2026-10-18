@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
     imageSizes: [300, 600],
   },
 
+  async headers() {
+    return ["/atsiliepimai/patvirtinti", "/:lang/atsiliepimai/patvirtinti"].map(source => ({ source, headers: [
+      { key: "Referrer-Policy", value: "no-referrer" },
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+      { key: "Cache-Control", value: "private, no-store" },
+    ] }));
+  },
+
   async redirects() {
     return [
       // Broken relative links in the legacy CMS sometimes duplicated /lt.

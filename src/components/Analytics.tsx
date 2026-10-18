@@ -3,12 +3,14 @@
 import { useEffect } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { useCookieConsent } from "@/lib/cookieConsent";
+import { usePathname } from "next/navigation";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export function Analytics() {
   const consent = useCookieConsent();
-  const accepted = consent === "accepted";
+  const privatePage = usePathname().includes("/atsiliepimai/patvirtinti");
+  const accepted = consent === "accepted" && !privatePage;
 
   useEffect(() => {
     if (!GA_ID || consent === undefined) return;

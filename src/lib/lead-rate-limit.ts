@@ -5,9 +5,9 @@ const MAX_REQUESTS = 5;
 const buckets = new Map<string, { count: number; reset: number }>();
 
 /** Per-process fallback; configure Redis credentials for a limit shared by serverless instances. */
-export async function limitLead(request: Request): Promise<{ allowed: boolean; retryAfter: number }> {
+export async function limitLead(request: Request, scope: "lead" | "review" = "lead"): Promise<{ allowed: boolean; retryAfter: number }> {
   const address = request.headers.get("x-vercel-forwarded-for") ?? request.headers.get("x-forwarded-for") ?? "unknown";
-  const key = "atd:lead:" + createHash("sha256").update(address.split(",")[0].trim()).digest("hex");
+  const key = `atd:${scope}:` + createHash("sha256").update(address.split(",")[0].trim()).digest("hex");
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
   if (url && token) {

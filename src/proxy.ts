@@ -7,7 +7,7 @@ const projectPaths = new Set(projects.map(project => `/darbai/${project.id}`));
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const cleanPath = unlocalizedPath(pathname);
-  const knownPage = PAGE_PATHS.some(path => path === cleanPath) || projectPaths.has(cleanPath);
+  const knownPage = PAGE_PATHS.some(path => path === cleanPath) || projectPaths.has(cleanPath) || cleanPath === "/atsiliepimai/patvirtinti";
   if (!knownPage) {
     const target = request.nextUrl.clone();
     target.pathname = pathname === "/en" || pathname.startsWith("/en/") ? "/en/404" : "/lt/404";

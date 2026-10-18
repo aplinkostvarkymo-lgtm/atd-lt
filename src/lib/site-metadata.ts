@@ -12,6 +12,10 @@ export const SOCIAL_MEDIA_URL = process.env.ATD_INDEXING_ENABLED === "true" && p
 export const SITE_INDEXABLE = process.env.ATD_INDEXING_ENABLED === "true" && process.env.VERCEL_ENV !== "preview";
 export const SITE_ROBOTS: Metadata["robots"] = { index: SITE_INDEXABLE, follow: true };
 export const PAGE_META = {
+  "/atsiliepimai": {
+    title: { lt: "Klientų atsiliepimai | ATD", en: "Customer reviews | ATD" },
+    description: { lt: "Palikite atsiliepimą apie ATD aplinkos tvarkymo darbus ir įvertinkite nuo 1 iki 5 žvaigždučių. Skaitykite klientų patirtis.", en: "Review your experience with ATD landscaping and rate our work from 1 to 5 stars. Read what customers have to say." },
+  },
   "/patarimai": {
     title: { lt: "Naudinga informacija ir aplinkos tvarkymo patarimai | ATD", en: "Landscaping guides and advice | ATD" },
     description: { lt: "Praktiniai ATD patarimai: kaip suplanuoti aplinkos tvarkymo darbus, pasiruošti tvenkinio kasimui ir palyginti rangovų pasiūlymus.", en: "Practical ATD landscaping guides: plan your garden work, prepare for pond excavation and compare contractor quotes with a clear scope." },

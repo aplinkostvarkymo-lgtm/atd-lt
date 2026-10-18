@@ -3,6 +3,8 @@ import { GardenSceneHero } from "@/components/sections/GardenSceneHero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { HomeIntroduction } from "@/components/sections/HomeIntroduction";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
+import { ReviewsTeaser } from "@/components/reviews/Reviews";
+import { ReviewsPage } from "@/components/pages/ReviewsPage";
 import { VejaPage } from "@/components/pages/VejaPage";
 import { ApzeldinimoPas } from "@/components/pages/ApzeldinimoPas";
 import { TrinkelesPas } from "@/components/pages/TrinkelesPas";
@@ -31,7 +33,8 @@ export default async function Page({ params }: { params: Params }) {
     "/patarimai": <TipsPage lang={lang} path={path} />,
     "/patarimai/aplinkos-tvarkymo-darbu-planas": <TipsPage lang={lang} path={path} />,
     "/patarimai/tvenkinio-kasimo-planavimas": <TipsPage lang={lang} path={path} />,
-    "/": <main id="main-content" tabIndex={-1}><GardenSceneHero /><FeaturedProjects lang={lang} /><StatsBar /><HomeIntroduction lang={lang} /></main>,
+    "/": <main id="main-content" tabIndex={-1}><GardenSceneHero /><FeaturedProjects lang={lang} /><ReviewsTeaser /><StatsBar /><HomeIntroduction lang={lang} /></main>,
+    "/atsiliepimai": <ReviewsPage />,
     "/paslaugos/veja": <VejaPage />, "/paslaugos/apzeldinimas": <ApzeldinimoPas />,
     "/paslaugos/trinkeles": <TrinkelesPas />, "/paslaugos/laistymas": <LaistymasPas />,
     "/paslaugos/tvenkiniai": <TvenkiniaiPas />, "/kontaktai": <KontaktaiPage />, "/darbai": <DarbaiPage />,

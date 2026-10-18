@@ -22,7 +22,7 @@ export function Header() {
   const path = unlocalizedPath(usePathname());
   const menuId = useId();
   const servicesButton = useRef<HTMLButtonElement>(null);
-  const darkHeader = scrolled || path.startsWith("/darbai") || path.startsWith("/patarimai") || !PAGE_PATHS.some(page => page === path);
+  const darkHeader = scrolled || path.startsWith("/darbai") || path.startsWith("/atsiliepimai") || path.startsWith("/patarimai") || !PAGE_PATHS.some(page => page === path);
   const t = translations[lang].nav;
 
   useEffect(() => {
@@ -106,6 +106,9 @@ export function Header() {
             <Link underline href="/darbai" className={`font-body text-sm font-medium transition-colors ${link}`}>
               {t.works}
             </Link>
+            <Link underline href="/atsiliepimai" className={`font-body text-sm font-medium transition-colors ${link}`}>
+              {t.reviews}
+            </Link>
             <Link underline href="/patarimai" className={`font-body text-sm font-medium transition-colors ${link}`}>
               {t.tips}
             </Link>
@@ -187,6 +190,9 @@ export function Header() {
                   onClick={() => setMobileOpen(false)}
                 >
                   {t.works}
+                </Link>
+                <Link underline href="/atsiliepimai" className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors block" onClick={() => setMobileOpen(false)}>
+                  {t.reviews}
                 </Link>
                 <Link underline href="/patarimai" className="font-body text-[0.9375rem] text-atd-black py-3 hover:text-atd-green transition-colors block" onClick={() => setMobileOpen(false)}>
                   {t.tips}

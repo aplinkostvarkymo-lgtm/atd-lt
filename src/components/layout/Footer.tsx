@@ -72,6 +72,9 @@ export function Footer() {
               <Link underline href="/patarimai" className="text-white/70 hover:text-white transition-colors">{t.nav.tips}</Link>
             </li>
             <li className="pt-1">
+              <Link underline href="/atsiliepimai" className="text-white/70 hover:text-white transition-colors">{t.nav.reviews}</Link>
+            </li>
+            <li className="pt-1">
               <Link underline href="/kontaktai" className="text-white/70 hover:text-white transition-colors">
                 {t.nav.contact}
               </Link>

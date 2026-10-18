@@ -51,6 +51,7 @@ export const translations = {
     nav: {
       services: "Paslaugos",
       works: "Darbai",
+      reviews: "Atsiliepimai",
       tips: "Patarimai",
       contact: "Kontaktai",
       menu_open: "Atidaryti meniu",
@@ -484,6 +485,7 @@ export const translations = {
     nav: {
       services: "Services",
       works: "Our work",
+      reviews: "Reviews",
       tips: "Garden tips",
       contact: "Contact",
       menu_open: "Open menu",
@@ -873,6 +875,29 @@ export const translations = {
 } as const;
 
 export type Translations = typeof translations;
+
+export const reviewsCopy = {
+  lt: {
+    title: "Klientų atsiliepimai", intro: "Dirbome jūsų kieme ar objekte? Pasidalykite, kaip sekėsi. Galite palikti nuo 1 iki 5 žvaigždučių ir parašyti savo atsiliepimą.",
+    nav: "Atsiliepimai", write: "Palikti atsiliepimą", all: "Visi atsiliepimai", empty: "Pirmųjų klientų atsiliepimų dar laukiame. Jei dirbome kartu, kviečiame parašyti savo.",
+    loading: "Įkeliami atsiliepimai…", loadError: "Šiuo metu atsiliepimų įkelti nepavyko. Pabandykite dar kartą.", retry: "Bandyti dar kartą", more: "Rodyti daugiau atsiliepimų", count: "Atsiliepimų", average: "Vidutinis įvertinimas", outOf: "iš 5", recent: "Naujausi patvirtinti atsiliepimai",
+    formTitle: "Kaip vertinate mūsų darbą?", name: "Viešai rodomas vardas", nameHint: "Pakanka vardo arba vardo su pavardės inicialu.", email: "El. paštas (neprivalomas)", emailHint: "Neviešinamas. Naudosime tik jei reikės pasitikslinti dėl atsiliepimo.", rating: "Įvertinimas", chooseRating: "Pasirinkite nuo 1 iki 5 žvaigždučių.", text: "Jūsų atsiliepimas", textHint: "20–3000 simbolių. Nerašykite telefono numerio, tikslaus adreso ar kitų privačių duomenų.",
+    consent: "Sutinku, kad mano nurodytas vardas, įvertinimas ir atsiliepimas būtų viešinami ATD svetainėje. El. paštas nebus viešinamas.",
+    policy: "Prieš skelbdami patikriname, ar atsiliepimas susijęs su mūsų darbais, ar jame nėra šlamšto ir privačių duomenų. Įvertinimo ir teksto nekeičiame.",
+    submit: "Pateikti atsiliepimą", sending: "Siunčiama…", successTitle: "Ačiū už atsiliepimą!", success: "Jį gavome. Svetainėje jis pasirodys po peržiūros ir patvirtinimo.", error: "Atsiliepimo išsaugoti nepavyko. Jūsų tekstas liko formoje. Pabandykite dar kartą arba susisiekite su mumis.", rateLimit: "Per trumpą laiką pateikta per daug atsiliepimų. Pabandykite vėliau.",
+    ownerTitle: "Atsiliepimo peržiūra", ownerIntro: "Šis puslapis skirtas tik ATD atsiliepimų patvirtinimui. Įvertinimas ir tekstas pateikti tokie, kokius parašė klientas.", ownerInvalid: "Nuoroda netinkama arba jos galiojimas baigėsi. Naudokite nuorodą iš atsiliepimo pranešimo. Ji galioja 30 dienų.", approve: "Patvirtinti ir paskelbti", reject: "Atmesti", working: "Išsaugoma…", approved: "Atsiliepimas patvirtintas. Svetainėje jis pasirodys netrukus.", rejected: "Atsiliepimas atmestas ir nebus viešinamas.", ownerError: "Sprendimo išsaugoti nepavyko. Pabandykite dar kartą.",
+  },
+  en: {
+    title: "Customer reviews", intro: "Have we worked on your garden or site? Tell us how it went. Choose a rating from 1 to 5 stars and write a review.",
+    nav: "Reviews", write: "Write a review", all: "All reviews", empty: "We are waiting for our first customer reviews. If we have worked together, we would like to hear from you.",
+    loading: "Loading reviews…", loadError: "We could not load the reviews. Please try again.", retry: "Try again", more: "Show more reviews", count: "Reviews", average: "Average rating", outOf: "out of 5", recent: "Latest approved reviews",
+    formTitle: "How would you rate our work?", name: "Public display name", nameHint: "Your first name, or first name and surname initial, is enough.", email: "Email (optional)", emailHint: "Not published. We will only use it if we need to ask about your review.", rating: "Rating", chooseRating: "Choose from 1 to 5 stars.", text: "Your review", textHint: "20–3,000 characters. Do not include phone numbers, exact addresses or other private details.",
+    consent: "I agree to have my chosen name, rating and review published on the ATD website. My email address will not be published.",
+    policy: "Before publication, we check that reviews concern our work and contain no spam or private information. We do not change the rating or text.",
+    submit: "Submit review", sending: "Sending…", successTitle: "Thank you for your review!", success: "We have received it. It will appear on the website after review and approval.", error: "We could not save your review. Your text is still in the form. Please try again or contact us.", rateLimit: "Too many reviews have been submitted in a short time. Please try again later.",
+    ownerTitle: "Review moderation", ownerIntro: "This page is for ATD review approval only. The rating and text are exactly as submitted by the customer.", ownerInvalid: "This link is invalid or has expired. Use the link in the review notification email. It is valid for 30 days.", approve: "Approve and publish", reject: "Reject", working: "Saving…", approved: "The review is approved and will appear on the website shortly.", rejected: "The review was rejected and will not be published.", ownerError: "We could not save your decision. Please try again.",
+  },
+} as const;
 
 export const featuredCopy = {
   lt: { heading: "Mūsų atlikti darbai", all: "Visi darbai", read: "Apie projektą", items: [

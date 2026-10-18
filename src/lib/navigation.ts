@@ -1,6 +1,6 @@
 import type { Lang } from "./translations";
 
-export const PAGE_PATHS = ["/", "/paslaugos/veja", "/paslaugos/apzeldinimas", "/paslaugos/trinkeles", "/paslaugos/laistymas", "/paslaugos/tvenkiniai", "/kontaktai", "/darbai", "/patarimai", "/patarimai/aplinkos-tvarkymo-darbu-planas", "/patarimai/tvenkinio-kasimo-planavimas"] as const;
+export const PAGE_PATHS = ["/", "/paslaugos/veja", "/paslaugos/apzeldinimas", "/paslaugos/trinkeles", "/paslaugos/laistymas", "/paslaugos/tvenkiniai", "/kontaktai", "/darbai", "/atsiliepimai", "/patarimai", "/patarimai/aplinkos-tvarkymo-darbu-planas", "/patarimai/tvenkinio-kasimo-planavimas"] as const;
 export const SERVICE_LINKS = [
   { href: "/paslaugos/apzeldinimas", key: "apzeldinimas" },
   { href: "/paslaugos/veja", key: "veja" },
