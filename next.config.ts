@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: { globalNotFound: true },
   images: {
     formats: ["image/webp"],
     deviceSizes: [375, 768, 1280, 1920],

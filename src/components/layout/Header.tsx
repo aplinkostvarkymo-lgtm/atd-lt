@@ -7,7 +7,7 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
-import { SERVICE_LINKS, unlocalizedPath } from "@/lib/navigation";
+import { PAGE_PATHS, SERVICE_LINKS, unlocalizedPath } from "@/lib/navigation";
 import { usePathname } from "next/navigation";
 import { Modal } from "@/components/ui/Modal";
 import { useRef, useId } from "react";
@@ -22,7 +22,7 @@ export function Header() {
   const path = unlocalizedPath(usePathname());
   const menuId = useId();
   const servicesButton = useRef<HTMLButtonElement>(null);
-  const darkHeader = scrolled || path.startsWith("/darbai") || path.startsWith("/patarimai");
+  const darkHeader = scrolled || path.startsWith("/darbai") || path.startsWith("/patarimai") || !PAGE_PATHS.some(page => page === path);
   const t = translations[lang].nav;
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export function Header() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           darkHeader
             ? "bg-white/95 backdrop-blur-sm border-b border-atd-black/8 py-3 md:py-4"
-            : "py-5 md:py-6"
+            : "py-3 md:py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center gap-6">

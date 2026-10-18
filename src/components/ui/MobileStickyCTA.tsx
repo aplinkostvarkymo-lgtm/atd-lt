@@ -16,7 +16,7 @@ export function MobileStickyCTA() {
 
   return (
     <div className="mobile-sticky-cta fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-atd-black/10">
-      <div className="flex gap-2 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      <div className="flex gap-2 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         <a
           href="tel:+37065785096"
           className="flex-1 inline-flex items-center justify-center gap-2 bg-atd-green text-white font-body font-semibold text-sm py-3 transition-all active:scale-[0.97]"

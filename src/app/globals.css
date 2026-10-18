@@ -201,6 +201,27 @@ button:focus-visible .link-underline { background-size: 100% 1px; }
 .site-content { padding-bottom: var(--atd-mobile-cta-height); }
 body:has(main):not(:has(.mobile-sticky-cta)) .site-content { padding-bottom: 0; }
 .garden-hero { height: calc(100svh - var(--atd-mobile-cta-height)); min-height: 600px; }
+.hero-service-scroll { scrollbar-width: thin; scrollbar-color: #ffffffb3 #ffffff26; padding-bottom: 12px; }
+.hero-mobile-services::after { content: ""; position: absolute; pointer-events: none; right: 0; top: 0; bottom: 0; width: 28px; background: linear-gradient(to right, transparent, #141c10e6); }
+.featured-projects { background: white; padding: 64px 0 80px; }
+.featured-container { width: min(100% - 48px, 1152px); margin-inline: auto; }
+.featured-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; margin-bottom: 32px; }
+.featured-heading h2 { font-family: var(--font-display), Georgia, serif; font-size: clamp(30px, 3vw, 42px); font-weight: 600; }
+.featured-heading a, .featured-grid a > span { color: var(--color-atd-green); text-decoration: underline; text-underline-offset: 5px; font-size: 14px; }
+.featured-heading a { padding-block: 12px; }
+.featured-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 28px; }
+.featured-grid article { min-width: 0; }
+.featured-grid a { display: block; }
+.featured-grid img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: #edf0e8; }
+.featured-grid h3 { font-family: var(--font-display), Georgia, serif; font-size: clamp(23px, 2.3vw, 30px); font-weight: 600; line-height: 1.25; margin-top: 18px; text-wrap: balance; }
+.featured-grid p { color: #40483a; line-height: 1.65; margin: 10px 0 14px; max-width: 60ch; }
+.not-found-page { background: var(--color-atd-cream); color: var(--color-atd-black); min-height: 80svh; padding: 144px 24px 80px; }
+.not-found-inner { max-width: 900px; margin-inline: auto; }
+.not-found-page h1 { font-family: var(--font-display), Georgia, serif; font-size: clamp(36px, 5vw, 64px); font-weight: 600; margin: 20px 0; }
+.not-found-page p { line-height: 1.75; max-width: 62ch; }
+.not-found-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.not-found-links a { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 24px; background: var(--color-atd-green); color: white; }
+@media (max-width: 700px) { .featured-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; } .featured-projects { padding: 40px 0 56px; } }
 .atd-dialog { position: fixed; inset: 0; margin: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; border: 0; padding: 0; background: transparent; color: inherit; overflow: hidden; }
 .atd-dialog::backdrop { background: transparent; }
 .skip-content { position: fixed; top: 0.5rem; left: 1rem; z-index: 100; padding: 0.75rem 1rem; background: white; color: #1E3610; transform: translateY(-200%); }

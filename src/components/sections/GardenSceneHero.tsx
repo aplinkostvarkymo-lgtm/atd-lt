@@ -62,7 +62,7 @@ export function GardenSceneHero() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video || shouldReduceMotion !== false) return;
-    video.playbackRate = 2;
+    video.playbackRate = 4;
     // Preserve the doors sequence; only recover if playback never starts or stalls.
     let fallback = window.setTimeout(() => setVideoFinished(true), 10000);
     const progress = () => {
@@ -76,7 +76,7 @@ export function GardenSceneHero() {
 
   useEffect(() => {
     if (!showImage) return;
-    const timer = setTimeout(() => setShowHotspots(true), 700);
+    const timer = setTimeout(() => setShowHotspots(true), 150);
     return () => clearTimeout(timer);
   }, [showImage]);
 
@@ -94,6 +94,7 @@ export function GardenSceneHero() {
             autoPlay
             muted
             playsInline
+            poster="/images/main_one.png"
             onEnded={revealImage}
             onError={revealImage}
           >
@@ -129,10 +130,10 @@ export function GardenSceneHero() {
 
         {/* Desktop composition is preserved; mobile copy clears the service strip. */}
         <motion.div
-          className="hero-copy absolute bottom-[5.5rem] md:bottom-[2%] left-[6%] right-[6%] md:right-auto md:left-[21%] z-10 max-w-xl"
+          className="hero-copy absolute bottom-10 md:bottom-[2%] left-[6%] right-[6%] md:right-auto md:left-[21%] z-10 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showImage ? 1 : 0, y: showImage ? 0 : 20 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.25 }}
         >
           <h1
             className="font-display font-bold text-white leading-tight"
@@ -159,22 +160,6 @@ export function GardenSceneHero() {
           {/* Telefono eilutė po CTA pašalinta — telefonas akcentuojamas header'yje */}
         </motion.div>
 
-        {/* Mobile service strip */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 md:hidden">
-          <div className="flex overflow-x-auto gap-2 p-3 bg-black/60 backdrop-blur-sm scrollbar-none">
-            {HOTSPOTS.map((hotspot) => (
-              <button
-                key={hotspot.id}
-                type="button"
-                onClick={() => setActiveService(hotspot.id)}
-                className="flex-shrink-0 bg-white/15 border border-white/30 text-white text-xs font-body px-4 py-3 whitespace-nowrap"
-              >
-                {hotspot.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Skip button — below header, only during video */}
         {!shouldReduceMotion && !showImage && (
           <div className="absolute top-20 right-4 z-[60]">
@@ -188,6 +173,23 @@ export function GardenSceneHero() {
         )}
 
       </section>
+        {/* Mobile service strip */}
+        <div className="hero-mobile-services relative md:hidden">
+          <div className="flex overflow-x-auto gap-2 px-3 py-2 bg-atd-green-dark hero-service-scroll" role="group" aria-label={t.nav.services}>
+            {HOTSPOTS.map((hotspot) => (
+              <button
+                key={hotspot.id}
+                type="button"
+                onClick={() => setActiveService(hotspot.id)}
+                className="flex-shrink-0 bg-white/15 border border-white/30 text-white text-xs font-body px-4 py-3 whitespace-nowrap"
+              >
+                {hotspot.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+
 
       {/* Service popup — rendered outside <section> to escape stacking context */}
       <ServicePopup

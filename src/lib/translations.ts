@@ -874,6 +874,26 @@ export const translations = {
 
 export type Translations = typeof translations;
 
+export const featuredCopy = {
+  lt: { heading: "Mūsų atlikti darbai", all: "Visi darbai", read: "Apie projektą", items: [
+    { id: "traku-vokes-dvaras", fact: "Dveji darbo metai, 5,5 ha vejos ir 55 000 augalų." },
+    { id: "pilaites-gimnazija", fact: "35 000 augalų. Sunkiai pasiekiamose vietose dirbome ilgastrėliu kranu." },
+    { id: "lazdyneliai", fact: "Keturiese per maždaug mėnesį atnaujinome privataus kiemo dangas, veją ir želdinius." },
+    { id: "belmontas", fact: "Vos 97 cm pločio įvažiavimas. Beveik visą objektą įrengėme rankomis." },
+  ] },
+  en: { heading: "Work we have completed", all: "All our work", read: "About the project", items: [
+    { id: "traku-vokes-dvaras", fact: "Two years of work, 5.5 hectares of lawn and 55,000 plants." },
+    { id: "pilaites-gimnazija", fact: "35,000 plants. A long-reach crane took trees into areas we could not otherwise reach." },
+    { id: "lazdyneliai", fact: "Four of us spent about a month renewing the paving, lawn and planting in a private garden." },
+    { id: "belmontas", fact: "An entrance just 97 cm wide. We did almost all the work by hand." },
+  ] },
+};
+
+export const notFoundCopy = {
+  lt: { title: "Puslapio neradome", text: "Adresas galėjo pasikeisti arba puslapio nebėra. Galite grįžti į pradžią, peržiūrėti mūsų darbus arba susisiekti.", home: "Į pradžią", works: "Atlikti darbai", contact: "Kontaktai" },
+  en: { title: "Page not found", text: "The address may have changed or the page may no longer exist. Return to the homepage, view our work or contact us.", home: "Home", works: "Our work", contact: "Contact us" },
+};
+
 
 // Editorial content and UI copy for the bilingual guides.
 type TipLocalized = Record<Lang, string>;

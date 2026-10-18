@@ -5,6 +5,8 @@ import { planningArticle, pondArticle } from "./tips-content";
 
 export type PagePath = typeof PAGE_PATHS[number];
 export const SITE_URL = "https://atd.lt";
+// Social crawlers must fetch media from the working review host until domain launch.
+export const SOCIAL_MEDIA_URL = process.env.ATD_INDEXING_ENABLED === "true" && process.env.VERCEL_ENV !== "preview" ? SITE_URL : "https://new.atd.lt";
 // The Vercel site is a review copy until the owner migrates atd.lt.
 // Enable only for the primary-domain launch; branch previews stay noindex.
 export const SITE_INDEXABLE = process.env.ATD_INDEXING_ENABLED === "true" && process.env.VERCEL_ENV !== "preview";
@@ -57,7 +59,7 @@ export function pageMetadata(path: PagePath, lang: Lang): Metadata {
   return {
     metadataBase: new URL(SITE_URL), title, description,
     alternates: { canonical: url, languages: { lt: SITE_URL + localizedPath(path, "lt"), en: SITE_URL + localizedPath(path, "en"), "x-default": SITE_URL + localizedPath(path, "lt") } },
-    openGraph: { title, description, url, locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", type: path.startsWith("/patarimai/") ? "article" : "website", images: [{ url: "/images/og-atd.jpg", width: 1200, height: 630, alt: "ATD" }] },
-    twitter: { card: "summary_large_image", title, description, images: ["/images/og-atd.jpg"] },
+    openGraph: { title, description, url, locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", type: path.startsWith("/patarimai/") ? "article" : "website", images: [{ url: SOCIAL_MEDIA_URL + "/images/og-atd.jpg", width: 1200, height: 630, alt: "ATD" }] },
+    twitter: { card: "summary_large_image", title, description, images: [SOCIAL_MEDIA_URL + "/images/og-atd.jpg"] },
   };
 }

@@ -48,7 +48,7 @@ function Hero({ t }: { t: T }) {
 
         <motion.h1
           className="font-display font-bold text-3xl md:text-5xl text-white leading-tight"
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
@@ -57,7 +57,7 @@ function Hero({ t }: { t: T }) {
 
         <motion.p
           className="font-body text-base md:text-lg text-white/75 mt-4 max-w-xl leading-relaxed"
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
@@ -66,7 +66,7 @@ function Hero({ t }: { t: T }) {
 
         <motion.div
           className="flex flex-wrap gap-3 mt-8"
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.18 }}
         >
