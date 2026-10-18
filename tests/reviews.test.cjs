@@ -55,3 +55,33 @@ test('invalid API submissions never store or notify; separate limiter scope and 
  const limited=load('src/app/api/reviews/route.ts',{...overrides,'@/lib/lead-rate-limit':{limitLead:async(req,scope)=>{assert.equal(scope,'review');return{allowed:false,retryAfter:60}}}});
  const res=await limited.POST(request('https://new.atd.lt/api/reviews',valid));assert.equal(res.status,429);assert.equal(res.headers.get('retry-after'),'60');assert.equal(writes.length,before);
 });
+
+test('owner reply is private while pending, preserves client text, becomes public only after approval',async()=>{
+ const id=await store.saveReview(valid),token=store.moderationToken(id);
+ const reply='Thank you for your review and for trusting ATD with the project.';
+ const saved=await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token,action:'reply',reply}));
+ assert.equal(saved.status,200);assert.equal((await saved.json()).state,'pending');
+ assert(!(await store.getPublicReviews()).reviews.some(r=>r.id===id));
+ const original=JSON.parse(records.get(id).fields['Žinutė']);assert.equal(original.text,valid.text);assert.equal(original.rating,valid.rating);
+ await store.moderateReview(id,'approve');
+ const published=(await store.getPublicReviews()).reviews.find(r=>r.id===id);
+ assert.equal(published.reply.text,reply);assert.deepEqual(Object.keys(published.reply).sort(),['text','updatedAt']);assert(!JSON.stringify(published).includes(valid.email));
+ await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token,action:'reply',reply:'Updated personal thank-you.'}));
+ assert.equal((await store.getModerationReview(id)).review.reply.text,'Updated personal thank-you.');
+ await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token,action:'reply',reply:''}));
+ assert.equal((await store.getModerationReview(id)).review.reply,undefined);
+ assert.equal((await store.getModerationReview(id)).state,'approved');
+});
+
+test('reply writes require a valid owner token, validated text and a non-rejected review',async()=>{
+ const id=await store.saveReview(valid),token=store.moderationToken(id),before=writes.length;
+ for(const reply of ['x','a'.repeat(1501),{text:'no'},'Test\u0000invalid'])assert.equal((await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token,action:'reply',reply}))).status,400);
+ assert.equal((await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token:'forged',action:'reply',reply:'Not allowed'}))).status,403);
+ assert.equal((await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token,action:'reply',reply:'Cross-site'},{origin:'https://attacker.test'}))).status,403);
+ assert.equal(writes.length,before);
+ await store.moderateReview(id,'reject');
+ assert.equal((await moderate.POST(request('https://new.atd.lt/api/reviews/moderate',{token,action:'reply',reply:'Cannot reply to rejected'}))).status,409);
+ const replyForgery={...valid,reply:{text:'Forged owner reply',updatedAt:new Date().toISOString()}};
+ const validationResult=validation.validateReview(replyForgery);
+ const newId=await store.saveReview(validationResult.data);assert.equal((await store.getModerationReview(newId)).review.reply,undefined);
+});

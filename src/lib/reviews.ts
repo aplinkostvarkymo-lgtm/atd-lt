@@ -1,7 +1,8 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import type { ReviewInput } from "./review-validation";
 
-export type PublicReview = { id: string; name: string; rating: number; text: string; createdAt: string };
+export type ReviewReply = { text: string; updatedAt: string };
+export type PublicReview = { id: string; name: string; rating: number; text: string; createdAt: string; reply?: ReviewReply };
 export type ReviewState = "pending" | "approved" | "rejected";
 type StoredReview = Omit<PublicReview, "id"> & { version: 1; moderation: ReviewState; lang: "lt" | "en"; consent: true };
 type AirtableRecord = { id: string; fields: Record<string, unknown> };
@@ -29,7 +30,12 @@ function decodeRecord(record: AirtableRecord): StoredReview | null {
   } catch { return null; }
 }
 function publicFields(id: string, data: StoredReview): PublicReview {
-  return { id, name: data.name, rating: data.rating, text: data.text, createdAt: data.createdAt };
+  const result: PublicReview = { id, name: data.name, rating: data.rating, text: data.text, createdAt: data.createdAt };
+  const reply = data.reply;
+  if (reply && typeof reply.text === "string" && reply.text.trim().length >= 2 && reply.text.length <= 1500 && Number.isFinite(Date.parse(reply.updatedAt))) {
+    result.reply = { text: reply.text, updatedAt: reply.updatedAt };
+  }
+  return result;
 }
 
 export async function saveReview(input: ReviewInput): Promise<string> {
@@ -92,4 +98,16 @@ export async function moderateReview(id: string, action: "approve" | "reject"): 
   // Preserve the submitted name, rating and text; moderation changes only visibility.
   await storageFetch("/" + id, { method: "PATCH", body: JSON.stringify({ fields: { "Žinutė": JSON.stringify({ ...data, moderation: state }) } }) });
   return state;
+}
+
+export async function saveReviewReply(id: string, text: string): Promise<{ review: PublicReview; state: ReviewState } | null> {
+  if (!/^rec[A-Za-z0-9]{14}$/.test(id)) throw new Error("Invalid review id");
+  const record = await storageFetch("/" + id) as AirtableRecord;
+  const data = decodeRecord(record);
+  if (!data || data.moderation === "rejected") return null;
+  const updated = { ...data };
+  if (text) updated.reply = { text, updatedAt: new Date().toISOString() };
+  else delete updated.reply;
+  await storageFetch("/" + id, { method: "PATCH", body: JSON.stringify({ fields: { "Žinutė": JSON.stringify(updated) } }) });
+  return { review: publicFields(record.id, updated), state: updated.moderation };
 }

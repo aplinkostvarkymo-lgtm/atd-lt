@@ -23,7 +23,7 @@ async function notifyOwner(id: string, data: ReviewInput) {
     "Naujas atsiliepimas laukia Jūsų patvirtinimo. Jis dar neviešinamas.",
     `Vardas: ${data.name}`, `Įvertinimas: ${data.rating} / 5`,
     data.email ? `El. paštas (neviešinamas): ${data.email}` : "", data.text,
-    "Peržiūrėti ir patvirtinti arba atmesti:", url.toString(),
+    "Peržiūrėti, parašyti atsakymą klientui ir patvirtinti arba atmesti:", url.toString(),
     "Ši privati nuoroda galioja 30 dienų. Jos neatiduokite klientams. Vien nuorodos atidarymas nieko nepaskelbia.",
   ].filter(Boolean).join("\n\n");
   const response = await fetch("https://api.resend.com/emails", {

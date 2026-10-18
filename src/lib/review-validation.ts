@@ -1,6 +1,13 @@
 export type ReviewInput = { name: string; email: string; rating: number; text: string; lang: "lt" | "en" };
 export const MAX_REVIEW_BYTES = 16384;
 
+export function validateReviewReply(value: unknown): { text: string } | { error: string } {
+  if (typeof value !== "string") return { error: "invalid_reply" };
+  const text = value.trim();
+  if ((text.length > 0 && text.length < 2) || text.length > 1500 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(text)) return { error: "invalid_reply" };
+  return { text };
+}
+
 export function validateReview(body: unknown): { data: ReviewInput } | { error: string } | { honeypot: true } {
   if (!body || typeof body !== "object" || Array.isArray(body)) return { error: "invalid_body" };
   const input = body as Record<string, unknown>;

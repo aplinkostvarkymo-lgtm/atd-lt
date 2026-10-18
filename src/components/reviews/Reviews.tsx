@@ -34,10 +34,12 @@ export function usePublicReviews() {
 
 export function ReviewEntry({ review, excerpt = false }: { review: PublicReview; excerpt?: boolean }) {
   const { lang } = useLanguage();
+  const initials = review.name.trim().split(/\s+/).slice(0, 2).map(part => Array.from(part)[0]).join("").toLocaleUpperCase(lang);
   return <article className="review-entry">
+    <div className="review-person"><span className="review-avatar" aria-hidden="true">{initials}</span><div className="review-byline"><span>{review.name}</span><time dateTime={review.createdAt}>{new Intl.DateTimeFormat(lang === "lt" ? "lt-LT" : "en-GB", { year: "numeric", month: "long", day: "numeric" }).format(new Date(review.createdAt))}</time></div></div>
     <RatingStars rating={review.rating} />
-    <p className={excerpt ? "review-text review-excerpt" : "review-text"}>{review.text}</p>
-    <div className="review-byline"><span>{review.name}</span><time dateTime={review.createdAt}>{new Intl.DateTimeFormat(lang === "lt" ? "lt-LT" : "en-GB", { year: "numeric", month: "long", day: "numeric" }).format(new Date(review.createdAt))}</time></div>
+    <blockquote><p className={excerpt ? "review-text review-excerpt" : "review-text"}>{review.text}</p></blockquote>
+    {review.reply && <div className="review-reply"><p className="review-reply-author">{reviewsCopy[lang].replyAuthor}</p><p className={excerpt ? "review-reply-text review-excerpt" : "review-reply-text"}>{review.reply.text}</p></div>}
   </article>;
 }
 
