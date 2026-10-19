@@ -38,6 +38,18 @@ The provider accepted the change around 23:37 Europe/Vilnius and published the
 new A/CNAME by 23:51. Vercel generated HTTPS certificates afterwards. No certificate
 warning was bypassed and TLS verification was not disabled.
 
+At 00:07 Europe/Vilnius on 2026-10-20, direct DNS queries still found a partial
+cutover: ns1/ns2 returned the new apex IP, while ns3/ns4 returned the old apex IP.
+All four already returned the new www CNAME, and retained MX/SPF/verification TXT.
+Google 8.8.8.8 and Cloudflare 1.1.1.1 returned the new apex IP. This is not yet a
+fully converged authoritative zone; a browser using an old answer can still reach
+the legacy server and its500 response for a new route. The identical correct
+zone was republished around00:03 without changing record values. Provider UI
+accepted it. Do not report universal availability until all four servers agree.
+The provider's [zone documentation](https://pagalba.iv.lt/lt/articles/380773-zonos-redagavimas)
+allows1–2hours for changes to take full effect. If disagreement persists beyond
+that window, investigate with the provider rather than changing unrelated records.
+
 ## Verified launch outcome
 
 Deployment `e9372b64302337104cba95e14fb87c03e37fbe23` passed the live launch audit:
@@ -47,6 +59,13 @@ were checked. Current public reviews API returned200. The local resolver still
 held the old A answer, so the primary-host HTTP audit used the authoritative new
 IP in that test process only, with real hostname/SNI and normal TLS validation.
 Google Public DNS independently returned the new record.
+
+Follow-up deployment `ae06afd09d98e4154d3b53ff993a1a048bcdb475` reached Ready.
+All18 targeted live host checks passed: primary public pages have no noindex
+header, both review aliases have `noindex, follow`, private moderation retains
+the stricter headers on every host, and www308 preserves paths and queries.
+Primary/www checks used the same process-only authoritative-IP override with
+normal TLS validation; they do not establish complete DNS propagation.
 
 Search Console accepted `https://atd.lt/sitemap.xml` on 2026-10-19 with **Success**
 and **86 discovered pages**. Its live homepage test at 23:55 reported **URL is
@@ -58,6 +77,8 @@ The official Meta Sharing Debugger was refreshed for `https://atd.lt/`. It retur
 the new canonical, current title and the loaded homepage garden image. Meta's
 partial-content fetch reported206; ordinary full-page requests returned200.
 Previously sent message attachments may retain their old image until refreshed.
+The official debugger also fetched `https://atd.lt/atsiliepimai#parasyti` and showed
+the current review title, correct canonical and loaded homepage garden preview.
 
 ## Contact and form checks
 
