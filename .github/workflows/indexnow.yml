@@ -1,0 +1,26 @@
+name: Notify IndexNow after production deployment
+
+on:
+  repository_dispatch:
+    types: [vercel.deployment.success]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-production
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    if: github.event_name == 'workflow_dispatch' || github.event.client_payload.environment == 'production'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Notify participating search engines about the public production pages
+        run: node scripts/indexnow.mjs

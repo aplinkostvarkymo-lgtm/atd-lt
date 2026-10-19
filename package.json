@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test:reviews": "node --test tests/reviews.test.cjs",
     "test:metadata": "node --test tests/site-metadata.test.cjs",
-    "test:migration": "node --test tests/migration-redirects.test.cjs"
+    "test:migration": "node --test tests/migration-redirects.test.cjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@next/third-parties": "16.4.2",
