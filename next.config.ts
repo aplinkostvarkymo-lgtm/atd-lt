@@ -9,11 +9,20 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
-    return ["/atsiliepimai/patvirtinti", "/:lang/atsiliepimai/patvirtinti"].map(source => ({ source, headers: [
-      { key: "Referrer-Policy", value: "no-referrer" },
-      { key: "X-Robots-Tag", value: "noindex, nofollow" },
-      { key: "Cache-Control", value: "private, no-store" },
-    ] }));
+    return [
+      // Review aliases remain usable; only the primary domain is indexable.
+      ...["new\\.atd\\.lt", "atd-lt\\.vercel\\.app"].map(host => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }],
+      })),
+      // Keep private moderation stricter than the public review-host header.
+      ...["/atsiliepimai/patvirtinti", "/:lang/atsiliepimai/patvirtinti"].map(source => ({ source, headers: [
+        { key: "Referrer-Policy", value: "no-referrer" },
+        { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        { key: "Cache-Control", value: "private, no-store" },
+      ] })),
+    ];
   },
 
   async redirects() {

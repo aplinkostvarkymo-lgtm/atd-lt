@@ -15,6 +15,20 @@ loaded._compile(ts.transpileModule(fs.readFileSync(configFile, 'utf8'), {
 }).outputText, configFile);
 const nextConfig = loaded.exports.default;
 
+test('review aliases stay noindex while primary pages and private moderation retain their own rules', async () => {
+  for (const host of ['new.atd.lt', 'atd-lt.vercel.app', 'atd.lt']) {
+    for (const page of ['/', '/en/atsiliepimai', '/darbai/nok-nok-home']) {
+      const response = await unstable_getResponseFromNextConfig({ url: `https://${host}${page}`, headers: { host }, nextConfig });
+      assert.equal(getRedirectUrl(response), null);
+      assert.equal(response.headers.get('x-robots-tag'), host === 'atd.lt' ? null : 'noindex, follow');
+    }
+    const privateResponse = await unstable_getResponseFromNextConfig({ url: `https://${host}/atsiliepimai/patvirtinti`, headers: { host }, nextConfig });
+    assert.equal(privateResponse.headers.get('x-robots-tag'), 'noindex, nofollow');
+    assert.equal(privateResponse.headers.get('referrer-policy'), 'no-referrer');
+    assert.equal(privateResponse.headers.get('cache-control'), 'private, no-store');
+  }
+});
+
 test('legacy work, community and groundworks links reach their specific content in one permanent hop', async () => {
   const cases = [
     [1945, '/darbai'],

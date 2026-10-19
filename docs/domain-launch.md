@@ -1,30 +1,90 @@
 # Primary domain launch
 
-The owner authorized the primary-domain launch on 2026-10-19 after reviewing the
-legacy URL audit. The 2026-10-18 review-only decision is superseded. The steps
-below describe the cutover; confirm the recorded live outcome before treating it
-as complete. Legacy URL decisions are in [legacy-url-migration.md](legacy-url-migration.md).
+The owner authorized launch on 2026-10-19. The new site is deployed on Vercel for
+`atd.lt`; `www.atd.lt` permanently redirects to the apex domain. The earlier
+review-only decision is superseded. Legacy path decisions are documented in
+[legacy-url-migration.md](legacy-url-migration.md).
 
-The default build emits `noindex, follow` on all LT/EN pages. Leave `ATD_INDEXING_ENABLED` unset while the site is under review. `robots.txt` allows crawling so search engines can read the noindex directive. Page canonical URLs, language alternates, Open Graph URLs and sharing images use the working review host https://new.atd.lt. This prevents social crawlers from following a shared review link to the old atd.lt server. JSON-LD entity identifiers and the future sitemap remain prepared for https://atd.lt. Enabling the launch flag switches page identities and media back to the primary domain automatically.
+## Production configuration
 
-For the separately authorized domain migration:
+- Vercel project: `robertas-projects-ca7a987d/atd-lt`, Production branch `main`.
+- `ATD_INDEXING_ENABLED=true` is set only in Production. Canonicals, hreflang and
+  sharing URLs use `https://atd.lt`; public pages allow indexing.
+- Branch previews remain noindex. The usable review aliases `new.atd.lt` and
+  `atd-lt.vercel.app` receive a host-specific `X-Robots-Tag: noindex, follow`.
+  They retain their page URLs instead of forcing visitors through a redirect.
+- Private moderation remains `noindex, nofollow`, `no-referrer`, `private, no-store`
+  on every host; the public alias header must never override these stricter rules.
 
-1. Connect atd.lt to the new deployment and confirm HTTPS and one canonical host.
-2. Verify all sitemap URLs, LT/EN routes, images, social image, legacy redirects, form persistence and email delivery on the new primary domain. The previous server returned 500 for /darbai and /sitemap.xml.
-3. Set `ATD_INDEXING_ENABLED=true` for the Vercel **Production** environment and redeploy. Branch previews remain noindex even if the flag is present.
-4. Confirm production page HTML contains `index, follow`, correct atd.lt canonical and reciprocal language links. Confirm previews still contain `noindex`.
-5. Submit the sitemap and inspect representative URLs in the owner's Search Console account.
+## DNS cutover
 
-The temporary contact and form notification recipient is aplinkostvarkymo@gmail.com. The owner-authorized test on 2026-10-18 confirmed successful storage and actual Gmail inbox delivery. That internal notification currently arrives from the configured Resend test sender, onboarding@resend.dev; configure a verified branded sender when preparing the primary-domain launch. Do not substitute an arbitrary Gmail From address without provider verification.
+The owner logged into Interneto vizija. The old DNS zone was saved privately before
+editing. Only the website A record and an explicit www record were changed:
 
-Do not mark domain launch or search indexing complete merely because a Vercel build succeeded. Only run additional real lead tests with explicit authorization; local interface regression checks can use mocked responses.
+| Name | Type | New value | TTL |
+| --- | --- | --- | --- |
+| @ | A | 216.198.79.1 | 900 seconds |
+| www | CNAME | 9a9d04e63ca3ef4e.vercel-dns-017.com. | 900 seconds |
 
-References: [Google noindex guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Schema.org unit pricing](https://schema.org/UnitPriceSpecification).
+Vercel supplied these values in its project domain settings. Nameservers remain
+`ns1.serveriai.lt` through `ns4.serveriai.lt`. The wildcard A record remains
+`168.119.17.226`, preserving unrelated subdomains such as `news.atd.lt`. The
+existing `new` CNAME, MX `10 kolab.digitek.lt.`, SPF TXT and Google verification TXT
+were preserved. The previous root A record was `168.119.17.226`; the old TTL was
+3600 seconds. Existing resolver caches can therefore temporarily serve the old
+site even after the authoritative servers publish the new records.
 
-## Sharing previews
+The provider accepted the change around 23:37 Europe/Vilnius and published the
+new A/CNAME by 23:51. Vercel generated HTTPS certificates afterwards. No certificate
+warning was bypassed and TLS verification was not disabled.
 
-The default social image is a 1200 × 630 JPEG derived from the existing homepage garden image: `/images/og-atd-home-20261019.jpg`. The previous `/images/og-atd.jpg` path also serves that garden for consumers retaining the old image URL. The homepage and reviews page use this default; project stories retain their own cover image. `#parasyti` scrolls to the review form and is not sent in the HTTP request; it cannot select a different server route or image.
+## Verified launch outcome
 
-After changing sharing metadata, verify the raw HTML with a Facebook crawler User-Agent, not just the hydrated browser DOM. Check HTTP200 for the page and image, working-host canonical and og:url, image dimensions/MIME, LT/EN titles and the review anchor. Previously shared Messenger attachments may retain Meta's cached metadata. Use the [official Sharing Debugger](https://developers.facebook.com/tools/debug/) to request a fresh scrape of the exact URL; verify its actual returned preview rather than claiming completion from a local HTTP test alone. The image and object URL fields follow the [Open Graph protocol](https://ogp.me/).
+Deployment `e9372b64302337104cba95e14fb87c03e37fbe23` passed the live launch audit:
+86 sitemap pages returned200 with `atd.lt` canonicals and indexable metadata; the
+corrected legacy routes, query/hash preservation and the 30 old site-tree topics
+were checked. Current public reviews API returned200. The local resolver still
+held the old A answer, so the primary-host HTTP audit used the authoritative new
+IP in that test process only, with real hostname/SNI and normal TLS validation.
+Google Public DNS independently returned the new record.
 
-Verified live on 2026-10-19 after deployment 8441b185: Meta Sharing Debugger fetched the exact homepage and /atsiliepimai#parasyti links and displayed the homepage garden, the new image URL and new.atd.lt canonical identity. The plain /atsiliepimai debugger result also displayed the garden. Meta reported partial-content status206; direct page/image requests returned200. No Messenger message was sent, and existing message attachments may retain their earlier preview. The generic missing fb:app_id warning did not prevent image rendering; no arbitrary app ID was added.
+Search Console accepted `https://atd.lt/sitemap.xml` on 2026-10-19 with **Success**
+and **86 discovered pages**. Its live homepage test at 23:55 reported **URL is
+available to Google** and **Page can be indexed**. This is crawlability/indexability
+verification, not a claim that all new pages have already been indexed. The old
+2015 HTML site-tree submission remains historical and is not the active sitemap.
+
+The official Meta Sharing Debugger was refreshed for `https://atd.lt/`. It returned
+the new canonical, current title and the loaded homepage garden image. Meta's
+partial-content fetch reported206; ordinary full-page requests returned200.
+Previously sent message attachments may retain their old image until refreshed.
+
+## Contact and form checks
+
+The temporary contact and notification recipient remains
+`aplinkostvarkymo@gmail.com`. Airtable and Resend settings were not changed. Earlier
+owner-authorized real tests confirmed storage and Gmail delivery. No additional
+real lead or review was submitted during launch; read-only API checks do not
+establish a new mail-delivery result. The existing configured sender remains in
+use. Configure a verified branded sender separately rather than substituting an
+arbitrary Gmail From address.
+
+## Sharing image and follow-up
+
+The default social image is `/images/og-atd-home-20261019.jpg`, a1200×630 JPEG from
+the existing homepage garden. `/images/og-atd.jpg` also serves that garden for old
+consumers. Project stories keep their own covers. `#parasyti` is the review form
+anchor and is not sent in the HTTP request.
+
+Keep redirects for at least a year, preferably indefinitely. Monitor newly
+reported404s and indexing after launch; do not invent a content replacement for a
+service the owner has not confirmed. Only run additional real form submissions
+with explicit authorization.
+
+If a rollback is necessary, the private DNS backup and the previous Vercel
+production deployment remain available. Do not alter MX, TXT or nameservers as a
+side effect of a website rollback.
+
+References: [Google site migration guidance](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes),
+[Google noindex guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing),
+[Open Graph protocol](https://ogp.me/).
