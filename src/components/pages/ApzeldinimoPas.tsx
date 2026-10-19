@@ -119,6 +119,11 @@ function Included({ t }: { t: T }) {
                 </li>
               ))}
             </ul>
+            <div id="grunto-darbai" className="mt-9 scroll-mt-28">
+              <h3 className="font-display font-bold text-xl text-atd-black mb-3">{t.ground_heading}</h3>
+              <p className="font-body text-sm text-atd-gray-soft leading-relaxed">{t.ground_text}</p>
+              <Link underline href="/darbai/naujoji-anglija" className="inline-block mt-4 font-body text-sm text-atd-green">{t.ground_link}</Link>
+            </div>
           </motion.div>
 
           {/* Architect docs feature callout */}

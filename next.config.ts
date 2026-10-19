@@ -17,11 +17,7 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return [
-      // Broken relative links in the legacy CMS sometimes duplicated /lt.
-      { source: "/lt/lt/pages/1946/:path*", destination: "/patarimai", permanent: true },
-      { source: "/lt/lt/pages/2191/:path*", destination: "/patarimai/aplinkos-tvarkymo-darbu-planas", permanent: true },
-      { source: "/lt/lt/pages/2194/:path*", destination: "/patarimai/tvenkinio-kasimo-planavimas", permanent: true },
+    const redirects = [
       // ── Pagrindinis ───────────────────────────────────────────
       { source: "/lt",       destination: "/", permanent: true },
       { source: "/lt.php",   destination: "/", permanent: true },
@@ -43,6 +39,7 @@ const nextConfig: NextConfig = {
       { source: "/lt/pages/2188/:path*", destination: "/paslaugos/apzeldinimas", permanent: true },
       { source: "/lt/pages/2190/:path*", destination: "/paslaugos/apzeldinimas", permanent: true },
       { source: "/lt/pages/1934/:path*", destination: "/paslaugos/apzeldinimas", permanent: true },
+      { source: "/lt/pages/1936/:path*", destination: "/paslaugos/apzeldinimas#grunto-darbai", permanent: true },
 
       // ── Tvenkiniai ────────────────────────────────────────────
       { source: "/lt/pages/1937/:path*", destination: "/paslaugos/tvenkiniai", permanent: true },
@@ -58,7 +55,7 @@ const nextConfig: NextConfig = {
       { source: "/lt/pages/1941/:path*", destination: "/", permanent: true },
       { source: "/lt/pages/1933/:path*", destination: "/", permanent: true },
       { source: "/lt/pages/1942/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/1945/:path*", destination: "/", permanent: true },
+      { source: "/lt/pages/1945/:path*", destination: "/darbai", permanent: true },
       { source: "/lt/pages/2013/:path*", destination: "/", permanent: true },
       { source: "/lt/pages/1946/:path*", destination: "/patarimai", permanent: true },
       { source: "/lt/pages/2191/:path*", destination: "/patarimai/aplinkos-tvarkymo-darbu-planas", permanent: true },
@@ -66,9 +63,16 @@ const nextConfig: NextConfig = {
       // ── Galerija, karjera, misc ───────────────────────────────
       { source: "/lt/gallery/:path*",    destination: "/darbai", permanent: true },
       { source: "/lt/pages/1948/:path*", destination: "/", permanent: true },
-      { source: "/lt/pages/1949/:path*", destination: "/", permanent: true },
+      { source: "/lt/pages/1949/:path*", destination: "/darbai/kuo-vardu-tavo-zuvis", permanent: true },
 
       // Legacy topics with no verified replacement intentionally return 404.
+    ];
+    // The old site tree generated /lt/lt/pages links for every topic.
+    // Map these directly to the same final target, without a redirect chain.
+    return [
+      ...redirects.filter(rule => rule.source.startsWith("/lt/pages/"))
+        .map(rule => ({ ...rule, source: rule.source.replace("/lt/pages/", "/lt/lt/pages/") })),
+      ...redirects,
     ];
   },
 };

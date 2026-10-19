@@ -1,6 +1,9 @@
 # Primary domain launch
 
-The owner confirmed on 2026-10-18 that Vercel is a review copy. The existing atd.lt server has not yet been migrated.
+The owner authorized the primary-domain launch on 2026-10-19 after reviewing the
+legacy URL audit. The 2026-10-18 review-only decision is superseded. The steps
+below describe the cutover; confirm the recorded live outcome before treating it
+as complete. Legacy URL decisions are in [legacy-url-migration.md](legacy-url-migration.md).
 
 The default build emits `noindex, follow` on all LT/EN pages. Leave `ATD_INDEXING_ENABLED` unset while the site is under review. `robots.txt` allows crawling so search engines can read the noindex directive. Page canonical URLs, language alternates, Open Graph URLs and sharing images use the working review host https://new.atd.lt. This prevents social crawlers from following a shared review link to the old atd.lt server. JSON-LD entity identifiers and the future sitemap remain prepared for https://atd.lt. Enabling the launch flag switches page identities and media back to the primary domain automatically.
 
