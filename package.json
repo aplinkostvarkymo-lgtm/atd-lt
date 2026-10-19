@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:reviews": "node --test tests/reviews.test.cjs"
+    "test:reviews": "node --test tests/reviews.test.cjs",
+    "test:metadata": "node --test tests/site-metadata.test.cjs"
   },
   "dependencies": {
     "@next/third-parties": "16.4.2",

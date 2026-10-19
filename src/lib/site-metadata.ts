@@ -5,11 +5,14 @@ import { planningArticle, pondArticle } from "./tips-content";
 
 export type PagePath = typeof PAGE_PATHS[number];
 export const SITE_URL = "https://atd.lt";
-// Social crawlers must fetch media from the working review host until domain launch.
-export const SOCIAL_MEDIA_URL = process.env.ATD_INDEXING_ENABLED === "true" && process.env.VERCEL_ENV !== "preview" ? SITE_URL : "https://new.atd.lt";
 // The Vercel site is a review copy until the owner migrates atd.lt.
 // Enable only for the primary-domain launch; branch previews stay noindex.
 export const SITE_INDEXABLE = process.env.ATD_INDEXING_ENABLED === "true" && process.env.VERCEL_ENV !== "preview";
+// Sharing crawlers follow og:url / canonical, so page identity and media must use
+// the working host together. atd.lt is still served by the old server for now.
+export const PUBLIC_SITE_URL = SITE_INDEXABLE ? SITE_URL : "https://new.atd.lt";
+export const SOCIAL_MEDIA_URL = PUBLIC_SITE_URL;
+export const DEFAULT_SOCIAL_IMAGE = "/images/og-atd-home-20261019.jpg";
 export const SITE_ROBOTS: Metadata["robots"] = { index: SITE_INDEXABLE, follow: true };
 export const PAGE_META = {
   "/atsiliepimai": {
@@ -59,11 +62,11 @@ export const PAGE_META = {
 export function pageMetadata(path: PagePath, lang: Lang): Metadata {
   const title = PAGE_META[path].title[lang];
   const description = PAGE_META[path].description[lang];
-  const url = SITE_URL + localizedPath(path, lang);
+  const url = PUBLIC_SITE_URL + localizedPath(path, lang);
   return {
-    metadataBase: new URL(SITE_URL), title, description,
-    alternates: { canonical: url, languages: { lt: SITE_URL + localizedPath(path, "lt"), en: SITE_URL + localizedPath(path, "en"), "x-default": SITE_URL + localizedPath(path, "lt") } },
-    openGraph: { title, description, url, locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", type: path.startsWith("/patarimai/") ? "article" : "website", images: [{ url: SOCIAL_MEDIA_URL + "/images/og-atd.jpg", width: 1200, height: 630, alt: "ATD" }] },
-    twitter: { card: "summary_large_image", title, description, images: [SOCIAL_MEDIA_URL + "/images/og-atd.jpg"] },
+    metadataBase: new URL(PUBLIC_SITE_URL), title, description,
+    alternates: { canonical: url, languages: { lt: PUBLIC_SITE_URL + localizedPath(path, "lt"), en: PUBLIC_SITE_URL + localizedPath(path, "en"), "x-default": PUBLIC_SITE_URL + localizedPath(path, "lt") } },
+    openGraph: { title, description, url, siteName: "ATD", locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", type: path.startsWith("/patarimai/") ? "article" : "website", images: [{ url: SOCIAL_MEDIA_URL + DEFAULT_SOCIAL_IMAGE, width: 1200, height: 630, type: "image/jpeg", alt: "ATD" }] },
+    twitter: { card: "summary_large_image", title, description, images: [SOCIAL_MEDIA_URL + DEFAULT_SOCIAL_IMAGE] },
   };
 }

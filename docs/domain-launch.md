@@ -2,7 +2,7 @@
 
 The owner confirmed on 2026-10-18 that Vercel is a review copy. The existing atd.lt server has not yet been migrated.
 
-The default build emits `noindex, follow` on all LT/EN pages. Leave `ATD_INDEXING_ENABLED` unset while the site is under review. `robots.txt` allows crawling so search engines can read the noindex directive. Canonical URLs, language alternates, JSON-LD and sitemap remain prepared for https://atd.lt.
+The default build emits `noindex, follow` on all LT/EN pages. Leave `ATD_INDEXING_ENABLED` unset while the site is under review. `robots.txt` allows crawling so search engines can read the noindex directive. Page canonical URLs, language alternates, Open Graph URLs and sharing images use the working review host https://new.atd.lt. This prevents social crawlers from following a shared review link to the old atd.lt server. JSON-LD entity identifiers and the future sitemap remain prepared for https://atd.lt. Enabling the launch flag switches page identities and media back to the primary domain automatically.
 
 For the separately authorized domain migration:
 
@@ -17,3 +17,9 @@ The temporary contact and form notification recipient is aplinkostvarkymo@gmail.
 Do not mark domain launch or search indexing complete merely because a Vercel build succeeded. Only run additional real lead tests with explicit authorization; local interface regression checks can use mocked responses.
 
 References: [Google noindex guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Schema.org unit pricing](https://schema.org/UnitPriceSpecification).
+
+## Sharing previews
+
+The default social image is a 1200 × 630 JPEG derived from the existing homepage garden image: `/images/og-atd-home-20261019.jpg`. The previous `/images/og-atd.jpg` path also serves that garden for consumers retaining the old image URL. The homepage and reviews page use this default; project stories retain their own cover image. `#parasyti` scrolls to the review form and is not sent in the HTTP request; it cannot select a different server route or image.
+
+After changing sharing metadata, verify the raw HTML with a Facebook crawler User-Agent, not just the hydrated browser DOM. Check HTTP200 for the page and image, working-host canonical and og:url, image dimensions/MIME, LT/EN titles and the review anchor. Previously shared Messenger attachments may retain Meta's cached metadata. Use the [official Sharing Debugger](https://developers.facebook.com/tools/debug/) to request a fresh scrape of the exact URL; this requires access to the owner's Facebook session and cannot be claimed complete from a local HTTP test alone. The image and object URL fields follow the [Open Graph protocol](https://ogp.me/).

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import projects from "./gallery-projects.json";
 import type { Lang } from "./translations";
 import { localizedPath } from "./navigation";
-import { SITE_URL, SITE_ROBOTS, SOCIAL_MEDIA_URL } from "./site-metadata";
+import { SITE_URL, SITE_ROBOTS, SOCIAL_MEDIA_URL, PUBLIC_SITE_URL } from "./site-metadata";
 
 export { projects };
 export type GalleryProject = (typeof projects)[number];
@@ -12,11 +12,11 @@ export function projectMetadata(project: GalleryProject, lang: Lang): Metadata {
   const text = project.description[lang];
   const description = text.length > 165 ? text.slice(0, 162).replace(/\s+\S*$/, "") + "…" : text;
   const path = projectPath(project.id);
-  const url = SITE_URL + localizedPath(path, lang);
+  const url = PUBLIC_SITE_URL + localizedPath(path, lang);
   const image = project.photos[project.cover].variants.at(-1)!;
   return {
-    metadataBase: new URL(SITE_URL), title, description,
-    alternates: { canonical: url, languages: { lt: SITE_URL + localizedPath(path, "lt"), en: SITE_URL + localizedPath(path, "en"), "x-default": SITE_URL + path } },
+    metadataBase: new URL(PUBLIC_SITE_URL), title, description,
+    alternates: { canonical: url, languages: { lt: PUBLIC_SITE_URL + localizedPath(path, "lt"), en: PUBLIC_SITE_URL + localizedPath(path, "en"), "x-default": PUBLIC_SITE_URL + path } },
     openGraph: { title, description, url, type: "article", locale: lang === "lt" ? "lt_LT" : "en_GB", alternateLocale: lang === "lt" ? "en_GB" : "lt_LT", images: [{ url: SOCIAL_MEDIA_URL + image.src, width: image.width, height: image.height, alt: project.photos[project.cover].alt[lang] }] },
     twitter: { card: "summary_large_image", title, description, images: [SOCIAL_MEDIA_URL + image.src] },
     robots: SITE_ROBOTS,
