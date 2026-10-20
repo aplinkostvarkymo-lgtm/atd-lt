@@ -19,7 +19,8 @@ const home = await get("/");
 if (!/<meta\s+name="robots"\s+content="index,\s*follow"\s*\/?\s*>/i.test(home)) {
   throw new Error("Production homepage must explicitly allow indexing");
 }
-if (!home.includes('rel="canonical" href="https://atd.lt/"')) throw new Error("Unexpected production canonical");
+const canonical = home.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
+if (!canonical || new URL(canonical).href !== `${origin}/`) throw new Error("Unexpected production canonical");
 if ((await get(`/${keyFile}`)).trim() !== key) throw new Error("Live IndexNow key has not been deployed");
 const xml = await get("/sitemap.xml");
 if (!xml.includes("<urlset")) throw new Error("Expected a URL sitemap");
