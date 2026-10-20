@@ -50,6 +50,12 @@ The provider's [zone documentation](https://pagalba.iv.lt/lt/articles/380773-zon
 allows1–2hours for changes to take full effect. If disagreement persists beyond
 that window, investigate with the provider rather than changing unrelated records.
 
+Follow-up on2026-10-20 confirmed all four authoritative nameservers now return
+`216.198.79.1`. Ordinary HTTPS requests, without a DNS override, returned200 for
+the homepage, reviews, robots.txt and sitemap. Public metadata remains indexable;
+the sitemap contains86URLs. The earlier authoritative-DNS disagreement is resolved.
+Search discovery follow-up is recorded in [search-discovery.md](search-discovery.md).
+
 ## Verified launch outcome
 
 Deployment `e9372b64302337104cba95e14fb87c03e37fbe23` passed the live launch audit:
