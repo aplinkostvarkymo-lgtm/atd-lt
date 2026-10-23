@@ -38,6 +38,11 @@ The provider accepted the change around 23:37 Europe/Vilnius and published the
 new A/CNAME by 23:51. Vercel generated HTTPS certificates afterwards. No certificate
 warning was bypassed and TLS verification was not disabled.
 
+October23follow-up: the owner retired the old news test site. A separate explicit
+news CNAME now points to Vercel to return410, without changing the wildcard or
+mail records. See [indexing review](indexing-review-2026-10-23.md) for verification
+and the temporary resolver-cache limitation.
+
 At 00:07 Europe/Vilnius on 2026-10-20, direct DNS queries still found a partial
 cutover: ns1/ns2 returned the new apex IP, while ns3/ns4 returned the old apex IP.
 All four already returned the new www CNAME, and retained MX/SPF/verification TXT.

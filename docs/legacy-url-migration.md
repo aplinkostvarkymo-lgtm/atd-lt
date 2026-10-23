@@ -38,9 +38,11 @@ The owner can commission an accurate replacement later if the service is current
 | 1935 | Water and exploratory boreholes | No verified current equivalent. |
 | 2198 | Test article | No public replacement. |
 
-The three `news.atd.lt` URLs in the domain-wide report belong to a separate
-subdomain. The wildcard DNS record remains on its previous server; it is not
-repointed as part of this website launch.
+At launch the three known `news.atd.lt` URLs were left on their separate server.
+The October23indexing follow-up found29news URLs and the owner confirmed this was
+an obsolete test site. It is now retired with410responses through an explicit
+news CNAME; the wildcard remains unchanged. See
+[indexing-review-2026-10-23.md](indexing-review-2026-10-23.md).
 
 ## Verification and retention
 
