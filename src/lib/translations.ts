@@ -3,6 +3,11 @@ import galleryProjects from "./gallery-projects.json";
 
 export type Lang = "lt" | "en";
 
+export const retiredWebsiteMessage = {
+  lt: "Ši bandomoji svetainė uždaryta. ATD svetainė: https://atd.lt/",
+  en: "This test website has closed. Visit ATD at https://atd.lt/",
+} as const;
+
 export const translations = {
   lt: {
     common: {
