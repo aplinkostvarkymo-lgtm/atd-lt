@@ -5,6 +5,7 @@ import { projects, projectMetadata, projectPath, projectSchemas } from "@/lib/ga
 import { localizedPath } from "@/lib/navigation";
 import { translations, type Lang } from "@/lib/translations";
 import styles from "./project.module.css";
+import { GALLERY_IMAGE_SIZES } from "@/lib/gallery-images";
 
 type Params = Promise<{ lang: string; project: string }>;
 function resolve(params: Awaited<Params>) {
@@ -44,7 +45,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
           <h2 id="photo-heading">{project.categories.includes("bendruomene") ? t.eventPhotos : t.projectPhotos}</h2>
           <div className={styles.grid}>{project.photos.map((photo, i) => { const largest = photo.variants.at(-1)!; return <figure key={photo.id}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={largest.src} srcSet={photo.variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes="(max-width: 700px) 100vw, 560px" width={largest.width} height={largest.height} alt={photo.alt[lang]} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
+            <img src={largest.src} srcSet={photo.variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes={GALLERY_IMAGE_SIZES} width={largest.width} height={largest.height} alt={photo.alt[lang]} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
             <figcaption><span>{i + 1} / {project.photos.length}</span>{photo.alt[lang]}</figcaption>
           </figure>; })}</div>
         </section>

@@ -8,6 +8,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { ServiceProjects } from "@/components/sections/ServiceProjects";
 import { ProcessSteps } from "@/components/ui/ProcessSteps";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
@@ -274,6 +275,7 @@ export function LaistymasPas() {
       <Hero t={t} />
       <Systems t={t} />
       <Process t={t} />
+      <ServiceProjects service="laistymas" />
       <FAQ t={t} />
       <CTA t={t} />
     </main>

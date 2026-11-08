@@ -8,6 +8,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { ServiceProjects } from "@/components/sections/ServiceProjects";
 import { ProcessSteps } from "@/components/ui/ProcessSteps";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
@@ -388,6 +389,7 @@ export function VejaPage() {
       <Types t={t} />
       <Process t={t} />
       <Results t={t} />
+      <ServiceProjects service="veja" />
       <FAQ t={t} />
       <CTA t={t} />
     </main>

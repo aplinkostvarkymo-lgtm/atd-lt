@@ -2,6 +2,7 @@ import Link from "next/link";
 import projects from "@/lib/gallery-projects.json";
 import { featuredCopy, type Lang } from "@/lib/translations";
 import { localizedPath } from "@/lib/navigation";
+import { GALLERY_IMAGE_SIZES } from "@/lib/gallery-images";
 
 export function FeaturedProjects({ lang }: { lang: Lang }) {
   const copy = featuredCopy[lang];
@@ -14,7 +15,7 @@ export function FeaturedProjects({ lang }: { lang: Lang }) {
         const image = photo.variants.at(-1)!;
         return <article key={project.id}><Link href={localizedPath(`/darbai/${project.id}`, lang)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image.src} srcSet={photo.variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes="(max-width: 700px) 100vw, 560px" width={image.width} height={image.height} alt={photo.alt[lang]} loading="lazy" decoding="async" />
+          <img src={image.src} srcSet={photo.variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes={GALLERY_IMAGE_SIZES} width={image.width} height={image.height} alt={photo.alt[lang]} loading="lazy" decoding="async" />
           <h3>{project.title[lang]}</h3><p>{item.fact}</p><span>{copy.read}<span aria-hidden="true"> →</span></span>
         </Link></article>;
       })}</div>

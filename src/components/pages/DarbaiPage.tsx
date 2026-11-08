@@ -6,6 +6,7 @@ import Link from "@/components/ui/LocalizedLink";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import styles from "./DarbaiPage.module.css";
+import { GALLERY_IMAGE_SIZES } from "@/lib/gallery-images";
 
 type Category = "all" | "veja" | "apzeldinimas" | "trinkeles" | "laistymas" | "tvenkiniai" | "bendruomene";
 type Project = (typeof translations.lt.darbaiPage.projects)[number];
@@ -18,13 +19,13 @@ function subscribeFilter(callback: () => void) {
 const readFilter = () => new URLSearchParams(window.location.search).get("paslauga") ?? "all";
 const initialFilter = () => "all";
 
-function PhotoImage({ photo, alt, large = false, eager = false, className }: { photo: Photo; alt: string; large?: boolean; eager?: boolean; className?: string }) {
+function PhotoImage({ photo, alt, eager = false, className }: { photo: Photo; alt: string; eager?: boolean; className?: string }) {
   const variants = photo.variants;
-  const source = variants[large ? variants.length - 1 : 0];
+  const source = variants[0];
   return (
     // Pre-exported responsive WebP variants retain their original proportions.
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={source.src} srcSet={variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes={large ? "(max-width: 900px) 100vw, 1100px" : "(max-width: 700px) 100vw, 560px"} width={source.width} height={source.height} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" className={className} />
+    <img src={source.src} srcSet={variants.map(v => `${v.src} ${v.width}w`).join(", ")} sizes={GALLERY_IMAGE_SIZES} width={source.width} height={source.height} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" className={className} />
   );
 }
 

@@ -3,6 +3,75 @@ import galleryProjects from "./gallery-projects.json";
 
 export type Lang = "lt" | "en";
 
+export const serviceProjectCopy = {
+  lt: { services: {
+    veja: { heading: "Vejos įrengimo pavyzdžiai", items: [
+      { id: "mo-garden", fact: "Paruošėme gruntą, paklojome ruloninę veją ir įrengėme laistymą tarp sublokuotų namų." },
+      { id: "naujoji-anglija", fact: "Ilgą šlaitą formavome iš apačios ilgastrėliais ekskavatoriais, pasėtą veją uždengėme agrotekstile." },
+    ] },
+    trinkeles: { heading: "Mūsų įrengti takai ir dangos", items: [
+      { id: "privataus-namo-takai", fact: "Paruošėme pagrindus, įrengėme bortus ir paklojome privataus namo takus bei trinkelių dangas." },
+      { id: "nok-nok-home", fact: "Įrengėme takus, stovėjimo vietas ir bortus, ruošėme bei tankinome smėlio ir skaldos pagrindus." },
+    ] },
+    laistymas: { heading: "Kur įrengėme laistymą", items: [
+      { id: "verkiai", fact: "Laistymo sistemą įrengėme kartu su vejos sėja. Istorijoje matyti darbų eiga ir veikiantys purkštuvai." },
+      { id: "mo-garden", fact: "Laistymą derinome su grunto paruošimu ir ruloninės vejos įrengimu." },
+    ] },
+    tvenkiniai: { heading: "Tvenkinių darbų pavyzdžiai", items: [
+      { id: "tvenkiniai", fact: "Skirtinguose sklypuose kasti tvenkiniai: nuo kasimo ir krantų formavimo iki iškasto telkinio." },
+      { id: "eureka", fact: "Seną tvenkinį užpylėme, jo vietoje suformavome želdynus. Palikome šaltinį ir nedidelį upelį." },
+    ] },
+  } },
+  en: { services: {
+    veja: { heading: "Lawn installation projects", items: [
+      { id: "mo-garden", fact: "We prepared the ground, laid turf and installed irrigation between the terraced houses." },
+      { id: "naujoji-anglija", fact: "We graded a long slope from below using long-reach excavators and covered the seeded lawn with agricultural fleece." },
+    ] },
+    trinkeles: { heading: "Paths and paving we installed", items: [
+      { id: "privataus-namo-takai", fact: "We prepared the bases, installed edging and laid paths and paved areas at a private house." },
+      { id: "nok-nok-home", fact: "We built paths, parking areas and edging, preparing and compacting sand and crushed-stone bases." },
+    ] },
+    laistymas: { heading: "Our irrigation projects", items: [
+      { id: "verkiai", fact: "We installed irrigation alongside the seeded lawn. The story shows the work and the sprinklers running." },
+      { id: "mo-garden", fact: "We coordinated irrigation with ground preparation and turf installation." },
+    ] },
+    tvenkiniai: { heading: "Pond work examples", items: [
+      { id: "tvenkiniai", fact: "Ponds excavated at different sites, from digging and bank shaping to the finished excavation." },
+      { id: "eureka", fact: "We filled an old pond and replaced it with planting, keeping a spring and a small stream." },
+    ] },
+  } },
+} as const;
+
+// Owner-selected pricing reference, confirmed 2026-11-08. Publication details in docs/seo-fixes-2026-11-08.md.
+export const pavingPriceCopy = {
+  lt: {
+    heading: "Kas įeina į betoninio pėsčiųjų tako kainą?",
+    intro: "Pavyzdinė sąmata, naudojant pilkas 10 × 20 cm betonines trinkeles:",
+    items: [
+      { label: "25 cm smėlio ir žvyro pagrindas", price: "8,00 €/m²" },
+      { label: "0–3 cm dolomito atsijų pasluoksnis", price: "4,00 €/m²" },
+      { label: "5 cm storio betoninės trinkelės", price: "10,20 €/m²" },
+      { label: "Klojimas ir siūlių užpildymas granito atsijomis", price: "18,00 €/m²" },
+    ],
+    totalLabel: "Iš viso be PVM", total: "40,20 €/m²",
+    conditions: "Pavyzdys taikomas ne mažesniam nei 100 m² pėsčiųjų takui. Automobilių apkrovoms reikia kitokios pagrindo ir dangos komplektacijos; ją ir galutinę kainą nurodome pasiūlyme.",
+    extras: "Grunto lyginimas, perteklinio grunto išvežimas, bortai ir papildomas trinkelių pjovimas, kai jo daugiau nei 20 m, skaičiuojami atskirai.",
+  },
+  en: {
+    heading: "What is included in the concrete footpath price?",
+    intro: "Example quote using grey 10 × 20 cm concrete pavers:",
+    items: [
+      { label: "25 cm sand and gravel base", price: "€8.00/m²" },
+      { label: "0–3 cm dolomite screening bedding", price: "€4.00/m²" },
+      { label: "5 cm thick concrete pavers", price: "€10.20/m²" },
+      { label: "Laying and filling joints with granite screenings", price: "€18.00/m²" },
+    ],
+    totalLabel: "Total excluding VAT", total: "€40.20/m²",
+    conditions: "This example applies to footpaths of at least 100 m². Vehicle loads require a different base and paving specification, detailed with the final price in your quote.",
+    extras: "Ground levelling, removal of surplus soil, edging and additional paver cutting where it exceeds 20 m are priced separately.",
+  },
+} as const;
+
 export const retiredWebsiteMessage = {
   lt: "Ši bandomoji svetainė uždaryta. ATD svetainė: https://atd.lt/",
   en: "This test website has closed. Visit ATD at https://atd.lt/",
@@ -140,7 +209,7 @@ export const translations = {
       breadcrumb_services: "Paslaugos",
       breadcrumb_current: "Takai, trinkelės",
       hero_heading: "Trinkelių klojimas Vilniuje",
-      hero_tagline: "Betoninės nuo 40 €/m² · Granito nuo 55 €/m² · Natūralus akmuo nuo 65 €/m²",
+      hero_tagline: "Betoninis pėsčiųjų takas nuo 40,20 €/m² be PVM · Nuo 100 m²",
       hero_img_alt: "Trinkelių aikštė prie pastato",
       hero_cta_call: "Skambinti",
       hero_cta_quote: "Gauti kainą",
@@ -148,13 +217,13 @@ export const translations = {
       hero_stat1_label: "Atliktų projektų",
       hero_stat2: "12+",
       hero_stat2_label: "Metų patirtis",
-      hero_stat3: "nuo 40",
-      hero_stat3_label: "€/m²",
+      hero_stat3: "nuo 40,20",
+      hero_stat3_label: "€/m² be PVM",
       materials_heading: "Medžiagos ir kainos",
       materials_sub: "Kiekvienas tipas tinka skirtingiems poreikiams ir biudžetams",
       mat1_name: "Betoninės trinkelės",
-      mat1_price: "nuo 40 €/m²",
-      mat1_desc: "Betoninės trinkelės būna įvairių spalvų ir formų. Jas parenkame pagal tai, kur ir kaip danga bus naudojama.",
+      mat1_price: "nuo 40,20 €/m²",
+      mat1_desc: "Pėsčiųjų tako įrengimas su pagrindo sluoksniais ir trinkelėmis. Nuo 100 m²; kaina be PVM.",
       mat2_name: "Granito trinkelės",
       mat2_price: "nuo 55 €/m²",
       mat2_desc: "Ilgaamžės natūralaus akmens trinkelės. Tinka įvažiavimams ir dažnai naudojamoms vietoms.",
@@ -174,13 +243,13 @@ export const translations = {
       step3_desc: "Trinkeles klojame sutartu raštu, užpildome siūles ir dangą sutankiname vibroplokšte.",
       faq_heading: "Dažniausi klausimai",
       faq_q1: "Kiek kainuoja trinkelių klojimas?",
-      faq_a1: "Betoninės trinkelės kainuoja nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m². Pasiūlyme išvardijame darbus, medžiagas ir galutinę kainą. Dėl apžiūros susitariame atskirai.",
+      faq_a1: "Betoninio pėsčiųjų tako pavyzdys — 40,20 €/m² be PVM, kai plotas ne mažesnis nei 100 m². Įtrauktas pagrindas, pasluoksnis, trinkelės ir klojimas su siūlių užpildymu. Kitų dangų komplektaciją ir galutinę kainą nurodome pasiūlyme.",
       faq_q2: "Ar trinkelės atlaikys Lietuvos žiemą?",
       faq_a2: "Dangą ir pagrindą parenkame pagal gruntą, apkrovas bei vandens nuvedimą. Konkretaus sprendinio ir garantijų sąlygas aptariame pasiūlyme arba sutartyje.",
       faq_q3: "Kiek laiko trunka klojimo darbai?",
       faq_a3: "Darbų trukmę lemia plotas, pagrindo būklė, medžiagos ir oro sąlygos. Terminą suderiname konkrečiam objektui.",
       faq_q4: "Ar pagrindo paruošimas įskaičiuotas?",
-      faq_a4: "Pasiūlyme atskirai išvardijame pagrindo darbus ir medžiagas. Jų kiekis priklauso nuo sklypo, todėl verta lyginti, kas į kainą įtraukta.",
+      faq_a4: "Pėsčiųjų tako pavyzdyje įtrauktas 25 cm smėlio ir žvyro pagrindas bei 0–3 cm dolomito atsijų pasluoksnis. Grunto lyginimas ir išvežimas skaičiuojami atskirai. Automobilių apkrovoms parenkame kitokią komplektaciją.",
       faq_q5: "Ar galima kloti ant esamo pagrindo?",
       faq_a5: "Kartais galima, jei pagrindas stabilus ir gerai nuveda vandenį. Jo būklę įvertiname per apžiūrą.",
       faq_q6: "Kur dirbate?",
@@ -577,7 +646,7 @@ export const translations = {
       breadcrumb_services: "Services",
       breadcrumb_current: "Paths and paving",
       hero_heading: "Paving and path installation in Vilnius",
-      hero_tagline: "Concrete from 40 €/m² · Granite from 55 €/m² · Natural stone from 65 €/m²",
+      hero_tagline: "Concrete footpaths from €40.20/m² excluding VAT · Minimum 100 m²",
       hero_img_alt: "Paved plaza next to a building",
       hero_cta_call: "Call us",
       hero_cta_quote: "Get a quote",
@@ -585,13 +654,13 @@ export const translations = {
       hero_stat1_label: "Projects completed",
       hero_stat2: "12+",
       hero_stat2_label: "Years of experience",
-      hero_stat3: "from 40",
-      hero_stat3_label: "€/m²",
+      hero_stat3: "from 40.20",
+      hero_stat3_label: "€/m² excl. VAT",
       materials_heading: "Materials and prices",
       materials_sub: "Each type suits different needs and budgets",
       mat1_name: "Concrete paving",
-      mat1_price: "from 40 €/m²",
-      mat1_desc: "Concrete pavers come in a range of colours and shapes. We select them for the way the area will be used.",
+      mat1_price: "from €40.20/m²",
+      mat1_desc: "Footpath installation including base layers and pavers. Minimum 100 m²; price excludes VAT.",
       mat2_name: "Granite setts",
       mat2_price: "from 55 €/m²",
       mat2_desc: "Durable natural stone setts for driveways and frequently used areas.",
@@ -611,13 +680,13 @@ export const translations = {
       step3_desc: "We lay the agreed pattern, fill the joints and compact the paving with a plate compactor.",
       faq_heading: "Frequently asked questions",
       faq_q1: "How much does paving cost?",
-      faq_a1: "Concrete paving starts at 40 €/m², granite and clay at 55 €/m², and natural stone at 65 €/m². Your quote lists the work, materials and final price. Site visits are arranged separately.",
+      faq_a1: "The concrete footpath example costs €40.20/m² excluding VAT for areas of at least 100 m². It includes the base, bedding, pavers, laying and joint filling. Other paving specifications and the final price are detailed in your quote.",
       faq_q2: "Will paving survive Lithuanian winters?",
       faq_a2: "We select the surface and base according to ground conditions, loads and drainage. The specific solution and warranty terms are agreed in the quote or contract.",
       faq_q3: "How long does installation take?",
       faq_a3: "Duration depends on area, base condition, materials and weather. The schedule is agreed for the individual site.",
       faq_q4: "Is base preparation included?",
-      faq_a4: "Your quote lists base preparation and materials separately. The amount needed depends on the site, so check what each quote includes.",
+      faq_a4: "The footpath example includes a 25 cm sand and gravel base and 0–3 cm dolomite screening bedding. Ground levelling and soil removal are priced separately. Vehicle loads require a different specification.",
       faq_q5: "Can paving be laid over an existing base?",
       faq_a5: "Sometimes, if the base is stable and drains well. We check its condition during the site visit.",
       faq_q6: "Where do you work?",

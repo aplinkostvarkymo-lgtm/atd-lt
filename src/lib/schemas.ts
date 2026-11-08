@@ -78,12 +78,12 @@ export const trinkelesServiceSchema = {
   "@type": "Service",
   name: "Trinkelių klojimas Vilniuje",
   description:
-    "Profesionalus trinkelių klojimas ir takų įrengimas Vilniuje. Betoninės nuo 40 €/m², granito ir klinkerinės nuo 55 €/m², natūralus akmuo nuo 65 €/m².",
+    "Trinkelių klojimas Vilniuje. Betoninis pėsčiųjų takas nuo 40,20 €/m² be PVM, nuo 100 m², su pagrindo sluoksniais, trinkelėmis ir klojimu.",
   provider: { "@type": "LocalBusiness", "@id": "https://atd.lt", name: "ATD — Aplinkos Tvarkymas" },
   areaServed: { "@type": "City", name: "Vilnius" },
   serviceType: "Paving and path installation",
   offers: [
-    { "@type": "Offer", name: "Betoninės trinkelės", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 40, priceCurrency: "EUR", unitCode: "MTK" } },
+    { "@type": "Offer", name: "Betoninis pėsčiųjų takas", priceCurrency: "EUR", eligibleQuantity: { "@type": "QuantitativeValue", minValue: 100, unitCode: "MTK" }, priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 40.2, priceCurrency: "EUR", unitCode: "MTK", valueAddedTaxIncluded: false } },
     { "@type": "Offer", name: "Granito trinkelės", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 55, priceCurrency: "EUR", unitCode: "MTK" } },
     { "@type": "Offer", name: "Natūralus akmuo", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 65, priceCurrency: "EUR", unitCode: "MTK" } },
   ],
@@ -154,12 +154,20 @@ export function pageSchemas(path: PagePath, lang: Lang): object[] {
     const prices = path === "/paslaugos/veja" ? [
       { name: t.vejaPage.type1_name, price: "8" }, { name: t.vejaPage.type2_name, price: "4" },
     ] : path === "/paslaugos/trinkeles" ? [
-      { name: lang === "lt" ? "Betoninės trinkelės" : "Concrete paving", price: "40" },
+      { name: lang === "lt" ? "Betoninis pėsčiųjų takas" : "Concrete footpath", price: "40.20" },
       { name: lang === "lt" ? "Granito trinkelės" : "Granite paving", price: "55" },
       { name: lang === "lt" ? "Klinkerinės trinkelės" : "Clinker paving", price: "55" },
       { name: lang === "lt" ? "Natūralus akmuo" : "Natural stone", price: "65" },
     ] : [];
-    schemas.push({ "@context": "https://schema.org", "@type": "Service", "@id": SITE_URL + localizedPath(path, lang) + "#service", name: t.nav.services_sub[service.key], description: PAGE_META[path].description[lang], url: SITE_URL + localizedPath(path, lang), provider: { "@id": SITE_URL }, areaServed: { "@type": "City", name: "Vilnius" }, ...(prices.length ? { offers: prices.map(item => ({ "@type": "Offer", name: item.name, description: `${lang === "lt" ? "Nuo" : "From"} ${item.price} €/m²`, priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: Number(item.price), priceCurrency: "EUR", unitCode: "MTK" } })) } : {}) });
+    schemas.push({ "@context": "https://schema.org", "@type": "Service", "@id": SITE_URL + localizedPath(path, lang) + "#service", name: t.nav.services_sub[service.key], description: PAGE_META[path].description[lang], url: SITE_URL + localizedPath(path, lang), provider: { "@id": SITE_URL }, areaServed: { "@type": "City", name: "Vilnius" }, ...(prices.length ? { offers: prices.map(item => {
+      const concreteFootpath = path === "/paslaugos/trinkeles" && item.price === "40.20";
+      return { "@type": "Offer", name: item.name,
+        description: concreteFootpath ? (lang === "lt" ? "Pėsčiųjų takas nuo 40,20 €/m² be PVM, nuo 100 m²; su pagrindu, trinkelėmis ir klojimu." : "Footpath from €40.20/m² excluding VAT, minimum 100 m²; including base, pavers and laying.") : `${lang === "lt" ? "Nuo" : "From"} ${item.price} €/m²`,
+        priceCurrency: "EUR",
+        ...(concreteFootpath ? { eligibleQuantity: { "@type": "QuantitativeValue", minValue: 100, unitCode: "MTK" } } : {}),
+        priceSpecification: { "@type": "UnitPriceSpecification", minPrice: Number(item.price), priceCurrency: "EUR", unitCode: "MTK", ...(concreteFootpath ? { valueAddedTaxIncluded: false } : {}) },
+      };
+    }) } : {}) });
   }
   if (path !== "/") schemas.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: t.common.home, item: SITE_URL + localizedPath("/", lang) }, ...(article ? [{ "@type": "ListItem", position: 2, name: tipsCopy[lang].heading, item: SITE_URL + localizedPath("/patarimai", lang) }] : []), { "@type": "ListItem", position: article ? 3 : 2, name: PAGE_META[path].title[lang], item: SITE_URL + localizedPath(path, lang) }] });
   return schemas;

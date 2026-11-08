@@ -8,6 +8,7 @@ import Link from "@/components/ui/LocalizedLink";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { ServiceProjects } from "@/components/sections/ServiceProjects";
 import { ProcessSteps } from "@/components/ui/ProcessSteps";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
@@ -261,6 +262,7 @@ export function TvenkiniaiPas() {
       <Hero t={t} />
       <Services t={t} />
       <Process t={t} />
+      <ServiceProjects service="tvenkiniai" />
       <FAQ t={t} />
       <CTA t={t} />
     </main>

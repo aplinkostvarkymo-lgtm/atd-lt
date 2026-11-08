@@ -8,6 +8,8 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { ServiceProjects } from "@/components/sections/ServiceProjects";
+import { PavingPriceBreakdown } from "@/components/sections/PavingPriceBreakdown";
 import { ProcessSteps } from "@/components/ui/ProcessSteps";
 import { FacebookLink } from "@/components/ui/FacebookLink";
 
@@ -118,6 +120,7 @@ function Materials({ t }: { t: T }) {
             </motion.div>
           ))}
         </div>
+        <PavingPriceBreakdown />
       </div>
     </section>
   );
@@ -228,6 +231,7 @@ export function TrinkelesPas() {
       <Hero t={t} />
       <Materials t={t} />
       <Process t={t} />
+      <ServiceProjects service="trinkeles" />
       <FAQ t={t} />
       <CTA t={t} />
     </main>
