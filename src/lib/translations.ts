@@ -3,6 +3,27 @@ import galleryProjects from "./gallery-projects.json";
 
 export type Lang = "lt" | "en";
 
+export const comparisonCopy = {
+  lt: {
+    heading: "Nuo paruošto grunto iki vejos",
+    text: "Privataus namo vidiniame kieme pakeitėme gruntą, įrengėme drenažą ir laistymą, pasodinome augalus bei paklojome ruloninę veją.",
+    caption: "Ta pati vieta prieš vejos klojimą ir paklojus veją.",
+    before: "Prieš klojimą", after: "Paklojus veją",
+    instruction: "Tempkite skirtuką arba naudokite slankiklį ir rodyklių klavišus.",
+    control: "Palyginimo skirtuko vieta", unavailable: "Nepavyko įkelti palyginimo nuotraukos. Projektą galite peržiūrėti atskirai.",
+    link: "Apie šį projektą",
+  },
+  en: {
+    heading: "From prepared ground to a lawn",
+    text: "In this private courtyard, we replaced the soil, installed drainage and irrigation, planted the beds and laid the turf.",
+    caption: "The same spot before and after laying the turf.",
+    before: "Before laying", after: "Turf laid",
+    instruction: "Drag the divider or use the slider and arrow keys.",
+    control: "Comparison divider position", unavailable: "A comparison photo could not be loaded. You can still view the project separately.",
+    link: "About this project",
+  },
+} as const;
+
 export const serviceProjectCopy = {
   lt: { services: {
     veja: { heading: "Vejos įrengimo pavyzdžiai", items: [

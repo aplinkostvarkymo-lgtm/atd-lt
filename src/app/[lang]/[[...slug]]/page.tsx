@@ -3,6 +3,8 @@ import { GardenSceneHero } from "@/components/sections/GardenSceneHero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { HomeIntroduction } from "@/components/sections/HomeIntroduction";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
+import { ProjectComparison } from "@/components/sections/ProjectComparison";
+import projects from "@/lib/gallery-projects.json";
 import { ReviewsTeaser } from "@/components/reviews/Reviews";
 import { ReviewsPage } from "@/components/pages/ReviewsPage";
 import { VejaPage } from "@/components/pages/VejaPage";
@@ -29,11 +31,12 @@ export async function generateMetadata({ params }: { params: Params }) { const {
 
 export default async function Page({ params }: { params: Params }) {
   const { lang, path } = route(await params);
+  const comparison = projects.find(project => project.id === "individualus-namas")!;
   const pages = {
     "/patarimai": <TipsPage lang={lang} path={path} />,
     "/patarimai/aplinkos-tvarkymo-darbu-planas": <TipsPage lang={lang} path={path} />,
     "/patarimai/tvenkinio-kasimo-planavimas": <TipsPage lang={lang} path={path} />,
-    "/": <main id="main-content" tabIndex={-1}><GardenSceneHero /><FeaturedProjects lang={lang} /><ReviewsTeaser /><StatsBar /><HomeIntroduction lang={lang} /></main>,
+    "/": <main id="main-content" tabIndex={-1}><GardenSceneHero /><FeaturedProjects lang={lang} /><ProjectComparison before={comparison.photos[6]} after={comparison.photos[8]} /><ReviewsTeaser /><StatsBar /><HomeIntroduction lang={lang} /></main>,
     "/atsiliepimai": <ReviewsPage />,
     "/paslaugos/veja": <VejaPage />, "/paslaugos/apzeldinimas": <ApzeldinimoPas />,
     "/paslaugos/trinkeles": <TrinkelesPas />, "/paslaugos/laistymas": <LaistymasPas />,
