@@ -38,8 +38,8 @@ export const PAGE_META = {
     description: { lt: "Parenkame ir sodiname augalus Vilniuje. Dirbame pagal architektų želdynų planus, mulčiuojame ir prižiūrime želdinius. Pirminė konsultacija nemokama.", en: "Planting in Vilnius, from choosing plants to mulching and maintenance. We work from architects’ planting plans. Free initial consultation." },
   },
   "/paslaugos/trinkeles": {
-    title: { lt: "Trinkelių klojimas Vilniuje | Nuo 40,20 €/m² be PVM", en: "Paving in Vilnius | From €40.20/m² Excl. VAT | ATD" },
-    description: { lt: "Betoninis pėsčiųjų takas nuo 40,20 €/m² be PVM, nuo 100 m². Įtraukti pagrindo sluoksniai, trinkelės ir klojimas. Kitų dangų komplektacija pagal pasiūlymą.", en: "Concrete footpaths from €40.20/m² excluding VAT, minimum 100 m². Includes base layers, pavers and laying. Other paving specifications are agreed in your quote." },
+    title: { lt: "Trinkelių klojimas Vilniuje | Įvažiavimai nuo 53,20 €/m² be PVM", en: "Driveway Paving in Vilnius | From €53.20/m² Excl. VAT | ATD" },
+    description: { lt: "Įvažiavimai ir parkavimo aikštelės lengviesiems automobiliams nuo 53,20 €/m² be PVM, nuo 100 m². Įtraukti pagrindo sluoksniai, trinkelės ir klojimas.", en: "Passenger-car driveways and parking from €53.20/m² excluding VAT, minimum 100 m². Includes base layers, pavers and laying. Footpath prices listed separately." },
   },
   "/paslaugos/laistymas": {
     title: { lt: "Laistymo sistemų įrengimas Vilniuje | Hunter & Rain Bird", en: "Irrigation Systems in Vilnius | Hunter & Rain Bird | ATD" },

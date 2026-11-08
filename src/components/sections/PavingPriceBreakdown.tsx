@@ -22,6 +22,7 @@ export function PavingPriceBreakdown() {
         </div>
       </dl>
       <p className="font-body text-sm text-atd-black leading-relaxed max-w-[65ch]">{copy.conditions}</p>
+      <p className="font-body text-sm text-atd-gray-soft leading-relaxed mt-4 max-w-[65ch]">{copy.footpaths}</p>
       <p className="font-body text-sm text-atd-gray-soft leading-relaxed mt-3 max-w-[65ch]">{copy.extras}</p>
     </div>
   );

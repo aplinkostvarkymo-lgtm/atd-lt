@@ -228,7 +228,7 @@ export const SERVICES: ServicePopupData[] = [
   {
     id: "trinkelės",
     heading: { lt: "Trinkelių klojimas ir takai", en: "Paths and paving" },
-    tagline: { lt: "Betoninis pėsčiųjų takas nuo 40,20 €/m² be PVM, nuo 100 m²", en: "Concrete footpaths from €40.20/m² excluding VAT, minimum 100 m²" },
+    tagline: { lt: "Įvažiavimai ir aikštelės lengviesiems automobiliams nuo 53,20 €/m² be PVM, nuo 100 m²", en: "Passenger-car driveways and parking from €53.20/m² excluding VAT, minimum 100 m²" },
     image: {
       src: "/images/trinkeles-plaza-1.jpg",
       alt: { lt: "Trinkelių aikštė prie pastato", en: "Paved plaza next to a building" },
@@ -240,7 +240,7 @@ export const SERVICES: ServicePopupData[] = [
         type: "materials",
         heading: { lt: "Medžiagos", en: "Materials" },
         items: [
-          { name: { lt: "Betoninės trinkelės", en: "Concrete paving" }, price: { lt: "nuo 40,20 €/m²", en: "from €40.20/m²" }, desc: { lt: "Pėsčiųjų takas su pagrindu, trinkelėmis ir klojimu. Nuo 100 m²; be PVM.", en: "Footpath with base layers, pavers and laying. Minimum 100 m²; excludes VAT." } },
+          { name: { lt: "Betoninės trinkelės", en: "Concrete paving" }, price: { lt: "nuo 53,20 €/m²", en: "from €53.20/m²" }, desc: { lt: "Įvažiavimas ar aikštelė lengviesiems automobiliams su pagrindu, trinkelėmis ir klojimu. Nuo 100 m²; be PVM. Pėsčiųjų takams — nuo 40,20 €/m² be PVM.", en: "Passenger-car driveway or parking with base, pavers and laying. Minimum 100 m²; excludes VAT. Footpaths from €40.20/m² excluding VAT." } },
           { name: { lt: "Granito trinkelės", en: "Granite setts" },    price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Natūralus akmuo, ilgaamžės", en: "Natural stone, long-lasting" } },
           { name: { lt: "Klinkerinės trinkelės", en: "Clay pavers" }, price: { lt: "nuo 55 €/m²", en: "from 55 €/m²" }, desc: { lt: "Šalčiui atsparios molio trinkelės", en: "Frost-resistant clay pavers" } },
           { name: { lt: "Natūralus akmuo", en: "Natural stone" },      price: { lt: "nuo 65 €/m²", en: "from 65 €/m²" }, desc: { lt: "Skirtingų tekstūrų natūralus akmuo", en: "Natural stone in a range of textures" } },
