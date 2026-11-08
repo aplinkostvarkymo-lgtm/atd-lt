@@ -94,7 +94,7 @@ export function GardenSceneHero() {
             autoPlay
             muted
             playsInline
-            poster="/images/main_one.png"
+            poster="/images/hero-poster.webp"
             onEnded={revealImage}
             onError={revealImage}
           >

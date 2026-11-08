@@ -131,7 +131,7 @@ export function businessSchema(lang: Lang) {
     areaServed: [{ "@type": "City", name: "Vilnius" }, { "@type": "AdministrativeArea", name: lang === "lt" ? "Vilniaus rajonas" : "Vilnius district" }],
     openingHoursSpecification: [
       { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "14:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday", "Sunday"], opens: "00:00", closes: "00:00" },
     ],
     hasOfferCatalog: { "@type": "OfferCatalog", name: translations[lang].nav.services, itemListElement: SERVICE_LINKS.map(({ key, href }) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: translations[lang].nav.services_sub[key], url: SITE_URL + localizedPath(href, lang) } })) },
   };
