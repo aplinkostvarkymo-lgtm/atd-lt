@@ -50,3 +50,9 @@ Vietinės tikro build HTML/RSC ir Edge patikros **73/73**: keturios paslaugos ir
 Vizualiai patikrintos galutinės LT trinkelių 320 px, EN apželdinimo 320 px, EN trinkelių 1440 px skiltys ir pradinio puslapio vaizdas. Pirmose QA kopijose buvo užfiksuota nepasibaigusi įėjimo animacija; patikra patikslinta, kad lauktų galutinio kontaktų matomumo. Produkto animacijos dėl QA nekeistos.
 
 Vietinis peržiūros serveris naudoja tikras build HTML/RSC išvestis, nes anksčiau nustatytas vietinio LT proxy ciklas. Tai nepakeičia tikro Vercel maršrutų patikrinimo po Ready. Įrodymai vietiniame `atd-lt-audit/2026-11-08/next-seo/local/`; po publikavimo bus tikrinamas tikras `https://atd.lt`.
+
+## Paskelbta ir patikrinta viešai
+
+Programos commit `c493bf2cc681a160ba65d97f4a73a9911e261fdb` iškart išsiųstas į `origin/main`. Vercel production `dpl_FpNsKU7iQMcL9DZtmTamd7CQYp2Q` Ready ir priskirtas `atd.lt`. Po Ready tikrame `https://atd.lt` **73/73** tų pačių patikrų praėjo; naujas WebP sutampa su vietiniu pagal SHA-256, naršyklėje užsklandos encodedBodySize **199 660 B**, tiesioginio seno PNG nėra. Tikrinti video / reduced motion, LT/EN kontaktų tekstai, darbo valandų schema ir išsiplėtimas; `pageerror` 0. Tikri LT trinkelių 320 px ir home390 DPR2 PNG peržiūrėti vizualiai. Įrodymai vietiniame `next-seo/production/verification.json` ir PNG kopijose.
+
+Privatūs Google duomenys, auditų skriptai ir pirminiai untracked failai į commit neįtraukti. Šis uždarymo papildymas keičia tik dokumentaciją. Naujo Google perindeksavimo, pozicijų ar užklausų prieaugio dar nevertiname; tam reikia vėlesnių duomenų.
