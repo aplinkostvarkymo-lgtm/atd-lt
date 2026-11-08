@@ -749,3 +749,11 @@ Savininkas aiškiai leido sukurti Vercel peržiūrą ir patikroms praėjus paske
 Preview dpl_7y9zT7tEB9zSFVn8UbRojjM3QS2p / https://atd-ly7n3svwp-robertas-projects-ca7a987d.vercel.app Ready; Next16.4.2 cloud build99 praėjo. Tikros HTTP/naršyklės patikros81/81 ir papildomos noindex/sitemap404/41WebP SHA patikros49/49 praėjo. Vercel LT maršrutai200 be vietinio ciklo; routing kodo keisti nereikėjo. LT kainos ir EN projektų skilties tikri Preview vaizdai peržiūrėti.
 
 Preview Authentication neišjungta. Oficiali vercel curl CLI automatiškai sukūrė testavimo prieigos raktą; jis panaudotas tik tam Preview ir po patikros atšauktas, reikšmė nesaugota kode/ataskaitose/Git. Atšaukimas patvirtintas fixes/preview-access-revoked.json. Nejudinti nesusiję auditai/skills/worktree failai. Kitas autorizuotas veiksmas — tikslių app/asset/docs failų commit ir iškart push į main, tada realios ATD.lt patikros po Ready.
+
+## 2026-11-08. Trys SEO pataisos paskelbtos ir patikrintos viešai
+
+19900793121c5e04f2b58f51e9cf0b5216d3aa21 commit (59 tikslūs failai) iškart push į origin/main. Patvirtinta, kad neįtraukti auditai, .claude/skills, kiti worktree ar env failai. Git log origin/main..main tuščias. Vercel production dpl_35gcLLj2jj2kzeMgRf19P6Tt4LMg / atd-ku4lwdau3-robertas-projects-ca7a987d.vercel.app Ready, atd.lt ir esami alias priskirti.
+
+Po Ready atliktos tikros https://atd.lt patikros be Preview prieigos rakto: 81/81 HTTP / naršyklės ir 57/57 indeksavimo, canonical, sitemap, 404, senų 308 adresų ir 41 naujo WebP failo SHA patikrų praėjo. Visos 8 pakeistos LT/EN paslaugos atsidaro, projektų nuorodos ir tikslai atsako 200, 40,20 be PVM / 100 m² schema ir atidaromas DUK sutampa su matomu turiniu. Galerijos navigacija veikia; 390 px / DPR2 Pilaitės viršelis — 160 070 baitų vietoje 435 846. Pageerror — 0. Tikri LT kainos ir Pilaitės PNG peržiūrėti vizualiai. Tai ne naujų Google pozicijų ar perindeksavimo įrodymas. Formų / laiškų nesiųsta, GSC veiksmų nepradėta.
+
+Įrodymai vietiniame atd-lt-audit/2026-11-08/fixes/production/; santrauka docs/seo-fixes-2026-11-08.md. Vien tik dokumentacinis uždarymas commit ir iškart push; programos ir fotografijų failai po sėkmingo Preview ir production testų nesikeičia. Pradiniai nesusiję untracked išsaugoti. Tik CLI šiai patikrai sukurtas Preview prieigos raktas jau atšauktas, Authentication palikta įjungta.
